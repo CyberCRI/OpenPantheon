@@ -1,0 +1,14 @@
+{
+  "topbar": {
+    "pantheon": "Mon Pantheon",
+    "about": "À Propos",
+    "faq": "FAQ",
+    "contact": "Contact",
+    "celebrate": "Célèbrez quelqu'un",
+    "en": "Anglais",
+    "fr": "Français",
+    "currentLang": "Français",
+    "login": "Connecter",
+    "logout": "Déconnecter"
+  }
+}
