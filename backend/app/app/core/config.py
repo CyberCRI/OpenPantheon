@@ -25,9 +25,6 @@ class Settings(BaseSettings):
             return v
         raise ValueError(v)
 
-    GOOGLE_CLIENT_ID: str
-    GOOGLE_CLIENT_SECRET: str
-
     PROJECT_NAME: str
     SENTRY_DSN: Optional[HttpUrl] = None
 
