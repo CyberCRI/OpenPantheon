@@ -1,7 +1,7 @@
 """Comments
 
 Revision ID: 57d342a03232
-Revises: baa74eddc40f
+Revises: 9f1fdf55725b
 Create Date: 2021-08-22 19:34:29.820693
 
 """
@@ -11,7 +11,7 @@ from sqlalchemy.dialects import postgresql
 
 # revision identifiers, used by Alembic.
 revision = '57d342a03232'
-down_revision = 'baa74eddc40f'
+down_revision = '9f1fdf55725b'
 branch_labels = None
 depends_on = None
 
