@@ -4,10 +4,12 @@
       <div class="columns is-8-desktop">
         <div class="column is-half">
           <b-tabs type="is-boxed" size="is-medium" v-model="activeTab">
-            <b-tab-item label="Open Pantheon" value="open"> </b-tab-item>
-            <b-tab-item label="My Pantheon" value="personal"> </b-tab-item>
+            <b-tab-item label="Open Pantheon" value="open">
+            	<p v-if="count">{{ count }} personalities - {{ parity }}% Women, {{ 100 - parity }}% Men</p>
+						</b-tab-item>
+            <b-tab-item label="My Pantheon" value="personal">
+            </b-tab-item>
           </b-tabs>
-          <p>{{ count }} personalities - {{ parity }}% Women, {{ 100 - parity }}% Men</p>
         </div>
         <div class="column is-half is-offset-1">
           <b-dropdown multiple aria-role="list">
@@ -112,8 +114,8 @@ export default {
       women: false,
       field: [],
       sort: null,
-      count: this.$store.getters.pantheonCount,
-      parity: this.$store.getters.pantheonParity,
+      count: null,
+      parity: null,
     }
   },
   components: {
@@ -124,8 +126,14 @@ export default {
       return this.field.length > 0
     },
   },
-  created() {
-    this.$store.dispatch('getPantheonStats')
+  async created() {
+    await this.$store.dispatch('getPantheonStats')
+    this.count = this.$store.getters.pantheonCount
+    this.parity = this.$store.getters.pantheonParity
   },
 }
 </script>
+
+<style type="scss" scoped>
+
+</style>

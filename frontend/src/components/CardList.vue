@@ -1,13 +1,14 @@
 <template>
   <section>
     <div class="columns is-multiline">
-   	  <b-loading is-full-page="false" v-model="isLoading"></b-loading>
+   	  <b-loading :is-full-page=false v-model="isLoading"></b-loading>
       <Card
         class="column is-one-quarter"
         v-for="personality in PersonalityModule.personalities"
         :key="personality.id"
         :personality="personality"
-        :data="data[personality.wikipedia_id]"
+        :data="data ? data[personality.wikipedia_id] : {}"
+        :isLoading="isLoading"
       ></Card>
     </div>
     <b-pagination
@@ -44,7 +45,7 @@ export default {
   },
   methods: {
     async populateList() {
-      this.isLoading = true
+   	  this.isLoading = true
       await this.$store.dispatch('fetchAll', {
         loggedIn: this.$store.getters.isAuthenticated,
         skip: (this.page - 1) * this.perPage,
@@ -66,7 +67,7 @@ export default {
           'Accept-Encoding': 'gzip',
         },
       })
-        .then((res) => res.json())
+        .then((res) => res.json()) //
         .then(wbk.parse.wb.entities)
         .then((entities) => {
           this.data = entities
@@ -89,6 +90,9 @@ export default {
   },
   computed: {
     ...mapState(['PersonalityModule']),
+  },
+  mounted() {
+      this.isLoading = true
   },
   watch: {
     page: {

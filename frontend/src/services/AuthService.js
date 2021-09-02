@@ -27,8 +27,5 @@ export default {
   },
   getToken(credentials) {
     return axios.post('login/access-token', credentials)
-  },
-  getGoogleToken(code) {
-    return axios.post('login/access-token/google', code)
-  },
+  }
 }
