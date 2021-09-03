@@ -41,14 +41,14 @@ deploy-stag:
   stage: deploy
   script: 
     - >
-      DOMAIN=stag.open-pantheon.com
-      TRAEFIK_TAG=stag.open-pantheon.com
+      DOMAIN=stag.open-pantheon.org
+      TRAEFIK_TAG=stag.open-pantheon.org
       STACK_NAME=stag-open-pantheon-com
       TAG=stag
       sh ./scripts/deploy.sh
   environment:
     name: staging
-    url: https://stag.open-pantheon.com
+    url: https://stag.open-pantheon.org
   only:
     - master
   tags:
@@ -59,14 +59,14 @@ deploy-prod:
   stage: deploy
   script:
     - >
-      DOMAIN=open-pantheon.com
-      TRAEFIK_TAG=open-pantheon.com
+      DOMAIN=open-pantheon.org
+      TRAEFIK_TAG=open-pantheon.org
       STACK_NAME=open-pantheon-com
       TAG=prod
       sh ./scripts/deploy.sh
   environment:
     name: production
-    url: https://open-pantheon.com
+    url: https://open-pantheon.org
   only:
     - production
   tags:

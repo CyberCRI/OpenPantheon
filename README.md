@@ -307,36 +307,36 @@ Check all the corresponding available URLs in the section at the end.
 
 If you are running Docker in an IP address different than `127.0.0.1` (`localhost`) and `192.168.99.100` (the default of Docker Toolbox), you will need to perform some additional steps. That will be the case if you are running a custom Virtual Machine, a secondary Docker Toolbox or your Docker is located in a different machine in your network.
 
-In that case, you will need to use a fake local domain (`dev.open-pantheon.com`) and make your computer think that the domain is is served by the custom IP (e.g. `192.168.99.150`).
+In that case, you will need to use a fake local domain (`dev.open-pantheon.org`) and make your computer think that the domain is is served by the custom IP (e.g. `192.168.99.150`).
 
-If you used the default CORS enabled domains, `dev.open-pantheon.com` was configured to be allowed. If you want a custom one, you need to add it to the list in the variable `BACKEND_CORS_ORIGINS` in the `.env` file.
+If you used the default CORS enabled domains, `dev.open-pantheon.org` was configured to be allowed. If you want a custom one, you need to add it to the list in the variable `BACKEND_CORS_ORIGINS` in the `.env` file.
 
 * Open your `hosts` file with administrative privileges using a text editor:
   * **Note for Windows**: If you are in Windows, open the main Windows menu, search for "notepad", right click on it, and select the option "open as Administrator" or similar. Then click the "File" menu, "Open file", go to the directory `c:\Windows\System32\Drivers\etc\`, select the option to show "All files" instead of only "Text (.txt) files", and open the `hosts` file.
   * **Note for Mac and Linux**: Your `hosts` file is probably located at `/etc/hosts`, you can edit it in a terminal running `sudo nano /etc/hosts`.
 
-* Additional to the contents it might have, add a new line with the custom IP (e.g. `192.168.99.150`) a space character, and your fake local domain: `dev.open-pantheon.com`.
+* Additional to the contents it might have, add a new line with the custom IP (e.g. `192.168.99.150`) a space character, and your fake local domain: `dev.open-pantheon.org`.
 
 The new line might look like:
 
 ```
-192.168.99.100    dev.open-pantheon.com
+192.168.99.100    dev.open-pantheon.org
 ```
 
 * Save the file.
   * **Note for Windows**: Make sure you save the file as "All files", without an extension of `.txt`. By default, Windows tries to add the extension. Make sure the file is saved as is, without extension.
 
-...that will make your computer think that the fake local domain is served by that custom IP, and when you open that URL in your browser, it will talk directly to your locally running server when it is asked to go to `dev.open-pantheon.com` and think that it is a remote server while it is actually running in your computer.
+...that will make your computer think that the fake local domain is served by that custom IP, and when you open that URL in your browser, it will talk directly to your locally running server when it is asked to go to `dev.open-pantheon.org` and think that it is a remote server while it is actually running in your computer.
 
-To configure it in your stack, follow the section **Change the development "domain"** below, using the domain `dev.open-pantheon.com`.
+To configure it in your stack, follow the section **Change the development "domain"** below, using the domain `dev.open-pantheon.org`.
 
-After performing those steps you should be able to open: http://dev.open-pantheon.com and it will be server by your stack in `localhost`.
+After performing those steps you should be able to open: http://dev.open-pantheon.org and it will be server by your stack in `localhost`.
 
 Check all the corresponding available URLs in the section at the end.
 
 ### Change the development "domain"
 
-If you need to use your local stack with a different domain than `localhost`, you need to make sure the domain you use points to the IP where your stack is set up. See the different ways to achieve that in the sections above (i.e. using Docker Toolbox with `local.dockertoolbox.tiangolo.com`, using `localhost.tiangolo.com` or using `dev.open-pantheon.com`).
+If you need to use your local stack with a different domain than `localhost`, you need to make sure the domain you use points to the IP where your stack is set up. See the different ways to achieve that in the sections above (i.e. using Docker Toolbox with `local.dockertoolbox.tiangolo.com`, using `localhost.tiangolo.com` or using `dev.open-pantheon.org`).
 
 To simplify your Docker Compose setup, for example, so that the API docs (Swagger UI) knows where is your API, you should let it know you are using that domain for development. You will need to edit 1 line in 2 files.
 
@@ -605,15 +605,15 @@ TAG=prod FRONTEND_ENV=production bash ./scripts/build-push.sh
 3. **Deploy your stack**
 
 * Set these environment variables:
-  * `DOMAIN=open-pantheon.com`
-  * `TRAEFIK_TAG=open-pantheon.com`
+  * `DOMAIN=open-pantheon.org`
+  * `TRAEFIK_TAG=open-pantheon.org`
   * `STACK_NAME=open-pantheon-com`
   * `TAG=prod`
 * Use the provided `scripts/deploy.sh` file with those environment variables:
 
 ```bash
-DOMAIN=open-pantheon.com \
-TRAEFIK_TAG=open-pantheon.com \
+DOMAIN=open-pantheon.org \
+TRAEFIK_TAG=open-pantheon.org \
 STACK_NAME=open-pantheon-com \
 TAG=prod \
 bash ./scripts/deploy.sh
@@ -703,33 +703,33 @@ These are the URLs that will be used and generated by the project.
 
 Production URLs, from the branch `production`.
 
-Frontend: https://open-pantheon.com
+Frontend: https://open-pantheon.org
 
-Backend: https://open-pantheon.com/api/
+Backend: https://open-pantheon.org/api/
 
-Automatic Interactive Docs (Swagger UI): https://open-pantheon.com/docs
+Automatic Interactive Docs (Swagger UI): https://open-pantheon.org/docs
 
-Automatic Alternative Docs (ReDoc): https://open-pantheon.com/redoc
+Automatic Alternative Docs (ReDoc): https://open-pantheon.org/redoc
 
-PGAdmin: https://pgadmin.open-pantheon.com
+PGAdmin: https://pgadmin.open-pantheon.org
 
-Flower: https://flower.open-pantheon.com
+Flower: https://flower.open-pantheon.org
 
 ### Staging URLs
 
 Staging URLs, from the branch `master`.
 
-Frontend: https://stag.open-pantheon.com
+Frontend: https://stag.open-pantheon.org
 
-Backend: https://stag.open-pantheon.com/api/
+Backend: https://stag.open-pantheon.org/api/
 
-Automatic Interactive Docs (Swagger UI): https://stag.open-pantheon.com/docs
+Automatic Interactive Docs (Swagger UI): https://stag.open-pantheon.org/docs
 
-Automatic Alternative Docs (ReDoc): https://stag.open-pantheon.com/redoc
+Automatic Alternative Docs (ReDoc): https://stag.open-pantheon.org/redoc
 
-PGAdmin: https://pgadmin.stag.open-pantheon.com
+PGAdmin: https://pgadmin.stag.open-pantheon.org
 
-Flower: https://flower.stag.open-pantheon.com
+Flower: https://flower.stag.open-pantheon.org
 
 ### Development URLs
 
@@ -771,19 +771,19 @@ Traefik UI: http://local.dockertoolbox.tiangolo.com:8090
 
 Development URLs, for local development.
 
-Frontend: http://dev.open-pantheon.com
+Frontend: http://dev.open-pantheon.org
 
-Backend: http://dev.open-pantheon.com/api/
+Backend: http://dev.open-pantheon.org/api/
 
-Automatic Interactive Docs (Swagger UI): https://dev.open-pantheon.com/docs
+Automatic Interactive Docs (Swagger UI): https://dev.open-pantheon.org/docs
 
-Automatic Alternative Docs (ReDoc): https://dev.open-pantheon.com/redoc
+Automatic Alternative Docs (ReDoc): https://dev.open-pantheon.org/redoc
 
-PGAdmin: http://dev.open-pantheon.com:5050
+PGAdmin: http://dev.open-pantheon.org:5050
 
-Flower: http://dev.open-pantheon.com:5555
+Flower: http://dev.open-pantheon.org:5555
 
-Traefik UI: http://dev.open-pantheon.com:8090
+Traefik UI: http://dev.open-pantheon.org:8090
 
 ### Development in localhost with a custom domain URLs
 
