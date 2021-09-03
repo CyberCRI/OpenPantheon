@@ -46,7 +46,7 @@ export default {
         fetchAll({ commit }, { loggedIn, skip, limit, personal, women, field, sort }) {
             return PersonalityService.getAll(loggedIn, skip, limit, personal, women, field, sort)
                 .then((response) => {
-                    commit('SET_TOTAL', response.headers['x-total-count'])
+                    commit('SET_TOTAL', Number(response.headers['x-total-count']))
                     commit('SET_PERSONALITIES', response.data)
                     return response.data
                 })
