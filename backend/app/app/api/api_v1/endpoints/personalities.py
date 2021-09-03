@@ -1,6 +1,6 @@
 from typing import Any, List, Dict
 
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, Response
 from sqlalchemy.orm import Session
 
 from app import crud, models, schemas
@@ -20,6 +20,7 @@ def get_pantheon_stats(
 
 @router.get("/", response_model=List[schemas.Personality])
 def read_personalities(
+	response: Response,
     db: Session = Depends(deps.get_db),
     current_user: models.User = Depends(deps.get_current_active_user),
     skip: int = 0,
@@ -32,11 +33,14 @@ def read_personalities(
     """
     Retrieve personalities.
     """
-    personalities = crud.personality.get_multi_personalities(db, current_user_pantheon=current_user.personalities_celebrated, skip=skip, limit=limit, personal=personal, women=women, field=field, sort=sort)
+    count = []
+    personalities = crud.personality.get_multi_personalities(get_count=count, db=db, current_user_pantheon=current_user.personalities_celebrated, skip=skip, limit=limit, personal=personal, women=women, field=field, sort=sort)
+    response.headers["x-total-count"] = str(count[0]) # Little hack that takes advantage of list mutability to get count for pagination
     return personalities
 
 @router.get("/guest", response_model=List[schemas.Personality])
-def read_personalities(
+def read_personalities_guest(
+    response: Response,
     db: Session = Depends(deps.get_db),
     skip: int = 0,
     limit: int = 100,
@@ -46,9 +50,11 @@ def read_personalities(
     sort: str = ''
 ) -> Any:
     """
-    Retrieve personalities.
+    Retrieve personalities for unlogged used. Necessary because FASTAPI returns 401 if I require current user in function
     """
-    personalities = crud.personality.get_multi_personalities_guest(db, skip=skip, limit=limit, women=women, field=field, sort=sort)
+    count = []
+    personalities = crud.personality.get_multi_personalities_guest(get_count=count, db=db, skip=skip, limit=limit, women=women, field=field, sort=sort)
+    response.headers["x-total-count"] = str(count[0])
     return personalities
 
 @router.post("/", response_model=schemas.Personality)

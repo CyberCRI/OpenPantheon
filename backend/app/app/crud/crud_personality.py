@@ -38,7 +38,7 @@ class CRUDPersonality(CRUDBase[Personality, PersonalityCreate, PersonalityUpdate
         return result
 
     def get_multi_personalities(
-        self, db: Session, current_user_pantheon: List[Personality], *, skip: int = 0, limit: int = 100, personal: int = 0, women: bool = False, field: int = 0, sort: str = ''
+        self, get_count: List[int], db: Session, current_user_pantheon: List[Personality], *, skip: int = 0, limit: int = 100, personal: int = 0, women: bool = False, field: int = 0, sort: str = ''
     ) -> List[Personality]:
         result = db.query(Personality).join(Comment).group_by(Personality.id)
         if personal:
@@ -48,15 +48,16 @@ class CRUDPersonality(CRUDBase[Personality, PersonalityCreate, PersonalityUpdate
         if sort:
             if sort == 'recent':
                 result = result.order_by(Personality.id.desc())
-            if sort == 'celebrated':
+            elif sort == 'celebrated':
                 result = result.order_by(func.count().desc())
-            if sort == 'old':
+            else:
                 result = result.order_by(Personality.id)
+        get_count.append(result.count())
         result = result.offset(skip).limit(limit).all()
         return result
 
     def get_multi_personalities_guest(
-        self, db: Session, *, skip: int = 0, limit: int = 100, women: bool = False, field: int = 0, sort: str = ''
+        self, get_count: List[int], db: Session, *, skip: int = 0, limit: int = 100, women: bool = False, field: int = 0, sort: str = ''
     ) -> List[Personality]:
         result = db.query(Personality).join(Comment).group_by(Personality.id)
         if women:
@@ -64,10 +65,11 @@ class CRUDPersonality(CRUDBase[Personality, PersonalityCreate, PersonalityUpdate
         if sort:
             if sort == 'recent':
                 result = result.order_by(Personality.id.desc())
-            if sort == 'celebrated':
+            elif sort == 'celebrated':
                 result = result.order_by(func.count().desc())
-            if sort == 'old':
+            else:
                 result = result.order_by(Personality.id)
+        get_count.append(result.count())
         result = result.offset(skip).limit(limit).all()
         return result
 
