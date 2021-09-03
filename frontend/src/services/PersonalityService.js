@@ -7,7 +7,7 @@ export default {
   getAll(loggedIn, skip, limit, personal, women, field, sort) {
     if (loggedIn)
       return axios.get(
-        '/personalities?skip=' +
+        '/personalities/?skip=' +
           skip +
           '&limit=' +
           limit +
@@ -22,7 +22,7 @@ export default {
       )
     else
       return axios.get(
-        '/personalities/guest?skip=' +
+        '/personalities/guest/?skip=' +
           skip +
           '&limit=' +
           limit +

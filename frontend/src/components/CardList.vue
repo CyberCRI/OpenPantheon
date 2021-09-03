@@ -1,7 +1,7 @@
 <template>
   <section>
     <div class="columns is-multiline">
-   	  <b-loading :is-full-page=false v-model="isLoading"></b-loading>
+      <b-loading :is-full-page="false" v-model="isLoading"></b-loading>
       <Card
         class="column is-one-quarter"
         v-for="personality in PersonalityModule.personalities"
@@ -40,12 +40,12 @@ export default {
       perPage: 16,
       page: 1,
       data: null,
-      isLoading: false
+      isLoading: false,
     }
   },
   methods: {
     async populateList() {
-   	  this.isLoading = true
+      this.isLoading = true
       await this.$store.dispatch('fetchAll', {
         loggedIn: this.$store.getters.isAuthenticated,
         skip: (this.page - 1) * this.perPage,
@@ -92,7 +92,7 @@ export default {
     ...mapState(['PersonalityModule']),
   },
   mounted() {
-      this.isLoading = true
+    this.isLoading = true
   },
   watch: {
     page: {

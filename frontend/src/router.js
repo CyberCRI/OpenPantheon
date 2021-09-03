@@ -9,7 +9,7 @@ import Celebrate from './views/Celebrate.vue'
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
     mode: 'history',
     routes: [
         { path: '/', name: 'Home', component: Home },
@@ -26,3 +26,5 @@ export default new Router({
         return { x: 0, y: 0 }
     },
 })
+
+export default router

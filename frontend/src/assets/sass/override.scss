@@ -2,15 +2,26 @@
 // Import Bulma's core
 @import "../../../node_modules/bulma/sass/utilities/_all";
 
+@font-face {
+  font-family: ApfelGrotezk-Fett;
+  src: url(../fonts/apfelgrotezk_fett.woff2);
+}
+
 // Set your colors
 $primary: #61E987;
 $scheme-main: #fcfcfd;
 $scheme-main-bis: #202137;
-$primary-light: findLightColor($primary);
-$primary-dark: findDarkColor($primary);
-$primary-invert: findColorInvert($primary);
-$twitter: #4099FF;
-$twitter-invert: findColorInvert($twitter);
+// $primary-light: findLightColor($primary);
+// $primary-dark: findDarkColor($primary);
+// $primary-invert: findColorInvert($primary);
+// $twitter: #4099FF;
+// $twitter-invert: findColorInvert($twitter);
+
+// Fonts
+
+$family-primary: Poppins, sans-serif;
+$family-secondary: ApfelGrotezk-Fett, sans-serif;
+$title-family: $family-secondary;
 
 // Lists and maps
 $custom-colors: null !default;
@@ -75,17 +86,17 @@ $colors: mergeColorMaps(
     $custom-colors
 );
 
-// Links
+// // Links
 $link: $primary;
 $link-invert: $primary-invert;
 $link-focus-border: $primary;
 
-// Navbar
+// // Navbar
 $navbar-tab-active-border-bottom-width: 5px;
 
-// Tabs
+// // Tabs
 
-$tabs-boxed-link-active-background-color: $primary;
+// $tabs-boxed-link-active-background-color: $primary;
 $tabs-link-active-color: $grey-dark;
 
 // Cards
