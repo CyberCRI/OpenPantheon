@@ -42,7 +42,9 @@
           labore, tempora, nostrum ducimus aliquid accusantium fugit illo ut eveniet, expedita
           veniam quisquam amet? Assumenda necessitatibus, cum?
         </h1>
-        <button class="button is-primary is-medium">Visit the FAQ</button>
+        <router-link :to="{ path: '/faq' }" class="button is-primary is-medium"
+          >Visit the FAQ</router-link
+        >
       </div>
     </div>
   </section>

@@ -41,8 +41,7 @@ export default {
         axios.defaults.headers.common['Authorization'] = `Bearer ${this.$store.getters.accessToken}`
         await this.getCurrentUserDetails()
         this.$emit('close')
-        if (this.$router.currentRoute.name !== 'Celebrate')
-	        this.$router.go()
+        if (this.$router.currentRoute.name !== 'Celebrate') this.$router.go()
       } catch (error) {
         this.$buefy.toast.open({
           duration: 5000,

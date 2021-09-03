@@ -72,9 +72,9 @@ export default {
       this.$router.go()
     },
     changeLocale(lg) {
-    	localStorage.Lang = lg
-    	this.$router.go()
-    }
+      localStorage.Lang = lg
+      this.$router.go()
+    },
   },
 }
 </script>
