@@ -11988,9 +11988,6 @@ MIT (https://github.com/Wikiki/bulma-steps/blob/master/LICENSE)
   .upload .upload-draggable + input[type="file"] {
     z-index: -1; } }
 
-.button {
-  border-radius: 10px !important; }
-
 .avatar {
   width: 48px;
   height: 48px;

@@ -23,8 +23,20 @@
           Let us know briefly why that person is special to you and why you'd like to add them to
           the Pantheon.
         </h2>
-        <input v-model="comment.text" type="text" placeholder="Add a comment" />
-        <input v-model="comment.fluff" type="text" placeholder="Add some fluff" />
+        <b-field label="" custom-class="is-medium" required>
+          <b-input
+          minlength="10"
+          maxlength="1500"
+          type="textarea"
+          custom-class="has-fixed-size is-medium"
+          v-model="comment.text"
+          lazy
+          placeholder="Add a comment" 
+         ></b-input>
+        </b-field>
+        <b-field label="Want to add an external link ? (Optional)" required>
+          <b-input type="name" v-model="comment.fluff" placeholder="Add an external link" lazy></b-input>
+        </b-field>
       </b-step-item>
 
       <b-step-item step="3" label="Publish"> </b-step-item>
@@ -67,13 +79,13 @@ export default {
     WikiAutocomplete,
   },
   mounted() {
-  	if (this.personalityProp && this.nameProp) {
-  		this.alreadyInDB = 1
-  		this.personality.wikipedia_id = this.personalityProp
-      	this.name = this.nameProp
-      	this.activeStep++
-  		this.stepControl(1)
-  	}
+    if (this.personalityProp && this.nameProp) {
+      this.alreadyInDB = 1
+      this.personality.wikipedia_id = this.personalityProp
+        this.name = this.nameProp
+        this.activeStep++
+      this.stepControl(1)
+    }
   },
   methods: {
     stepControl(step) {
@@ -94,7 +106,17 @@ export default {
           this.celebrate()
         } else {
           console.log('update')
-          this.createCommentAndLike()
+          if (!this.$store.getters.listPersonalitiesCelebrated.includes(this.personality.wikipedia_id))
+            this.createCommentAndLike()
+          else {
+             this.$buefy.toast.open({
+              duration: 5000,
+              message: "This personality is already in your pantheon",
+              type: 'is-danger',
+            })
+            this.$router.push({ name: 'Home' })
+          }
+
         }
       }
     },
@@ -113,6 +135,7 @@ export default {
       this.comment.personality_id = personality.id
       await this.$store.dispatch('createComment', this.comment)
       await this.$store.dispatch('addToPantheon', personality.id)
+      await this.$store.dispatch('getCurrentUserDetails')
       this.$router.push({ name: 'Home' })
     },
     async celebrate() {

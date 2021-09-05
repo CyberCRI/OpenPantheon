@@ -9,6 +9,7 @@ const state = {
 const getters = {
     isAuthenticated: (state) => !!state.currentUserDetails,
     accessToken: (state) => state.token,
+    listPersonalitiesCelebrated: (state) => state.currentUserDetails.personalities_celebrated.map((personality) => personality.wikipedia_id),
     // userById: (state) => (id) => {
     //     return state.users.find((user) => user.id === id)
     // },

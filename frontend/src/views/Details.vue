@@ -32,7 +32,8 @@
         <router-link
           :to="{ path: `/celebrate?q=${personality.wikipedia_id}&n=${data.labels[$i18n.locale].value}` }"
           class="button is-medium has-text-small is-primary is-mobile"
-          v-if="!isLoading"
+          :class="{'is-hidden': $store.getters.isAuthenticated && $store.getters.listPersonalitiesCelebrated.includes(personality.wikipedia_id)}"
+           v-if="!isLoading"
           ><strong class="is-size-6 mx-6">Celebrate</strong></router-link
         >
       </div>
@@ -203,6 +204,7 @@ export default {
         customClass: '',
         trapFocus: true,
       })
+      console.log(this.$store.getters.listPersonalitiesCelebrated.includes(this.personality.wikipedia_id))
     },
     getArrayOfProperties(id, propertyName) {
       const url = wbk.getEntities({
@@ -332,4 +334,7 @@ hr {
   border-top: 1px solid #bbb;
 }
 
+.button {
+	border-radius: 10px;
+}
 </style>
