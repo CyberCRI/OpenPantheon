@@ -4245,7 +4245,7 @@ body.has-navbar-fixed-bottom {
   overflow-y: hidden; }
 
 .navbar-burger {
-  color: #4a4a4a;
+  color: #fcfcfd;
   cursor: pointer;
   display: block;
   height: 3.25rem;
@@ -4283,7 +4283,7 @@ body.has-navbar-fixed-bottom {
 
 .navbar-item,
 .navbar-link {
-  color: #4a4a4a;
+  color: #fcfcfd;
   display: block;
   line-height: 1.5;
   padding: 0.5rem 0.75rem;
@@ -4301,7 +4301,7 @@ a.navbar-item,
   .navbar-link:focus-within,
   .navbar-link:hover,
   .navbar-link.is-active {
-    background-color: #202137;
+    background-color: transparent;
     color: #61E987; }
 
 .navbar-item {
@@ -4525,12 +4525,12 @@ a.navbar-item,
     padding-bottom: 5.25rem; }
   a.navbar-item.is-active,
   .navbar-link.is-active {
-    color: #0a0a0a; }
+    color: #fcfcfd; }
   a.navbar-item.is-active:not(:focus):not(:hover),
   .navbar-link.is-active:not(:focus):not(:hover) {
     background-color: transparent; }
   .navbar-item.has-dropdown:focus .navbar-link, .navbar-item.has-dropdown:hover .navbar-link, .navbar-item.has-dropdown.is-active .navbar-link {
-    background-color: #202137; } }
+    background-color: transparent; } }
 
 .hero.is-fullheight-with-navbar {
   min-height: calc(100vh - 3.25rem); }
@@ -11997,3 +11997,9 @@ MIT (https://github.com/Wikiki/bulma-steps/blob/master/LICENSE)
   line-height: 48px;
   text-align: center;
   background: #61E987; }
+
+.navbar {
+  background: #202137 url("../img/bubble/bubble@1,5x.svg");
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y: center; }

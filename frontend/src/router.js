@@ -12,7 +12,7 @@ Vue.use(Router)
 const router = new Router({
     mode: 'history',
     routes: [
-        { path: '/', name: 'Home', component: Home },
+        { path: '/', name: 'Home', component: Home, alias: '/home' },
         { path: '/about', name: 'About', component: About },
         // { path: '/faq', name:"Faq", component: Faq },
         { path: '/contact', name: 'Contact', component: Contact },

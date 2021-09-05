@@ -1,7 +1,7 @@
 <template>
   <div class="box container">
     <div class="control is-clearfix my-6">
-      <input type="text" autocomplete="off" placeholder="Search for a celebration..." class="input" v-model="search" />
+      <input type="text" autocomplete="off" :placeholder="$t('celebration.search')" class="input" v-model="search" />
     </div>
     <Comment v-for="(comment, index) in filteredList" :key="index" :comment=comment />
   </div>

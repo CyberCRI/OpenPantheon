@@ -17,16 +17,16 @@
       </div>
       <div class="card-content">
         <div class="content">
-          <p v-if="!isLoading">{{ data.labels[$i18n.locale] }}</p>
+          <p class="mb-0" v-if="!isLoading">{{ data.labels[$i18n.locale] }}</p>
           <b-skeleton size="is-large" :active="isLoading"></b-skeleton>
-          <small v-if="!isLoading">{{
+          <p v-if="!isLoading" class="has-text-grey is-size-7">{{
             data.descriptions[$i18n.locale] | capitalize({ onlyFirstLetter: true }) | truncate(30)
-          }}</small>
+          }}</p>
           <b-skeleton size="is-small" :active="isLoading"></b-skeleton>
           <br />
           <p v-if="!isLoading">
             {{ personality.comments.length }}
-            {{ personality.comments.length | pluralize('Celebration') }}
+            {{ personality.comments.length | pluralize('celebration') }}
           </p>
           <b-skeleton width="120px" :active="isLoading"></b-skeleton>
           <slot></slot>

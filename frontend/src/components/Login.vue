@@ -13,7 +13,7 @@
 
       <b-input type="submit" value="Login" custom-class="button is-primary"></b-input>
       <p class="block">
-        Don't have an account yet ? <a @click="$emit('switchView')">Create an account</a>
+        {{ $t('login.no_account')}} Don't have an account yet ? <a @click="$emit('switchView')">{{ $t('login.create_one') }}Create an account</a>
       </p>
     </section>
   </form>

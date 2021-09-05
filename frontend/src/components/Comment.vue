@@ -39,15 +39,15 @@
       past: '%s ago',
       s:  'seconds',
       ss: '%ss',
-      m:  'a minute',
+      m:  '1m',
       mm: '%dm',
-      h:  'an hour',
+      h:  '1h',
       hh: '%dh',
-      d:  'a day',
+      d:  '1d',
       dd: '%dd',
-      M:  'a month',
+      M:  '1M',
       MM: '%dM',
-      y:  'a year',
+      y:  '1Y',
       yy: '%dY'
     }
   });

@@ -34,7 +34,7 @@
           class="button is-medium has-text-small is-primary is-mobile"
           :class="{'is-hidden': $store.getters.isAuthenticated && $store.getters.listPersonalitiesCelebrated.includes(personality.wikipedia_id)}"
            v-if="!isLoading"
-          ><strong class="is-size-6 mx-6">Celebrate</strong></router-link
+          ><strong class="is-size-6 mx-6">{{ $t('details.celebrate') }}Celebrate</strong></router-link
         >
       </div>
 
@@ -43,7 +43,7 @@
           @click="socialModal"
           class="button is-medium has-text-small is-mobile"
           v-if="!isLoading"
-          ><strong class="is-size-6 mx-6">Share profile</strong></button
+          ><strong class="is-size-6 mx-6">{{ $t('details.share') }}Share profile</strong></button
         >
       </div>
       <div class="section column is-3">
@@ -51,7 +51,7 @@
           :href="wikiLink"
           class="button is-medium has-text-small is-mobile"
           v-if="!isLoading && wikiLink"
-          ><strong class="is-size-6 mx-6">Visit Wikipedia</strong></a
+          ><strong class="is-size-6 mx-6">{{ $t('details.wikipedia') }}Visit Wikipedia</strong></a
         >
       </div>
     </div>
@@ -59,7 +59,7 @@
     <!-- Bio and factsheet  -->
 
     <div id="bio" class="section">
-      <h2 id="title" class="title is-4">About</h2>
+      <h2 id="title" class="title is-4">{{ $t('details.about') }}About</h2>
       <div class="columns is-align-items-self-start">
         <p class="has-text-justified column is-6">
           Lorem ipsum dolor, sit amet consectetur adipisicing, elit. Assumenda eligendi est dicta
@@ -73,13 +73,13 @@
         </p>
         <div id="factsheet" class="column is-6">
           <p v-if="properties.notableWork[0]">
-            <span class="has-text-weight-bold">Notable Work :</span>
+            <span class="has-text-weight-bold">{{ $t('details.notable') }} Notable Work :</span>
             {{ properties.notableWork.join(', ') }}
           </p>
           <b-skeleton size="is-medium" :active="isLoadingProperties"></b-skeleton>
 
           <p v-if="properties.marriages[0]">
-            <span class="has-text-weight-bold">Spouse(s) :</span>
+            <span class="has-text-weight-bold">{{ $t('details.spouse') }} Spouse(s) :</span>
             <span v-for="(marriage, index) in properties.marriages" :key="index">
               {{ marriage.spouse }} (m. {{ marriage.start }};
               {{ marriage.reason == 'death' ? 'died' : '' }} {{ marriage.end }})
@@ -88,18 +88,18 @@
           <b-skeleton size="is-medium" :active="isLoadingProperties"></b-skeleton>
 
           <p v-if="properties.children[0]">
-            <span class="has-text-weight-bold">Children :</span> {{ properties.children.join(', ') }}
+            <span class="has-text-weight-bold">{{ $t('details.children') }} Children :</span> {{ properties.children.join(', ') }}
           </p>
           <b-skeleton size="is-medium" :active="isLoadingProperties"></b-skeleton>
 
           <p v-if="properties.dateOfBirth && properties.placeOfBirth">
-            <span class="has-text-weight-bold">Born :</span> {{ properties.dateOfBirth }},
+            <span class="has-text-weight-bold">{{ $t('details.born') }} Born :</span> {{ properties.dateOfBirth }},
             {{ properties.placeOfBirth }}
           </p>
           <b-skeleton size="is-medium" :active="isLoadingProperties"></b-skeleton>
 
           <p v-if="properties.dateOfDeath && properties.placeOfDeath">
-            <span class="has-text-weight-bold">Died :</span> {{ properties.dateOfDeath }} (aged
+            <span class="has-text-weight-bold">{{ $t('details.died') }} Died :</span> {{ properties.dateOfDeath }} (aged
             {{ properties.ageOfDeath }}),
             {{ properties.placeOfDeath }}
           </p>
@@ -122,7 +122,7 @@
          @click="commentModal"
          class="button is-medium has-text-small is-primary is-mobile"
          v-if="!isLoading"
-         ><strong class="is-size-7 mx-6">Show all celebrations</strong></button>
+         ><strong class="is-size-7 mx-6">{{ $t('details.show_celebrations') }} Show all celebrations</strong></button>
       </div>
     </div>
 

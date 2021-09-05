@@ -7,7 +7,7 @@
             <b-tabs type="is-boxed" size="is-medium" v-model="activeTab">
               <b-tab-item label="Open Pantheon" value="open">
                 <p v-if="count">
-                  {{ count }} personalities - {{ parity }}% Women, {{ 100 - parity }}% Men
+                  {{ count }} {{ $t('home.personalities') }}personalities - {{ parity }}% {{ $t('home.women') }} Women, {{ 100 - parity }}% {{ $t('home.men') }} Men
                 </p>
               </b-tab-item>
               <b-tab-item label="My Pantheon" value="personal"> </b-tab-item>
@@ -18,19 +18,19 @@
           <div class="level-item">
             <b-dropdown multiple aria-role="list">
               <template #trigger>
-                <b-button icon-right="menu-down"> Filter </b-button>
+                <b-button icon-right="menu-down"> {{ $t('home.filter') }}Filter </b-button>
               </template>
 
               <b-dropdown-item aria-role="listitem">
                 <b-field>
-                  <b-checkbox v-model="women"> Women only </b-checkbox>
+                  <b-checkbox v-model="women"> {{ $t('home.women_only') }} Women only </b-checkbox>
                 </b-field>
               </b-dropdown-item>
 
               <b-dropdown-item aria-role="listitem">
                 <b-field>
                   <b-checkbox v-model="field" native-value="Arts" ref="Arts" :disabled="hasField">
-                    Arts
+                    {{ $t('home.arts') }} Arts
                   </b-checkbox>
                 </b-field>
               </b-dropdown-item>
@@ -43,7 +43,7 @@
                     ref="Science"
                     :disabled="hasField"
                   >
-                    Science
+                    {{ $t('home.science') }} Science
                   </b-checkbox>
                 </b-field>
               </b-dropdown-item>
@@ -56,7 +56,7 @@
                     ref="Education"
                     :disabled="hasField"
                   >
-                    Education
+                    {{ $t('home.education') }} Education
                   </b-checkbox>
                 </b-field>
               </b-dropdown-item>
@@ -79,7 +79,7 @@
               <b-dropdown-item value="recent" aria-role="listitem">
                 <div class="media">
                   <div class="media-content">
-                    <h3>Most recent</h3>
+                    <h3>{{ $t('home.recent') }} Most recent</h3>
                   </div>
                 </div>
               </b-dropdown-item>
@@ -87,7 +87,7 @@
               <b-dropdown-item value="celebrated" aria-role="listitem">
                 <div class="media">
                   <div class="media-content">
-                    <h3>Most celebrated</h3>
+                    <h3>{{ $t('home.celebrated') }} Most celebrated</h3>
                   </div>
                 </div>
               </b-dropdown-item>
@@ -95,7 +95,7 @@
               <b-dropdown-item value="old" aria-role="listitem">
                 <div class="media">
                   <div class="media-content">
-                    <h3>Oldest</h3>
+                    <h3>{{ $t('home.oldest') }} Oldest</h3>
                   </div>
                 </div>
               </b-dropdown-item>

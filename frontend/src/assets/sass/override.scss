@@ -93,7 +93,9 @@ $link-focus-border: $primary;
 
 // // Navbar
 $navbar-tab-active-border-bottom-width: 5px;
-
+$navbar-item-color: $scheme-main;
+$navbar-item-active-color: $scheme-main;
+$navbar-item-hover-background-color: transparent;
 // // Tabs
 
 // $tabs-boxed-link-active-background-color: $primary;
@@ -132,4 +134,11 @@ $card-radius: 0.75rem;
   line-height: 48px;
   text-align: center;
   background: $primary;
+}
+
+.navbar {
+    background: $scheme-main-bis url("../img/bubble/bubble@1,5x.svg");
+	background-repeat: no-repeat;
+	background-position-x: center;
+	background-position-y: center;
 }

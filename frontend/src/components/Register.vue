@@ -13,8 +13,9 @@
       <p class="block">Already have an account ? <a @click="$emit('switchView')">Login </a>*</p>
     </form>
     <form v-show="contactProvided" @submit.prevent="onSubmit">
-      <p class="title">Get in touch</p>
+      <p class="title">$t('register.welcome') Get in touch</p>
       <p class="is-size-6 has-text-weight-semibold">
+      	{{ $t('register.welcome_text') }}
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi, impedit culpa quibusdam
         eaque! Incidunt, error. In, fuga architecto esse soluta
       </p>

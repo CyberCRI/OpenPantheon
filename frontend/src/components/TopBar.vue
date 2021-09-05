@@ -1,21 +1,21 @@
 <template>
-  <b-navbar spaced transparent>
+  <b-navbar spaced shadow>
     <template #brand>
       <b-navbar-item tag="router-link" :to="{ path: '/' }">
-        <img src="../assets/Logo@2x.png" alt="Logo OpenPantheon" />
+        <img src="img/logo/logo@2x.png" alt="Logo OpenPantheon" />
       </b-navbar-item>
     </template>
     <template #start>
-      <b-navbar-item tag="router-link" active-class="is-active" :to="{ path: '/' }">{{
+      <b-navbar-item tag="router-link" class="is-tab is-expanded" active-class="is-active" :to="{ path: '/home' }">{{
         $t('topbar.pantheon')
       }}</b-navbar-item>
-      <b-navbar-item tag="router-link" active-class="is-active" :to="{ path: '/about' }">{{
+      <b-navbar-item tag="router-link" class="is-tab is-expanded" active-class="is-active" :to="{ path: '/about' }">{{
         $t('topbar.about')
       }}</b-navbar-item>
-      <b-navbar-item tag="router-link" active-class="is-active" :to="{ path: '/faq' }">{{
+      <b-navbar-item tag="router-link" class="is-tab is-expanded" active-class="is-active" :to="{ path: '/faq' }">{{
         $t('topbar.faq')
       }}</b-navbar-item>
-      <b-navbar-item tag="router-link" active-class="is-active" :to="{ path: '/contact' }">{{
+      <b-navbar-item tag="router-link" class="is-tab is-expanded" active-class="is-active" :to="{ path: '/contact' }">{{
         $t('topbar.contact')
       }}</b-navbar-item>
     </template>
@@ -80,7 +80,5 @@ export default {
 </script>
 
 <style type="scss" scoped>
-.navbar {
-  background-color: transparent;
-}
+
 </style>
