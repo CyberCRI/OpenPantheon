@@ -113,6 +113,8 @@ def create_user_open(
     email: EmailStr = Body(...),
     firstName: str = Body(...),
     lastName: str = Body(...),
+    job: str = Body(...),
+    organization: str = Body(...)
 ) -> Any:
     """
     Create new user without the need to be logged in.
@@ -128,7 +130,7 @@ def create_user_open(
             status_code=400,
             detail="The user with this username already exists in the system",
         )
-    user_in = schemas.UserCreate(password=password, email=email, first_name=firstName, last_name=lastName)
+    user_in = schemas.UserCreate(password=password, email=email, first_name=firstName, last_name=lastName, job=job, organization=organization)
     user = crud.user.create(db, obj_in=user_in)
     if settings.EMAILS_ENABLED and user_in.email:
 	    send_new_account_email(
@@ -140,19 +142,18 @@ def create_user_open(
 @router.get("/{user_id}", response_model=schemas.User)
 def read_user_by_id(
     user_id: int,
-    current_user: models.User = Depends(deps.get_current_active_user),
     db: Session = Depends(deps.get_db),
 ) -> Any:
     """
     Get a specific user by id.
     """
     user = crud.user.get(db, id=user_id)
-    if user == current_user:
-        return user
-    if not crud.user.is_superuser(current_user):
-        raise HTTPException(
-            status_code=400, detail="The user doesn't have enough privileges"
-        )
+    # if user == current_user:
+    #     return user
+    # if not crud.user.is_superuser(current_user):
+    #     raise HTTPException(
+    #         status_code=400, detail="The user doesn't have enough privileges"
+    #     )
     return user
 
 

@@ -2,7 +2,8 @@ import AuthService from '@/services/AuthService'
 
 const state = {
     currentUserDetails: null,
-    token: null
+    token: null,
+    userDetails: null
 }
 
 const getters = {
@@ -35,14 +36,6 @@ const actions = {
             console.log('There was an error:', error.response)
         })
     },
-    googleAuth({ commit }, authCode) {
-        return AuthService.getGoogleToken(authCode).then((response) => {
-        	commit('SET_TOKEN', response.data.access_token)
-        })
-        .catch((error) => {
-            console.log('There was an error:', error.response)
-        })
-    },
     getCurrentUserDetails({ commit }) {
 	    return AuthService.getCurrentUserDetails().then((response) => {
 	    	console.log(response)
@@ -51,6 +44,15 @@ const actions = {
         .catch((error) => {
             console.log('There was an error:', error)
         })
+    },
+    getUserById({ commit }, id) {
+    return AuthService.getUserById(id).then((response) => {
+    	console.log(response)
+    	commit('SET_USER_DETAILS', response.data)
+    })
+    .catch((error) => {
+        console.log('There was an error:', error)
+    })
     },
     // async getUsers({ commit }) {
     //     await axios.get('users').then(async (response) => {
@@ -67,6 +69,9 @@ const actions = {
 const mutations = {
     SET_CURRENT_USER_DETAILS(state, user) {
         state.currentUserDetails = user
+    },
+    SET_USER_DETAILS(state, user) {
+        state.userDetails = user
     },
     SET_TOKEN(state, token) {
         state.token = token

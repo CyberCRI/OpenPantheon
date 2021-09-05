@@ -29,7 +29,7 @@
             class="button is-medium has-text-small is-primary is-mobile"
             ><strong class="is-size-6">{{ $t('topbar.celebrate') }}</strong></b-navbar-item
           >
-          <b-navbar-dropdown :label="$t('topbar.currentLang')">
+          <b-navbar-dropdown class="is-dark" :label="$t('topbar.currentLang')">
             <b-navbar-item @click="changeLocale('en')">{{ $t('topbar.en') }}</b-navbar-item>
             <b-navbar-item @click="changeLocale('fr')">{{ $t('topbar.fr') }}</b-navbar-item>
           </b-navbar-dropdown>

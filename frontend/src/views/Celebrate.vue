@@ -54,6 +54,10 @@ export default {
       alreadyInDB: null,
     }
   },
+  props: {
+    personalityProp: String,
+    nameProp: String
+  },
   computed: {
     isLoggedIn() {
       return this.$store.getters.isAuthenticated
@@ -61,6 +65,15 @@ export default {
   },
   components: {
     WikiAutocomplete,
+  },
+  mounted() {
+  	if (this.personalityProp && this.nameProp) {
+  		this.alreadyInDB = 1
+  		this.personality.wikipedia_id = this.personalityProp
+      	this.name = this.nameProp
+      	this.activeStep++
+  		this.stepControl(1)
+  	}
   },
   methods: {
     stepControl(step) {

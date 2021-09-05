@@ -2,6 +2,8 @@ from typing import Optional
 
 from sqlalchemy import DateTime
 from sqlalchemy.dialects.postgresql import JSON
+from datetime import datetime
+
 
 from pydantic import BaseModel
 
@@ -34,6 +36,7 @@ class CommentInDBBase(CommentBase):
 class Comment(CommentInDBBase):
     author_id: Optional[int]
     personality_id: Optional[int]
+    time_created: Optional[datetime]
 
 
 # Properties properties stored in DB

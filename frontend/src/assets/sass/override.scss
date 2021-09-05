@@ -122,3 +122,18 @@ $card-radius: 0.75rem;
 // Import Bulma and Buefy styles
 @import "../../../node_modules/bulma/bulma";
 @import "../../../node_modules/buefy/src/scss/buefy";
+
+.button {
+	border-radius: 10px !important;
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  font-size: 1rem;
+  color: black;
+  line-height: 48px;
+  text-align: center;
+  background: $primary;
+}

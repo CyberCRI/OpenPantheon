@@ -19,7 +19,7 @@ const router = new Router({
         // { path: '/account', name:"Account", component: Account },
         // { path: '/user-pantheon/:user', name:"UserPantheon", component: UserPantheon, props: true },
         { path: '/details/:id', name: 'Details', component: Details, props: true },
-        { path: '/celebrate', name: 'Celebrate', component: Celebrate },
+        { path: '/celebrate', name: 'Celebrate', component: Celebrate, props: route => ({ personalityProp: route.query.q, nameProp: route.query.n})},
     ],
     scrollBehavior(to, from, savedPosition) {
         if (savedPosition) return savedPosition

@@ -7,7 +7,9 @@ import i18n from './i18n'
 import axios from 'axios'
 import { apiUrl } from './env'
 import Vue2Filters from 'vue2-filters'
+// import moment from 'moment'
 
+// moment().format()
 Vue.use(Vue2Filters)
 
 const token = store.getters.accessToken

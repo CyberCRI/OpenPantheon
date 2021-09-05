@@ -23,6 +23,8 @@ class UserCreate(UserBase):
     password: str
     first_name: str
     last_name: str
+    job: Optional[str]
+    organization: Optional[str]
 
 
 # Properties to receive via API on update
@@ -39,6 +41,8 @@ class UserInDBBase(UserBase):
 # Additional properties to return via API
 class User(UserInDBBase):
     personalities_celebrated: List[Personality] = None
+    job: Optional[str] = None
+    organization: Optional[str] = None
 
 
 # Additional properties stored in DB
