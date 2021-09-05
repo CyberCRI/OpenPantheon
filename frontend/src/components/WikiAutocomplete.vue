@@ -2,7 +2,7 @@
   <b-field label="Find a personality">
     <b-autocomplete
       :data="data"
-      placeholder="Search someone through wikpedia..."
+      :placeholder="$t('wiki.search')"
       field="title"
       :value="name"
       :loading="isFetching"
@@ -34,7 +34,7 @@
             <p v-if="props.option.celebrations > 0">
               {{ props.option.celebrations }} celebration(s)
             </p>
-            <p v-else>Add to the pantheon</p>
+            <p v-else>{{ $t('wiki.add') }}</p>
           </div>
         </div>
       </template>

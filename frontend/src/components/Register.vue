@@ -10,14 +10,12 @@
         </b-input>
       </b-field>
       <b-input type="submit" value="Sign up" custom-class="button is-primary" expanded></b-input>
-      <p class="block">Already have an account ? <a @click="$emit('switchView')">Login </a>*</p>
+      <p class="block">{{ $t('register.already') }}<a @click="$emit('switchView')">{{ $t('register.login') }}</a>*</p>
     </form>
     <form v-show="contactProvided" @submit.prevent="onSubmit">
-      <p class="title">$t('register.welcome') Get in touch</p>
+      <p class="title">{{ $t('register.welcome') }}</p>
       <p class="is-size-6 has-text-weight-semibold">
       	{{ $t('register.welcome_text') }}
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi, impedit culpa quibusdam
-        eaque! Incidunt, error. In, fuga architecto esse soluta
       </p>
       <b-field label="First name" label-position="inside">
         <b-input v-model="user.firstName" placeholder="John" required expanded />

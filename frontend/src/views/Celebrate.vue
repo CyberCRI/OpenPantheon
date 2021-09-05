@@ -9,19 +9,17 @@
       @input="stepControl"
     >
       <b-step-item step="1" label="Choose a personality">
-        <h1 class="title has-text-centered">{{ $t('celebrate.who') }}Who do you want to celebrate ?</h1>
+        <h1 class="title has-text-centered">{{ $t('celebrate.who') }}</h1>
         <h2 class="subtitle has-text-centered">
-          {{ $t('celebrate.parity') }} There is currently 50% men and 50% women on the Pantheon. Let's try to maintain a gender
-          parity !
+          {{ $t('celebrate.parity', { pctMen: '50%', pctWomen: '50%' }) }}
         </h2>
         <WikiAutocomplete @personalitySelected="createPersonality" />
       </b-step-item>
 
       <b-step-item step="2" label="Write a celebration">
-        <h1 class="title has-text-centered">{{ $t('celebrate.why') }}Why do you want to celebrate {{ name }} ?</h1>
+        <h1 class="title has-text-centered">{{ $t('celebrate.why', { name: name })  }}</h1>
         <h2 class="subtitle has-text-centered">
-          {{ $t('celebrate.explain') }}Let us know briefly why that person is special to you and why you'd like to add them to
-          the Pantheon.
+          {{ $t('celebrate.explain') }}
         </h2>
         <b-field label="" custom-class="is-medium" required>
           <b-input
