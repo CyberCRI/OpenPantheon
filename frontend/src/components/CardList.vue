@@ -40,7 +40,7 @@ export default {
       perPage: 16,
       page: 1,
       data: null,
-      isLoading: false,
+      isLoading: true,
     }
   },
   methods: {

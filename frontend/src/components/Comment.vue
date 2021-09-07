@@ -2,7 +2,7 @@
     <div class="comment">
       <article class="media">
         <figure class="media-left">
-          <div class="avatar" v-if="user">{{ user.first_name[0] + user.last_name[0] | uppercase }}</div>
+          <router-link :to="{ path: `/pantheon/${user.id}` }"><div class="avatar" v-if="user">{{ user.first_name[0] + user.last_name[0] | uppercase }}</div></router-link>
         </figure>
         <div class="media-content has-background-light py-5 px-5 my-5 mx-2">
           <div class="container">
@@ -19,8 +19,13 @@
                 {{ timestamp }}
               </div>
             </div>
-            {{ comment.text }}
+            <p>
+              {{ comment.text }}
+            </p>
           </div>
+          <ul>
+            <li v-for="(ref, index) in references" :key="index"><a :href="ref.link" >{{ ref.name }}</a></li>
+          </ul>
         </div>
         <div class="media-right">
 <!--           <button class="delete"></button>
@@ -56,7 +61,8 @@
     name: 'Comment',
     data() {
       return {
-        user: null
+        user: null,
+        references: []
       }
     },
     props: {
@@ -64,6 +70,13 @@
     },
     methods: mapActions(['getUserById']),
     async created() {
+      if (this.comment.fluff) {
+        const tab = this.comment.fluff.split('~')
+        tab.forEach((ref) => {
+          const tmp = ref.split('|') 
+          this.references.push({name: tmp[0], link: tmp[1]})
+        })
+      }
       await this.getUserById(this.comment.author_id)
       this.user = this.AuthModule.userDetails
     },

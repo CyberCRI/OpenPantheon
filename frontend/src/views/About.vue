@@ -2,7 +2,7 @@
 	<section class="section">
 	  <div class="container section box content px-6 py-6 has-text-justified">
 		<div class="section">
-		    <h1 class="title mb-6 pb-6">We are happy to welcome you to the Open Pantheon.</h1> 
+		  <h1 class="title mb-6 pb-6">We are happy to welcome you to the Open Pantheon.</h1> 
 
 			<strong>Nominate.</strong> <p>First and foremost, we invite you to pay tribute to inspirational figures from the past - whether in your community, country or globally -  who have played a key role in the field of learning. This may be across all related disciplines, notably art, science, sustainability, pedagogy, health and wellbeing, thus contributing to a peaceful coexistence of humans and nature (in line with the 17 Sustainable Development Goals of the United Nations).</p>
 

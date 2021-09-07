@@ -39,8 +39,10 @@
   	"add": "Add to the pantheon"
   },
   "celebrate": {
+  	"title": "Contribute to the Pantheon by celebrating a personnality.",
+  	"subtitle": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi, impedit culpa quibusdam eaque! Incidunt, error. In, fuga architecto esse soluta",
   	"who": "Who do you want to celebrate ?",
-  	"parity": "There is currently {pctMen} men and {pctWomen} women on the Pantheon. Let's try to maintain a gender parity !",
+  	"parity": "There is currently {pctMen}% men and {pctWomen}% women on the Pantheon. Let's try to maintain a gender parity !",
   	"why": "Why do you want to celebrate {name}",
   	"explain": "Let us know briefly why that person is special to you and why you'd like to add them to the Pantheon."
   },
@@ -57,7 +59,7 @@
   },
   "home": {
   	"personalities": "{count} personalities - {parityWomen}% Women, {parityMen}% Men",
-  	"filter": "filter",
+  	"filter": "Filter",
   	"women_only": "Women only",
   	"arts": "Arts",
   	"science": "Science",

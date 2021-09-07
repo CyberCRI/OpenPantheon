@@ -1,7 +1,7 @@
 <template>
   <b-navbar spaced shadow>
     <template #brand>
-      <b-navbar-item tag="router-link" :to="{ path: '/' }">
+      <b-navbar-item class="mr-6" tag="router-link" :to="{ path: '/home' }">
         <img src="img/logo/logo@2x.png" alt="Logo OpenPantheon" />
       </b-navbar-item>
     </template>
@@ -27,7 +27,8 @@
             tag="router-link"
             :to="{ path: '/celebrate' }"
             class="button is-medium has-text-small is-primary is-mobile"
-            ><strong class="is-size-6">{{ $t('topbar.celebrate') }}</strong></b-navbar-item
+            active-class=""
+            ><strong class="is-size-6 has-text-black">{{ $t('topbar.celebrate') }}</strong></b-navbar-item
           >
           <b-navbar-dropdown class="is-dark" :label="$t('topbar.currentLang')">
             <b-navbar-item @click="changeLocale('en')">{{ $t('topbar.en') }}</b-navbar-item>

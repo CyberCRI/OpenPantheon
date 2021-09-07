@@ -29,20 +29,22 @@
             <b-input type="name" v-model="name" lazy></b-input>
           </b-field>
           <b-field label="Email address" label-position="inside" required>
-            <b-input type="email" icon-pack="fas" icon-right="email" v-model="email" lazy></b-input>
+            <b-input type="email" icon-right="email" v-model="email" lazy></b-input>
           </b-field>
           <b-input type="submit" value="Send" custom-class="button is-primary"></b-input>
         </form>
       </div>
-      <div class="block is-flex is-flex-direction-column is-align-items-center">
-        <h1 class="title">{{ $t('contact.faq') }}</h1>
-        <h1 class="subtitle">
-          {{ $t('contact.faq_explain') }}
-        </h1>
-        <router-link :to="{ path: '/faq' }" class="button is-primary is-medium"
-          >{{ $t('contact.faq_cta') }}</router-link
-        >
-      </div>
+      <section class="section is-medium has-text-centered">
+      	<div class="container mx-6">
+	        <h1 class="title mb-6">{{ $t('contact.faq') }}</h1>
+	        <h2 class="subtitle mb-6">
+	          {{ $t('contact.faq_explain') }}
+	        </h2>
+	        <router-link :to="{ path: '/faq' }" class="button is-primary is-medium"
+	          >{{ $t('contact.faq_cta') }}</router-link
+        	>
+        </div>
+      </section>
     </div>
   </section>
 </template>

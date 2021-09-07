@@ -12,6 +12,7 @@ from app.schemas.comment import Comment
 class PersonalityBase(BaseModel):
     field: Optional[str] = None
     gender: Optional[str] = None
+    time_created: Optional[datetime] = None
 
 
 # Properties to receive on personality creation

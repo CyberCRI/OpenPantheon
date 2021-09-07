@@ -1,9 +1,10 @@
 <template>
-  <b-field label="Find a personality">
+  <b-field>
     <b-autocomplete
       :data="data"
       :placeholder="$t('wiki.search')"
       field="title"
+      icon="magnify"
       :value="name"
       :loading="isFetching"
       @typing="getAsyncData"
@@ -30,7 +31,7 @@
               {{ props.option.descriptions[$i18n.locale] }}
             </small>
           </div>
-          <div class="media-right">
+          <div class="media-right is-hidden-mobile">
             <p v-if="props.option.celebrations > 0">
               {{ props.option.celebrations }} celebration(s)
             </p>
@@ -62,6 +63,8 @@ export default {
         search: `${name}`,
         haswbstatement: ['P31=Q5'],
         limit: 5,
+        profile: 'popular_inclinks_pv',
+        sort: 'just_match',
       })
       fetch(url)
         .then((res) => res.json())

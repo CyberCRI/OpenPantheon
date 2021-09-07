@@ -17,14 +17,13 @@
       </div>
       <div class="card-content">
         <div class="content">
-          <p class="mb-0" v-if="!isLoading">{{ data.labels[$i18n.locale] }}</p>
+          <p class="mb-0 is-size-6" v-if="!isLoading">{{ data.labels[$i18n.locale] }}</p>
           <b-skeleton size="is-large" :active="isLoading"></b-skeleton>
-          <p v-if="!isLoading" class="has-text-grey is-size-7">{{
+          <p v-if="!isLoading" class="has-text-grey is-size-7 mb-2">{{
             data.descriptions[$i18n.locale] | capitalize({ onlyFirstLetter: true }) | truncate(30)
           }}</p>
           <b-skeleton size="is-small" :active="isLoading"></b-skeleton>
-          <br />
-          <p v-if="!isLoading">
+          <p class="my-5" v-if="!isLoading">
             {{ personality.comments.length }}
             {{ personality.comments.length | pluralize('celebration') }}
           </p>

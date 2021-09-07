@@ -113,8 +113,8 @@ def create_user_open(
     email: EmailStr = Body(...),
     firstName: str = Body(...),
     lastName: str = Body(...),
-    job: str = Body(...),
-    organization: str = Body(...)
+    job: str = Body(default=None),
+    organization: str = Body(default=None)
 ) -> Any:
     """
     Create new user without the need to be logged in.

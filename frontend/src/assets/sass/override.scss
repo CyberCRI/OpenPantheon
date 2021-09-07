@@ -1,4 +1,8 @@
 
+body {
+	font-size: 14px;
+}
+
 // Import Bulma's core
 @import "../../../node_modules/bulma/sass/utilities/_all";
 
@@ -11,6 +15,9 @@
 $primary: #61E987;
 $scheme-main: #fcfcfd;
 $scheme-main-bis: #202137;
+
+$grey: #A5A5AE;
+
 // $primary-light: findLightColor($primary);
 // $primary-dark: findDarkColor($primary);
 // $primary-invert: findColorInvert($primary);
@@ -92,10 +99,19 @@ $link-invert: $primary-invert;
 $link-focus-border: $primary;
 
 // // Navbar
+$navbar-background-color: $scheme-main-bis;
 $navbar-tab-active-border-bottom-width: 5px;
 $navbar-item-color: $scheme-main;
 $navbar-item-active-color: $scheme-main;
 $navbar-item-hover-background-color: transparent;
+$navbar-item-img-max-height: 3.5rem;
+$navbar-item-active-background-color: transparent;
+$navbar-padding-vertical: 1.5rem;
+
+// Autocomplete
+
+$dropdown-content-max-height: 500;
+
 // // Tabs
 
 // $tabs-boxed-link-active-background-color: $primary;
@@ -139,6 +155,16 @@ $card-radius: 0.75rem;
 .navbar {
     background: $scheme-main-bis url("../img/bubble/bubble@1,5x.svg");
 	background-repeat: no-repeat;
-	background-position-x: center;
+	background-position-x: right;
 	background-position-y: center;
+	&-start {
+		flex-grow: 0.2
+	}
+	.is-spaced {
+		padding: 1.5rem 2rem;
+	}
+}
+
+.has-half-width {
+	max-width: 50%;
 }
