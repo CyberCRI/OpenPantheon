@@ -55,6 +55,11 @@ export default {
         field: this.field,
         sort: this.sort,
       })
+      if (this.PersonalityModule.personalities.length == 0) {
+        this.isLoading = false
+        this.data = []
+        return
+      }
       let titles = this.PersonalityModule.personalities.map(
         (personality) => personality.wikipedia_id
       )
