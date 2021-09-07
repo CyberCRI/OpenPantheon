@@ -23,12 +23,12 @@
             data.descriptions[$i18n.locale] | capitalize({ onlyFirstLetter: true }) | truncate(30)
           }}</p>
           <b-skeleton size="is-small" :active="isLoading"></b-skeleton>
-          <p class="my-5" v-if="!isLoading">
+          <p v-if="!isLoading">
             {{ personality.comments.length }}
             {{ personality.comments.length | pluralize('celebration') }}
           </p>
           <b-skeleton width="120px" :active="isLoading"></b-skeleton>
-          <slot></slot>
+          <slot class="my-5"></slot>
         </div>
       </div>
     </div>
