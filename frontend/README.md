@@ -1,31 +1,31 @@
 # frontend
 
 ## Project setup
-```
-npm install
+
+```bash
+yarn
 ```
 
 ### Compiles and hot-reloads for development
-```
-npm run serve
+
+```bash
+yarn serve
 ```
 
 ### Compiles and minifies for production
-```
-npm run build
+
+```bash
+yarn build
 ```
 
 ### Run your tests
-```
-npm run test
+
+```bash
+yarn test:unit
 ```
 
 ### Lints and fixes files
-```
-npm run lint
-```
 
-### Run your unit tests
-```
-npm run test:unit
+```bash
+yarn lint
 ```
