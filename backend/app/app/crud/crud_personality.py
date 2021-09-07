@@ -33,8 +33,9 @@ class CRUDPersonality(CRUDBase[Personality, PersonalityCreate, PersonalityUpdate
             'parity': 0
         }
         result['count'] = db.query(Personality).count()
-        result['parity'] = db.query(Personality).filter(Personality.gender == 'f').count()
-        result['parity'] = math.floor(result['parity'] / result['count'] * 100)
+        if result['count'] > 0:
+            result['parity'] = db.query(Personality).filter(Personality.gender == 'f').count()
+            result['parity'] = math.floor(result['parity'] / result['count'] * 100)
         return result
 
     def get_multi_personalities(
