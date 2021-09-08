@@ -4,10 +4,10 @@
     <div class="container">
       <div class="box">
         <div class="container mx-6 my-6 has-text-centered">
-	        <h1 class="title my-6 is-size-4">{{ $t('celebrate.title') }}</h1>
-	        <h2 class="subtitle mb-6 is-size-6">
-	          {{ $t('celebrate.subtitle') }}
-	        </h2>
+          <h1 class="title my-6 is-size-4">{{ $t('celebrate.title') }}</h1>
+          <h2 class="subtitle mb-6 is-size-6">
+            {{ $t('celebrate.subtitle') }}
+          </h2>
         </div>
         <b-steps
           v-model="activeStep"
@@ -26,53 +26,78 @@
           </b-step-item>
 
           <b-step-item class="my-6" label="Write a celebration">
-            <h1 class="title has-text-centered">{{ $t('celebrate.why', { name: name })  }}</h1>
+            <h1 class="title has-text-centered">{{ $t('celebrate.why', { name: name }) }}</h1>
             <h2 class="subtitle has-text-centered">
               {{ $t('celebrate.explain') }}
             </h2>
             <form @submit.prevent="stepControl(2)">
-    	        <b-field label="" custom-class="is-medium" required>
-    	          <b-input
-    	          minlength="10"
-    	          maxlength="1500"
-    	          type="textarea"
-    	          custom-class="has-fixed-size is-medium"
-    	          v-model="comment.text"
-    	          lazy
-    	          placeholder="Add a comment" 
-    	         ></b-input>
-    	        </b-field>
-    	        <b-field class="mb-6" grouped group-multiline v-for="(reference, index) in references" :key="index">
-    		        <b-field>
-        					<b-button icon-right="minus" class="button" @click="removeInput(index)" v-if="references.length > 1"></b-button>
+              <b-field label="" custom-class="is-medium" required>
+                <b-input
+                  minlength="10"
+                  maxlength="1500"
+                  type="textarea"
+                  custom-class="has-fixed-size is-medium"
+                  v-model="comment.text"
+                  lazy
+                  placeholder="Add a comment"
+                ></b-input>
+              </b-field>
+              <b-field
+                class="mb-6"
+                grouped
+                group-multiline
+                v-for="(reference, index) in references"
+                :key="index"
+              >
+                <b-field>
+                  <b-button
+                    icon-right="minus"
+                    class="button"
+                    @click="removeInput(index)"
+                    v-if="references.length > 1"
+                  ></b-button>
                 </b-field>
                 <b-field expanded>
-    		          <b-input type="text" v-model="reference.name" placeholder="Name" required></b-input>
+                  <b-input
+                    type="text"
+                    v-model="reference.name"
+                    placeholder="Name"
+                    required
+                  ></b-input>
                 </b-field>
                 <b-field expanded>
-    		          <b-input type="url" v-model="reference.link" placeholder="Link" required></b-input>
+                  <b-input
+                    type="url"
+                    v-model="reference.link"
+                    placeholder="Link"
+                    required
+                  ></b-input>
                 </b-field>
                 <b-field>
-        					<b-button icon-right="plus" class="button" @click="addInput(index)" v-if="references.length < 10"></b-button>
+                  <b-button
+                    icon-right="plus"
+                    class="button"
+                    @click="addInput(index)"
+                    v-if="references.length < 10"
+                  ></b-button>
                 </b-field>
-    		      </b-field>
+              </b-field>
               <input type="submit" class="button is-primary is-pulled-right" value="Submit" />
-    	    </form>
+            </form>
           </b-step-item>
 
           <b-step-item class="my-6" label="Publish"> </b-step-item>
-
         </b-steps>
       </div>
       <section class="section is-medium has-text-centered">
-      	<div class="container mx-6">
-	        <h1 class="title is-size-4 mb-6">{{ $t('contact.faq') }}</h1>
-	        <h2 class="subtitle is-size-6 mb-6">
-	          {{ $t('contact.faq_explain') }}
-	        </h2>
-	        <router-link :to="{ path: '/faq' }" class="button is-primary is-medium"
-	          >{{ $t('contact.faq_cta') }}</router-link
-        	>
+        <div class="container mx-6">
+          <h1 class="title is-size-4 mb-6">{{ $t('contact.faq') }}</h1>
+          <h2 class="subtitle is-size-6 mb-6">
+            {{ $t('contact.faq_explain') }}
+          </h2>
+          <router-link :to="{ path: '/faq' }" class="button is-primary is-medium">{{
+            $t('contact.faq_cta')
+          }}</router-link>
         </div>
       </section>
     </div>
@@ -94,25 +119,27 @@ export default {
       personality: {},
       comment: {},
       alreadyInDB: null,
-      references: [{
-      	link: "",
-      	name: ""
-      }],
-      parity: null
+      references: [
+        {
+          link: '',
+          name: '',
+        },
+      ],
+      parity: null,
     }
   },
   props: {
     personalityProp: String,
-    nameProp: String
+    nameProp: String,
   },
   computed: {
     isLoggedIn() {
       return this.$store.getters.isAuthenticated
-    }
+    },
   },
   components: {
     WikiAutocomplete,
-    Back
+    Back,
   },
   mounted() {
     if (this.personalityProp && this.nameProp) {
@@ -125,12 +152,12 @@ export default {
     this.parity = this.$store.getters.pantheonParity
   },
   methods: {
-  	addInput(index) {
-  		this.references.splice(index + 1, 0, {link: '', name: ''})
-  	},
-  	removeInput(index) {
-  		this.references.splice(index, 1)
-  	},
+    addInput(index) {
+      this.references.splice(index + 1, 0, { link: '', name: '' })
+    },
+    removeInput(index) {
+      this.references.splice(index, 1)
+    },
     stepControl(step) {
       if (step == '1') {
         if (!this.isLoggedIn) {
@@ -149,17 +176,18 @@ export default {
           this.celebrate()
         } else {
           console.log('update')
-          if (!this.$store.getters.listPersonalitiesCelebrated.includes(this.personality.wikipedia_id))
+          if (
+            !this.$store.getters.listPersonalitiesCelebrated.includes(this.personality.wikipedia_id)
+          )
             this.createCommentAndLike()
           else {
-             this.$buefy.toast.open({
+            this.$buefy.toast.open({
               duration: 5000,
-              message: "This personality is already in your pantheon",
+              message: 'This personality is already in your pantheon',
               type: 'is-danger',
             })
             this.$router.push({ name: 'Home' })
           }
-
         }
       }
     },

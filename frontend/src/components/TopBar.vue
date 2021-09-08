@@ -6,18 +6,34 @@
       </b-navbar-item>
     </template>
     <template #start>
-      <b-navbar-item tag="router-link" class="is-tab is-expanded" active-class="is-active" :to="{ path: '/home' }">{{
-        $t('topbar.pantheon')
-      }}</b-navbar-item>
-      <b-navbar-item tag="router-link" class="is-tab is-expanded" active-class="is-active" :to="{ path: '/about' }">{{
-        $t('topbar.about')
-      }}</b-navbar-item>
-      <b-navbar-item tag="router-link" class="is-tab is-expanded" active-class="is-active" :to="{ path: '/faq' }">{{
-        $t('topbar.faq')
-      }}</b-navbar-item>
-      <b-navbar-item tag="router-link" class="is-tab is-expanded" active-class="is-active" :to="{ path: '/contact' }">{{
-        $t('topbar.contact')
-      }}</b-navbar-item>
+      <b-navbar-item
+        tag="router-link"
+        class="is-tab is-expanded"
+        active-class="is-active"
+        :to="{ path: '/home' }"
+        >{{ $t('topbar.pantheon') }}</b-navbar-item
+      >
+      <b-navbar-item
+        tag="router-link"
+        class="is-tab is-expanded"
+        active-class="is-active"
+        :to="{ path: '/about' }"
+        >{{ $t('topbar.about') }}</b-navbar-item
+      >
+      <b-navbar-item
+        tag="router-link"
+        class="is-tab is-expanded"
+        active-class="is-active"
+        :to="{ path: '/faq' }"
+        >{{ $t('topbar.faq') }}</b-navbar-item
+      >
+      <b-navbar-item
+        tag="router-link"
+        class="is-tab is-expanded"
+        active-class="is-active"
+        :to="{ path: '/contact' }"
+        >{{ $t('topbar.contact') }}</b-navbar-item
+      >
     </template>
 
     <template #end>
@@ -28,7 +44,9 @@
             :to="{ path: '/celebrate' }"
             class="button is-medium has-text-small is-primary is-mobile"
             active-class=""
-            ><strong class="is-size-6 has-text-black">{{ $t('topbar.celebrate') }}</strong></b-navbar-item
+            ><strong class="is-size-6 has-text-black">{{
+              $t('topbar.celebrate')
+            }}</strong></b-navbar-item
           >
           <b-navbar-dropdown class="is-dark" :label="$t('topbar.currentLang')">
             <b-navbar-item @click="changeLocale('en')">{{ $t('topbar.en') }}</b-navbar-item>
@@ -80,6 +98,4 @@ export default {
 }
 </script>
 
-<style type="scss" scoped>
-
-</style>
+<style type="scss" scoped></style>

@@ -12,60 +12,64 @@
     "logout": "Log out"
   },
   "details": {
-  	"celebrate": "Celebrate",
-  	"share": "Share profile",
-  	"wikipedia": "Visit wikipedia page",
-  	"about": "About",
-  	"notable": "Notable work:",
-  	"spouse": "Spouse(s):",
-  	"children": "Children:",
-  	"born": "Born:",
-  	"died": "Died:",
-  	"show_celebrations": "Show all celebrations",
-  	"search": "Search for a celebration..."
+    "celebrate": "Celebrate",
+    "share": "Share profile",
+    "wikipedia": "Visit wikipedia page",
+    "about": "About",
+    "notable": "Notable work:",
+    "spouse": "Spouse(s):",
+    "children": "Children:",
+    "born": "Born:",
+    "died": "Died:",
+    "show_celebrations": "Show all celebrations",
+    "search": "Search for a celebration..."
   },
   "login": {
-  	"no_account": "Don't have an account yet ?",
-  	"create_one": "Create an account"
+    "no_account": "Don't have an account yet ?",
+    "create_one": "Create an account"
   },
   "register": {
-  	"already": "Already have an account ? ",
-  	"login": "Login",
-  	"welcome": "Get in touch",
-  	"welcome_text": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi, impedit culpa quibusdameaque! Incidunt, error. In, fuga architecto esse soluta"
+    "already": "Already have an account ? ",
+    "login": "Login",
+    "welcome": "Get in touch",
+    "welcome_text": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi, impedit culpa quibusdameaque! Incidunt, error. In, fuga architecto esse soluta"
   },
   "wiki": {
-  	"search": "Search someone on wikipedia...",
-  	"add": "Add to the pantheon"
+    "search": "Search someone on wikipedia...",
+    "add": "Add to the pantheon"
   },
   "celebrate": {
-  	"title": "Contribute to the Pantheon by celebrating a personnality.",
-  	"subtitle": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi, impedit culpa quibusdam eaque! Incidunt, error. In, fuga architecto esse soluta",
-  	"who": "Who do you want to celebrate ?",
-  	"parity": "There is currently {pctMen}% men and {pctWomen}% women on the Pantheon. Let's try to maintain a gender parity !",
-  	"why": "Why do you want to celebrate {name}",
-  	"explain": "Let us know briefly why that person is special to you and why you'd like to add them to the Pantheon."
+    "title": "Contribute to the Pantheon by celebrating a personnality.",
+    "subtitle": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi, impedit culpa quibusdam eaque! Incidunt, error. In, fuga architecto esse soluta",
+    "who": "Who do you want to celebrate ?",
+    "parity": "There is currently {pctMen}% men and {pctWomen}% women on the Pantheon. Let's try to maintain a gender parity !",
+    "why": "Why do you want to celebrate {name}",
+    "explain": "Let us know briefly why that person is special to you and why you'd like to add them to the Pantheon."
   },
   "contact": {
-  	"hello": "Get in touch",
-  	"text": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi, impedit culpa quibusdam eaque! Incidunt, error. In, fuga architecto esse soluta",
-  	"question": "I have a question about this project",
-  	"report": "Report an abuse",
-  	"feedback": "Comment / feedback on the website",
-  	"other": "Other",
-  	"faq": "Find some answers in the FAQ",
-  	"faq_explain": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi, impedit culpa quibusdam eaque! Incidunt, error. In, fuga architecto esse soluta",
-  	"faq_cta": "Visit the FAQ"
+    "hello": "Get in touch",
+    "text": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi, impedit culpa quibusdam eaque! Incidunt, error. In, fuga architecto esse soluta",
+    "question": "I have a question about this project",
+    "report": "Report an abuse",
+    "feedback": "Comment / feedback on the website",
+    "other": "Other",
+    "faq": "Find some answers in the FAQ",
+    "faq_explain": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi, impedit culpa quibusdam eaque! Incidunt, error. In, fuga architecto esse soluta",
+    "faq_cta": "Visit the FAQ"
   },
   "home": {
-  	"personalities": "{count} personalities - {parityWomen}% Women, {parityMen}% Men",
-  	"filter": "Filter",
-  	"women_only": "Women only",
-  	"arts": "Arts",
-  	"science": "Science",
-  	"education": "Education",
-  	"recent": "Most recent",
-  	"celebrated": "Most celebrated",
-  	"oldest": "Least recent"
+    "personalities": "{count} personalities - {parityWomen}% Women, {parityMen}% Men",
+    "filter": "Filter",
+    "women_only": "Women only",
+    "arts": "Arts",
+    "science": "Science",
+    "education": "Education",
+    "recent": "Most recent",
+    "celebrated": "Most celebrated",
+    "oldest": "Least recent"
+  },
+  "moreabout": {
+    "title": "About Open Pantheon",
+    "text": "We all have inspirational figures in our personal pantheon, but there is no place to share who they are and why they have impacted our lives. Open Pantheon empowers individuals and organisations to honour their personal heroes, celebrate their impact and share their legacy with like-minded people across the world."
   }
 }

@@ -7,7 +7,13 @@
             <b-tabs type="is-boxed" size="is-medium" v-model="activeTab">
               <b-tab-item label="Open Pantheon" value="open">
                 <p v-if="count">
-                  {{ $t('home.personalities', {count: count, parityWomen: parity, parityMen: 100 - parity}) }}
+                  {{
+                    $t('home.personalities', {
+                      count: count,
+                      parityWomen: parity,
+                      parityMen: 100 - parity,
+                    })
+                  }}
                 </p>
               </b-tab-item>
               <b-tab-item label="My Pantheon" value="personal"> </b-tab-item>
@@ -16,12 +22,14 @@
         </div>
         <div class="level-right">
           <div class="level-item">
-          	<WikiAutocomplete />
+            <WikiAutocomplete />
           </div>
           <div class="level-item">
             <b-dropdown multiple aria-role="list">
               <template #trigger>
-                <b-button icon-right="chevron-down" size="is-large" class="filter"> {{ $t('home.filter') }}</b-button>
+                <b-button icon-right="chevron-down" size="is-large" class="filter">
+                  {{ $t('home.filter') }}</b-button
+                >
               </template>
 
               <b-dropdown-item aria-role="listitem">
@@ -68,11 +76,21 @@
           <div class="level-item">
             <b-dropdown class="level-item" v-model="sort" aria-role="list">
               <template v-if="sort == 'recent'" #trigger>
-                <b-button class="filter" label="Most recent" icon-right="chevron-down" size="is-large" />
+                <b-button
+                  class="filter"
+                  label="Most recent"
+                  icon-right="chevron-down"
+                  size="is-large"
+                />
               </template>
 
               <template v-else-if="sort == 'celebrated'" #trigger>
-                <b-button class="filter" label="Most celebrated" icon-right="chevron-down" size="is-large" />
+                <b-button
+                  class="filter"
+                  label="Most celebrated"
+                  icon-right="chevron-down"
+                  size="is-large"
+                />
               </template>
 
               <template v-else #trigger>
@@ -153,15 +171,15 @@ export default {
 </script>
 
 <style type="scss" scoped>
-	.field .label {
-		display: none;
-	}
-	.filter {
-		background-color: #F2F2F3;
-		border-width: 0;
-		border-radius: 10px;
-		font-size: 1rem;
-		padding: 1.5rem;
-		text-align: left;
-	}
+.field .label {
+  display: none;
+}
+.filter {
+  background-color: #f2f2f3;
+  border-width: 0;
+  border-radius: 10px;
+  font-size: 1rem;
+  padding: 1.5rem;
+  text-align: left;
+}
 </style>

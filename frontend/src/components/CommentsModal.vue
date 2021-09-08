@@ -1,9 +1,15 @@
 <template>
   <div class="box container">
     <div class="control is-clearfix my-6">
-      <input type="text" autocomplete="off" :placeholder="$t('details.search')" class="input" v-model="search" />
+      <input
+        type="text"
+        autocomplete="off"
+        :placeholder="$t('details.search')"
+        class="input"
+        v-model="search"
+      />
     </div>
-    <Comment v-for="(comment, index) in filteredList" :key="index" :comment=comment />
+    <Comment v-for="(comment, index) in filteredList" :key="index" :comment="comment" />
   </div>
 </template>
 
@@ -33,6 +39,4 @@ export default {
 }
 </script>
 
-<style type="scss" scoped>
-  
-</style>
+<style type="scss" scoped></style>

@@ -13,7 +13,8 @@
 
       <b-input type="submit" value="Login" custom-class="button is-primary"></b-input>
       <p class="block">
-        {{ $t('login.no_account')}} <a @click="$emit('switchView')">{{ $t('login.create_one') }}</a>
+        {{ $t('login.no_account') }}
+        <a @click="$emit('switchView')">{{ $t('login.create_one') }}</a>
       </p>
     </section>
   </form>

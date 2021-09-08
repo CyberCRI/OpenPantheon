@@ -35,14 +35,14 @@
         </form>
       </div>
       <section class="section is-medium has-text-centered">
-      	<div class="container mx-6">
-	        <h1 class="title mb-6">{{ $t('contact.faq') }}</h1>
-	        <h2 class="subtitle mb-6">
-	          {{ $t('contact.faq_explain') }}
-	        </h2>
-	        <router-link :to="{ path: '/faq' }" class="button is-primary is-medium"
-	          >{{ $t('contact.faq_cta') }}</router-link
-        	>
+        <div class="container mx-6">
+          <h1 class="title mb-6">{{ $t('contact.faq') }}</h1>
+          <h2 class="subtitle mb-6">
+            {{ $t('contact.faq_explain') }}
+          </h2>
+          <router-link :to="{ path: '/faq' }" class="button is-primary is-medium">{{
+            $t('contact.faq_cta')
+          }}</router-link>
         </div>
       </section>
     </div>
