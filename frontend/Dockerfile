@@ -3,7 +3,7 @@ FROM node:14-bullseye-slim as build-stage
 
 # Required on non x86_64 to compile some of the dependencies
 RUN apt-get update && \
-    apt-get install -y python3 && \
+    apt-get install -y python3 build-essential && \
     rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
