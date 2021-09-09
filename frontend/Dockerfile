@@ -1,6 +1,11 @@
 # Stage 0, "build-stage" to build and compile the frontend
 FROM node:14-bullseye-slim as build-stage
 
+# Required on non x86_64 to compile some of the dependencies
+RUN apt-get update && \
+    apt-get install -y python3 && \
+    rm -rf /var/lib/apt/lists/*
+
 WORKDIR /app
 
 COPY ./frontend/package.json ./frontend/yarn.lock /app/
