@@ -1,4 +1,4 @@
-from typing import Any, List
+from typing import Any, List, Dict
 
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
@@ -32,11 +32,22 @@ router = APIRouter()
 def create_comment(
     *,
     db: Session = Depends(deps.get_db),
-    comment_in: schemas.CommentCreate,
+    input: List[Dict] = None,
     current_user: models.User = Depends(deps.get_current_active_user),
 ) -> Any:
     """
     Create new comment.
     """
+    comment_in = input[0]
+    del input[0]
+    fluff = input
+    tab = []
+    for i in range(len(fluff)):
+        print(i)
+        print(fluff[i])
+        print(fluff[i]['name'])
+        print(fluff[i]['link'])
+        tab.append(fluff[i]['name'] + '|' + fluff[i]['link'])
+    comment_in['fluff'] = '~'.join(tab)
     comment = crud.comment.create_new_comment(db=db, obj_in=comment_in)
     return comment

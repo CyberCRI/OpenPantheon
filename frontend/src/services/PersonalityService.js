@@ -43,7 +43,7 @@ export default {
   postPersonality(personality) {
     return axios.post('/personalities', personality)
   },
-  postComment(comment) {
-    return axios.post('/comments', comment)
+  postComment(input) {
+    return axios.post('/comments', input)
   },
 }

@@ -128,7 +128,8 @@ export default {
         },
       ],
       parity: null,
-      error: null
+      error: null,
+      input: [],
     }
   },
   props: {
@@ -226,9 +227,13 @@ export default {
       )
       this.comment.author_id = this.$store.getters.idUser
       this.comment.personality_id = personality.id
-      const tab = this.references.map((ref) => ref.name + '|' + ref.link)
-      this.comment.fluff = tab.join('~')
-      await this.$store.dispatch('createComment', this.comment)
+      this.input.push(this.comment)
+      this.input.push(...this.references)
+
+      // const tab = this.references.map((ref) => ref.name + '|' + ref.link)
+      // this.comment.fluff = tab.join('~')
+      await this.$store.dispatch('createComment', this.input)
+      this.input = []
       await this.$store.dispatch('addToPantheon', personality.id)
       await this.$store.dispatch('getCurrentUserDetails')
       this.$router.push({ name: 'Home' })

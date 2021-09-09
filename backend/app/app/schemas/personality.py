@@ -5,7 +5,7 @@ from sqlalchemy.dialects.postgresql import JSON
 
 from pydantic import BaseModel
 
-from app.schemas.comment import Comment
+from app.schemas.comment import Comment, CommentFull
 
 
 # Shared properties
@@ -37,6 +37,13 @@ class Personality(PersonalityInDBBase):
     id: int
     wikipedia_id: Optional[str]
     comments: List[Comment] = None
+    time_created: Optional[datetime] = None
+
+# Properties to return to client
+class PersonalityFull(PersonalityInDBBase):
+    id: int
+    wikipedia_id: Optional[str]
+    comments: List[CommentFull] = None
     time_created: Optional[datetime] = None
 
 

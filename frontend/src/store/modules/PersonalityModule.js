@@ -40,8 +40,8 @@ export default {
                 commit('ADD_PERSONALITY', response.data)
             })
         },
-        createComment({ commit }, comment) {
-            return PersonalityService.postComment(comment)
+        createComment({ commit }, input) {
+            return PersonalityService.postComment(input)
         },
         fetchAll({ commit }, { loggedIn, skip, limit, personal, women, field, sort }) {
             return PersonalityService.getAll(loggedIn, skip, limit, personal, women, field, sort)

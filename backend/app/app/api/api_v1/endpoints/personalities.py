@@ -20,7 +20,7 @@ def get_pantheon_stats(
 
 @router.get("/", response_model=List[schemas.Personality])
 def read_personalities(
-	response: Response,
+  response: Response,
     db: Session = Depends(deps.get_db),
     current_user: models.User = Depends(deps.get_current_active_user),
     skip: int = 0,
@@ -91,7 +91,7 @@ def update_personality(
     return personality
 
 
-@router.get("/{id}", response_model=schemas.Personality)
+@router.get("/{id}")
 def read_personality(
     *,
     db: Session = Depends(deps.get_db),
@@ -101,8 +101,18 @@ def read_personality(
     Get personality by ID.
     """
     personality = crud.personality.get(db=db, id=id)
+
     if not personality:
         raise HTTPException(status_code=404, detail="Personality not found")
+
+    for i in range(len(personality.comments)):
+      tab = []
+      tmp = personality.comments[i].fluff.split('~')
+      for j in range(len(tmp)):
+        tmp_bis = tmp[j].split('|')
+        tab.append({ 'name': tmp_bis[0], 'link': tmp_bis[1] })
+      personality.comments[i].fluff = tab
+
     return personality
 
 @router.get("/wiki/{wiki_id}", response_model=schemas.Personality)
@@ -120,6 +130,7 @@ def read_personality(
         raise HTTPException(status_code=404, detail="Personality not found")
     # if not crud.user.is_superuser(current_user) and (personality.owner_id != current_user.id):
     #     raise HTTPException(status_code=400, detail="Not enough permissions")
+
     return personality
 
 @router.delete("/{id}", response_model=schemas.Personality)

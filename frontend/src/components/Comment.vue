@@ -26,7 +26,7 @@
           </p>
         </div>
         <ul>
-          <li v-for="(ref, index) in references" :key="index">
+          <li v-for="(ref, index) in comment.fluff" :key="index">
             <a :href="ref.link">{{ ref.name }}</a>
           </li>
         </ul>
@@ -67,7 +67,6 @@ export default {
   data() {
     return {
       user: null,
-      references: [],
     }
   },
   props: {
@@ -75,13 +74,6 @@ export default {
   },
   methods: mapActions(['getUserById']),
   async created() {
-    if (this.comment.fluff) {
-      const tab = this.comment.fluff.split('~')
-      tab.forEach((ref) => {
-        const tmp = ref.split('|')
-        this.references.push({ name: tmp[0], link: tmp[1] })
-      })
-    }
     await this.getUserById(this.comment.author_id)
     this.user = this.AuthModule.userDetails
   },

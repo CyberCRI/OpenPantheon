@@ -3,7 +3,6 @@ from typing import TYPE_CHECKING
 from sqlalchemy import Column, ForeignKey, Integer, String, DateTime
 from sqlalchemy.dialects.postgresql import JSON
 from sqlalchemy.orm import relationship
-from sqlalchemy.ext.hybrid import hybrid_property
 from sqlalchemy.sql.expression import func
 
 from app.db.base_class import Base
