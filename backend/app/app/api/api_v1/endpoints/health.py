@@ -21,5 +21,5 @@ def ready_check(
     """
     Kubernetes Ready Check
     """
-    db.query(User).first()
+    db.execute("SELECT 1")
     return

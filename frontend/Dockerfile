@@ -1,28 +1,27 @@
-# Stage 0, "build-stage", based on Node.js, to build and compile the frontend
-FROM tiangolo/node-frontend:10 as build-stage
+# Stage 0, "build-stage" to build and compile the frontend
+FROM node:14-bullseye-slim as build-stage
 
 WORKDIR /app
 
-COPY package*.json /app/
+COPY ./frontend/package.json ./frontend/yarn.lock /app/
 
-RUN npm install
+RUN yarn install --pure-lockfile --non-interactive
 
-COPY ./ /app/
+COPY ./frontend/ /app/
 
-ARG FRONTEND_ENV=production
+ARG BACKEND_URL=http://localhost:8000
 
-ENV VUE_APP_ENV=${FRONTEND_ENV}
+ENV VUE_APP_BACKEND_URL=${BACKEND_URL}
 
 # Comment out the next line to disable tests
-RUN npm run test:unit
+RUN yarn test:unit
 
-RUN npm run build
+RUN yarn build
 
 
 # Stage 1, based on Nginx, to have only the compiled app, ready for production with Nginx
-FROM nginx:1.15
+FROM nginx:1.20
+
+COPY ./frontend/nginx.conf /etc/nginx/conf.d/default.conf
 
 COPY --from=build-stage /app/dist/ /usr/share/nginx/html
-
-COPY --from=build-stage /nginx.conf /etc/nginx/conf.d/default.conf
-COPY ./nginx-backend-not-found.conf /etc/nginx/extra-conf.d/backend-not-found.conf

@@ -5,7 +5,6 @@ import router from './router'
 import store from './store'
 import i18n from './i18n'
 import axios from 'axios'
-import { apiUrl } from './env'
 import Vue2Filters from 'vue2-filters'
 
 Vue.use(Vue2Filters)
@@ -13,7 +12,7 @@ Vue.use(Vue2Filters)
 const token = store.getters.accessToken
 
 axios.defaults.withCredentials = false
-axios.defaults.baseURL = apiUrl + '/api/v1'
+axios.defaults.baseURL = `${process.env.VUE_APP_BACKEND_URL}/api/v1`
 axios.defaults.headers.common['Authorization'] = token ? `Bearer ${token}` : undefined
 
 Vue.config.productionTip = false
