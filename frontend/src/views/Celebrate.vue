@@ -30,7 +30,7 @@
             <h2 class="subtitle has-text-centered">
               {{ $t('celebrate.explain') }}
             </h2>
-            <form @submit.prevent="stepControl(2)">
+            <form @submit.prevent="checkForm()">
               <b-field label="" custom-class="is-medium" required>
                 <b-input
                   minlength="10"
@@ -40,6 +40,7 @@
                   v-model="comment.text"
                   lazy
                   placeholder="Add a comment"
+                  required
                 ></b-input>
               </b-field>
               <b-field
@@ -62,7 +63,7 @@
                     type="text"
                     v-model="reference.name"
                     placeholder="Name"
-                    required
+                    ref="name"
                   ></b-input>
                 </b-field>
                 <b-field expanded>
@@ -70,7 +71,7 @@
                     type="url"
                     v-model="reference.link"
                     placeholder="Link"
-                    required
+                    ref="link"
                   ></b-input>
                 </b-field>
                 <b-field>
@@ -82,6 +83,7 @@
                   ></b-button>
                 </b-field>
               </b-field>
+              <p class="has-text-danger" v-if="error">{{ error }}</p>
               <input type="submit" class="button is-primary is-pulled-right" value="Submit" />
             </form>
           </b-step-item>
@@ -126,6 +128,7 @@ export default {
         },
       ],
       parity: null,
+      error: null
     }
   },
   props: {
@@ -152,8 +155,25 @@ export default {
     this.parity = this.$store.getters.pantheonParity
   },
   methods: {
+  	checkForm() {
+  		let flag = 1
+		this.references.forEach((ref, index) => {
+			if ((this.$refs.name[index].$refs.input._value && !this.$refs.link[index].$refs.input._value) || (!this.$refs.name[index].$refs.input._value && this.$refs.link[index].$refs.input._value))
+			{
+				flag = 0
+				if (!this.$refs.link[index].$refs.input._value) 
+					this.$refs.link[index].$refs.input.className += ' is-danger'
+				else
+					this.$refs.name[index].$refs.input.className += ' is-danger'
+				this.error = this.$t('celebrate.warning')
+			}
+		})
+		if (flag)
+			this.stepControl(2)
+  	},
     addInput(index) {
       this.references.splice(index + 1, 0, { link: '', name: '' })
+      console.log(this.$refs)
     },
     removeInput(index) {
       this.references.splice(index, 1)
