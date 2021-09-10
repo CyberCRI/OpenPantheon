@@ -1,8 +1,6 @@
-from typing import Dict, List, Optional
+from typing import Optional
 
 from pydantic import BaseModel
-from sqlalchemy import DateTime
-from sqlalchemy.dialects.postgresql import JSON
 
 
 # Shared properties

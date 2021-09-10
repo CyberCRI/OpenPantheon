@@ -10,7 +10,6 @@ def test_create_personality(db: Session) -> None:
     field = random_lower_string()
     gender = random_lower_string()
     personality_in = PersonalityCreate(field=field, gender=gender)
-    user = create_random_user(db)
     personality = crud.personality.create_new_personality(db=db, obj_in=personality_in)
     assert personality.field == field
     assert personality.gender == gender
@@ -20,7 +19,6 @@ def test_get_personality(db: Session) -> None:
     field = random_lower_string()
     gender = random_lower_string()
     personality_in = PersonalityCreate(field=field, gender=gender)
-    user = create_random_user(db)
     personality = crud.personality.create_new_personality(db=db, obj_in=personality_in)
     stored_personality = crud.personality.get(db=db, id=personality.id)
     assert stored_personality
@@ -33,7 +31,6 @@ def test_update_personality(db: Session) -> None:
     field = random_lower_string()
     gender = random_lower_string()
     personality_in = PersonalityCreate(field=field, gender=gender)
-    user = create_random_user(db)
     personality = crud.personality.create_new_personality(db=db, obj_in=personality_in)
     gender2 = random_lower_string()
     personality_update = PersonalityUpdate(gender=gender2)
@@ -47,7 +44,6 @@ def test_delete_personality(db: Session) -> None:
     field = random_lower_string()
     gender = random_lower_string()
     personality_in = PersonalityCreate(field=field, gender=gender)
-    user = create_random_user(db)
     personality = crud.personality.create_new_personality(db=db, obj_in=personality_in)
     personality2 = crud.personality.remove(db=db, id=personality.id)
     personality3 = crud.personality.get(db=db, id=personality.id)

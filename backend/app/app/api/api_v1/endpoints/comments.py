@@ -1,4 +1,4 @@
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Optional
 
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
@@ -31,7 +31,7 @@ router = APIRouter()
 def create_comment(
         *,
         db: Session = Depends(deps.get_db),
-        input: List[Dict] = None,
+        input: Optional[List[Dict]] = None,
         current_user: models.User = Depends(deps.get_current_active_user),
 ) -> Any:
     """
@@ -48,5 +48,4 @@ def create_comment(
         print(fluff[i]['link'])
         tab.append(fluff[i]['name'] + '|' + fluff[i]['link'])
     comment_in['fluff'] = '~'.join(tab)
-    comment = crud.comment.create_new_comment(db=db, obj_in=comment_in)
-    return comment
+    return crud.comment.create_new_comment(db=db, obj_in=comment_in)

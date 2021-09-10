@@ -2,7 +2,6 @@ from datetime import datetime
 from typing import List, Optional
 
 from pydantic import BaseModel
-from sqlalchemy.dialects.postgresql import JSON
 
 from app.schemas.comment import Comment, CommentFull
 
@@ -36,7 +35,7 @@ class PersonalityInDBBase(PersonalityBase):
 class Personality(PersonalityInDBBase):
     id: int
     wikipedia_id: Optional[str]
-    comments: List[Comment] = None
+    comments: List[Comment] = []
     time_created: Optional[datetime] = None
 
 
@@ -44,7 +43,7 @@ class Personality(PersonalityInDBBase):
 class PersonalityFull(PersonalityInDBBase):
     id: int
     wikipedia_id: Optional[str]
-    comments: List[CommentFull] = None
+    comments: List[CommentFull] = []
     time_created: Optional[datetime] = None
 
 

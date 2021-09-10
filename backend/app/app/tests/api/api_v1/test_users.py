@@ -68,7 +68,6 @@ def test_create_user_existing_username(client: TestClient, superuser_token_heade
     first_name = random_lower_string()
     last_name = random_lower_string()
     username = random_email()
-    # username = email
     password = random_lower_string()
     user_in = UserCreate(first_name=first_name, last_name=last_name, email=username, password=password)
     crud.user.create(db, obj_in=user_in)

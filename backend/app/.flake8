@@ -9,6 +9,8 @@ exclude =
 ignore =
     # flake8-length is a bit nicer, cf. https://github.com/orsinium-labs/flake8-length#usage
     E501,
-    W505,
+    W505
+per-file-ignores =
+    app/tests/*.py: S101, F811, F401
 max-line-length = 120
 max-doc-length = 120

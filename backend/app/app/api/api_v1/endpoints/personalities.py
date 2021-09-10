@@ -14,8 +14,7 @@ def get_pantheon_stats(db: Session = Depends(deps.get_db), ) -> Any:
     """
     Get stats about the general pantheon.
     """
-    stats = crud.personality.get_stats(db)
-    return stats
+    return crud.personality.get_stats(db)
 
 
 @router.get("/", response_model=List[schemas.Personality])
@@ -31,7 +30,7 @@ def read_personalities(response: Response,
     """
     Retrieve personalities.
     """
-    count = []
+    count: List[int] = []
     personalities = crud.personality.get_multi_personalities(
         get_count=count,
         db=db,
@@ -44,7 +43,7 @@ def read_personalities(response: Response,
         sort=sort)
     response.headers["x-total-count"] = str(
         count[0])  # Little hack that takes advantage of list mutability to get count for pagination
-    return personalities
+    return personalities  # noqa: R504
 
 
 @router.get("/guest", response_model=List[schemas.Personality])
@@ -57,9 +56,10 @@ def read_personalities_guest(response: Response,
                              field: int = 0,
                              sort: str = '') -> Any:
     """
-    Retrieve personalities for unlogged used. Necessary because FASTAPI returns 401 if I require current user in function
+    Retrieve personalities for unlogged used.
+    Necessary because FASTAPI returns 401 if I require current user in function
     """
-    count = []
+    count: List[int] = []
     personalities = crud.personality.get_multi_personalities_guest(get_count=count,
                                                                    db=db,
                                                                    skip=skip,
@@ -68,7 +68,7 @@ def read_personalities_guest(response: Response,
                                                                    field=field,
                                                                    sort=sort)
     response.headers["x-total-count"] = str(count[0])
-    return personalities
+    return personalities  # noqa: R504
 
 
 @router.post("/", response_model=schemas.Personality)
@@ -81,8 +81,7 @@ def create_personality(
     """
     Create new personality.
     """
-    personality = crud.personality.create_new_personality(db=db, obj_in=personality_in)
-    return personality
+    return crud.personality.create_new_personality(db=db, obj_in=personality_in)
 
 
 @router.put("/{id}", response_model=schemas.Personality)
@@ -101,8 +100,7 @@ def update_personality(
         raise HTTPException(status_code=404, detail="Personality not found")
     # if not crud.user.is_superuser(current_user) and (personality.owner_id != current_user.id):
     #     raise HTTPException(status_code=400, detail="Not enough permissions")
-    personality = crud.personality.update(db=db, db_obj=personality, obj_in=personality_in)
-    return personality
+    return crud.personality.update(db=db, db_obj=personality, obj_in=personality_in)
 
 
 @router.get("/{id}")
@@ -131,7 +129,7 @@ def read_personality(
 
 
 @router.get("/wiki/{wiki_id}", response_model=schemas.Personality)
-def read_personality(
+def read_personality_by_wiki_id(
         *,
         db: Session = Depends(deps.get_db),
         wiki_id: str,
@@ -164,5 +162,4 @@ def delete_personality(
         raise HTTPException(status_code=404, detail="Personality not found")
     if not crud.user.is_superuser(current_user):
         raise HTTPException(status_code=400, detail="Not enough permissions")
-    personality = crud.personality.remove(db=db, id=id)
-    return personality
+    return crud.personality.remove(db=db, id=id)

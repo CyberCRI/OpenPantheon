@@ -1,5 +1,5 @@
 import math
-from typing import Dict, List, Optional
+from typing import Dict, Iterable, List, Optional
 
 from fastapi.encoders import jsonable_encoder
 from sqlalchemy.orm import Session
@@ -23,7 +23,7 @@ class CRUDPersonality(CRUDBase[Personality, PersonalityCreate, PersonalityUpdate
     def get_by_wiki(self, db: Session, *, wiki_id: str) -> Optional[Personality]:
         return db.query(Personality).filter(Personality.wikipedia_id == wiki_id).first()
 
-    def get_stats(self, db) -> Dict:
+    def get_stats(self, db: Session) -> Dict:
         result = {'count': 0, 'parity': 0}
         result['count'] = db.query(Personality).count()
         if result['count'] > 0:
@@ -34,7 +34,7 @@ class CRUDPersonality(CRUDBase[Personality, PersonalityCreate, PersonalityUpdate
     def get_multi_personalities(self,
                                 get_count: List[int],
                                 db: Session,
-                                current_user_pantheon: List[Personality],
+                                current_user_pantheon: Iterable[Personality],
                                 *,
                                 skip: int = 0,
                                 limit: int = 100,
@@ -55,8 +55,7 @@ class CRUDPersonality(CRUDBase[Personality, PersonalityCreate, PersonalityUpdate
             else:
                 result = result.order_by(Personality.id)
         get_count.append(result.count())
-        result = result.offset(skip).limit(limit).all()
-        return result
+        return result.offset(skip).limit(limit).all()
 
     def get_multi_personalities_guest(self,
                                       get_count: List[int],
@@ -78,8 +77,7 @@ class CRUDPersonality(CRUDBase[Personality, PersonalityCreate, PersonalityUpdate
             else:
                 result = result.order_by(Personality.id)
         get_count.append(result.count())
-        result = result.offset(skip).limit(limit).all()
-        return result
+        return result.offset(skip).limit(limit).all()
 
     # def get_multi_by_owner(
     #     self, db: Session, *, owner_id: int, skip: int = 0, limit: int = 100

@@ -13,7 +13,7 @@ from app.tests.utils.utils import get_superuser_token_headers
 
 @pytest.fixture(scope="session")
 def db() -> Generator:
-    yield SessionLocal()
+    return SessionLocal()
 
 
 @pytest.fixture(scope="module")

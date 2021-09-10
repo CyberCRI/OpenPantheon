@@ -23,8 +23,7 @@ def read_users(
     """
     Retrieve users.
     """
-    users = crud.user.get_multi(db, skip=skip, limit=limit)
-    return users
+    return crud.user.get_multi(db, skip=skip, limit=limit)
 
 
 @router.post("/", response_model=schemas.User)
@@ -46,7 +45,7 @@ def create_user(
     user = crud.user.create(db, obj_in=user_in)
     if settings.EMAILS_ENABLED and user_in.email:
         send_new_account_email(email_to=user_in.email, username=user_in.email, password=user_in.password)
-    return user
+    return user  # noqa: R504
 
 
 @router.put("/me", response_model=schemas.User)
@@ -72,8 +71,7 @@ def update_user_me(
         user_in.last_name = last_name
     if email is not None:
         user_in.email = email
-    user = crud.user.update(db, db_obj=current_user, obj_in=user_in)
-    return user
+    return crud.user.update(db, db_obj=current_user, obj_in=user_in)
 
 
 @router.post("/me/pantheon/{personality_id}", response_model=schemas.User)
@@ -87,6 +85,8 @@ def user_add_personality(
     Update a pantheon.
     """
     user = crud.user.get(db=db, id=current_user.id)
+    if not user:
+        raise HTTPException(status_code=404, detail="Current user not found")
     personality = crud.personality.get(db=db, id=personality_id)
     if not personality:
         raise HTTPException(status_code=404, detail="Personality not found")
@@ -139,7 +139,7 @@ def create_user_open(
     user = crud.user.create(db, obj_in=user_in)
     if settings.EMAILS_ENABLED and user_in.email:
         send_new_account_email(email_to=user_in.email, username=user_in.email, password=user_in.password)
-    return user
+    return user  # noqa: R504
 
 
 @router.get("/{user_id}", response_model=schemas.User)
@@ -177,5 +177,4 @@ def update_user(
             status_code=404,
             detail="The user with this username does not exist in the system",
         )
-    user = crud.user.update(db, db_obj=user, obj_in=user_in)
-    return user
+    return crud.user.update(db, db_obj=user, obj_in=user_in)
