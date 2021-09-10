@@ -18,7 +18,9 @@ export default {
     components: { TopBar, Footer, MoreAbout },
     mounted() {
     	 if (localStorage.Lang !== null)
-    	 	this.$i18n.locale = localStorage.Lang; 
+    	 	this.$i18n.locale = localStorage.Lang
+    	 else
+    	 	this.$i18n.locale = 'en'
     }
 }
 </script>
