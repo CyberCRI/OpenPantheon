@@ -2,7 +2,7 @@
   <b-navbar spaced shadow>
     <template #brand>
       <b-navbar-item class="mr-6" tag="router-link" :to="{ path: '/home' }">
-        <img src="img/logo/logo_fit_top_bar.png" alt="Logo OpenPantheon" />
+        <img src="img/logo/logo@2x.png" alt="Logo OpenPantheon" />
       </b-navbar-item>
     </template>
     <template #start>
