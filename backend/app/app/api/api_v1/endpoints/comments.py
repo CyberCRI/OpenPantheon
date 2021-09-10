@@ -42,10 +42,6 @@ def create_comment(
     fluff = input
     tab = []
     for i in range(len(fluff)):
-        print(i)
-        print(fluff[i])
-        print(fluff[i]['name'])
-        print(fluff[i]['link'])
         tab.append(fluff[i]['name'] + '|' + fluff[i]['link'])
     comment_in['fluff'] = '~'.join(tab)
     return crud.comment.create_new_comment(db=db, obj_in=comment_in)
