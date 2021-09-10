@@ -27,7 +27,7 @@ RUN yarn build
 FROM nginx:1.20
 
 ARG BACKEND_URL=http://localhost:8000
-ENV TLS_ENABLED=0 \
+ENV ADD_HEADER_HSTS="" \
     BACKEND_URL=${BACKEND_URL}
 
 COPY ./frontend/nginx.conf.template /etc/nginx/templates/default.conf.template
