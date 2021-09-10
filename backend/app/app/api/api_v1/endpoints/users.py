@@ -15,10 +15,10 @@ router = APIRouter()
 
 @router.get("/", response_model=List[schemas.User])
 def read_users(
-    db: Session = Depends(deps.get_db),
-    skip: int = 0,
-    limit: int = 100,
-    current_user: models.User = Depends(deps.get_current_active_superuser),
+        db: Session = Depends(deps.get_db),
+        skip: int = 0,
+        limit: int = 100,
+        current_user: models.User = Depends(deps.get_current_active_superuser),
 ) -> Any:
     """
     Retrieve users.
@@ -29,10 +29,10 @@ def read_users(
 
 @router.post("/", response_model=schemas.User)
 def create_user(
-    *,
-    db: Session = Depends(deps.get_db),
-    user_in: schemas.UserCreate,
-    current_user: models.User = Depends(deps.get_current_active_superuser),
+        *,
+        db: Session = Depends(deps.get_db),
+        user_in: schemas.UserCreate,
+        current_user: models.User = Depends(deps.get_current_active_superuser),
 ) -> Any:
     """
     Create new user.
@@ -45,21 +45,19 @@ def create_user(
         )
     user = crud.user.create(db, obj_in=user_in)
     if settings.EMAILS_ENABLED and user_in.email:
-        send_new_account_email(
-            email_to=user_in.email, username=user_in.email, password=user_in.password
-        )
+        send_new_account_email(email_to=user_in.email, username=user_in.email, password=user_in.password)
     return user
 
 
 @router.put("/me", response_model=schemas.User)
 def update_user_me(
-    *,
-    db: Session = Depends(deps.get_db),
-    password: str = Body(None),
-    first_name: str = Body(None),
-    last_name: str = Body(None),
-    email: EmailStr = Body(None),
-    current_user: models.User = Depends(deps.get_current_active_user),
+        *,
+        db: Session = Depends(deps.get_db),
+        password: str = Body(None),
+        first_name: str = Body(None),
+        last_name: str = Body(None),
+        email: EmailStr = Body(None),
+        current_user: models.User = Depends(deps.get_current_active_user),
 ) -> Any:
     """
     Update own user.
@@ -77,12 +75,13 @@ def update_user_me(
     user = crud.user.update(db, db_obj=current_user, obj_in=user_in)
     return user
 
+
 @router.post("/me/pantheon/{personality_id}", response_model=schemas.User)
 def user_add_personality(
-    *,
-    db: Session = Depends(deps.get_db),
-    personality_id: int,
-    current_user: models.User = Depends(deps.get_current_active_user),
+        *,
+        db: Session = Depends(deps.get_db),
+        personality_id: int,
+        current_user: models.User = Depends(deps.get_current_active_user),
 ) -> Any:
     """
     Update a pantheon.
@@ -94,10 +93,11 @@ def user_add_personality(
     crud.user.add_personality(db=db, db_obj=user, personality_add=personality)
     return user
 
+
 @router.get("/me", response_model=schemas.User)
 def read_user_me(
-    db: Session = Depends(deps.get_db),
-    current_user: models.User = Depends(deps.get_current_active_user),
+        db: Session = Depends(deps.get_db),
+        current_user: models.User = Depends(deps.get_current_active_user),
 ) -> Any:
     """
     Get current user.
@@ -130,19 +130,22 @@ def create_user_open(
             status_code=400,
             detail="The user with this username already exists in the system",
         )
-    user_in = schemas.UserCreate(password=password, email=email, first_name=firstName, last_name=lastName, job=job, organization=organization)
+    user_in = schemas.UserCreate(password=password,
+                                 email=email,
+                                 first_name=firstName,
+                                 last_name=lastName,
+                                 job=job,
+                                 organization=organization)
     user = crud.user.create(db, obj_in=user_in)
     if settings.EMAILS_ENABLED and user_in.email:
-	    send_new_account_email(
-        	email_to=user_in.email, username=user_in.email, password=user_in.password
-    	)
+        send_new_account_email(email_to=user_in.email, username=user_in.email, password=user_in.password)
     return user
 
 
 @router.get("/{user_id}", response_model=schemas.User)
 def read_user_by_id(
-    user_id: int,
-    db: Session = Depends(deps.get_db),
+        user_id: int,
+        db: Session = Depends(deps.get_db),
 ) -> Any:
     """
     Get a specific user by id.
@@ -159,11 +162,11 @@ def read_user_by_id(
 
 @router.put("/{user_id}", response_model=schemas.User)
 def update_user(
-    *,
-    db: Session = Depends(deps.get_db),
-    user_id: int,
-    user_in: schemas.UserUpdate,
-    current_user: models.User = Depends(deps.get_current_active_superuser),
+        *,
+        db: Session = Depends(deps.get_db),
+        user_id: int,
+        user_in: schemas.UserUpdate,
+        current_user: models.User = Depends(deps.get_current_active_superuser),
 ) -> Any:
     """
     Update a user.

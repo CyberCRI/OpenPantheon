@@ -1,4 +1,4 @@
-from typing import Any, List, Dict
+from typing import Any, Dict, List
 
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
@@ -7,7 +7,6 @@ from app import crud, models, schemas
 from app.api import deps
 
 router = APIRouter()
-
 
 # @router.get("/", response_model=List[schemas.Comment])
 # def read_comments(
@@ -30,10 +29,10 @@ router = APIRouter()
 
 @router.post("/", response_model=schemas.Comment)
 def create_comment(
-    *,
-    db: Session = Depends(deps.get_db),
-    input: List[Dict] = None,
-    current_user: models.User = Depends(deps.get_current_active_user),
+        *,
+        db: Session = Depends(deps.get_db),
+        input: List[Dict] = None,
+        current_user: models.User = Depends(deps.get_current_active_user),
 ) -> Any:
     """
     Create new comment.

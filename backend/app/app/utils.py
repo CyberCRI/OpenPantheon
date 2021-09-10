@@ -42,7 +42,10 @@ def send_test_email(email_to: str) -> None:
         email_to=email_to,
         subject_template=subject,
         html_template=template_str,
-        environment={"project_name": settings.PROJECT_NAME, "email": email_to},
+        environment={
+            "project_name": settings.PROJECT_NAME,
+            "email": email_to
+        },
     )
 
 
@@ -93,7 +96,13 @@ def generate_password_reset_token(email: str) -> str:
     expires = now + delta
     exp = expires.timestamp()
     encoded_jwt = jwt.encode(
-        {"exp": exp, "nbf": now, "sub": email}, settings.SECRET_KEY, algorithm="HS256",
+        {
+            "exp": exp,
+            "nbf": now,
+            "sub": email
+        },
+        settings.SECRET_KEY,
+        algorithm="HS256",
     )
     return encoded_jwt
 

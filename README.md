@@ -1,4 +1,4 @@
-# Open-Pantheon
+# Open Pantheon
 
 ## Backend Requirements
 
@@ -54,13 +54,13 @@ By default, the dependencies are managed with [Poetry](https://python-poetry.org
 
 From `./backend/app/` you can install all the dependencies with:
 
-```console
+```bash
 $ poetry install
 ```
 
 Then you can start a shell session with the new environment with:
 
-```console
+```bash
 $ poetry shell
 ```
 
@@ -82,25 +82,25 @@ For example, the directory with the backend code is mounted as a Docker "host vo
 
 There is also a command override that runs `/start-reload.sh` (included in the base image) instead of the default `/start.sh` (also included in the base image). It starts a single server process (instead of multiple, as would be for production) and reloads the process whenever the code changes. Have in mind that if you have a syntax error and save the Python file, it will break and exit, and the container will stop. After that, you can restart the container by fixing the error and running again:
 
-```console
+```bash
 $ docker-compose up -d
 ```
 
 To get inside the container with a `bash` session you can start the stack with:
 
-```console
+```bash
 $ docker-compose up -d
 ```
 
 and then `exec` inside the running container:
 
-```console
+```bash
 $ docker-compose exec backend bash
 ```
 
 You should see an output like:
 
-```console
+```bash
 root@7f2607af31c3:/app#
 ```
 
@@ -108,13 +108,13 @@ that means that you are in a `bash` session inside your container, as a `root` u
 
 There you can use the script `/start-reload.sh` to run the debug live reloading server. You can run that script from inside the container with:
 
-```console
+```bash
 $ bash /start-reload.sh
 ```
 
 ...it will look like:
 
-```console
+```bash
 root@7f2607af31c3:/app# bash /start-reload.sh
 ```
 
@@ -128,7 +128,7 @@ Nevertheless, if it doesn't detect a change but a syntax error, it will just sto
 
 To test the backend run:
 
-```console
+```bash
 $ sh ./scripts/test.sh
 ```
 
@@ -142,14 +142,14 @@ If you use GitLab CI the tests will run automatically.
 
 Start the stack with this command:
 
-```Bash
+```bash
 sh ./scripts/test-local.sh
 ```
 
 The `./backend/app` directory is mounted as a "host volume" inside the docker container.
 You can rerun the test on live code:
 
-```Bash
+```bash
 docker-compose exec backend sh /app/tests-start.sh
 ```
 
@@ -175,7 +175,7 @@ Because the test scripts forward arguments to `pytest`, you can enable test cove
 
 To run the local tests with coverage HTML reports:
 
-```Bash
+```bash
 sh ./scripts/test-local.sh --cov-report=html
 ```
 
@@ -201,7 +201,7 @@ And use the environment variable `$JUPYTER` to run a Jupyter Notebook with every
 
 It will output something like:
 
-```console
+```bash
 root@73e0ec1f1ae6:/app# $JUPYTER
 [I 12:02:09.975 NotebookApp] Writing notebook server cookie secret to /root/.local/share/jupyter/runtime/notebook_cookie_secret
 [I 12:02:10.317 NotebookApp] Serving notebooks from local directory: /app
@@ -234,7 +234,7 @@ Make sure you create a "revision" of your models and that you "upgrade" your dat
 
 - Start an interactive session in the backend container:
 
-```console
+```bash
 $ docker-compose exec backend bash
 ```
 
@@ -242,7 +242,7 @@ $ docker-compose exec backend bash
 
 - After changing a model (for example, adding a column), inside the container, create a revision, e.g.:
 
-```console
+```bash
 $ alembic revision --autogenerate -m "Add column last_name to User model"
 ```
 
@@ -250,19 +250,19 @@ $ alembic revision --autogenerate -m "Add column last_name to User model"
 
 - After creating the revision, run the migration in the database (this is what will actually change the database):
 
-```console
+```bash
 $ alembic upgrade head
 ```
 
 If you don't want to use migrations at all, uncomment the line in the file at `./backend/app/app/db/init_db.py` with:
 
-```python
+```bash
 Base.metadata.create_all(bind=engine)
 ```
 
 and comment the line in the file `prestart.sh` that contains:
 
-```console
+```bash
 $ alembic upgrade head
 ```
 

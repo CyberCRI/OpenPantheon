@@ -1,6 +1,6 @@
+from .crud_comment import comment
 from .crud_personality import personality
 from .crud_user import user
-from .crud_comment import comment
 
 # For a new basic set of CRUD operations you could just do
 

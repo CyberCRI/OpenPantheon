@@ -1,8 +1,9 @@
-from typing import Optional, List
+from typing import List, Optional
 
 from pydantic import BaseModel, EmailStr
 
 from app.schemas.personality import Personality
+
 
 # Shared properties
 class UserBase(BaseModel):
@@ -14,7 +15,6 @@ class UserBase(BaseModel):
     organization: Optional[str] = None
     job: Optional[str] = None
     personalities_celebrated: List[Personality] = None
-
 
 
 # Properties to receive via API on creation
@@ -30,6 +30,7 @@ class UserCreate(UserBase):
 # Properties to receive via API on update
 class UserUpdate(UserBase):
     password: Optional[str] = None
+
 
 class UserInDBBase(UserBase):
     id: Optional[int] = None

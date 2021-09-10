@@ -1,3 +1,14 @@
 [flake8]
-max-line-length = 88
-exclude = .git,__pycache__,__init__.py,.mypy_cache,.pytest_cache
+exclude =
+    # There's no value in checking cache directories
+    __pycache__,
+    .venv,
+    __init__.py,
+    .mypy_cache,
+    .pytest_cache
+ignore =
+    # flake8-length is a bit nicer, cf. https://github.com/orsinium-labs/flake8-length#usage
+    E501,
+    W505,
+max-line-length = 120
+max-doc-length = 120
