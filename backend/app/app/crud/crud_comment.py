@@ -9,9 +9,7 @@ from app.schemas.comment import CommentCreate, CommentUpdate
 
 
 class CRUDComment(CRUDBase[Comment, CommentCreate, CommentUpdate]):
-    def create_new_comment(
-        self, db: Session, *, obj_in: CommentCreate
-    ) -> Comment:
+    def create_new_comment(self, db: Session, *, obj_in: CommentCreate) -> Comment:
         obj_in_data = jsonable_encoder(obj_in)
         db_obj = self.model(**obj_in_data)
         db.add(db_obj)

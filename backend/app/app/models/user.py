@@ -1,18 +1,17 @@
 from typing import TYPE_CHECKING
 
-from sqlalchemy import Boolean, Column, Integer, String, Table, ForeignKey
+from sqlalchemy import Boolean, Column, ForeignKey, Integer, String, Table
 from sqlalchemy.orm import relationship
 
 from app.db.base_class import Base
 
 if TYPE_CHECKING:
+    from .comment import Comment  # noqa: F401
     from .personality import Personality  # noqa: F401
-    from .comment import Comment # noqa: F401
 
-personal_pantheon = Table('personal', Base.metadata,
-    Column('user_id', ForeignKey('user.id'), primary_key=True),
-    Column('personality_id', ForeignKey('personality.id'), primary_key=True)
-)
+personal_pantheon = Table('personal', Base.metadata, Column('user_id', ForeignKey('user.id'), primary_key=True),
+                          Column('personality_id', ForeignKey('personality.id'), primary_key=True))
+
 
 class User(Base):
     id = Column(Integer, primary_key=True, index=True)

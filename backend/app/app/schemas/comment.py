@@ -1,7 +1,4 @@
-from typing import Optional, List, Dict
-
-from sqlalchemy import DateTime
-from sqlalchemy.dialects.postgresql import JSON
+from typing import Optional
 
 from pydantic import BaseModel
 
@@ -15,6 +12,7 @@ class CommentBase(BaseModel):
 class CommentCreate(CommentBase):
     author_id: Optional[int]
     personality_id: Optional[int]
+
 
 # Properties to receive on comment update
 class CommentUpdate(CommentBase):
@@ -34,10 +32,12 @@ class Comment(CommentInDBBase):
     author_id: Optional[int]
     personality_id: Optional[int]
 
+
 class CommentFull(CommentInDBBase):
     author_id: Optional[int]
     personality_id: Optional[int]
-    fluff: Optional[str] = None    
+    fluff: Optional[str] = None
+
 
 # Properties properties stored in DB
 class CommentInDB(CommentInDBBase):

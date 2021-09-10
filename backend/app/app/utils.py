@@ -30,7 +30,7 @@ def send_email(
     if settings.SMTP_PASSWORD:
         smtp_options["password"] = settings.SMTP_PASSWORD
     response = message.send(to=email_to, render=environment, smtp=smtp_options)
-    logging.info(f"send email result: {response}")
+    logging.info("send email result: %", response)
 
 
 def send_test_email(email_to: str) -> None:
@@ -42,7 +42,10 @@ def send_test_email(email_to: str) -> None:
         email_to=email_to,
         subject_template=subject,
         html_template=template_str,
-        environment={"project_name": settings.PROJECT_NAME, "email": email_to},
+        environment={
+            "project_name": settings.PROJECT_NAME,
+            "email": email_to
+        },
     )
 
 
@@ -92,10 +95,15 @@ def generate_password_reset_token(email: str) -> str:
     now = datetime.utcnow()
     expires = now + delta
     exp = expires.timestamp()
-    encoded_jwt = jwt.encode(
-        {"exp": exp, "nbf": now, "sub": email}, settings.SECRET_KEY, algorithm="HS256",
+    return jwt.encode(
+        {
+            "exp": exp,
+            "nbf": now,
+            "sub": email
+        },
+        settings.SECRET_KEY,
+        algorithm="HS256",
     )
-    return encoded_jwt
 
 
 def verify_password_reset_token(token: str) -> Optional[str]:

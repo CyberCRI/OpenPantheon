@@ -1,15 +1,14 @@
 from typing import TYPE_CHECKING
 
-from sqlalchemy import Column, ForeignKey, Integer, String, DateTime
-from sqlalchemy.dialects.postgresql import JSON
+from sqlalchemy import Column, DateTime, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql.expression import func
 
 from app.db.base_class import Base
 
 if TYPE_CHECKING:
+    from .comment import Comment  # noqa: F401
     from .user import User  # noqa: F401
-    from .comment import Comment # noqa: F401
 
 
 class Personality(Base):
@@ -24,6 +23,3 @@ class Personality(Base):
     # owner_id = Column(Integer, ForeignKey("user.id"))
     comments = relationship("Comment", backref="personality")
     # owner = relationship("User", back_populates="personalities")
-
-
-

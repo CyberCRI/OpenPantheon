@@ -6,41 +6,45 @@ authors = ["Admin <admin@example.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.7"
-uvicorn = "^0.11.3"
-fastapi = "^0.54.1"
+uvicorn = "^0.13.0"
+fastapi = "^0.68.1"
 python-multipart = "^0.0.5"
-email-validator = "^1.0.5"
-requests = "^2.23.0"
-celery = "^4.4.2"
-passlib = {extras = ["bcrypt"], version = "^1.7.2"}
-tenacity = "^6.1.0"
-pydantic = "^1.4"
-emails = "^0.5.15"
-raven = "^6.10.0"
-gunicorn = "^20.0.4"
+email-validator = "^1.1.3"
+requests = "^2.26.0"
+celery = "^4.4.7"
+passlib = {extras = ["bcrypt"], version = "^1.7.4"}
+tenacity = "^8.0.1"
+pydantic = "^1.8.2"
+emails = "^0.6"
+gunicorn = "^20.1.0"
 jinja2 = "^2.11.2"
-psycopg2-binary = "^2.8.5"
-alembic = "^1.4.2"
-sqlalchemy = "^1.3.16"
-pytest = "^5.4.1"
-python-jose = {extras = ["cryptography"], version = "^3.1.0"}
+psycopg2-binary = "^2.9.1"
+alembic = "^1.7.1"
+sqlalchemy = {version = ">=1.4,<1.4.23"}
+python-jose = {extras = ["cryptography"], version = "^3.3.0"}
 
 [tool.poetry.dev-dependencies]
-mypy = "^0.770"
-black = "^19.10b0"
-isort = "^4.3.21"
-autoflake = "^1.3.1"
-flake8 = "^3.7.9"
-pytest = "^5.4.1"
-sqlalchemy-stubs = "^0.3"
+flake8 = "^3.9.2"
+flake8-builtins = "^1.5.3"
+flake8-eradicate = "^1.0.0"
+flake8-pie = "^0.13.0"
+flake8-pytest-style = "^1.4.2"
+flake8-return = "^1.1.3"
+flake8-simplify = "^0.14.1"
+flake8-bandit = "^2.1.2"
+flake8-length = "^0.1.0"
+yapf = "^0.31.0"
+isort = "^5.9.3"
+mypy = "^0.910"
+flake8-bugbear = "^21.4.3"
+pep8-naming = "^0.11.1"
+pytest = "^6.2.4"
 pytest-cov = "^2.8.1"
+sqlalchemy-stubs = "^0.3"
 
-[tool.isort]
-multi_line_output = 3
-include_trailing_comma = true
-force_grid_wrap = 0
-line_length = 88
 [build-system]
 requires = ["poetry>=0.12"]
 build-backend = "poetry.masonry.api"
 
+[tool.isort]
+line_length = 120

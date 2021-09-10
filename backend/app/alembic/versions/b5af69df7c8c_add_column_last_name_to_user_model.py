@@ -5,9 +5,9 @@ Revises: d4867f3a4c0a
 Create Date: 2021-08-15 01:33:25.554335
 
 """
-from alembic import op
 import sqlalchemy as sa
 
+from alembic import op
 
 # revision identifiers, used by Alembic.
 revision = 'b5af69df7c8c'
@@ -22,12 +22,8 @@ def upgrade():
     op.add_column('user', sa.Column('last_name', sa.String(), nullable=True))
     op.add_column('user', sa.Column('job', sa.String(), nullable=True))
     op.add_column('user', sa.Column('organization', sa.String(), nullable=True))
-    op.alter_column('user', 'email',
-               existing_type=sa.VARCHAR(),
-               nullable=False)
-    op.alter_column('user', 'hashed_password',
-               existing_type=sa.VARCHAR(),
-               nullable=False)
+    op.alter_column('user', 'email', existing_type=sa.VARCHAR(), nullable=False)
+    op.alter_column('user', 'hashed_password', existing_type=sa.VARCHAR(), nullable=False)
     op.drop_index('ix_user_full_name', table_name='user')
     op.create_index(op.f('ix_user_first_name'), 'user', ['first_name'], unique=False)
     op.create_index(op.f('ix_user_job'), 'user', ['job'], unique=False)
@@ -45,12 +41,8 @@ def downgrade():
     op.drop_index(op.f('ix_user_job'), table_name='user')
     op.drop_index(op.f('ix_user_first_name'), table_name='user')
     op.create_index('ix_user_full_name', 'user', ['full_name'], unique=False)
-    op.alter_column('user', 'hashed_password',
-               existing_type=sa.VARCHAR(),
-               nullable=True)
-    op.alter_column('user', 'email',
-               existing_type=sa.VARCHAR(),
-               nullable=True)
+    op.alter_column('user', 'hashed_password', existing_type=sa.VARCHAR(), nullable=True)
+    op.alter_column('user', 'email', existing_type=sa.VARCHAR(), nullable=True)
     op.drop_column('user', 'organization')
     op.drop_column('user', 'job')
     op.drop_column('user', 'last_name')

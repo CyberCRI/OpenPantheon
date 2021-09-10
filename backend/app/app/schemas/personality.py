@@ -1,7 +1,5 @@
-from typing import Optional, List
-
 from datetime import datetime
-from sqlalchemy.dialects.postgresql import JSON
+from typing import List, Optional
 
 from pydantic import BaseModel
 
@@ -17,7 +15,8 @@ class PersonalityBase(BaseModel):
 
 # Properties to receive on personality creation
 class PersonalityCreate(PersonalityBase):
-	wikipedia_id: Optional[str]
+    wikipedia_id: Optional[str]
+
 
 # Properties to receive on personality update
 class PersonalityUpdate(PersonalityBase):
@@ -36,14 +35,15 @@ class PersonalityInDBBase(PersonalityBase):
 class Personality(PersonalityInDBBase):
     id: int
     wikipedia_id: Optional[str]
-    comments: List[Comment] = None
+    comments: List[Comment] = []
     time_created: Optional[datetime] = None
+
 
 # Properties to return to client
 class PersonalityFull(PersonalityInDBBase):
     id: int
     wikipedia_id: Optional[str]
-    comments: List[CommentFull] = None
+    comments: List[CommentFull] = []
     time_created: Optional[datetime] = None
 
 
