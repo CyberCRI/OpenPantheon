@@ -22,7 +22,7 @@ server {
         try_files   $uri $uri/ /index.html =404;
 
         # Enable long cache settings for static files
-        location ~ \.(jpg|jpeg|png|ico|js|css)$ {
+        location ~ \.(jpg|jpeg|png|ico|js|css|woff2)$ {
             add_header  Cache-Control "public, max-age=604800, immutable";
         }
 
