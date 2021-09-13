@@ -4,7 +4,7 @@ export default {
   getPantheonStats() {
     return axios.get('/personalities/stats')
   },
-  getAll(loggedIn, skip, limit, personal, women, field, sort) {
+  getAll(loggedIn, skip, limit, personal, women, field, sort, region) {
     if (loggedIn)
       return axios.get(
         '/personalities/?skip=' +
@@ -17,6 +17,8 @@ export default {
           women +
           '&field=' +
           field +
+          '&region=' +
+          region +
           '&sort=' +
           sort
       )
@@ -30,6 +32,8 @@ export default {
           women +
           '&field=' +
           field +
+          '&region=' +
+          region +
           '&sort=' +
           sort
       )

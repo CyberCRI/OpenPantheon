@@ -54,6 +54,7 @@ export default {
         women: this.women,
         field: this.field,
         sort: this.sort,
+        region: this.region,
       })
       if (this.PersonalityModule.personalities.length == 0) {
         this.isLoading = false
@@ -87,8 +88,9 @@ export default {
     extended: Boolean,
     filter: Number,
     women: Boolean,
-    field: Number,
+    field: String,
     sort: String,
+    region: String,
   },
   components: {
     Card,
@@ -117,6 +119,11 @@ export default {
       },
     },
     field: {
+      handler() {
+        this.populateList()
+      },
+    },
+    region: {
       handler() {
         this.populateList()
       },

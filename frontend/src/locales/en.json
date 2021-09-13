@@ -67,7 +67,13 @@
     "education": "Education",
     "recent": "Most recent",
     "celebrated": "Most celebrated",
-    "oldest": "Least recent"
+    "oldest": "Least recent",
+    "northamerica": "North America",
+    "southamerica": "South America",
+    "oceania": "Oceania",
+    "africa": "Africa",
+    "europe": "Europe",
+    "asia": "Asia"
   },
   "moreabout": {
     "title": "About Open Pantheon",

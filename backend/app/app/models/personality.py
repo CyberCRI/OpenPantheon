@@ -17,6 +17,7 @@ class Personality(Base):
     time_created = Column(DateTime(timezone=True), server_default=func.now())
     # name = Column(String, index=True)
     field = Column(String, index=True)
+    continent = Column(String, index=True)
     # image = Column(String, index=True)
     # job = Column(String, index=True)
     gender = Column(String, index=True)

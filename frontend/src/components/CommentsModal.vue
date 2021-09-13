@@ -1,11 +1,11 @@
 <template>
   <div class="box container">
     <div class="control is-clearfix my-6">
-      <input
+      <b-input
         type="text"
+        icon="magnify"
         autocomplete="off"
         :placeholder="$t('details.search')"
-        class="input"
         v-model="search"
       />
     </div>

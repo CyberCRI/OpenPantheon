@@ -24,7 +24,7 @@
           <div class="level-item">
             <WikiAutocomplete />
           </div>
-          <div class="level-item">
+          <div class="level-item filter_menu">
             <b-dropdown multiple aria-role="list">
               <template #trigger>
                 <b-button icon-right="chevron-down" size="is-large" class="filter">
@@ -38,39 +38,78 @@
                 </b-field>
               </b-dropdown-item>
 
-              <b-dropdown-item aria-role="listitem">
-                <b-field>
-                  <b-checkbox v-model="field" native-value="Arts" ref="Arts" :disabled="hasField">
+              <fieldset id="field">
+                <b-dropdown-item aria-role="listitem">
+                  <b-radio v-model="field" native-value="art" ref="Arts" name="field">
                     {{ $t('home.arts') }}
-                  </b-checkbox>
-                </b-field>
-              </b-dropdown-item>
+                  </b-radio>
+                </b-dropdown-item>
 
-              <b-dropdown-item aria-role="listitem">
-                <b-field>
-                  <b-checkbox
-                    v-model="field"
-                    native-value="Science"
-                    ref="Science"
-                    :disabled="hasField"
-                  >
+                <b-dropdown-item aria-role="listitem">
+                  <b-radio v-model="field" native-value="science" ref="Science" name="field">
                     {{ $t('home.science') }}
-                  </b-checkbox>
-                </b-field>
-              </b-dropdown-item>
+                  </b-radio>
+                </b-dropdown-item>
 
-              <b-dropdown-item aria-role="listitem">
-                <b-field>
-                  <b-checkbox
-                    v-model="field"
-                    native-value="Education"
-                    ref="Education"
-                    :disabled="hasField"
-                  >
+                <b-dropdown-item aria-role="listitem">
+                  <b-radio v-model="field" native-value="education" ref="Education" name="field">
                     {{ $t('home.education') }}
-                  </b-checkbox>
-                </b-field>
-              </b-dropdown-item>
+                  </b-radio>
+                </b-dropdown-item>
+              </fieldset>
+
+              <fieldset id="region">
+                <b-dropdown-item aria-role="listitem">
+                  <b-radio v-model="region" native-value="Africa" ref="Africa" name="region">
+                    {{ $t('home.africa') }}
+                  </b-radio>
+                </b-dropdown-item>
+
+                <b-dropdown-item aria-role="listitem">
+                  <b-radio v-model="region" native-value="Asia" ref="Asia" name="region">
+                    {{ $t('home.asia') }}
+                  </b-radio>
+                </b-dropdown-item>
+
+                <b-dropdown-item aria-role="listitem">
+                  <b-radio v-model="region" native-value="Europe" ref="Europe" name="region">
+                    {{ $t('home.europe') }}
+                  </b-radio>
+                </b-dropdown-item>
+
+                <b-dropdown-item aria-role="listitem">
+                  <b-radio
+                    v-model="region"
+                    native-value="North America"
+                    ref="North America"
+                    name="region"
+                  >
+                    {{ $t('home.northamerica') }}
+                  </b-radio>
+                </b-dropdown-item>
+
+                <b-dropdown-item aria-role="listitem">
+                  <b-radio
+                    v-model="region"
+                    native-value="Insular Oceania"
+                    ref="Insular Oceania"
+                    name="region"
+                  >
+                    {{ $t('home.oceania') }}
+                  </b-radio>
+                </b-dropdown-item>
+
+                <b-dropdown-item aria-role="listitem">
+                  <b-radio
+                    v-model="region"
+                    native-value="South America"
+                    ref="South America"
+                    name="region"
+                  >
+                    {{ $t('home.southamerica') }}
+                  </b-radio>
+                </b-dropdown-item>
+              </fieldset>
             </b-dropdown>
           </div>
           <div class="level-item">
@@ -128,9 +167,10 @@
         <CardList
           :personal="activeTab"
           :women="women"
-          :field="0"
+          :field="field"
           :sort="sort"
           :count="count"
+          :region="region"
         ></CardList>
       </div>
     </main>
@@ -147,20 +187,16 @@ export default {
     return {
       activeTab: 'open',
       women: false,
-      field: [],
+      field: '',
       sort: null,
       count: null,
       parity: null,
+      region: '',
     }
   },
   components: {
     CardList,
     WikiAutocomplete,
-  },
-  computed: {
-    hasField() {
-      return this.field.length > 0
-    },
   },
   async created() {
     await this.$store.dispatch('getPantheonStats')
@@ -174,6 +210,12 @@ export default {
 .field .label {
   display: none;
 }
+
+.filter_menu a.dropdown-item.is-active {
+  background-color: white;
+  color: #4a4a4a;
+}
+
 .filter {
   background-color: #f2f2f3;
   border-width: 0;

@@ -4458,7 +4458,7 @@ a.navbar-item,
     justify-content: flex-end;
     margin-left: auto; }
   .navbar-dropdown {
-    background-color: #fcfcfd;
+    background-color: #202137;
     border-bottom-left-radius: 6px;
     border-bottom-right-radius: 6px;
     border-top: 2px solid #dbdbdb;
@@ -9602,6 +9602,7 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
         max-width: 600px;
         overflow: hidden; } }
   .notices .notification {
+    pointer-events: auto;
     max-width: 600px; }
   .notices .toast.is-top, .notices .toast.is-bottom,
   .notices .snackbar.is-top,

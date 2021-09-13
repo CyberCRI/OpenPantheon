@@ -40,13 +40,18 @@ class CRUDPersonality(CRUDBase[Personality, PersonalityCreate, PersonalityUpdate
                                 limit: int = 100,
                                 personal: int = 0,
                                 women: bool = False,
-                                field: int = 0,
+                                field: str = '',
+                                region: str = '',
                                 sort: str = '') -> List[Personality]:
         result = db.query(Personality).join(Comment).group_by(Personality.id)
         if personal:
             result = result.filter(Personality.id.in_([p.id for p in current_user_pantheon]))
         if women:
             result = result.filter(Personality.gender == 'f')
+        if field:
+            result = result.filter(Personality.field.like(field))
+        if region:
+            result = result.filter(Personality.continent.like(region))
         if sort:
             if sort == 'recent':
                 result = result.order_by(Personality.id.desc())
@@ -64,11 +69,16 @@ class CRUDPersonality(CRUDBase[Personality, PersonalityCreate, PersonalityUpdate
                                       skip: int = 0,
                                       limit: int = 100,
                                       women: bool = False,
-                                      field: int = 0,
+                                      field: str = '',
+                                      region: str = '',
                                       sort: str = '') -> List[Personality]:
         result = db.query(Personality).join(Comment).group_by(Personality.id)
         if women:
             result = result.filter(Personality.gender == 'f')
+        if field:
+            result = result.filter(Personality.field.like(field))
+        if region:
+            result = result.filter(Personality.continent.like(region))
         if sort:
             if sort == 'recent':
                 result = result.order_by(Personality.id.desc())

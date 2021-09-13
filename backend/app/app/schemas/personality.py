@@ -9,6 +9,7 @@ from app.schemas.comment import Comment, CommentFull
 # Shared properties
 class PersonalityBase(BaseModel):
     field: Optional[str] = None
+    continent: Optional[str] = None
     gender: Optional[str] = None
     time_created: Optional[datetime] = None
 

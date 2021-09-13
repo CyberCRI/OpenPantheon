@@ -45,7 +45,7 @@
           <b-loading :is-full-page="false" v-model="isLoading"></b-loading>
           <Card
             class="column is-one-third"
-            v-for="personality in user.personalities_celebrated"
+            v-for="personality in user.personalities_celebrated.slice(50)"
             :key="personality.id"
             :personality="personality"
             :data="data ? data[personality.wikipedia_id] : {}"
@@ -99,11 +99,14 @@ export default {
     })
     this.count = this.user.personalities_celebrated.length
     this.women = Math.floor((this.women / this.count) * 100)
-    let titles = this.user.personalities_celebrated.map((personality) => personality.wikipedia_id)
+    let titles = this.user.personalities_celebrated
+      .map((personality) => personality.wikipedia_id)
+      .slice(50) // Limit Wikipedia
     const url = await wbk.getEntities({
       ids: titles,
       languages: [this.$i18n.locale],
     })
+    console.log('test', url)
     await fetch(url, {
       headers: {
         'Accept-Encoding': 'gzip',

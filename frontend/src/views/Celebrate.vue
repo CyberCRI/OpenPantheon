@@ -111,6 +111,7 @@
 import AuthModal from '@/components/AuthModal'
 import WikiAutocomplete from '@/components/WikiAutocomplete'
 import Back from '@/components/Back'
+import wbk from 'wikidata-sdk'
 
 export default {
   name: 'Celebrate',
@@ -156,22 +157,23 @@ export default {
     this.parity = this.$store.getters.pantheonParity
   },
   methods: {
-  	checkForm() {
-  		let flag = 1
-		this.references.forEach((ref, index) => {
-			if ((this.$refs.name[index].$refs.input._value && !this.$refs.link[index].$refs.input._value) || (!this.$refs.name[index].$refs.input._value && this.$refs.link[index].$refs.input._value))
-			{
-				flag = 0
-				if (!this.$refs.link[index].$refs.input._value) 
-					this.$refs.link[index].$refs.input.className += ' is-danger'
-				else
-					this.$refs.name[index].$refs.input.className += ' is-danger'
-				this.error = this.$t('celebrate.warning')
-			}
-		})
-		if (flag)
-			this.stepControl(2)
-  	},
+    checkForm() {
+      let flag = 1
+      this.references.forEach((ref, index) => {
+        if (
+          (this.$refs.name[index].$refs.input._value &&
+            !this.$refs.link[index].$refs.input._value) ||
+          (!this.$refs.name[index].$refs.input._value && this.$refs.link[index].$refs.input._value)
+        ) {
+          flag = 0
+          if (!this.$refs.link[index].$refs.input._value)
+            this.$refs.link[index].$refs.input.className += ' is-danger'
+          else this.$refs.name[index].$refs.input.className += ' is-danger'
+          this.error = this.$t('celebrate.warning')
+        }
+      })
+      if (flag) this.stepControl(2)
+    },
     addInput(index) {
       this.references.splice(index + 1, 0, { link: '', name: '' })
       console.log(this.$refs)
@@ -216,6 +218,65 @@ export default {
       this.personality.wikipedia_id = entity.id
       this.name = entity.labels[this.$i18n.locale]
       this.personality.gender = entity.claims.P21[0] == 'Q6581072' ? 'f' : 'm'
+      this.personality.field = ''
+      console.log('OK OK')
+      let url = wbk.sparqlQuery(`
+ASK
+WHERE
+{
+  wd:${this.personality.wikipedia_id} wdt:P106 ?occupation.
+  ?occupation wdt:P31*/wdt:P279* wd:Q901.
+}
+      `)
+      fetch(url)
+        .then((response) => response.json())
+        .then((response) => (response.boolean == true ? (this.personality.field += 'science') : ''))
+        .catch((error) => console.log(error))
+      console.log('OK OK')
+      url = wbk.sparqlQuery(`
+ASK
+WHERE
+{
+  wd:${this.personality.wikipedia_id} wdt:P106 ?occupation.
+  ?occupation wdt:P31*/wdt:P279* wd:Q483501.
+}
+      `)
+      fetch(url)
+        .then((response) => response.json())
+        .then((response) => (response.boolean == true ? (this.personality.field += 'art') : ''))
+        .catch((error) => console.log(error))
+      console.log('OK OK')
+      url = wbk.sparqlQuery(`
+ASK
+WHERE
+{
+  wd:${this.personality.wikipedia_id} wdt:P106 ?occupation.
+  ?occupation wdt:P425 ?field.
+  ?field wdt:P31*/wdt:P279* wd:Q8434
+}
+      `)
+      fetch(url)
+        .then((response) => response.json())
+        .then((response) =>
+          response.boolean == true ? (this.personality.field += 'education') : ''
+        )
+        .catch((error) => console.log(error))
+      url = wbk.sparqlQuery(`
+SELECT DISTINCT ?continentLabel
+WHERE
+{
+  wd:${this.personality.wikipedia_id} wdt:P19 [ wdt:P17?/wdt:P30 ?continent ].
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+}
+      `)
+      fetch(url)
+        .then((response) => response.json())
+        .then(
+          (response) =>
+            (this.personality.continent = response.results.bindings[0].continentLabel.value)
+        )
+        .catch((error) => console.log(error))
+
       this.alreadyInDB = entity.celebrations
       this.activeStep++
       this.stepControl(1)

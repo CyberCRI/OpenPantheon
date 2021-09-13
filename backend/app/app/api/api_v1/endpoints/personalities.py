@@ -25,7 +25,8 @@ def read_personalities(response: Response,
                        limit: int = 100,
                        personal: int = 0,
                        women: bool = False,
-                       field: int = 0,
+                       field: str = '',
+                       region: str = '',
                        sort: str = '') -> Any:
     """
     Retrieve personalities.
@@ -40,6 +41,7 @@ def read_personalities(response: Response,
         personal=personal,
         women=women,
         field=field,
+        region=region,
         sort=sort)
     response.headers["x-total-count"] = str(
         count[0])  # Little hack that takes advantage of list mutability to get count for pagination
@@ -53,7 +55,8 @@ def read_personalities_guest(response: Response,
                              limit: int = 100,
                              personal: int = 0,
                              women: bool = False,
-                             field: int = 0,
+                             field: str = '',
+                             region: str = '',
                              sort: str = '') -> Any:
     """
     Retrieve personalities for unlogged used.
@@ -66,6 +69,7 @@ def read_personalities_guest(response: Response,
                                                                    limit=limit,
                                                                    women=women,
                                                                    field=field,
+                                                                   region=region,
                                                                    sort=sort)
     response.headers["x-total-count"] = str(count[0])
     return personalities  # noqa: R504

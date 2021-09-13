@@ -43,8 +43,8 @@ export default {
         createComment({ commit }, input) {
             return PersonalityService.postComment(input)
         },
-        fetchAll({ commit }, { loggedIn, skip, limit, personal, women, field, sort }) {
-            return PersonalityService.getAll(loggedIn, skip, limit, personal, women, field, sort)
+        fetchAll({ commit }, { loggedIn, skip, limit, personal, women, field, sort, region }) {
+            return PersonalityService.getAll(loggedIn, skip, limit, personal, women, field, sort, region)
                 .then((response) => {
                     commit('SET_TOTAL', Number(response.headers['x-total-count']))
                     commit('SET_PERSONALITIES', response.data)
