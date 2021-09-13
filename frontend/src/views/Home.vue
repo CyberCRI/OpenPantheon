@@ -117,7 +117,7 @@
               <template v-if="sort == 'recent'" #trigger>
                 <b-button
                   class="filter"
-                  label="Most recent"
+                  :label="$t('home.recent')"
                   icon-right="chevron-down"
                   size="is-large"
                 />
@@ -126,14 +126,14 @@
               <template v-else-if="sort == 'celebrated'" #trigger>
                 <b-button
                   class="filter"
-                  label="Most celebrated"
+                  :label="$t('home.celebrated')"
                   icon-right="chevron-down"
                   size="is-large"
                 />
               </template>
 
               <template v-else #trigger>
-                <b-button class="filter" label="Oldest" icon-right="chevron-down" size="is-large" />
+                <b-button class="filter" :label="$t('home.oldest')" icon-right="chevron-down" size="is-large" />
               </template>
 
               <b-dropdown-item value="recent" aria-role="listitem">
