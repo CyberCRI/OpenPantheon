@@ -20,4 +20,18 @@ ENV VUE_APP_BACKEND_URL=${BACKEND_URL}
 # Comment out the next line to disable tests
 RUN yarn test:unit
 
-RUN yarn start
+RUN yarn build
+
+
+# Stage 1, based on Nginx, to have only the compiled app, ready for production with Nginx
+FROM nginx:1.20
+
+ARG BACKEND_URL=http://localhost:8000
+ENV ADD_HEADER_HSTS="" \
+    BACKEND_URL=${BACKEND_URL}
+
+COPY ./frontend/nginx.conf.template /etc/nginx/templates/default.conf.template
+
+EXPOSE 8080
+
+COPY --from=build-stage /app/dist/ /usr/share/nginx/html
