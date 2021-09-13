@@ -32,4 +32,6 @@ ENV ADD_HEADER_HSTS="" \
 
 COPY ./frontend/nginx.conf.template /etc/nginx/templates/default.conf.template
 
+EXPOSE 8080
+
 COPY --from=build-stage /app/dist/ /usr/share/nginx/html
