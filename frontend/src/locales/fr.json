@@ -1,14 +1,95 @@
 {
   "topbar": {
-    "pantheon": "Mon Pantheon",
-    "about": "À Propos",
+    "pantheon": "Mon Panthéon",
+    "about": "A propos",
     "faq": "FAQ",
     "contact": "Contact",
-    "celebrate": "Célèbrez quelqu'un",
+    "celebrate": "Célébrer une personne",
     "en": "Anglais",
     "fr": "Français",
     "currentLang": "Français",
-    "login": "Connecter",
-    "logout": "Déconnecter"
+    "login": "Se connecter",
+    "logout": "Se déconnecter"
+  },
+  "footer": {
+    "pantheon": "Mon Panthéon",
+    "about": "A propos",
+    "faq": "FAQ",
+    "contact": "Contact",
+    "celebrate": "Célébrer une personne",
+    "en": "Anglais",
+    "fr": "Français",
+    "currentLang": "Anglais",
+    "login": "Login",
+    "logout": "Log out",
+    "terms": "Terms and conditions"
+  },
+  "details": {
+    "celebrate": "Célébrer",
+    "share": "Partager",
+    "wikipedia": "Visiter la page WikiPedia",
+    "about": "A propos",
+    "notable": "Travaux majeurs:",
+    "spouse": "Conjoint.e.s:",
+    "children": "Enfants:",
+    "born": "Né:",
+    "died": "Décédé:",
+    "show_celebrations": "Voir toutes les célébrations",
+    "search": "Chercher une célébration..."
+  },
+  "login": {
+    "no_account": "Pas encore de compte ?",
+    "create_one": "Créer un compte"
+  },
+  "register": {
+    "already": "Vous avez déjà un compte ? ",
+    "login": "Login",
+    "welcome": "Bienvenue!",
+    "welcome_text": "Expliquez qui vous êtes à la communauté avant de partager les personnes qui vous ont inspirées."
+  },
+  "wiki": {
+    "search": "Rechercher une personne sur WikiPedia...",
+    "add": "Ajouter à mon Panthéon"
+  },
+  "celebrate": {
+    "title": "Contribuez au Panthéon",
+    "subtitle": "Célébrez une personnalité des arts, des sciences ou de l'éducation.",
+    "who": "Qui voulez-vous  célébrer?",
+    "parity": "Il y a actuellement {pctWomen}% de femmes et {pctMen}% d'hommes dans le Panthéon. Aidez-nous à maintenir la parité !",
+    "why": "Pourquoi souhaitez-vous célébrer {name} ?",
+    "explain": "Expliquez brièvement pourquoi cette personne est spéciale pour vous ou votre organisation et purquoi vous aimeriez l'ajouter au Panthéon.",
+    "warning": "Merci de fournir un nom et une URL pour chaque référence à ajouter."
+  },
+  "contact": {
+    "hello": "Contactez-nous",
+    "text": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi, impedit culpa quibusdam eaque! Incidunt, error. In, fuga architecto esse soluta",
+    "question": "J'ai une question à propos de l'open Panthéon",
+    "report": "Signaler un abus",
+    "feedback": "Commentaire / signaler un bug",
+    "other": "Autre",
+    "faq": "Trouvez la réponse aux questions les plus fréquentes des utilisateurs",
+    "faq_explain": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi, impedit culpa quibusdam eaque! Incidunt, error. In, fuga architecto esse soluta",
+    "faq_cta": "Visitez la FAQ"
+  },
+  "home": {
+    "personalities": "{count} personalités - {parityWomen}% de femmes, {parityMen}% d'hommes",
+    "filter": "Filtrer",
+    "women_only": "Juste les femmes",
+    "arts": "Arts",
+    "science": "Science",
+    "education": "Education",
+    "recent": "Derniers ajouts",
+    "celebrated": "Les plus célébrés",
+    "oldest": "Les moins récents",
+    "northamerica": "Amérique du Nord",
+    "southamerica": "Amérique du Sud",
+    "oceania": "Océanie",
+    "africa": "Afrique",
+    "europe": "Europe",
+    "asia": "Asie"
+  },
+  "moreabout": {
+    "title": "A propos de l'Open Panthéon",
+    "text": "Nous avons tous des personnes inspirantes dans notre Panthéon personnel, mais nous n'avons pas d'endroit où partager qui ils sont et comment ils impactent notre vie. L'Open Panthéon permet aux individis comme aux organisations d'honorer leurs héros personnels, de célébrer leur impact et de partager leur héritage dans le monde entier.."
   }
 }
