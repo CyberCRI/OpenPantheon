@@ -11,6 +11,19 @@
     "login": "Login",
     "logout": "Log out"
   },
+  "footer": {
+    "pantheon": "My Pantheon",
+    "about": "About",
+    "faq": "FAQ",
+    "contact": "Contact",
+    "celebrate": "Celebrate someone",
+    "en": "English",
+    "fr": "French",
+    "currentLang": "English",
+    "login": "Login",
+    "logout": "Log out",
+    "terms": "Terms and conditions"
+  },
   "details": {
     "celebrate": "Celebrate",
     "share": "Share profile",
