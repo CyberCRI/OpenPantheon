@@ -41,11 +41,11 @@
           </div>
         </div>
 
-        <div class="columns is-multiline mb-5" v-if="user">
+        <div class="columns is-multiline mb-5" v-if="user && data">
           <b-loading :is-full-page="false" v-model="isLoading"></b-loading>
           <Card
             class="column is-one-third"
-            v-for="personality in user.personalities_celebrated.slice(50)"
+            v-for="personality in user.personalities_celebrated.slice(0, 50)"
             :key="personality.id"
             :personality="personality"
             :data="data ? data[personality.wikipedia_id] : {}"
@@ -88,6 +88,7 @@ export default {
       })
     },
     findMyComment(personality) {
+      console.log(personality.comments.find((comment) => comment.author_id === this.user.id))
       return personality.comments.find((comment) => comment.author_id === this.user.id).text
     },
   },
@@ -101,7 +102,7 @@ export default {
     this.women = Math.floor((this.women / this.count) * 100)
     let titles = this.user.personalities_celebrated
       .map((personality) => personality.wikipedia_id)
-      .slice(50) // Limit Wikipedia
+      .slice(0, 50) // Limit Wikipedia
     const url = await wbk.getEntities({
       ids: titles,
       languages: [this.$i18n.locale],
@@ -118,7 +119,6 @@ export default {
         this.data = entities
         this.isLoading = false
       })
-    this.findMyComment()
   },
   computed: mapState(['AuthModule', 'PersonalityModule']),
   components: {
