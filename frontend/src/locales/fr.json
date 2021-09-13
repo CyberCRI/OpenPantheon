@@ -86,7 +86,8 @@
     "oceania": "Océanie",
     "africa": "Afrique",
     "europe": "Europe",
-    "asia": "Asie"
+    "asia": "Asie",
+    "all": "Tous"
   },
   "moreabout": {
     "title": "A propos de l'Open Panthéon",

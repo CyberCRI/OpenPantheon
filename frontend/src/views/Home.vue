@@ -38,7 +38,18 @@
                 </b-field>
               </b-dropdown-item>
 
+              <b-dropdown-item separator>
+              	<hr>
+              </b-dropdown-item>
+
               <fieldset id="field">
+
+                <b-dropdown-item aria-role="listitem">
+                  <b-radio v-model="field" native-value="" ref="" name="field">
+                    {{ $t('home.all') }}
+                  </b-radio>
+                </b-dropdown-item>
+
                 <b-dropdown-item aria-role="listitem">
                   <b-radio v-model="field" native-value="art" ref="Arts" name="field">
                     {{ $t('home.arts') }}
@@ -58,7 +69,18 @@
                 </b-dropdown-item>
               </fieldset>
 
+              <b-dropdown-item separator>
+              	<hr>
+              </b-dropdown-item>
+
               <fieldset id="region">
+
+                <b-dropdown-item aria-role="listitem">
+                  <b-radio v-model="region" native-value="" ref="" name="region">
+                    {{ $t('home.all') }}
+                  </b-radio>
+                </b-dropdown-item>
+
                 <b-dropdown-item aria-role="listitem">
                   <b-radio v-model="region" native-value="Africa" ref="Africa" name="region">
                     {{ $t('home.africa') }}
