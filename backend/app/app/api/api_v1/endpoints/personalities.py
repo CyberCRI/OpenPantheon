@@ -137,7 +137,6 @@ def read_personality_by_wiki_id(
         *,
         db: Session = Depends(deps.get_db),
         wiki_id: str,
-        current_user: models.User = Depends(deps.get_current_active_user),
 ) -> Any:
     """
     Get personality by Wiki ID.
@@ -145,9 +144,6 @@ def read_personality_by_wiki_id(
     personality = crud.personality.get_by_wiki(db=db, wiki_id=wiki_id)
     if not personality:
         raise HTTPException(status_code=404, detail="Personality not found")
-    # if not crud.user.is_superuser(current_user) and (personality.owner_id != current_user.id):
-    #     raise HTTPException(status_code=400, detail="Not enough permissions")
-
     return personality
 
 
