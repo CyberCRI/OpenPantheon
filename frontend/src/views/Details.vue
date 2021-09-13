@@ -4,11 +4,11 @@
     <div class="box">
       <!-- Head  -->
 
-      <div class="columns is-align-items-self-end">
-        <div class="section column is-3">
+      <div class="section columns is-align-items-self-end">
+        <div class="column is-3">
           <figure
             v-if="data.claims && data.claims.P18"
-            class="image is-1by1"
+            class="image"
             id="main_image_container"
           >
             <img
@@ -16,25 +16,21 @@
               :src="`https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/${data.claims.P18[0].mainsnak.datavalue.value}`"
             />
           </figure>
-          <b-skeleton width="320px" height="320px" :active="isLoading"></b-skeleton>
         </div>
 
-        <div class="section column is-3">
+        <div class="column is-3">
           <div class="container pb-3">
             <h1 v-if="data.labels" class="title is-spaced">
               {{ data.labels[$i18n.locale].value }}
             </h1>
-            <b-skeleton size="is-small" :active="isLoading"></b-skeleton>
 
             <h2 v-if="data.descriptions" class="subtitle is-6">
               {{ data.descriptions[$i18n.locale].value | capitalize({ onlyFirstLetter: true }) }}
             </h2>
-            <b-skeleton size="is-small" :active="isLoading"></b-skeleton>
 
             <small v-if="data.claims"
               >{{ celebrations }} {{ celebrations | pluralize('Celebration') }}</small
             >
-            <b-skeleton size="is-medium" :active="isLoading"></b-skeleton>
           </div>
 
           <router-link
@@ -52,7 +48,7 @@
           >
         </div>
 
-        <div class="section column is-3">
+        <div class="column is-3">
           <button
             @click="socialModal"
             class="button is-medium has-text-small px-0"
@@ -61,7 +57,7 @@
             <strong class="is-size-6 mx-6">{{ $t('details.share') }}</strong>
           </button>
         </div>
-        <div class="section column is-3">
+        <div class="column is-3">
           <a
             :href="wikiLink"
             class="button is-medium has-text-small px-0"
