@@ -50,7 +50,7 @@ export default {
       } catch (error) {
         this.$buefy.toast.open({
           duration: 5000,
-          message: 'Invalid credentials',
+          message: this.$t('toast.credentials'),
           type: 'is-danger',
         })
       }

@@ -63,7 +63,7 @@ export default {
                 .catch((error) => {
                     this.$buefy.toast.open({
                         duration: 5000,
-                        message: 'Sorry, please try again later',
+            			message: this.$t('toast.unknown'),
                         type: 'is-danger',
                     })
                     console.log('There was an error:', error.response)
@@ -78,7 +78,7 @@ export default {
                 .catch((error) => {
                     this.$buefy.toast.open({
                         duration: 5000,
-                        message: 'Sorry, please try again later',
+            			message: this.$t('toast.unknown'),
                         type: 'is-danger',
                     })
                     console.log('There was an error:', error.response)

@@ -6,7 +6,7 @@
         {{ $t('moreabout.text') }}
       </h2>
       <router-link :to="{ path: '/about' }" class="button px-5 py-5"
-        ><strong>More About Open Pantheon</strong></router-link
+        ><strong>{{ $t('moreabout.button') }}</strong></router-link
       >
     </div>
   </section>

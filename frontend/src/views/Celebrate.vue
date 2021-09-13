@@ -206,7 +206,7 @@ export default {
           else {
             this.$buefy.toast.open({
               duration: 5000,
-              message: 'This personality is already in your pantheon',
+              message: this.$t('toast.already_in_pantheon'),
               type: 'is-danger',
             })
             this.$router.push({ name: 'Home' })
@@ -303,7 +303,7 @@ WHERE
         .then(async () => {
           this.$buefy.toast.open({
             duration: 5000,
-            message: 'Success',
+            message: this.$t('toast.success'),
             type: 'is-success',
           })
           await this.$store.dispatch('getPantheonStats')
@@ -312,7 +312,7 @@ WHERE
         .catch((error) => {
           this.$buefy.toast.open({
             duration: 5000,
-            message: "Sorry, we couldn't handle your request",
+            message: this.$t('toast.unknown'),
             type: 'is-danger',
           })
           console.log('There was a problem:', error.response)

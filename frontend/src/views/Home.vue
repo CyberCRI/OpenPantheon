@@ -5,7 +5,7 @@
         <div class="level-left">
           <div class="level-item">
             <b-tabs type="is-boxed" size="is-medium" v-model="activeTab">
-              <b-tab-item label="Open Pantheon" value="open">
+              <b-tab-item :label="$t('home.open')" value="open">
                 <p v-if="count">
                   {{
                     $t('home.personalities', {
@@ -16,7 +16,7 @@
                   }}
                 </p>
               </b-tab-item>
-              <b-tab-item label="My Pantheon" value="personal"> </b-tab-item>
+              <b-tab-item :label="$t('home.personal')" value="personal"> </b-tab-item>
             </b-tabs>
           </div>
         </div>
