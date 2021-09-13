@@ -42,9 +42,7 @@
       </div>
       <div class="my-6 is-flex is-justify-content-center is-align-content-space-around">
         <p class="is-align-self-center mr-6 has-text-grey-lighter">
-          <strong class="has-text-grey-light">CRI people - 2019</strong>
-          <br />
-          made with ❤ in CRI by IT-Team
+          Made with ❤ in CRI by the IT-Team
         </p>
         <img id="logo-cri" src="img/logo/madeincri.png" alt="Made in Cri" />
       </div>
