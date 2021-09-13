@@ -186,7 +186,9 @@
         </div>
       </div>
       <div class="container">
+      	<EmptyPantheon v-if="activeTab === 'personal' && (!isLoggedIn || !$store.getters.listPersonalitiesCelebrated.length)" />
         <CardList
+          v-else
           :personal="activeTab"
           :women="women"
           :field="field"
@@ -202,6 +204,7 @@
 <script>
 import WikiAutocomplete from '@/components/WikiAutocomplete.vue'
 import CardList from '@/components/CardList.vue'
+import EmptyPantheon from '@/components/EmptyPantheon.vue'
 
 export default {
   name: 'Home',
@@ -219,12 +222,18 @@ export default {
   components: {
     CardList,
     WikiAutocomplete,
+    EmptyPantheon
   },
   async created() {
     await this.$store.dispatch('getPantheonStats')
     this.count = this.$store.getters.pantheonCount
     this.parity = this.$store.getters.pantheonParity
   },
+  computed: {
+    isLoggedIn() {
+      return this.$store.getters.isAuthenticated
+    },
+  }
 }
 </script>
 
