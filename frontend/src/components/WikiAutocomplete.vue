@@ -19,7 +19,7 @@
               height="48"
               :src="
                 props.option.claims.P18
-                  ? `https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/${props.option.claims.P18[0]}`
+                  ? `https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/${props.option.claims.P18[0]}&width=48`
                   : 'https://bulma.io/images/placeholders/480x480.png'
               "
             />

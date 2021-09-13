@@ -13,7 +13,7 @@
           >
             <img
               id="main_image"
-              :src="`https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/${data.claims.P18[0].mainsnak.datavalue.value}`"
+              :src="`https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/${data.claims.P18[0].mainsnak.datavalue.value}&width=320`"
             />
           </figure>
         </div>
