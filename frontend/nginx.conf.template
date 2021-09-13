@@ -14,7 +14,7 @@ server {
     add_header  Permissions-Policy "accelerometer=(), ambient-light-sensor=(), autoplay=(), battery=(), camera=(), encrypted-media=(), execution-while-not-rendered=(), execution-while-out-of-viewport=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), screen-wake-lock=(), usb=(), xr-spatial-tracking=()" always;
     add_header  X-Content-Type-Options "nosniff" always;
     add_header  X-Frame-Options "SAMEORIGIN" always;
-    add_header  Content-Security-Policy "default-src 'none'; script-src 'self' 'unsafe-eval'; connect-src 'self' ${BACKEND_URL} https://www.wikidata.org; img-src 'self' https://commons.wikimedia.org https://upload.wikimedia.org https://bulma.io; style-src 'self' https://fonts.googleapis.com https://cdn.jsdelivr.net; font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net; base-uri 'self'; form-action 'self'" always;
+    add_header  Content-Security-Policy "default-src 'none'; script-src 'self' 'unsafe-eval'; connect-src 'self' ${BACKEND_URL} https://*.wikidata.org https://*.wikipedia.org; img-src 'self' https://*.wikimedia.org https://bulma.io; style-src 'self' https://fonts.googleapis.com https://cdn.jsdelivr.net; font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net; base-uri 'self'; form-action 'self'" always;
     # Add 'add_header  Strict-Transport-Security: max-age=31536000 always;' if necessary
     ${ADD_HEADER_HSTS}
 
