@@ -291,13 +291,11 @@ WHERE
       this.input.push(this.comment)
       this.input.push(...this.references)
 
-      // const tab = this.references.map((ref) => ref.name + '|' + ref.link)
-      // this.comment.fluff = tab.join('~')
       await this.$store.dispatch('createComment', this.input)
       this.input = []
       await this.$store.dispatch('addToPantheon', personality.id)
       await this.$store.dispatch('getCurrentUserDetails')
-      this.$router.push({ name: 'Home' })
+      this.$router.push({ name: 'Details', params: { id: personality.id } })
     },
     async celebrate() {
       await this.$store
