@@ -74,6 +74,7 @@
   "home": {
   	"open": "Open Pantheon",
   	"personal": "My Pantheon",
+  	"empty": "The Pantheon is empty.",
     "personalities": "{count} personalities - {parityWomen}% Women, {parityMen}% Men",
     "filter": "Filter",
     "women_only": "Women only",

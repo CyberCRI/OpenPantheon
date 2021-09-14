@@ -1,6 +1,6 @@
 <template>
   <section>
-    <div class="columns is-multiline">
+    <div class="columns is-multiline" v-if="PersonalityModule.personalities">
       <b-loading :is-full-page="false" v-model="isLoading"></b-loading>
       <Card
         class="column is-one-quarter"
@@ -10,6 +10,9 @@
         :data="data ? data[personality.wikipedia_id] : {}"
         :isLoading="isLoading"
       ></Card>
+    </div>
+    <div class="content" v-else>
+    	<h1>{{ $t('home.empty') }}</h1>
     </div>
     <b-pagination
       :total="PersonalityModule.total"
@@ -93,7 +96,7 @@ export default {
     region: String,
   },
   components: {
-    Card,
+    Card
   },
   computed: {
     ...mapState(['PersonalityModule']),
