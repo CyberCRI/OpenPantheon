@@ -45,7 +45,7 @@
     "already": "Already have an account ? ",
     "login": "Login",
     "welcome": "Get in touch",
-    "welcome_text": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi, impedit culpa quibusdameaque! Incidunt, error. In, fuga architecto esse soluta"
+    "welcome_text": "Please explain to the community who you are before sharing the people who inspired you."
   },
   "wiki": {
     "search": "Search someone on wikipedia...",
@@ -53,7 +53,7 @@
   },
   "celebrate": {
     "title": "Contribute to the Pantheon by celebrating a personnality.",
-    "subtitle": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi, impedit culpa quibusdam eaque! Incidunt, error. In, fuga architecto esse soluta",
+    "subtitle": "Celebrate a person from the arts, science or edication fields.",
     "who": "Who do you want to celebrate ?",
     "parity": "There is currently {pctMen}% men and {pctWomen}% women on the Pantheon. Let's try to maintain a gender parity !",
     "why": "Why do you want to celebrate {name}",
@@ -62,13 +62,13 @@
   },
   "contact": {
     "hello": "Get in touch",
-    "text": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi, impedit culpa quibusdam eaque! Incidunt, error. In, fuga architecto esse soluta",
+    "text": "Our Open Pantheon team is available to answer your questions, comments and improvement suggestions",
     "question": "I have a question about this project",
     "report": "Report an abuse",
     "feedback": "Comment / feedback on the website",
     "other": "Other",
     "faq": "Find some answers in the FAQ",
-    "faq_explain": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi, impedit culpa quibusdam eaque! Incidunt, error. In, fuga architecto esse soluta",
+    "faq_explain": "The most frequent problems occuring to our users are explained here. Do not hesitate to contact us if important points are missing from the FAQ.",
     "faq_cta": "Visit the FAQ"
   },
   "home": {
