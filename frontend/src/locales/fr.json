@@ -103,7 +103,7 @@
     "button": "En savoir + sur l'Open Panthéon"
   },
   "toast": {
-    "credentials": "Mauvais login/password",
+    "credentials": "Mauvais login/mot de passe",
     "email": "Ce mail est déjà identifié",
     "unknown": "Veuillez réessayer ultérieurement",
     "already_in_pantheon": "Cette personalité est déjà dans votre Panthéon",
@@ -117,16 +117,16 @@
     "second_step_paragraph": "Grâce à votre contribution collective, la plateforme de l'Open Panthéon vous offrira l'opportunité d'être inspiré par une liste croissante de personnes exemplaires, navigant à travers les siècles, cultures and disciplines.",
     "first_section_title": "Comment ça marche?",
     "first_section_first_paragraph": "Les individus et organisations sont invités à nominer les personalités de leur choix dans leur Panthéon personnel (Mon Panthéon), à la condition que ces personnalités aient déjà une biographie sur Wikipedia* et qu'elles soient liées à des champs comme l'éducation, les sciences, la culture, et la promotion de la paix.",
-    "first_section_second_paragraph": "When adding a personality to their Pantheon, organisations and individuals act as their sponsor by writing a succinct argument explaining their choice (compulsory). They may also choose to add meaningful links (article, book, etc.).",
+    "first_section_second_paragraph": "Quand on ajoute une personalité à leur Panthéon, les organisations et les individus agissent en tant que sponsosr en écrivant un argument succinct expliquant leur choix (obligatoire). Ils peuvent aussi choisir d'ajouter des liens intéressants (articles, livres, etc.).",
     "first_section_third_paragraph": "All nominated personalities then appear in the Open Pantheon platform, with a link to their Wikipedia bio and the succinct argument of each organisation/individual paying a personal tribute to their legacy.",
     "first_section_fourth_paragraph": "The collective crowdsourcing and distributed open tribute processes will allow for the celebration of local figures as well as of internationally renowned celebrities.",
     "first_section_fifth_paragraph": "The Open Pantheon search engine will thus offer a unique opportunity to (re-)discover and be inspired by diverse people across centuries and cultures, across communities and gender.",
     "first_section_sixth_paragraph": "A moderation system will be put in place on the platform to avoid abuse and deal with personalities/comments that may be considered inappropriate by the community.",
     "first_section_addendum": "*When an inspirational figure cannot be found on Wikipedia, organisations/ individuals are encouraged to create a new Wikipedia bio prior to starting the Open Pantheon nomination process.",
-    "second_section_title": "Languages",
-    "second_section_first_paragraph": "The initial version of this new global online platform is currently available in English and French. In the near future, new languages will be added, notably the 4 other UN official languages (Arabic, Chinese, Russian and Spanish).",
-    "second_section_addendum": "Would you like to support us in rapidly adding more languages?, Please contact us at info@open-pantheon.org.",
-    "third_section_title": "About #LearningPlanet",
-    "third_section_first_paragraph": "In 2019, CRI and UNESCO joined forces to give birth to the #LearningPlanet initiative, which has since federated a rapidly growing international community of organisations (institutions, universities, social entrepreneurs, associations, artists, media, etc.) committed to all key areas related to sustainable futures, especially that of young people: education, health, well-being, rights, sustainable development... Determined to increase and accelerate their impact on the ground, these organisations are exploring and striving to implement radical collaborative models. #LearningPlanet thus co-designs and co-constructs programmes (thematic circles, events, training courses, field projects, etc.) and open digital tools (project platform, knowledge GPS, Open Pantheon) to enable community members to achieve ambitious goals together."
+    "second_section_title": "Langages",
+    "second_section_first_paragraph": "La version initiale de cette nouvelle plateforme en ligne globale est actuellement disponible en français et en anglais. Dans un futur proche, de nouveaux langages seront ajoutés, notablement les 4 autres langages officiels des Nations Unies (Arabe, Chinois, Russe et Espagnol).",
+    "second_section_addendum": "Voudriez-vous nous aidez à ajouter d'autres langages? Contactez-nous à info@open-pantheon.org.",
+    "third_section_title": "A propos de #LearningPlanet",
+    "third_section_first_paragraph": "En 2019, le CRI et l'UNESCO ont joint leurs forces pour faire naître l'initiative #LearningPlanet, qui fédère une communauté en croissance rapide d'organisations internationales (institutions, universités, entrepreneurs sociaux, associations, artistes, medias, etc.) qui travaillent sur tous les secteurs clés liés au futurs soutenables, specialement ceux des jeunes: éducation, santé, bien-être, droits, développement durable... Déterminées à augmenter et accélérer leur impact concret, ces organisations explorent et implementent des modèles collaboratifs radicaux. #LearningPlanet co-designent et co-construisent des programmes (cercles thématiques, événements, courses, projets thématiques, etc.) et outils digitaux ouverts (plateforme de projets, GPS de la connaissance, Open Panthéon) pour permettre aux membres de la communité d'atteindre leurs objectifs ambitieux ensemble."
   }
 }
