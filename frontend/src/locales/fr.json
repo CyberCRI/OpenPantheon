@@ -62,13 +62,13 @@
   },
   "contact": {
     "hello": "Contactez-nous",
-    "text": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi, impedit culpa quibusdam eaque! Incidunt, error. In, fuga architecto esse soluta",
+    "text": "L'équipe de l'Open Panthéon est disponible pour répondre à vos questions, commentaires et suggestions d'améliorations.",
     "question": "J'ai une question à propos de l'open Panthéon",
     "report": "Signaler un abus",
     "feedback": "Commentaire / signaler un bug",
     "other": "Autre",
     "faq": "Trouvez la réponse aux questions les plus fréquentes des utilisateurs",
-    "faq_explain": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi, impedit culpa quibusdam eaque! Incidunt, error. In, fuga architecto esse soluta",
+    "faq_explain": "Les principaux problèmes que rencontrent fréquemment les usagers sont expliqués ici. N'hésitez pas à contacter l'équipe Open Panthéon si des points importants n'y sont pas abordés.",
     "faq_cta": "Visitez la FAQ"
   },
   "home": {
@@ -93,9 +93,9 @@
     "all": "Tous"
   },
   "empty_pantheon": {
-    "title": "Your Pantheon is empty for now",
-    "text": "Take part in the democratization of the Pantheon and choose personnalities that you wish to be celebrated ! This will add them automatically to your Pantheon.",
-    "celebrate": "Add someone to my Pantheon"
+    "title": "Votre Panthéon est vide pour l'instant.",
+    "text": "Participez à la démocratisation du Panthéon et coisissez les personnalités que vous voulez célébrer ! Elles seront ajoutées automatiquement à votre Panthéon.",
+    "celebrate": "Ajouter quelqu'un à mon Panthéon"
   },
   "moreabout": {
     "title": "A propos de l'Open Panthéon",
@@ -118,11 +118,11 @@
     "first_section_title": "Comment ça marche?",
     "first_section_first_paragraph": "Les individus et organisations sont invités à nominer les personalités de leur choix dans leur Panthéon personnel (Mon Panthéon), à la condition que ces personnalités aient déjà une biographie sur Wikipedia* et qu'elles soient liées à des champs comme l'éducation, les sciences, la culture, et la promotion de la paix.",
     "first_section_second_paragraph": "Quand on ajoute une personalité à leur Panthéon, les organisations et les individus agissent en tant que sponsosr en écrivant un argument succinct expliquant leur choix (obligatoire). Ils peuvent aussi choisir d'ajouter des liens intéressants (articles, livres, etc.).",
-    "first_section_third_paragraph": "All nominated personalities then appear in the Open Pantheon platform, with a link to their Wikipedia bio and the succinct argument of each organisation/individual paying a personal tribute to their legacy.",
-    "first_section_fourth_paragraph": "The collective crowdsourcing and distributed open tribute processes will allow for the celebration of local figures as well as of internationally renowned celebrities.",
-    "first_section_fifth_paragraph": "The Open Pantheon search engine will thus offer a unique opportunity to (re-)discover and be inspired by diverse people across centuries and cultures, across communities and gender.",
-    "first_section_sixth_paragraph": "A moderation system will be put in place on the platform to avoid abuse and deal with personalities/comments that may be considered inappropriate by the community.",
-    "first_section_addendum": "*When an inspirational figure cannot be found on Wikipedia, organisations/ individuals are encouraged to create a new Wikipedia bio prior to starting the Open Pantheon nomination process.",
+    "first_section_third_paragraph": "Toutes les personalités nominées apparaissent dans la plateforme de l'Open Panthéon, avec un lien vers leur fiche Wikipedia et le commentaire de chaque organisation/individu célébrant leur héritage.",
+    "first_section_fourth_paragraph": "Les processus d'intelligence collective distribuée permettent la célébration de célébrités locales comme internationales.",
+    "first_section_fifth_paragraph": "Le moteur de recherche de l'Open Panthéon va offrir une opportunité unique de (re-)découvrir et être inspiré par diverses personnes à travers les siècles, les cultures, les communités et les genres.",
+    "first_section_sixth_paragraph": "Un système de modération system va être mis en place sur la plateforme pour éviter les abus et gérer le cas des personalités et commentaires qui pourraient être considérés inappropriés par la communauté.",
+    "first_section_addendum": "*Quand une figure inspirante n'existe pas sur Wikipedia, les organisations/ individus sont encouragés à créerune nouvelle fiche Wikipedia avant de commencer le processus de nomination de l'Open Panthéon.",
     "second_section_title": "Langages",
     "second_section_first_paragraph": "La version initiale de cette nouvelle plateforme en ligne globale est actuellement disponible en français et en anglais. Dans un futur proche, de nouveaux langages seront ajoutés, notablement les 4 autres langages officiels des Nations Unies (Arabe, Chinois, Russe et Espagnol).",
     "second_section_addendum": "Voudriez-vous nous aidez à ajouter d'autres langages? Contactez-nous à info@open-pantheon.org.",
