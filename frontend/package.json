@@ -13,8 +13,8 @@
     "lint": "vue-cli-service lint",
     "css-build": "node-sass --omit-source-map-url src/assets/sass/override.scss public/css/override.css",
     "css-watch": "node-sass --omit-source-map-url src/assets/sass/override.scss public/css/override.css -w",
-    "format": "prettier --write src/**/*.{json,js,ts,jsx,tsx,vue}",
-    "format:check": "prettier --check src/**/*.{json,js,ts,jsx,tsx,vue}",
+    "format": "prettier --write src/**/*.{json,js,vue}",
+    "format:check": "prettier --check src/**/*.{json,js,vue}",
     "i18n:report": "vue-cli-service i18n:report --src \"./src/**/*.?(js|vue)\" --locales \"./src/locales/**/*.json\"",
     "start": "yarn css-watch & yarn serve"
   },
@@ -91,7 +91,7 @@
   },
   "license": "ISC",
   "lint-staged": {
-    "**/*.{json,js,ts,tsx,vue}": [
+    "**/*.{json,js,vue}": [
       "yarn format",
       "git add"
     ],

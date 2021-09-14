@@ -6,11 +6,7 @@
 
       <div class="section columns is-align-items-self-end">
         <div class="column is-3">
-          <figure
-            v-if="data.claims && data.claims.P18"
-            class="image"
-            id="main_image_container"
-          >
+          <figure v-if="data.claims && data.claims.P18" class="image" id="main_image_container">
             <img
               id="main_image"
               :src="`https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/${data.claims.P18[0].mainsnak.datavalue.value}&width=320`"

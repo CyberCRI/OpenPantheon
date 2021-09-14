@@ -40,7 +40,7 @@
         </p>
 
         <small>
-        	{{ $t('about.first_section_addendum') }}
+          {{ $t('about.first_section_addendum') }}
         </small>
       </div>
       <div class="section">
@@ -50,8 +50,8 @@
         </p>
 
         <small>
-        	{{ $t('about.second_section_addendum') }}
-		</small>
+          {{ $t('about.second_section_addendum') }}
+        </small>
       </div>
       <div class="section">
         <h3 class="subtitle">{{ $t('about.third_section_title') }}</h3>

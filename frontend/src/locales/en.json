@@ -72,9 +72,9 @@
     "faq_cta": "Visit the FAQ"
   },
   "home": {
-  	"open": "Open Pantheon",
-  	"personal": "My Pantheon",
-  	"empty": "The Pantheon is empty.",
+    "open": "Open Pantheon",
+    "personal": "My Pantheon",
+    "empty": "The Pantheon is empty.",
     "personalities": "{count} personalities - {parityWomen}% Women, {parityMen}% Men",
     "filter": "Filter",
     "women_only": "Women only",
@@ -93,9 +93,9 @@
     "all": "All"
   },
   "empty_pantheon": {
-  	"title": "Your Pantheon is empty for now",
-  	"text": "Take part in the democratization of the Pantheon and choose personnalities that you wish to be celebrated ! This will add them automatically to your Pantheon.",
-  	"celebrate": "Add someone to my Pantheon"
+    "title": "Your Pantheon is empty for now",
+    "text": "Take part in the democratization of the Pantheon and choose personnalities that you wish to be celebrated ! This will add them automatically to your Pantheon.",
+    "celebrate": "Add someone to my Pantheon"
   },
   "moreabout": {
     "title": "About Open Pantheon",
@@ -103,30 +103,30 @@
     "button": "More About Open Pantheon"
   },
   "toast": {
-  	"credentials": "Invalid credentials",
-  	"email": "This email is already in use",
-  	"unknown": "Sorry, please try again later",
-  	"already_in_pantheon": "This personality is already in your pantheon",
-  	"success": "Success"
+    "credentials": "Invalid credentials",
+    "email": "This email is already in use",
+    "unknown": "Sorry, please try again later",
+    "already_in_pantheon": "This personality is already in your pantheon",
+    "success": "Success"
   },
   "about": {
-  	"main_title": "We are happy to welcome you to the Open Pantheon.",
-  	"first_step": "Nominate.",
-  	"first_step_paragraph": "First and foremost, we invite you to pay tribute to inspirational figures from the past -whether in your community, country or globally - who have played a key role in the field of learning. This may be across all related disciplines, notably art, science, sustainability, pedagogy, health and wellbeing, thus contributing to a peaceful coexistence of humans and nature (in line with the 17 Sustainable Development Goals of the United Nations).",
-  	"second_step": "Discover.",
-  	"second_step_paragraph": "Thanks to our collective contribution, the Open Pantheon platform will give you the opportunity to be inspired by an ever growing and unique range of exemplary figures, navigating across centuries, cultures and disciplines.",
-  	"first_section_title": "How does it work?",
-  	"first_section_first_paragraph": "Individuals and organisations are invited to nominate personalities of their choice in their personal Pantheon (My Pantheon), under the condition that these personalities already have a bio on Wikipedia* and that they are related to fields such as education, the sciences, culture, and the promotion of peace.",
-  	"first_section_second_paragraph": "When adding a personality to their Pantheon, organisations and individuals act as their sponsor by writing a succinct argument explaining their choice (compulsory). They may also choose to add meaningful links (article, book, etc.).",
-  	"first_section_third_paragraph": "All nominated personalities then appear in the Open Pantheon platform, with a link to their Wikipedia bio and the succinct argument of each organisation/individual paying a personal tribute to their legacy.",
-  	"first_section_fourth_paragraph": "The collective crowdsourcing and distributed open tribute processes will allow for the celebration of local figures as well as of internationally renowned celebrities.",
-  	"first_section_fifth_paragraph": "The Open Pantheon search engine will thus offer a unique opportunity to (re-)discover and be inspired by diverse people across centuries and cultures, across communities and gender.",
-  	"first_section_sixth_paragraph": "A moderation system will be put in place on the platform to avoid abuse and deal with personalities/comments that may be considered inappropriate by the community.",
-  	"first_section_addendum": "*When an inspirational figure cannot be found on Wikipedia, organisations/ individuals are encouraged to create a new Wikipedia bio prior to starting the Open Pantheon nomination process.",
-  	"second_section_title": "Languages",
-  	"second_section_first_paragraph": "The initial version of this new global online platform is currently available in English and French. In the near future, new languages will be added, notably the 4 other UN official languages (Arabic, Chinese, Russian and Spanish).",
-  	"second_section_addendum": "Would you like to support us in rapidly adding more languages?, Please contact us at info@open-pantheon.org.",
-  	"third_section_title": "About #LearningPlanet",
-  	"third_section_first_paragraph": "In 2019, CRI and UNESCO joined forces to give birth to the #LearningPlanet initiative, which has since federated a rapidly growing international community of organisations (institutions, universities, social entrepreneurs, associations, artists, media, etc.) committed to all key areas related to sustainable futures, especially that of young people: education, health, well-being, rights, sustainable development... Determined to increase and accelerate their impact on the ground, these organisations are exploring and striving to implement radical collaborative models. #LearningPlanet thus co-designs and co-constructs programmes (thematic circles, events, training courses, field projects, etc.) and open digital tools (project platform, knowledge GPS, Open Pantheon) to enable community members to achieve ambitious goals together."
+    "main_title": "We are happy to welcome you to the Open Pantheon.",
+    "first_step": "Nominate.",
+    "first_step_paragraph": "First and foremost, we invite you to pay tribute to inspirational figures from the past -whether in your community, country or globally - who have played a key role in the field of learning. This may be across all related disciplines, notably art, science, sustainability, pedagogy, health and wellbeing, thus contributing to a peaceful coexistence of humans and nature (in line with the 17 Sustainable Development Goals of the United Nations).",
+    "second_step": "Discover.",
+    "second_step_paragraph": "Thanks to our collective contribution, the Open Pantheon platform will give you the opportunity to be inspired by an ever growing and unique range of exemplary figures, navigating across centuries, cultures and disciplines.",
+    "first_section_title": "How does it work?",
+    "first_section_first_paragraph": "Individuals and organisations are invited to nominate personalities of their choice in their personal Pantheon (My Pantheon), under the condition that these personalities already have a bio on Wikipedia* and that they are related to fields such as education, the sciences, culture, and the promotion of peace.",
+    "first_section_second_paragraph": "When adding a personality to their Pantheon, organisations and individuals act as their sponsor by writing a succinct argument explaining their choice (compulsory). They may also choose to add meaningful links (article, book, etc.).",
+    "first_section_third_paragraph": "All nominated personalities then appear in the Open Pantheon platform, with a link to their Wikipedia bio and the succinct argument of each organisation/individual paying a personal tribute to their legacy.",
+    "first_section_fourth_paragraph": "The collective crowdsourcing and distributed open tribute processes will allow for the celebration of local figures as well as of internationally renowned celebrities.",
+    "first_section_fifth_paragraph": "The Open Pantheon search engine will thus offer a unique opportunity to (re-)discover and be inspired by diverse people across centuries and cultures, across communities and gender.",
+    "first_section_sixth_paragraph": "A moderation system will be put in place on the platform to avoid abuse and deal with personalities/comments that may be considered inappropriate by the community.",
+    "first_section_addendum": "*When an inspirational figure cannot be found on Wikipedia, organisations/ individuals are encouraged to create a new Wikipedia bio prior to starting the Open Pantheon nomination process.",
+    "second_section_title": "Languages",
+    "second_section_first_paragraph": "The initial version of this new global online platform is currently available in English and French. In the near future, new languages will be added, notably the 4 other UN official languages (Arabic, Chinese, Russian and Spanish).",
+    "second_section_addendum": "Would you like to support us in rapidly adding more languages?, Please contact us at info@open-pantheon.org.",
+    "third_section_title": "About #LearningPlanet",
+    "third_section_first_paragraph": "In 2019, CRI and UNESCO joined forces to give birth to the #LearningPlanet initiative, which has since federated a rapidly growing international community of organisations (institutions, universities, social entrepreneurs, associations, artists, media, etc.) committed to all key areas related to sustainable futures, especially that of young people: education, health, well-being, rights, sustainable development... Determined to increase and accelerate their impact on the ground, these organisations are exploring and striving to implement radical collaborative models. #LearningPlanet thus co-designs and co-constructs programmes (thematic circles, events, training courses, field projects, etc.) and open digital tools (project platform, knowledge GPS, Open Pantheon) to enable community members to achieve ambitious goals together."
   }
 }

@@ -12,7 +12,7 @@
       ></Card>
     </div>
     <div class="content" v-else>
-    	<h1>{{ $t('home.empty') }}</h1>
+      <h1>{{ $t('home.empty') }}</h1>
     </div>
     <b-pagination
       :total="PersonalityModule.total"
@@ -96,7 +96,7 @@ export default {
     region: String,
   },
   components: {
-    Card
+    Card,
   },
   computed: {
     ...mapState(['PersonalityModule']),

@@ -42,11 +42,9 @@ export default {
         axios.defaults.headers.common['Authorization'] = `Bearer ${this.$store.getters.accessToken}`
         await this.getCurrentUserDetails()
         if (this.$store.getters.accessToken) {
-	        this.$emit('close')
-	        if (this.$router.currentRoute.name !== 'Celebrate') this.$router.go()
-	    }
-		else
-			throw new Error('Invalid Credentials')
+          this.$emit('close')
+          if (this.$router.currentRoute.name !== 'Celebrate') this.$router.go()
+        } else throw new Error('Invalid Credentials')
       } catch (error) {
         this.$buefy.toast.open({
           duration: 5000,

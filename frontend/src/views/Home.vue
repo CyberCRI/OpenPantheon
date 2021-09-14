@@ -39,11 +39,10 @@
               </b-dropdown-item>
 
               <b-dropdown-item separator>
-              	<hr>
+                <hr />
               </b-dropdown-item>
 
               <fieldset id="field">
-
                 <b-dropdown-item aria-role="listitem">
                   <b-radio v-model="field" native-value="" ref="" name="field">
                     {{ $t('home.all') }}
@@ -70,11 +69,10 @@
               </fieldset>
 
               <b-dropdown-item separator>
-              	<hr>
+                <hr />
               </b-dropdown-item>
 
               <fieldset id="region">
-
                 <b-dropdown-item aria-role="listitem">
                   <b-radio v-model="region" native-value="" ref="" name="region">
                     {{ $t('home.all') }}
@@ -155,7 +153,12 @@
               </template>
 
               <template v-else #trigger>
-                <b-button class="filter" :label="$t('home.oldest')" icon-right="chevron-down" size="is-large" />
+                <b-button
+                  class="filter"
+                  :label="$t('home.oldest')"
+                  icon-right="chevron-down"
+                  size="is-large"
+                />
               </template>
 
               <b-dropdown-item value="recent" aria-role="listitem">
@@ -186,7 +189,12 @@
         </div>
       </div>
       <div class="container">
-      	<EmptyPantheon v-if="activeTab === 'personal' && (!isLoggedIn || !$store.getters.listPersonalitiesCelebrated.length)" />
+        <EmptyPantheon
+          v-if="
+            activeTab === 'personal' &&
+            (!isLoggedIn || !$store.getters.listPersonalitiesCelebrated.length)
+          "
+        />
         <CardList
           v-else
           :personal="activeTab"
@@ -222,7 +230,7 @@ export default {
   components: {
     CardList,
     WikiAutocomplete,
-    EmptyPantheon
+    EmptyPantheon,
   },
   async created() {
     await this.$store.dispatch('getPantheonStats')
@@ -233,7 +241,7 @@ export default {
     isLoggedIn() {
       return this.$store.getters.isAuthenticated
     },
-  }
+  },
 }
 </script>
 
