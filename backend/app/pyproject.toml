@@ -32,13 +32,13 @@ requests = "^2.26.0"
 passlib = {extras = ["bcrypt"], version = "^1.7.4"}
 tenacity = "^8.0.1"
 pydantic = "^1.8.2"
-emails = "^0.6"
 gunicorn = "^20.1.0"
 jinja2 = "^2.11.2"
 psycopg2-binary = "^2.9.1"
 alembic = "^1.7.1"
 sqlalchemy = {version = ">=1.4,<1.4.23"}
 python-jose = {extras = ["cryptography"], version = "^3.3.0"}
+fastapi-mail = "^0.4.1"
 
 [tool.poetry.dev-dependencies]
 flake8 = "^3.9.2"
