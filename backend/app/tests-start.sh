@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 set -e
+set -x
 
-python /app/app/tests_pre_start.py
+CURRENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-bash ./scripts/test.sh "$@"
+python "${CURRENT_DIR}/app/tests_pre_start.py"
+
+bash "${CURRENT_DIR}/scripts/test.sh" "$@"
