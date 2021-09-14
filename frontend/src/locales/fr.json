@@ -22,7 +22,7 @@
     "currentLang": "Français",
     "login": "Login",
     "logout": "Log out",
-    "terms": "Terms and conditions"
+    "terms": "Conditions d'utilisation"
   },
   "details": {
     "celebrate": "Célébrer",
@@ -66,7 +66,7 @@
     "question": "J'ai une question à propos de l'open Panthéon",
     "report": "Signaler un abus",
     "feedback": "Commentaire / signaler un bug",
-    "other": "Autre",
+    "other": "Autres",
     "faq": "Trouvez la réponse aux questions les plus fréquentes des utilisateurs",
     "faq_explain": "Les principaux problèmes que rencontrent fréquemment les usagers sont expliqués ici. N'hésitez pas à contacter l'équipe Open Panthéon si des points importants n'y sont pas abordés.",
     "faq_cta": "Visitez la FAQ"
@@ -74,7 +74,7 @@
   "home": {
     "open": "Open Panthéon",
     "personal": "Mon Panthéon",
-    "empty": "The Pantheon is empty.",
+    "empty": "Le Panthéon est vide.",
     "personalities": "{count} personalités - {parityWomen}% de femmes, {parityMen}% d'hommes",
     "filter": "Filtrer",
     "women_only": "Juste les femmes",
