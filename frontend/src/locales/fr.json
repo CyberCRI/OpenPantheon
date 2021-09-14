@@ -74,6 +74,7 @@
   "home": {
     "open": "Open Panthéon",
     "personal": "Mon Panthéon",
+    "empty": "The Pantheon is empty.",
     "personalities": "{count} personalités - {parityWomen}% de femmes, {parityMen}% d'hommes",
     "filter": "Filtrer",
     "women_only": "Juste les femmes",
@@ -90,6 +91,11 @@
     "europe": "Europe",
     "asia": "Asie",
     "all": "Tous"
+  },
+  "empty_pantheon": {
+    "title": "Your Pantheon is empty for now",
+    "text": "Take part in the democratization of the Pantheon and choose personnalities that you wish to be celebrated ! This will add them automatically to your Pantheon.",
+    "celebrate": "Add someone to my Pantheon"
   },
   "moreabout": {
     "title": "A propos de l'Open Panthéon",
