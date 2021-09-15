@@ -43,6 +43,9 @@
                   required
                 ></b-input>
               </b-field>
+              <h2 class="subtitle is-size-6">
+                {{ $t('celebrate.links') }}
+              </h2>
               <b-field
                 class="mb-6"
                 grouped
@@ -50,12 +53,11 @@
                 v-for="(reference, index) in references"
                 :key="index"
               >
-                <b-field>
+                <b-field v-if="references.length > 1">
                   <b-button
                     icon-right="minus"
                     class="button"
                     @click="removeInput(index)"
-                    v-if="references.length > 1"
                   ></b-button>
                 </b-field>
                 <b-field expanded>
@@ -74,12 +76,11 @@
                     ref="link"
                   ></b-input>
                 </b-field>
-                <b-field>
+                <b-field v-if="references.length < 10">
                   <b-button
                     icon-right="plus"
                     class="button"
                     @click="addInput(index)"
-                    v-if="references.length < 10"
                   ></b-button>
                 </b-field>
               </b-field>
@@ -277,8 +278,8 @@ wd:${this.personality.wikipedia_id} wdt:P27 [ wdt:P297 ?code_iso ].
         .catch((error) => console.log(error))
 
       this.alreadyInDB = entity.celebrations
-      // this.activeStep++
-      // this.stepControl(1)
+      this.activeStep++
+      this.stepControl(1)
     },
     async createCommentAndLike() {
       const personality = await this.$store.dispatch(

@@ -58,7 +58,8 @@
     "parity": "Il y a actuellement {pctWomen}% de femmes et {pctMen}% d'hommes dans le Panthéon. Aidez-nous à maintenir la parité !",
     "why": "Pourquoi souhaitez-vous célébrer {name} ?",
     "explain": "Expliquez brièvement pourquoi cette personne est spéciale pour vous ou votre organisation et purquoi vous aimeriez l'ajouter au Panthéon.",
-    "warning": "Merci de fournir un nom et une URL pour chaque référence à ajouter."
+    "links": "Vous pouvez choisir de partager des liens intéressants à propos de cette personne (optionnel)",
+    "warning": "Merci de fournir un nom et une URL pour chaque référence ajoutée."
   },
   "contact": {
     "hello": "Contactez-nous",
