@@ -1,0 +1,7 @@
+/backend/app/poetry.toml
+/backend/app/.mypy_cache
+/backend/app/.pytest_cache
+/backend/app/.venv
+/backend/app/.gitignore
+/backend/app/.coverage
+**/__pycache__
