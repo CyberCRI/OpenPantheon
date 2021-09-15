@@ -111,6 +111,7 @@
 import AuthModal from '@/components/AuthModal'
 import WikiAutocomplete from '@/components/WikiAutocomplete'
 import Back from '@/components/Back'
+import { continents, countries } from 'countries-list'
 import wbk from 'wikidata-sdk'
 
 export default {
@@ -262,24 +263,22 @@ WHERE
         )
         .catch((error) => console.log(error))
       url = wbk.sparqlQuery(`
-SELECT DISTINCT ?continentLabel
+SELECT ?code_iso
 WHERE
 {
-  wd:${this.personality.wikipedia_id} wdt:P19 [ wdt:P17?/wdt:P30 ?continent ].
-  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+wd:${this.personality.wikipedia_id} wdt:P27 [ wdt:P297 ?code_iso ].
 }
       `)
       fetch(url)
         .then((response) => response.json())
-        .then(
-          (response) =>
-            (this.personality.continent = response.results.bindings[0].continentLabel.value)
-        )
+        .then((response) => {
+          this.personality.continent = continents[countries[response.results.bindings[0].code_iso.value].continent]
+        })
         .catch((error) => console.log(error))
 
       this.alreadyInDB = entity.celebrations
-      this.activeStep++
-      this.stepControl(1)
+      // this.activeStep++
+      // this.stepControl(1)
     },
     async createCommentAndLike() {
       const personality = await this.$store.dispatch(
