@@ -2,10 +2,15 @@
   "name": "open-pantheon",
   "version": "0.1.0",
   "private": true,
-  "description": "The Open Pantheon for the education",
+  "description": "The Open Pantheon for education",
   "author": {
-    "name": "CRI IT team"
+    "name": "CRI IT team",
+    "email": "it-team@cri-paris.org",
+    "url": "https://cri-paris.org"
   },
+  "contributors": [
+    {"name": "lboudaa"}
+  ],
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -83,6 +88,6 @@
   "engines": {
     "node": ">14.0.0"
   },
-  "license": "ISC",
+  "license": "AGPL-3.0-or-later",
   "readme": "https://github.com/CyberCRI/OpenPantheon/blob/main/README.md"
 }
