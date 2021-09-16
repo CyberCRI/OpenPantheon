@@ -1,4 +1,36 @@
-.vscode
-.mypy_cache
+# Docker
 docker-stack.yml
 docker-compose.override.yml
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw*
+
+.DS_Store
+
+# Frontend
+/frontend/node_modules
+/frontend/dist
+
+# local env files
+.env.local
+.env.*.local
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Backend
+*.pyc
+__pycache__
+.mypy_cache
+.coverage
+htmlcov
+backend/app/.venv
+.pytest_cache
