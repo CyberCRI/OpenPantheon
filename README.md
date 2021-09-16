@@ -15,17 +15,19 @@ GNU Affero General Public License for more details.
 You should have received a copy of the GNU Affero General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 -->
+
 # Open Pantheon
 
 ## Backend Requirements
 
+- Python 3
 - [Docker](https://www.docker.com/).
 - [Docker Compose](https://docs.docker.com/compose/install/).
 - [Poetry](https://python-poetry.org/) for Python package and environment management.
 
 ## Frontend Requirements
 
-- Node.js (with `yarn`).
+- Node.js 14 (with `yarn`).
 
 ## Backend local development
 
@@ -302,6 +304,20 @@ Notice that this live server is not running inside Docker, it is for local devel
 Check the file `package.json` to see other available options.
 
 If you have Vue CLI installed, you can also run `vue ui` to control, configure, serve, and analyze your application using a nice local web user interface.
+
+## Copyright header
+
+There's a copyright header on (almost) all the files. The CI will validate that the header is set correctly like so:
+
+```bash
+./scripts/license-chek-and-add.sh check
+```
+
+If one adds a new source file, he must add the copyright header:
+
+```bash
+./scripts/license-chek-and-add.sh add
+```
 
 ## URLs
 
