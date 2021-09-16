@@ -1,0 +1,28 @@
+{
+    "ignore": [".vscode", "**/.pytest_cache", "**/__pycache__", "backend/app/.venv", "**/.coverage", "**/.mypy_cache", "frontend/node_modules", "frontend/public/robots.txt", "**/*.woff(2)?", "**/*.otf", "**/*.lock"],
+    "license": "license_header.txt",
+    "licenseFormats": {
+        "gitignore|npmignore|eslintignore|dockerignore|prettierignore|sh|py|Dockerfile|dockerfile|toml|flake8|env|yml|yapf|yapfignore|mako|ini|template": {
+            "eachLine": {
+                "prepend": "# "
+            }
+        },
+        "editorconfig": {
+            "eachLine": {
+                "prepend": "; "
+            }
+        },
+        "html|xml|svg|md|vue|mjml": {
+            "prepend": "<!--",
+            "append": "-->"
+        },
+        "js|ts|css|scss|less|php|as|c|java|cpp|go|cto|acl": {
+            "prepend": "/*",
+            "append": " */",
+            "eachLine": {
+                "prepend": " * "
+            }
+        }
+    },
+    "trailingWhitespace": "TRIM"
+}

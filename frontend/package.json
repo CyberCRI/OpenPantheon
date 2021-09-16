@@ -9,7 +9,9 @@
     "url": "https://cri-paris.org"
   },
   "contributors": [
-    {"name": "lboudaa"}
+    {
+      "name": "lboudaa"
+    }
   ],
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -69,6 +71,7 @@
     "eslint": "^6.7.2",
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-vue": "^6.2.2",
+    "license-check-and-add": "^4.0.2",
     "node-sass": "^6.0.1",
     "prettier": "^2.2.1",
     "sass": "^1.26.5",
