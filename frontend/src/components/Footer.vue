@@ -42,7 +42,9 @@
       </div>
       <div class="my-6 is-flex is-justify-content-center is-align-content-space-around">
         <p class="is-align-self-center mr-6 has-text-grey-lighter">
-          Made with ❤ in CRI by the IT-Team
+          {{ $t('footer.madeInCRI') }}
+          <br />
+          <a href="https://github.com/CyberCRI/OpenPantheon">{{ $t('footer.sourceCode') }}</a>
         </p>
         <img id="logo-cri" src="img/logo/madeincri.png" alt="Made in Cri" />
       </div>
