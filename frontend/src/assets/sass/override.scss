@@ -1,10 +1,27 @@
+/*
+ * OpenPantheon: the pantheon for Education
+ * Copyright (C) 2021 CRI
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
 
 body {
-	font-size: 14px;
+  font-size: 14px;
 }
 
 // Import Bulma's core
-@import "../../../node_modules/bulma/sass/utilities/_all";
+@import '../../../node_modules/bulma/sass/utilities/_all';
 
 @font-face {
   font-family: ApfelGrotezk-Fett;
@@ -12,11 +29,11 @@ body {
 }
 
 // Set your colors
-$primary: #61E987;
+$primary: #61e987;
 $scheme-main: #fcfcfd;
 $scheme-main-bis: #202137;
 
-$grey: #A5A5AE;
+$grey: #a5a5ae;
 
 // $primary-light: findLightColor($primary);
 // $primary-dark: findDarkColor($primary);
@@ -36,61 +53,61 @@ $custom-shades: null !default;
 
 // Setup $colors to use as bulma classes (e.g. 'is-twitter')
 $colors: mergeColorMaps(
-    (
-        "white": (
-            $white,
-            $black,
-        ),
-        "black": (
-            $black,
-            $white,
-        ),
-        "light": (
-            $light,
-            $light-invert,
-        ),
-        "dark": (
-            $dark,
-            $dark-invert,
-        ),
-        "primary": (
-            $primary,
-            $primary-invert,
-            $primary-light,
-            $primary-dark,
-        ),
-        "link": (
-            $link,
-            $link-invert,
-            $link-light,
-            $link-dark,
-        ),
-        "info": (
-            $info,
-            $info-invert,
-            $info-light,
-            $info-dark,
-        ),
-        "success": (
-            $success,
-            $success-invert,
-            $success-light,
-            $success-dark,
-        ),
-        "warning": (
-            $warning,
-            $warning-invert,
-            $warning-light,
-            $warning-dark,
-        ),
-        "danger": (
-            $danger,
-            $danger-invert,
-            $danger-light,
-            $danger-dark,
-        ),
+  (
+    'white': (
+      $white,
+      $black,
     ),
-    $custom-colors
+    'black': (
+      $black,
+      $white,
+    ),
+    'light': (
+      $light,
+      $light-invert,
+    ),
+    'dark': (
+      $dark,
+      $dark-invert,
+    ),
+    'primary': (
+      $primary,
+      $primary-invert,
+      $primary-light,
+      $primary-dark,
+    ),
+    'link': (
+      $link,
+      $link-invert,
+      $link-light,
+      $link-dark,
+    ),
+    'info': (
+      $info,
+      $info-invert,
+      $info-light,
+      $info-dark,
+    ),
+    'success': (
+      $success,
+      $success-invert,
+      $success-light,
+      $success-dark,
+    ),
+    'warning': (
+      $warning,
+      $warning-invert,
+      $warning-light,
+      $warning-dark,
+    ),
+    'danger': (
+      $danger,
+      $danger-invert,
+      $danger-light,
+      $danger-dark,
+    ),
+  ),
+  $custom-colors
 );
 
 // // Links
@@ -143,8 +160,8 @@ $footer-padding: 3rem 1.5rem 3.75rem;
 // }
 
 // Import Bulma and Buefy styles
-@import "../../../node_modules/bulma/bulma";
-@import "../../../node_modules/buefy/src/scss/buefy";
+@import '../../../node_modules/bulma/bulma';
+@import '../../../node_modules/buefy/src/scss/buefy';
 
 .avatar {
   width: 48px;
@@ -158,18 +175,18 @@ $footer-padding: 3rem 1.5rem 3.75rem;
 }
 
 .navbar {
-    background: $scheme-main-bis url("../img/bubble/bubble@1,5x.svg");
-	background-repeat: no-repeat;
-	background-position-x: right;
-	background-position-y: center;
-	&-start {
-		flex-grow: 0.2
-	}
-	.is-spaced {
-		padding: 1.5rem 2rem;
-	}
+  background: $scheme-main-bis url('../img/bubble/bubble@1,5x.svg');
+  background-repeat: no-repeat;
+  background-position-x: right;
+  background-position-y: center;
+  &-start {
+    flex-grow: 0.2;
+  }
+  .is-spaced {
+    padding: 1.5rem 2rem;
+  }
 }
 
 .has-half-width {
-	max-width: 50%;
+  max-width: 50%;
 }
