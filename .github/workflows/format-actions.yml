@@ -1,4 +1,4 @@
-name: Unit tests
+name: Code formatting
 on:
   push:
     branches:
@@ -21,21 +21,12 @@ jobs:
       - name: Install the dependencies
         working-directory: frontend
         run: yarn install --non-interactive --frozen-lockfile
-      - name: Run unit tests
+      - name: Check the code formatting
         working-directory: frontend
-        run: yarn test:unit
+        run: yarn format:check
 
   backend:
     runs-on: ubuntu-latest
-    services:
-      postgres:
-        image: postgres:13
-        env:
-          POSTGRES_DB: app
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: 6f649af26564659f4ce95fc5615f111e9a787230593d1ea75dd3a7fb91b4168f
-        ports:
-          - 5432:5432
     steps:
       - name: Git checkout
         uses: actions/checkout@v2
@@ -61,17 +52,12 @@ jobs:
       - name: Install dependencies
         working-directory: backend/app
         run: poetry install --no-root
-      - name: Run unit tests
+      - name: Check the code formatting
         working-directory: backend/app
         run: |
-          # Source the .env
-          export $(grep -v '^#' ../../.env | xargs -d '\n')
-          export $(grep -v '^#' .env | xargs -d '\n')
-          # Override the PostgreSQL host name
-          export POSTGRES_SERVER=localhost
           # Activate poetry's virtualenv
           source `poetry env info --path`/bin/activate
-          # Run the migration and initial data push
-          ./prestart.sh
-          # Run the tests
-          ./tests-start.sh
+          # Run formatting tools
+          ./scripts/format.sh
+          # Check that there are no changes
+          git diff --exit-code

@@ -109,12 +109,7 @@
                 </b-dropdown-item>
 
                 <b-dropdown-item aria-role="listitem">
-                  <b-radio
-                    v-model="region"
-                    native-value="Oceania"
-                    ref="Oceania"
-                    name="region"
-                  >
+                  <b-radio v-model="region" native-value="Oceania" ref="Oceania" name="region">
                     {{ $t('home.oceania') }}
                   </b-radio>
                 </b-dropdown-item>

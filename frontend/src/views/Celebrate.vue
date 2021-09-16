@@ -77,11 +77,7 @@
                   ></b-input>
                 </b-field>
                 <b-field v-if="references.length < 10">
-                  <b-button
-                    icon-right="plus"
-                    class="button"
-                    @click="addInput(index)"
-                  ></b-button>
+                  <b-button icon-right="plus" class="button" @click="addInput(index)"></b-button>
                 </b-field>
               </b-field>
               <p class="has-text-danger" v-if="error">{{ error }}</p>
@@ -273,7 +269,8 @@ wd:${this.personality.wikipedia_id} wdt:P27 [ wdt:P297 ?code_iso ].
       fetch(url)
         .then((response) => response.json())
         .then((response) => {
-          this.personality.continent = continents[countries[response.results.bindings[0].code_iso.value].continent]
+          this.personality.continent =
+            continents[countries[response.results.bindings[0].code_iso.value].continent]
         })
         .catch((error) => console.log(error))
 
