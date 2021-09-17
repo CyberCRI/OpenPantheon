@@ -23,7 +23,7 @@ from sqlalchemy.orm import Session
 from app import crud, models, schemas
 from app.api import deps
 from app.core.config import settings
-from app.utils import send_new_account_email
+from app.send_email import send_new_account_email
 
 router = APIRouter()
 
@@ -42,7 +42,7 @@ def read_users(
 
 
 @router.post("/", response_model=schemas.User)
-def create_user(
+async def create_user(
         *,
         db: Session = Depends(deps.get_db),
         user_in: schemas.UserCreate,
@@ -59,7 +59,7 @@ def create_user(
         )
     user = crud.user.create(db, obj_in=user_in)
     if settings.EMAILS_ENABLED and user_in.email:
-        send_new_account_email(email_to=user_in.email, username=user_in.email, password=user_in.password)
+        await send_new_account_email(email_to=user_in.email, username=user_in.email, password=user_in.password)
     return user  # noqa: R504
 
 
