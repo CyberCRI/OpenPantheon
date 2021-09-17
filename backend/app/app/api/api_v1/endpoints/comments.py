@@ -78,8 +78,8 @@ def delete_comment(
     if not current_user.id == comment.author_id and not crud.user.is_superuser(current_user):
         raise HTTPException(status_code=400, detail="Not enough permissions")
     crud.user.remove_personality(db=db,
-    							db_obj=crud.user.get(db=db, id=comment.author_id),
-    							id_personality=comment.personality_id)
+                                 db_obj=crud.user.get(db=db, id=comment.author_id),
+                                 id_personality=comment.personality_id)
     if len(crud.personality.get(db=db, id=comment.personality_id).comments) == 1:
-    	crud.personality.remove(db=db, id=comment.personality_id)
+        crud.personality.remove(db=db, id=comment.personality_id)
     return crud.comment.remove(db=db, id=id)
