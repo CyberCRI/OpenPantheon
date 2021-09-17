@@ -18,14 +18,14 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 <template>
   <div class="comment">
     <article class="media">
-      <figure class="media-left is-hidden-mobile">
+      <figure class="media-left">
         <router-link v-if="user" :to="{ path: `/pantheon/${user.id}` }"
           ><div class="avatar">
             {{ (user.first_name[0] + user.last_name[0]) | uppercase }}
           </div></router-link
         >
       </figure>
-      <div class="media-content has-background-light py-4 px-5 mb-5">
+      <div class="media-content has-background-light py-5 px-5 my-5 mx-2">
         <div class="container">
           <div class="is-flex is-justify-content-space-between">
             <div>
@@ -66,7 +66,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
             {{ comment.text }}
           </p>
         </div>
-        <ul class="mt-5" v-if="comment.fluff[0].link">
+        <ul>
           <li v-for="(ref, index) in comment.fluff" :key="index">
             <a :href="ref.link" class="has-text-dark is-underlined">{{ ref.name }}</a>
             <b-icon icon="open-in-new" size="is-small" type="is-primary"> </b-icon>
@@ -140,7 +140,6 @@ export default {
   async created() {
     await this.getUserById(this.comment.author_id)
     this.user = this.AuthModule.userDetails
-    this.currentUser = this.AuthModule.currentUserDetails
   },
   computed: {
     ...mapState(['AuthModule']),

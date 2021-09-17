@@ -73,8 +73,8 @@ export default {
     return {
       name: null,
       email: null,
-      reason: this.report ? 'abuse' : 'question',
-      message: this.report ? this.report : null,
+      reason: null,
+      message: report ? report : null,
     }
   },
   props: {
