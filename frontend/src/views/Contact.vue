@@ -78,10 +78,10 @@ export default {
     }
   },
   props: {
-  	report: {
-  		type: String,
-  		default: ''
-  	}
+    report: {
+      type: String,
+      default: '',
+    },
   },
   methods: {
     onSubmit() {

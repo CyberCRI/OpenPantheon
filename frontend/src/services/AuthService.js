@@ -43,7 +43,7 @@ export default {
     return axios.delete('users/me')
   },
   deleteComment(id) {
-  	return axios.delete('comments/' + id)
+    return axios.delete('comments/' + id)
   },
   getToken(credentials) {
     return axios.post('login/access-token', credentials)

@@ -79,8 +79,8 @@ const actions = {
       })
   },
   deleteComment({ commit }, id) {
-  	return AuthService.deleteComment(id)
-  	  .then((response) => console.log(response))
+    return AuthService.deleteComment(id)
+      .then((response) => console.log(response))
       .catch((error) => {
         console.log('There was an error:', error)
       })
