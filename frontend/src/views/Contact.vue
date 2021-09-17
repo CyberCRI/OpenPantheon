@@ -73,15 +73,9 @@ export default {
     return {
       name: null,
       email: null,
-      reason: this.report ? 'abuse' : 'question',
-      message: this.report ? this.report : null,
+      reason: null,
+      message: null,
     }
-  },
-  props: {
-  	report: {
-  		type: String,
-  		default: ''
-  	}
   },
   methods: {
     onSubmit() {

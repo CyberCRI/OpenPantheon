@@ -78,14 +78,12 @@ const actions = {
         console.log('There was an error:', error)
       })
   },
-  deleteComment({ commit }, id) {
-  	return AuthService.deleteComment(id)
-  	  .then((response) => console.log(response))
-      .catch((error) => {
-        console.log('There was an error:', error)
-      })
-  },
-  LogOut({ commit }) {
+  // async getUsers({ commit }) {
+  //     await axios.get('users').then(async (response) => {
+  //         await commit('SET_USERS', response.data)
+  //     })
+  // },
+  async LogOut({ commit }) {
     commit('SET_CURRENT_USER_DETAILS', null)
     commit('SET_TOKEN', null)
     sessionStorage.clear()

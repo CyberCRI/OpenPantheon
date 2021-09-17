@@ -64,15 +64,6 @@ class CRUDUser(CRUDBase[User, UserCreate, UserUpdate]):
             db.refresh(db_obj)
         return db_obj
 
-    def remove_personality(self, db: Session, *, db_obj: User, id_personality: int) -> User:
-        personality_list = db_obj.personalities_celebrated
-        personality_list = list(filter(lambda personality: (personality.id != id_personality), personality_list))
-        setattr(db_obj, "personalities_celebrated", personality_list)
-        db.add(db_obj)
-        db.commit()
-        db.refresh(db_obj)
-        return db_obj
-
     def authenticate(self, db: Session, *, email: str, password: str) -> Optional[User]:
         user = self.get_by_email(db, email=email)
         if not user:

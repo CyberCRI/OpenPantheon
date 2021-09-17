@@ -33,7 +33,7 @@ const router = new Router({
     { path: '/home', name: 'Home', component: Home, alias: '/' },
     { path: '/about', name: 'About', component: About },
     // { path: '/faq', name:"Faq", component: Faq },
-    { path: '/contact', name: 'Contact', component: Contact, props: (route) => ({ report: route.query.q }) },
+    { path: '/contact', name: 'Contact', component: Contact },
     // { path: '/account', name:"Account", component: Account },
     // { path: '/user-pantheon/:user', name:"UserPantheon", component: UserPantheon, props: true },
     { path: '/details/:id', name: 'Details', component: Details, props: true },
