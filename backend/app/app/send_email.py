@@ -16,10 +16,15 @@
 from pathlib import Path
 from typing import Any, Dict
 
+import fastapi_mail
 from fastapi_mail import ConnectionConfig, FastMail, MessageSchema
 from pydantic import EmailStr
 
 from app.core.config import settings
+
+# Disable path_traversal otherwise we cannot use virtualenv
+# see https://github.com/sabuhish/fastapi-mail/issues/70
+fastapi_mail.config.path_traversal = lambda *args, **kwargs: True
 
 configuration = ConnectionConfig(MAIL_USERNAME=settings.SMTP_USER,
                                  MAIL_PASSWORD=settings.SMTP_PASSWORD,
