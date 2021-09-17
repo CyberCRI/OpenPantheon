@@ -18,14 +18,14 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 <template>
   <div class="comment">
     <article class="media">
-      <figure class="media-left">
+      <figure class="media-left is-hidden-mobile">
         <router-link v-if="user" :to="{ path: `/pantheon/${user.id}` }"
           ><div class="avatar">
             {{ (user.first_name[0] + user.last_name[0]) | uppercase }}
           </div></router-link
         >
       </figure>
-      <div class="media-content has-background-light py-4 px-5 my-5">
+      <div class="media-content has-background-light py-4 px-5 mb-5">
         <div class="container">
           <div class="is-flex is-justify-content-space-between">
             <div>

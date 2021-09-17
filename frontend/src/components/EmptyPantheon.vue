@@ -17,7 +17,6 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 -->
 <template>
   <div class="container">
-    <Back />
     <div class="box">
       <section
         class="section is-flex is-flex-direction-column is-align-items-center has-text-centered"
