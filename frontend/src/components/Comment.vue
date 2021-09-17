@@ -36,7 +36,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
             </div>
             <div>
           		{{ timestamp }}
-	          	<b-dropdown aria-role="list">
+	          	<b-dropdown aria-role="list"  position="is-bottom-left">
 	                <template #trigger>
 	                    <b-icon icon="dots-horizontal" type="is-primary"></b-icon>
 	                </template>
@@ -52,9 +52,14 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
             {{ comment.text }}
           </p>
         </div>
-        <ul>
+        <ul class="mt-5" v-if="comment.fluff[0].link">
           <li v-for="(ref, index) in comment.fluff" :key="index">
-            <a :href="ref.link">{{ ref.name }}</a>
+            <a :href="ref.link" class="has-text-dark is-underlined">{{ ref.name }}</a>
+            <b-icon
+                icon="open-in-new"
+                size="is-small"
+                type="is-primary">
+            </b-icon>
           </li>
         </ul>
       </div>
@@ -109,6 +114,7 @@ export default {
             onConfirm: () => this.deleteComment(this.comment.id)
 	            .then(() => {
 	            	this.$el.parentNode.removeChild(this.$el)
+	            	this.$router.go(-1)
 	            })
 	            .catch(() => {
 	            	this.$buefy.toast.open({
