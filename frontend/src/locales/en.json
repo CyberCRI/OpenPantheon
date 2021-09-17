@@ -131,5 +131,15 @@
     "second_section_addendum": "Would you like to support us in rapidly adding more languages?, Please contact us at info@open-pantheon.org.",
     "third_section_title": "About #LearningPlanet",
     "third_section_first_paragraph": "In 2019, CRI and UNESCO joined forces to give birth to the #LearningPlanet initiative, which has since federated a rapidly growing international community of organisations (institutions, universities, social entrepreneurs, associations, artists, media, etc.) committed to all key areas related to sustainable futures, especially that of young people: education, health, well-being, rights, sustainable development... Determined to increase and accelerate their impact on the ground, these organisations are exploring and striving to implement radical collaborative models. #LearningPlanet thus co-designs and co-constructs programmes (thematic circles, events, training courses, field projects, etc.) and open digital tools (project platform, knowledge GPS, Open Pantheon) to enable community members to achieve ambitious goals together."
+  },
+  "comment": {
+    "see_user_pantheon": "See his/her Pantheon",
+    "report_comment": "Report this celebration",
+    "delete_comment": "Delete celebration",
+    "report_default": "Hello,\nI wanted to report {user}'s celebration on this page: {path}",
+    "delete_title": "Deleting celebration",
+    "delete_message": "Are you sure you want to <b>delete</b> your celebration ? This action cannot be undone. This will also remove the personality from your personal Pantheon.",
+    "delete_button": "Delete",
+    "cancel_button": "Cancel"
   }
 }

@@ -18,39 +18,60 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 <template>
   <div class="comment">
     <article class="media">
-      <figure class="media-left">
+      <figure class="media-left is-hidden-mobile">
         <router-link v-if="user" :to="{ path: `/pantheon/${user.id}` }"
           ><div class="avatar">
             {{ (user.first_name[0] + user.last_name[0]) | uppercase }}
           </div></router-link
         >
       </figure>
-      <div class="media-content has-background-light py-5 px-5 my-5 mx-2">
+      <div class="media-content has-background-light py-4 px-5 mb-5">
         <div class="container">
           <div class="is-flex is-justify-content-space-between">
             <div>
               <h1 class="title is-6" v-if="user">{{ user.first_name }} {{ user.last_name }}</h1>
-              <h2 class="subtitle is-6 has-text-grey-light" v-if="user">
+              <h2 class="subtitle is-6 has-text-grey-light mb-2" v-if="user">
                 {{ user.job }}
               </h2>
             </div>
             <div>
               {{ timestamp }}
+              <b-dropdown aria-role="list" position="is-bottom-left">
+                <template #trigger>
+                  <b-icon icon="dots-horizontal" type="is-primary"></b-icon>
+                </template>
+                <router-link v-if="user" :to="{ path: `/pantheon/${user.id}` }"
+                  ><b-dropdown-item aria-role="listitem">{{
+                    $t('comment.see_user_pantheon')
+                  }}</b-dropdown-item></router-link
+                >
+                <router-link v-if="user" :to="{ path: `/contact?q=${reportText}` }">
+                  <b-dropdown-item aria-role="listitem">{{
+                    $t('comment.report_comment')
+                  }}</b-dropdown-item></router-link
+                >
+                <b-dropdown-item
+                  aria-role="listitem"
+                  @click="confirmDelete"
+                  v-if="
+                    currentUser &&
+                    (comment.author_id === currentUser.id || currentUser.is_superuser)
+                  "
+                  >{{ $t('comment.delete_comment') }}</b-dropdown-item
+                >
+              </b-dropdown>
             </div>
           </div>
           <p>
             {{ comment.text }}
           </p>
         </div>
-        <ul>
+        <ul class="mt-5" v-if="comment.fluff[0].link">
           <li v-for="(ref, index) in comment.fluff" :key="index">
-            <a :href="ref.link">{{ ref.name }}</a>
+            <a :href="ref.link" class="has-text-dark is-underlined">{{ ref.name }}</a>
+            <b-icon icon="open-in-new" size="is-small" type="is-primary"> </b-icon>
           </li>
         </ul>
-      </div>
-      <div class="media-right">
-        <!--           <button class="delete"></button>
- -->
       </div>
     </article>
   </div>
@@ -84,20 +105,53 @@ export default {
   data() {
     return {
       user: null,
+      currentUser: null,
     }
   },
   props: {
     comment: Object,
   },
-  methods: mapActions(['getUserById']),
+  methods: {
+    ...mapActions(['getUserById', 'deleteComment']),
+    confirmDelete() {
+      this.$buefy.dialog.confirm({
+        title: this.$t('comment.delete_title'),
+        message: this.$t('comment.delete_message'),
+        confirmText: this.$t('comment.delete_button'),
+        cancelText: this.$t('comment.cancel_button'),
+        type: 'is-danger',
+        hasIcon: true,
+        onConfirm: () =>
+          this.deleteComment(this.comment.id)
+            .then(() => {
+              this.$el.parentNode.removeChild(this.$el)
+              this.$router.go(-1)
+            })
+            .catch(() => {
+              this.$buefy.toast.open({
+                duration: 5000,
+                message: this.$t('toast.credentials'),
+                type: 'is-danger',
+              })
+            }),
+      })
+    },
+  },
   async created() {
     await this.getUserById(this.comment.author_id)
     this.user = this.AuthModule.userDetails
+    this.currentUser = this.AuthModule.currentUserDetails
   },
   computed: {
     ...mapState(['AuthModule']),
     timestamp: function () {
       return moment(this.comment.time_created).fromNow(true)
+    },
+    reportText: function () {
+      return this.$t('comment.report_default', {
+        user: this.user.first_name + ' ' + this.user.last_name,
+        path: window.location,
+      })
     },
   },
 }

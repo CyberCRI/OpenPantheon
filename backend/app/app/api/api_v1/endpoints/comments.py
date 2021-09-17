@@ -60,3 +60,26 @@ def create_comment(
         tab.append(fluff[i]['name'] + '|' + fluff[i]['link'])
     comment_in['fluff'] = '~'.join(tab)
     return crud.comment.create_new_comment(db=db, obj_in=comment_in)
+
+
+@router.delete("/{id}", response_model=schemas.Comment)
+def delete_comment(
+        *,
+        db: Session = Depends(deps.get_db),
+        id: int,
+        current_user: models.User = Depends(deps.get_current_active_user),
+) -> Any:
+    """
+    Delete a Comment.
+    """
+    comment = crud.comment.get(db=db, id=id)
+    if not comment:
+        raise HTTPException(status_code=404, detail="Comment not found")
+    if not current_user.id == comment.author_id and not crud.user.is_superuser(current_user):
+        raise HTTPException(status_code=400, detail="Not enough permissions")
+    crud.user.remove_personality(db=db,
+                                 db_obj=crud.user.get(db=db, id=comment.author_id),
+                                 id_personality=comment.personality_id)
+    if len(crud.personality.get(db=db, id=comment.personality_id).comments) == 1:
+        crud.personality.remove(db=db, id=comment.personality_id)
+    return crud.comment.remove(db=db, id=id)
