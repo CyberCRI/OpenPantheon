@@ -137,7 +137,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
         </h2>
         <div class="columns is-multiline is-centered">
           <Comment
-            class="column is-6-desktop"
+            class="column is-6-desktop is-12-mobile"
             v-for="(comment, index) in personality.comments.slice(0, 6)"
             :key="index"
             :comment="comment"

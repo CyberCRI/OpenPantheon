@@ -25,7 +25,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
           </div></router-link
         >
       </figure>
-      <div class="media-content has-background-light py-5 px-5 my-5 mx-2">
+      <div class="media-content has-background-light py-4 px-5 my-5">
         <div class="container">
           <div class="is-flex is-justify-content-space-between">
             <div>
@@ -35,8 +35,18 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
               </h2>
             </div>
             <div>
-              {{ timestamp }}
-            </div>
+          		{{ timestamp }}
+	          	<b-dropdown aria-role="list">
+	                <template #trigger>
+	                    <b-icon icon="dots-horizontal" type="is-primary"></b-icon>
+	                </template>
+	                <router-link v-if="user" :to="{ path: `/pantheon/${user.id}` }"
+					><b-dropdown-item aria-role="listitem">{{ $t('comment.see_user_pantheon') }}</b-dropdown-item></router-link>
+	                <router-link v-if="user" :to="{ path: `/contact?q=${reportText}` }">
+					<b-dropdown-item aria-role="listitem">{{ $t('comment.report_comment') }}</b-dropdown-item></router-link>
+	                <b-dropdown-item aria-role="listitem" @click="confirmDelete" v-if="currentUser && (comment.author_id === currentUser.id || currentUser.is_superuser)">{{ $t('comment.delete_comment') }}</b-dropdown-item>
+	            </b-dropdown>
+	        </div>
           </div>
           <p>
             {{ comment.text }}
@@ -47,10 +57,6 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
             <a :href="ref.link">{{ ref.name }}</a>
           </li>
         </ul>
-      </div>
-      <div class="media-right">
-        <!--           <button class="delete"></button>
- -->
       </div>
     </article>
   </div>
@@ -84,21 +90,52 @@ export default {
   data() {
     return {
       user: null,
+      currentUser: null
     }
   },
   props: {
     comment: Object,
   },
-  methods: mapActions(['getUserById']),
+  methods: {
+  	...mapActions(['getUserById', 'deleteComment']),
+    confirmDelete() {
+        this.$buefy.dialog.confirm({
+            title: this.$t('comment.delete_title'),
+            message: this.$t('comment.delete_message'),
+            confirmText: this.$t('comment.delete_button'),
+            cancelText: this.$t('comment.cancel_button'),
+            type: 'is-danger',
+            hasIcon: true,
+            onConfirm: () => this.deleteComment(this.comment.id)
+	            .then(() => {
+	            	this.$el.parentNode.removeChild(this.$el)
+	            })
+	            .catch(() => {
+	            	this.$buefy.toast.open({
+			          duration: 5000,
+			          message: this.$t('toast.credentials'),
+			          type: 'is-danger',
+			        })
+	            })
+        })
+    }
+  },
   async created() {
     await this.getUserById(this.comment.author_id)
     this.user = this.AuthModule.userDetails
+    this.currentUser = this.AuthModule.currentUserDetails
   },
   computed: {
     ...mapState(['AuthModule']),
     timestamp: function () {
       return moment(this.comment.time_created).fromNow(true)
     },
+    reportText: function () {
+        return this.$t('comment.report_default', {
+          user: this.user.first_name + ' ' + this.user.last_name,
+          path: window.location,
+        })	
+    }
   },
 }
 </script>

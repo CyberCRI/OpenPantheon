@@ -131,5 +131,15 @@
     "second_section_addendum": "Voudriez-vous nous aidez à ajouter d'autres langages? Contactez-nous à info@open-pantheon.org.",
     "third_section_title": "A propos de #LearningPlanet",
     "third_section_first_paragraph": "En 2019, le CRI et l'UNESCO ont joint leurs forces pour faire naître l'initiative #LearningPlanet, qui fédère une communauté en croissance rapide d'organisations internationales (institutions, universités, entrepreneurs sociaux, associations, artistes, medias, etc.) qui travaillent sur tous les secteurs clés liés au futurs soutenables, specialement ceux des jeunes: éducation, santé, bien-être, droits, développement durable... Déterminées à augmenter et accélérer leur impact concret, ces organisations explorent et implementent des modèles collaboratifs radicaux. #LearningPlanet co-designent et co-construisent des programmes (cercles thématiques, événements, courses, projets thématiques, etc.) et outils digitaux ouverts (plateforme de projets, GPS de la connaissance, Open Panthéon) pour permettre aux membres de la communité d'atteindre leurs objectifs ambitieux ensemble."
+  },
+  "comment" : {
+  	"see_user_pantheon": "Voir Panthéon",
+  	"report_comment": "Signaler cette célébration",
+  	"delete_comment": "Supprimer célébration",
+  	"report_default": "Bonjour,\nJe souhaite signaler la célébration de {user} sur cette page : {path}",
+  	"delete_title": "Supprimer célébration",
+  	"delete_message": "Êtes-vous sûr.e de vouloir <b>supprimer</b> votre célébration ? Vous ne pourrez pas revenir en arrière. Cela supprimera aussi cette personalité de votre Panthéon personnel.",
+  	"delete_button": "Supprimer",
+  	"cancel_button": "Annuler"
   }
 }
