@@ -310,13 +310,13 @@ If you have Vue CLI installed, you can also run `vue ui` to control, configure, 
 There's a copyright header on (almost) all the files. The CI will validate that the header is set correctly like so:
 
 ```bash
-./scripts/license-chek-and-add.sh check
+./scripts/license-check-and-add.sh check
 ```
 
 If one adds a new source file, he must add the copyright header:
 
 ```bash
-./scripts/license-chek-and-add.sh add
+./scripts/license-check-and-add.sh add
 ```
 
 ## URLs
