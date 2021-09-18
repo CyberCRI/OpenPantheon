@@ -56,14 +56,13 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
     <template #end>
       <b-navbar-item tag="div">
         <div class="buttons">
-          <b-navbar-item
-            tag="router-link"
+          <router-link
             :to="{ path: '/celebrate' }"
             class="button is-medium has-text-small is-primary is-mobile"
             active-class=""
             ><strong class="is-size-6 has-text-black">{{
               $t('topbar.celebrate')
-            }}</strong></b-navbar-item
+            }}</strong></router-link
           >
           <b-navbar-dropdown class="is-dark" :label="$t('topbar.currentLang')">
             <b-navbar-item @click="changeLocale('en')">{{ $t('topbar.en') }}</b-navbar-item>
