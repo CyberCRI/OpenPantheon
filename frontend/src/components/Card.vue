@@ -25,7 +25,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
             :src="
               data.claims.P18
                 ? `https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/${data.claims.P18[0]}&width=320`
-                : 'https://bulma.io/images/placeholders/480x480.png'
+                : './img/silhouette.png'
             "
             alt="Placeholder image"
           />
