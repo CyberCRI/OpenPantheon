@@ -12,7 +12,11 @@
                 "prepend": "; "
             }
         },
-        "html|xml|svg|md|vue|mjml": {
+        "xml|svg": {
+            "prepend": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!--",
+            "append": "-->"
+        },
+        "html|md|vue|mjml": {
             "prepend": "<!--",
             "append": "-->"
         },
