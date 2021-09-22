@@ -72,7 +72,12 @@
     "other": "Autres",
     "faq": "Trouvez la réponse aux questions les plus fréquentes des utilisateurs",
     "faq_explain": "Les principaux problèmes que rencontrent fréquemment les usagers sont expliqués ici. N'hésitez pas à contacter l'équipe Open Panthéon si des points importants n'y sont pas abordés.",
-    "faq_cta": "Visitez la FAQ"
+    "faq_cta": "Visitez la FAQ",
+    "why": "Quelle est la raison votre message ?",
+    "name": "Nom",
+    "mail": "Adresse email",
+    "send": "Envoyer",
+    "your_message": "Votre message"
   },
   "home": {
     "open": "Open Panthéon",

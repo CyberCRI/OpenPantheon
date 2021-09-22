@@ -23,10 +23,12 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
       <div class="section columns is-align-items-self-end">
         <div class="column is-3">
-          <figure v-if="data.claims && data.claims.P18" class="image" id="main_image_container">
+          <figure v-if="data.claims" class="image is-square" id="main_image_container">
             <img
               id="main_image"
-              :src="`https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/${data.claims.P18[0].mainsnak.datavalue.value}&width=320`"
+              :src="data.claims.P18
+                ? `https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/${data.claims.P18[0].mainsnak.datavalue.value}&width=320` : './img/silhouette.png'"
+               :style="{ 'background-color': data.claims.P18 ? '' : '#202137'}"
             />
           </figure>
         </div>
@@ -395,8 +397,6 @@ export default {
 
 <style type="scss" scoped>
 #main_image {
-  max-height: 240px;
-  max-width: 240px;
   border-radius: 0.75rem;
   object-fit: cover;
 }

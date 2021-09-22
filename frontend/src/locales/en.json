@@ -72,7 +72,12 @@
     "other": "Other",
     "faq": "Find some answers in the FAQ",
     "faq_explain": "The most frequent problems occuring to our users are explained here. Do not hesitate to contact us if important points are missing from the FAQ.",
-    "faq_cta": "Visit the FAQ"
+    "faq_cta": "Visit the FAQ",
+    "why": "What are you contacting us about?",
+    "name": "Name",
+    "mail": "Email address",
+    "send": "Send",
+    "your_message": "Your message"
   },
   "home": {
     "open": "Open Pantheon",

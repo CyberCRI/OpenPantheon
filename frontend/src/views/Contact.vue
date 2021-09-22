@@ -24,7 +24,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
           {{ $t('contact.text') }}
         </p>
         <form class="my-6" @submit.prevent="onSubmit">
-          <b-field label="What are you contacting us about ?" custom-class="is-medium">
+          <b-field :label="$t('contact.why')" custom-class="is-medium">
             <b-select size="is-medium" v-model="reason" expanded lazy>
               <option value="question" selected>{{ $t('contact.question') }}</option>
               <option value="abuse">{{ $t('contact.report') }}</option>
@@ -32,7 +32,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
               <option value="other">{{ $t('contact.other') }}</option>
             </b-select>
           </b-field>
-          <b-field label="Your message" custom-class="is-medium" required>
+          <b-field :label="$t('contact.your_message')" custom-class="is-medium" required>
             <b-input
               minlength="10"
               maxlength="1000"
@@ -42,13 +42,13 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
               lazy
             ></b-input>
           </b-field>
-          <b-field label="Name" label-position="inside" required>
+          <b-field :label="$t('contact.name')" label-position="inside" required>
             <b-input type="name" v-model="name" lazy></b-input>
           </b-field>
-          <b-field label="Email address" label-position="inside" required>
+          <b-field :label="$t('contact.mail')" label-position="inside" required>
             <b-input type="email" icon-right="email" v-model="email" lazy></b-input>
           </b-field>
-          <b-input type="submit" value="Send" custom-class="button is-primary"></b-input>
+          <b-input type="submit" :value="$t('contact.send')" custom-class="button is-primary"></b-input>
         </form>
       </div>
       <section class="section is-medium has-text-centered">
