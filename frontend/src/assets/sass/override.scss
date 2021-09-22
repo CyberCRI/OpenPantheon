@@ -176,6 +176,8 @@ $footer-padding: 3rem 1.5rem 3.75rem;
 
 .button {
 	white-space: inherit;
+	word-wrap: anywhere;
+	word-break: break-word;
 }
 
 .navbar {
