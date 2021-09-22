@@ -27,7 +27,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
                 ? `https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/${data.claims.P18[0]}&width=320`
                 : './img/silhouette.png'
             "
-            :style="{ 'background-color': data.claims.P18 ? '' : '#202137'}"
+            :style="{ 'background-color': data.claims.P18 ? '' : '#202137' }"
             alt="Placeholder image"
           />
           <b-skeleton size="is-large" height="320px" :active="isLoading"></b-skeleton>

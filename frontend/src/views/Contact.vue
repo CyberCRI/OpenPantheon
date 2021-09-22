@@ -48,7 +48,11 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
           <b-field :label="$t('contact.mail')" label-position="inside" required>
             <b-input type="email" icon-right="email" v-model="email" lazy></b-input>
           </b-field>
-          <b-input type="submit" :value="$t('contact.send')" custom-class="button is-primary"></b-input>
+          <b-input
+            type="submit"
+            :value="$t('contact.send')"
+            custom-class="button is-primary"
+          ></b-input>
         </form>
       </div>
       <section class="section is-medium has-text-centered">

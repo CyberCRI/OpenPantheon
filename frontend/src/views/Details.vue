@@ -26,9 +26,12 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
           <figure v-if="data.claims" class="image is-square" id="main_image_container">
             <img
               id="main_image"
-              :src="data.claims.P18
-                ? `https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/${data.claims.P18[0].mainsnak.datavalue.value}&width=320` : './img/silhouette.png'"
-               :style="{ 'background-color': data.claims.P18 ? '' : '#202137'}"
+              :src="
+                data.claims.P18
+                  ? `https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/${data.claims.P18[0].mainsnak.datavalue.value}&width=320`
+                  : './img/silhouette.png'
+              "
+              :style="{ 'background-color': data.claims.P18 ? '' : '#202137' }"
             />
           </figure>
         </div>
