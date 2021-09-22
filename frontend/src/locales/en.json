@@ -54,10 +54,10 @@
     "add": "Add to the pantheon"
   },
   "celebrate": {
-    "title": "Contribute to the Pantheon by celebrating a personnality.",
-    "subtitle": "Celebrate a person from the arts, science or edication fields.",
+    "title": "Contribute to the Pantheon by celebrating a personality.",
+    "subtitle": "Celebrate a person from the arts, science or education fields.",
     "who": "Who do you want to celebrate ?",
-    "parity": "There is currently {pctMen}% men and {pctWomen}% women on the Pantheon. Let's try to maintain a gender parity !",
+    "parity": "There is currently {pctMen}% men and {pctWomen}% women on the Pantheon. Let's try to maintain gender parity!",
     "why": "Why do you want to celebrate {name}",
     "explain": "Let us know briefly why that person is special to you and why you'd like to add them to the Pantheon.",
     "links": "You can share useful links about this person (optional)",
@@ -123,14 +123,14 @@
     "first_section_second_paragraph": "When adding a personality to their Pantheon, organisations and individuals act as their sponsor by writing a succinct argument explaining their choice (compulsory). They may also choose to add meaningful links (article, book, etc.).",
     "first_section_third_paragraph": "All nominated personalities then appear in the Open Pantheon platform, with a link to their Wikipedia bio and the succinct argument of each organisation/individual paying a personal tribute to their legacy.",
     "first_section_fourth_paragraph": "The collective crowdsourcing and distributed open tribute processes will allow for the celebration of local figures as well as of internationally renowned celebrities.",
-    "first_section_fifth_paragraph": "The Open Pantheon search engine will thus offer a unique opportunity to (re-)discover and be inspired by diverse people across centuries and cultures, across communities and gender.",
+    "first_section_fifth_paragraph": "The Open Pantheon search engine will thus offer a unique opportunity to (re-)discover and be inspired by diverse groups of people across centuries and cultures, across communities and genders.",
     "first_section_sixth_paragraph": "A moderation system will be put in place on the platform to avoid abuse and deal with personalities/comments that may be considered inappropriate by the community.",
     "first_section_addendum": "*When an inspirational figure cannot be found on Wikipedia, organisations/ individuals are encouraged to create a new Wikipedia bio prior to starting the Open Pantheon nomination process.",
     "second_section_title": "Languages",
     "second_section_first_paragraph": "The initial version of this new global online platform is currently available in English and French. In the near future, new languages will be added, notably the 4 other UN official languages (Arabic, Chinese, Russian and Spanish).",
-    "second_section_addendum": "Would you like to support us in rapidly adding more languages?, Please contact us at info@open-pantheon.org.",
+    "second_section_addendum": "Would you like to support us in rapidly adding more languages? Please contact us at info@open-pantheon.org.",
     "third_section_title": "About #LearningPlanet",
-    "third_section_first_paragraph": "In 2019, CRI and UNESCO joined forces to give birth to the #LearningPlanet initiative, which has since federated a rapidly growing international community of organisations (institutions, universities, social entrepreneurs, associations, artists, media, etc.) committed to all key areas related to sustainable futures, especially that of young people: education, health, well-being, rights, sustainable development... Determined to increase and accelerate their impact on the ground, these organisations are exploring and striving to implement radical collaborative models. #LearningPlanet thus co-designs and co-constructs programmes (thematic circles, events, training courses, field projects, etc.) and open digital tools (project platform, knowledge GPS, Open Pantheon) to enable community members to achieve ambitious goals together."
+    "third_section_first_paragraph": "In 2019, CRI and UNESCO joined forces to give birth to the #LearningPlanet initiative, which has since federated a rapidly growing international community of organisations (institutions, universities, social entrepreneurs, associations, artists, media, etc.) committed to all key areas related to sustainable futures, especially that of young people: education, health, well-being, rights, sustainable development... Determined to increase and accelerate their impact on the ground, these organisations are exploring and striving to implement radical collaborative models. #LearningPlanet thus co-designs and co-constructs programmes (thematic circles, events, training courses, field projects, etc.) and open digital tools (Projects platform, knowledge GPS, Open Pantheon) to enable community members to achieve ambitious goals together."
   },
   "comment": {
     "see_user_pantheon": "See his/her Pantheon",
