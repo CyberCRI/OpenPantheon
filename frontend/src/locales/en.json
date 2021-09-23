@@ -146,5 +146,9 @@
     "delete_message": "Are you sure you want to <b>delete</b> your celebration ? This action cannot be undone. This will also remove the personality from your personal Pantheon.",
     "delete_button": "Delete",
     "cancel_button": "Cancel"
+  },
+  "misc": {
+  	"name_unavailable": "Name unavailable",
+  	"desc_unavailable": "No description yet"
   }
 }

@@ -146,5 +146,9 @@
     "delete_message": "Êtes-vous sûr.e de vouloir <b>supprimer</b> votre célébration ? Vous ne pourrez pas revenir en arrière. Cela supprimera aussi cette personalité de votre Panthéon personnel.",
     "delete_button": "Supprimer",
     "cancel_button": "Annuler"
+  },
+  "misc": {
+  	"name_unavailable": "Nom indisponible",
+  	"desc_unavailable": "Pas encore de description"
   }
 }

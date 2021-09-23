@@ -38,11 +38,11 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
         <div class="column is-3">
           <div class="container pb-3">
-            <h1 v-if="data.labels" class="title is-spaced">
+            <h1 v-if="data.labels[$i18n.locale]" class="title is-spaced">
               {{ data.labels[$i18n.locale].value }}
             </h1>
 
-            <h2 v-if="data.descriptions" class="subtitle is-6">
+            <h2 v-if="data.descriptions[$i18n.locale]" class="subtitle is-6">
               {{ data.descriptions[$i18n.locale].value | capitalize({ onlyFirstLetter: true }) }}
             </h2>
 
