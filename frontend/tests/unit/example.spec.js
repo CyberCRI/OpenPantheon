@@ -17,7 +17,7 @@
  */
 import { shallowMount, createLocalVue } from '@vue/test-utils'
 import VueRouter from 'vue-router'
-import Buefy from 'buefy' 
+import Buefy from 'buefy'
 import Back from '@/components/Back.vue'
 
 const localVue = createLocalVue()
@@ -26,10 +26,10 @@ localVue.use(Buefy)
 const router = new VueRouter()
 
 describe('Back.vue', () => {
-  it('Goes back in history', async () => {
+  it('Does not go back in history', async () => {
     const wrapper = shallowMount(Back, {
-    	localVue,
-    	router
+      localVue,
+      router,
     })
     router.push('/pantheon/1')
     const currentRoute = router.currentRoute
