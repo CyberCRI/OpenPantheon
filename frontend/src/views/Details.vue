@@ -212,7 +212,6 @@ export default {
       .then((res) => res.json())
       .then(async (res) => {
         this.data = res.entities[this.personality.wikipedia_id]
-        console.log(res)
         if (res.entities[this.personality.wikipedia_id].sitelinks[this.$i18n.locale + 'wiki']) {
           this.wikiLink = wbk.getSitelinkUrl(
             res.entities[this.personality.wikipedia_id].sitelinks[this.$i18n.locale + 'wiki'].site,
@@ -260,9 +259,6 @@ export default {
         customClass: '',
         trapFocus: true,
       })
-      console.log(
-        this.$store.getters.listPersonalitiesCelebrated.includes(this.personality.wikipedia_id)
-      )
     },
     getArrayOfProperties(id, propertyName) {
       const url = wbk.getEntities({
@@ -281,7 +277,6 @@ export default {
         })
     },
     getSimpleProperty(id, propertyName) {
-      console.log(id)
       const url = wbk.getEntities({
         ids: id,
         languages: [this.$i18n.locale],
@@ -304,7 +299,6 @@ export default {
         month: 'long',
         day: 'numeric',
       })
-      console.log('ok', formatter.format(new Date(str)))
       return formatter.format(new Date(str))
     },
     ageAtDeath(dateOfBirth, dateOfDeath) {

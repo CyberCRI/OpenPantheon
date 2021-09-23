@@ -148,7 +148,7 @@
     "cancel_button": "Annuler"
   },
   "misc": {
-  	"name_unavailable": "Nom indisponible",
-  	"desc_unavailable": "Pas encore de description"
+    "name_unavailable": "Nom indisponible",
+    "desc_unavailable": "Pas encore de description"
   }
 }

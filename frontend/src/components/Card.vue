@@ -68,9 +68,11 @@ export default {
     isLoading: Boolean,
   },
   beforeUpdate() {
-  	if (!this.isLoading && !this.data.labels[this.$i18n.locale]) this.data.labels[this.$i18n.locale] = this.$t('misc.name_unavailable')
-   	if (!this.isLoading && !this.data.descriptions[this.$i18n.locale]) this.data.descriptions[this.$i18n.locale] = this.$t('misc.desc_unavailable')
-  }
+    if (!this.isLoading && !this.data.labels[this.$i18n.locale])
+      this.data.labels[this.$i18n.locale] = this.$t('misc.name_unavailable')
+    if (!this.isLoading && !this.data.descriptions[this.$i18n.locale])
+      this.data.descriptions[this.$i18n.locale] = this.$t('misc.desc_unavailable')
+  },
 }
 </script>
 

@@ -37,12 +37,11 @@ const getters = {
 }
 
 const actions = {
+  // eslint-disable-next-line
   async Register({ dispatch }, user) {
     await AuthService.createUser(user)
   },
-  // async Update({ commit }, user) {
-  //     await AuthService.updateUser(user)
-  // },
+  // eslint-disable-next-line
   addToPantheon({ commit }, personality_id) {
     return AuthService.updateUserPantheon(personality_id)
   },
@@ -50,40 +49,23 @@ const actions = {
     const params = new URLSearchParams()
     params.append('username', user.email)
     params.append('password', user.password)
-    return AuthService.getToken(params)
-      .then((response) => {
-        commit('SET_TOKEN', response.data.access_token)
-      })
-      .catch((error) => {
-        console.log('There was an error:', error.response)
-      })
+    return AuthService.getToken(params).then((response) => {
+      commit('SET_TOKEN', response.data.access_token)
+    })
   },
   getCurrentUserDetails({ commit }) {
-    return AuthService.getCurrentUserDetails()
-      .then((response) => {
-        console.log(response)
-        commit('SET_CURRENT_USER_DETAILS', response.data)
-      })
-      .catch((error) => {
-        console.log('There was an error:', error)
-      })
+    return AuthService.getCurrentUserDetails().then((response) => {
+      commit('SET_CURRENT_USER_DETAILS', response.data)
+    })
   },
   getUserById({ commit }, id) {
-    return AuthService.getUserById(id)
-      .then((response) => {
-        console.log(response)
-        commit('SET_USER_DETAILS', response.data)
-      })
-      .catch((error) => {
-        console.log('There was an error:', error)
-      })
+    return AuthService.getUserById(id).then((response) => {
+      commit('SET_USER_DETAILS', response.data)
+    })
   },
+  // eslint-disable-next-line
   deleteComment({ commit }, id) {
     return AuthService.deleteComment(id)
-      .then((response) => console.log(response))
-      .catch((error) => {
-        console.log('There was an error:', error)
-      })
   },
   LogOut({ commit }) {
     commit('SET_CURRENT_USER_DETAILS', null)

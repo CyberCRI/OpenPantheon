@@ -116,16 +116,13 @@ export default {
       else this.$router.push(`/celebrate?q=${option.id}&n=${option.labels[this.$i18n.locale]}`)
     },
     inPantheon(id, entity) {
-      return this.$store
-        .dispatch('fetchPersonalityByWiki', id)
-        .then((response) => {
-          if (!response) entity.celebrations = 0
-          else {
-            entity.celebrations = response.comments.length
-            entity.db_id = response.id
-          }
-        })
-        .catch((error) => console.log(error))
+      return this.$store.dispatch('fetchPersonalityByWiki', id).then((response) => {
+        if (!response) entity.celebrations = 0
+        else {
+          entity.celebrations = response.comments.length
+          entity.db_id = response.id
+        }
+      })
     },
   },
 }

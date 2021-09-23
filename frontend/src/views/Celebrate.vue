@@ -191,7 +191,6 @@ export default {
     },
     addInput(index) {
       this.references.splice(index + 1, 0, { link: '', name: '' })
-      console.log(this.$refs)
     },
     removeInput(index) {
       this.references.splice(index, 1)
@@ -210,10 +209,8 @@ export default {
         }
       } else if (step == '2') {
         if (!this.alreadyInDB) {
-          console.log('new')
           this.celebrate()
         } else {
-          console.log('update')
           if (
             !this.$store.getters.listPersonalitiesCelebrated.includes(this.personality.wikipedia_id)
           )
@@ -234,7 +231,6 @@ export default {
       this.name = entity.labels[this.$i18n.locale]
       this.personality.gender = entity.claims.P21[0] == 'Q6581072' ? 'f' : 'm'
       this.personality.field = ''
-      console.log('OK OK')
       let url = wbk.sparqlQuery(`
 ASK
 WHERE
@@ -246,8 +242,6 @@ WHERE
       fetch(url)
         .then((response) => response.json())
         .then((response) => (response.boolean == true ? (this.personality.field += 'science') : ''))
-        .catch((error) => console.log(error))
-      console.log('OK OK')
       url = wbk.sparqlQuery(`
 ASK
 WHERE
@@ -259,8 +253,6 @@ WHERE
       fetch(url)
         .then((response) => response.json())
         .then((response) => (response.boolean == true ? (this.personality.field += 'art') : ''))
-        .catch((error) => console.log(error))
-      console.log('OK OK')
       url = wbk.sparqlQuery(`
 ASK
 WHERE
@@ -275,7 +267,6 @@ WHERE
         .then((response) =>
           response.boolean == true ? (this.personality.field += 'education') : ''
         )
-        .catch((error) => console.log(error))
       url = wbk.sparqlQuery(`
 SELECT ?code_iso
 WHERE
@@ -289,7 +280,6 @@ wd:${this.personality.wikipedia_id} wdt:P27 [ wdt:P297 ?code_iso ].
           this.personality.continent =
             continents[countries[response.results.bindings[0].code_iso.value].continent]
         })
-        .catch((error) => console.log(error))
 
       this.alreadyInDB = entity.celebrations
       this.activeStep++
@@ -323,13 +313,12 @@ wd:${this.personality.wikipedia_id} wdt:P27 [ wdt:P297 ?code_iso ].
           await this.$store.dispatch('getPantheonStats')
           await this.createCommentAndLike()
         })
-        .catch((error) => {
+        .catch(() => {
           this.$buefy.toast.open({
             duration: 5000,
             message: this.$t('toast.unknown'),
             type: 'is-danger',
           })
-          console.log('There was a problem:', error.response)
         })
     },
   },

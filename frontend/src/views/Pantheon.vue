@@ -105,7 +105,6 @@ export default {
       })
     },
     findMyComment(personality) {
-      console.log(personality.comments.find((comment) => comment.author_id === this.user.id))
       return personality.comments.find((comment) => comment.author_id === this.user.id).text
     },
   },
@@ -124,7 +123,6 @@ export default {
       ids: titles,
       languages: [this.$i18n.locale],
     })
-    console.log('test', url)
     await fetch(url, {
       headers: {
         'Accept-Encoding': 'gzip',

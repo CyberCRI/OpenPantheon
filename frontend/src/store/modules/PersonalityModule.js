@@ -57,48 +57,52 @@ export default {
         commit('ADD_PERSONALITY', response.data)
       })
     },
+    // eslint-disable-next-line
     createComment({ commit }, input) {
       return PersonalityService.postComment(input)
     },
     fetchAll({ commit }, { loggedIn, skip, limit, personal, women, field, sort, region }) {
-      return PersonalityService.getAll(loggedIn, skip, limit, personal, women, field, sort, region)
-        .then((response) => {
-          commit('SET_TOTAL', Number(response.headers['x-total-count']))
-          commit('SET_PERSONALITIES', response.data)
-          return response.data
-        })
-        .catch((error) => {
-          console.log('There was an error:', error.response)
-        })
+      return PersonalityService.getAll(
+        loggedIn,
+        skip,
+        limit,
+        personal,
+        women,
+        field,
+        sort,
+        region
+      ).then((response) => {
+        commit('SET_TOTAL', Number(response.headers['x-total-count']))
+        commit('SET_PERSONALITIES', response.data)
+        return response.data
+      })
     },
-    fetchPersonality({ commit, getters }, id) {
+    fetchPersonality({ commit }, id) {
       return PersonalityService.getById(id)
         .then((response) => {
           commit('SET_PERSONALITY', response.data)
           return response.data
         })
-        .catch((error) => {
+        .catch(() => {
           this.$buefy.toast.open({
             duration: 5000,
             message: this.$t('toast.unknown'),
             type: 'is-danger',
           })
-          console.log('There was an error:', error.response)
         })
     },
-    fetchPersonalityByWiki({ commit, getters }, id) {
+    fetchPersonalityByWiki({ commit }, id) {
       return PersonalityService.getByWikiId(id)
         .then((response) => {
           commit('SET_PERSONALITY', response.data)
           return response.data
         })
-        .catch((error) => {
+        .catch(() => {
           this.$buefy.toast.open({
             duration: 5000,
             message: this.$t('toast.unknown'),
             type: 'is-danger',
           })
-          console.log('There was an error:', error.response)
         })
     },
   },

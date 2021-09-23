@@ -105,7 +105,6 @@ export default {
             this.data.push(entities[key])
           })
           this.isFetching = false
-          console.log('why', this.data)
         })
 
       if (!name.length) {
@@ -113,21 +112,16 @@ export default {
         return
       }
       this.isFetching = true
-      console.log('ok', this.data)
     }, 250),
     fetchWikidata(option) {
       this.name = option.labels[this.$i18n.locale]
       this.$emit('personalitySelected', option)
     },
     inPantheon(id, entity) {
-      return this.$store
-        .dispatch('fetchPersonalityByWiki', id)
-        .then((response) => {
-          console.log('proof', response)
-          if (!response) entity.celebrations = 0
-          else entity.celebrations = response.comments.length
-        })
-        .catch((error) => console.log(error))
+      return this.$store.dispatch('fetchPersonalityByWiki', id).then((response) => {
+        if (!response) entity.celebrations = 0
+        else entity.celebrations = response.comments.length
+      })
     },
   },
 }
