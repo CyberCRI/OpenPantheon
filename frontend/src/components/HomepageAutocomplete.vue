@@ -18,6 +18,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 <template>
   <b-field>
     <b-autocomplete
+      id="autocomplete"
       :data="data"
       :placeholder="$t('wiki.search')"
       field="title"
@@ -25,7 +26,8 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
       :value="name"
       :loading="isFetching"
       @typing="getAsyncData"
-      @select="fetchWikidata"
+      @select="redirect"
+      expanded
     >
       <template slot-scope="props">
         <div class="media">
@@ -44,10 +46,6 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
           </div>
           <div class="media-content">
             {{ props.option.labels[$i18n.locale] }}
-            <br />
-            <small>
-              {{ props.option.descriptions[$i18n.locale] }}
-            </small>
           </div>
           <div class="media-right is-hidden-mobile">
             <p v-if="props.option.celebrations > 0">
@@ -66,7 +64,7 @@ import wbk from 'wikidata-sdk'
 import debounce from 'lodash/debounce'
 
 export default {
-  name: 'Celebrate',
+  name: 'HomepageAutocomplete',
   data() {
     return {
       data: [],
@@ -105,7 +103,6 @@ export default {
             this.data.push(entities[key])
           })
           this.isFetching = false
-          console.log('why', this.data)
         })
 
       if (!name.length) {
@@ -113,19 +110,20 @@ export default {
         return
       }
       this.isFetching = true
-      console.log('ok', this.data)
     }, 250),
-    fetchWikidata(option) {
-      this.name = option.labels[this.$i18n.locale]
-      this.$emit('personalitySelected', option)
+    redirect(option) {
+      if (option.celebrations) this.$router.push(`/details/${option.db_id}`)
+      else this.$router.push(`/celebrate?q=${option.id}&n=${option.labels[this.$i18n.locale]}`)
     },
     inPantheon(id, entity) {
       return this.$store
         .dispatch('fetchPersonalityByWiki', id)
         .then((response) => {
-          console.log('proof', response)
           if (!response) entity.celebrations = 0
-          else entity.celebrations = response.comments.length
+          else {
+            entity.celebrations = response.comments.length
+            entity.db_id = response.id
+          }
         })
         .catch((error) => console.log(error))
     },
@@ -136,5 +134,10 @@ export default {
 <style scoped>
 img {
   object-fit: cover;
+}
+@media (min-width: 1280px) {
+  .field {
+    width: 100%;
+  }
 }
 </style>

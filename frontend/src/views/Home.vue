@@ -38,8 +38,8 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
           </div>
         </div>
         <div class="level-right">
-          <div class="level-item">
-            <WikiAutocomplete />
+          <div class="level-item" id="homepage_autocomplete">
+            <HomepageAutocomplete />
           </div>
           <div class="level-item filter_menu">
             <b-dropdown multiple aria-role="list">
@@ -222,7 +222,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 </template>
 
 <script>
-import WikiAutocomplete from '@/components/WikiAutocomplete.vue'
+import HomepageAutocomplete from '@/components/HomepageAutocomplete.vue'
 import CardList from '@/components/CardList.vue'
 import EmptyPantheon from '@/components/EmptyPantheon.vue'
 
@@ -241,7 +241,7 @@ export default {
   },
   components: {
     CardList,
-    WikiAutocomplete,
+    HomepageAutocomplete,
     EmptyPantheon,
   },
   async created() {
@@ -274,5 +274,17 @@ export default {
   font-size: 1rem;
   padding: 1.5rem;
   text-align: left;
+}
+
+@media (min-width: 1380px) {
+  #homepage_autocomplete {
+    width: 90%;
+  }
+}
+
+@media (min-width: 1280px) {
+  #homepage_autocomplete {
+    width: 75%;
+  }
 }
 </style>
