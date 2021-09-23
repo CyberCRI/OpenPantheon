@@ -33,9 +33,6 @@ COPY ./frontend/ /app/
 ARG BACKEND_URL=http://localhost:8000
 ENV VUE_APP_BACKEND_URL=${BACKEND_URL}
 
-# Comment out the next line to disable tests
-RUN yarn test:unit
-
 RUN yarn build
 
 
