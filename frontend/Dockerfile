@@ -33,7 +33,7 @@ COPY ./frontend/ /app/
 ARG BACKEND_URL=http://localhost:8000
 ENV VUE_APP_BACKEND_URL=${BACKEND_URL}
 
-RUN yarn build
+RUN yarn build && yarn css-build
 
 
 # Stage 1, based on Nginx, to have only the compiled app, ready for production with Nginx
