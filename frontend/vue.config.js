@@ -19,7 +19,13 @@
 module.exports = {
   lintOnSave: process.env.NODE_ENV !== 'production',
   runtimeCompiler: true,
-
+  css: {
+    loaderOptions: {
+      scss: {
+        prependData: `@import "~@/assets/sass/override.scss";`,
+      },
+    },
+  },
   pluginOptions: {
     i18n: {
       locale: 'en',

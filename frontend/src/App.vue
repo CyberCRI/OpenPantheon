@@ -29,6 +29,8 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 import TopBar from '@/components/TopBar'
 import Footer from '@/components/Footer'
 import MoreAbout from '@/components/MoreAbout'
+// eslint-disable-next-line
+import sassStyles from '@/assets/sass/override.scss'
 
 export default {
   name: 'root',

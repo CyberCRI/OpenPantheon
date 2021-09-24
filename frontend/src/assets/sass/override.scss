@@ -25,7 +25,7 @@ body {
 
 @font-face {
   font-family: ApfelGrotezk-Fett;
-  src: url(../fonts/apfelgrotezk_fett.woff2);
+  src: src('fonts/apfelgrotezk_fett.woff2');
 }
 
 // Set your colors
@@ -132,7 +132,6 @@ $dropdown-content-max-height: 500;
 
 // // Tabs
 
-// $tabs-boxed-link-active-background-color: $primary;
 $tabs-link-active-color: $grey-dark;
 
 // Cards
@@ -142,22 +141,6 @@ $card-radius: 0.75rem;
 // Footer
 
 $footer-padding: 3rem 1.5rem 3.75rem;
-
-// .mdi {
-//   	font-family: 'Material Icons';
-// 	font-weight: normal;
-// 	font-style: normal;
-// 	font-size: 24px;
-// 	line-height: 1;
-// 	letter-spacing: normal;
-// 	text-transform: none;
-// 	display: inline-block;
-// 	white-space: nowrap;
-// 	word-wrap: normal;
-// 	direction: ltr;
-// 	-moz-font-feature-settings: 'liga';
-// 	-moz-osx-font-smoothing: grayscale;
-// }
 
 // Import Bulma and Buefy styles
 @import '../../../node_modules/bulma/bulma';
@@ -181,7 +164,7 @@ $footer-padding: 3rem 1.5rem 3.75rem;
 }
 
 .navbar {
-  background: $scheme-main-bis url('../img/bubble/bubble@1,5x.svg');
+  background: $scheme-main-bis src('img/bubble/bubble@1,5x.svg');
   background-repeat: no-repeat;
   background-position-x: right;
   background-position-y: center;
