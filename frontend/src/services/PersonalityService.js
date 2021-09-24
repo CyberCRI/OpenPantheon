@@ -41,7 +41,7 @@ export default {
       )
     else
       return axios.get(
-        '/personalities/guest/?skip=' +
+        '/personalities/guest?skip=' +
           skip +
           '&limit=' +
           limit +
@@ -62,9 +62,9 @@ export default {
     return axios.get('/personalities/wiki/' + id)
   },
   postPersonality(personality) {
-    return axios.post('/personalities', personality)
+    return axios.post('/personalities/', personality)
   },
   postComment(input) {
-    return axios.post('/comments', input)
+    return axios.post('/comments/', input)
   },
 }

@@ -31,21 +31,21 @@ export default {
     return axios.get('/users/' + id)
   },
   updateUser(user) {
-    return axios.put('/users/me', user)
+    return axios.put('/users/me/', user)
   },
   updateUserPantheon(id) {
     return axios.post('/users/me/pantheon/' + id)
   },
   createUser(user) {
-    return axios.post('users/open', user)
+    return axios.post('/users/open', user)
   },
   deleteUser() {
-    return axios.delete('users/me')
+    return axios.delete('/users/me/')
   },
   deleteComment(id) {
-    return axios.delete('comments/' + id)
+    return axios.delete('/comments/' + id)
   },
   getToken(credentials) {
-    return axios.post('login/access-token', credentials)
+    return axios.post('/login/access-token', credentials)
   },
 }

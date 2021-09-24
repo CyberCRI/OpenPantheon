@@ -30,9 +30,6 @@ const getters = {
     state.currentUserDetails.personalities_celebrated.map(
       (personality) => personality.wikipedia_id
     ),
-  // userById: (state) => (id) => {
-  //     return state.users.find((user) => user.id === id)
-  // },
   idUser: (state) => state.currentUserDetails.id,
 }
 
