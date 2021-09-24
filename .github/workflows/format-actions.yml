@@ -13,7 +13,7 @@
 #
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
-name: Code formatting
+name: Code formatting & linting
 on:
   push:
     branches:
@@ -39,6 +39,9 @@ jobs:
       - name: Check the code formatting
         working-directory: frontend
         run: yarn format:check
+      - name: Lint
+        working-directory: frontend
+        run: yarn lint
 
   backend:
     runs-on: ubuntu-latest
