@@ -21,7 +21,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
     <div class="box">
       <!-- Head  -->
 
-      <div class="section columns is-align-items-self-end">
+      <div class="section columns is-align-items-self-end" id="head">
         <div class="column is-3">
           <figure v-if="data.claims" class="image is-square" id="main_image_container">
             <img
@@ -37,7 +37,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
         </div>
 
         <div class="column is-3">
-          <div class="container pb-3">
+          <div v-if="!isLoading" class="container pb-3">
             <h1 v-if="data.labels && data.labels[$i18n.locale]" class="title is-spaced">
               {{ data.labels[$i18n.locale].value }}
             </h1>
@@ -413,5 +413,22 @@ hr {
 
 .button {
   border-radius: 10px;
+}
+
+@media (max-width: 1408px) {
+  #head {
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+  }
+  #head .column {
+    width: unset;
+    align-self: center;
+    text-align: center;
+  }
+  #head .is-square {
+    padding: 0;
+    display: inline-block;
+  }
 }
 </style>

@@ -20,7 +20,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
     <div class="columns is-multiline" v-if="PersonalityModule.personalities">
       <b-loading :is-full-page="false" v-model="isLoading"></b-loading>
       <Card
-        class="column is-one-quarter"
+        class="column is-one-quarter-fullhd is-one-third-desktop is-half-tablet"
         v-for="personality in PersonalityModule.personalities"
         :key="personality.id"
         :personality="personality"
