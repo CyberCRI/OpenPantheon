@@ -20,8 +20,14 @@ body {
   font-size: 14px;
 }
 
+$mdi-font-path: '~@mdi/font/fonts';
+
+// Import Icons
+
+@import '~@mdi/font/scss/materialdesignicons';
+
 // Import Bulma's core
-@import '../../../node_modules/bulma/sass/utilities/_all';
+@import 'bulma/sass/utilities/_all';
 
 @font-face {
   font-family: ApfelGrotezk-Fett;
@@ -143,8 +149,8 @@ $card-radius: 0.75rem;
 $footer-padding: 3rem 1.5rem 3.75rem;
 
 // Import Bulma and Buefy styles
-@import '../../../node_modules/bulma/bulma';
-@import '../../../node_modules/buefy/src/scss/buefy';
+@import '~bulma/bulma';
+@import '~buefy/src/scss/buefy';
 
 .avatar {
   width: 48px;

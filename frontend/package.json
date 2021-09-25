@@ -26,6 +26,7 @@
     "start": "yarn css-watch & yarn serve"
   },
   "dependencies": {
+    "@mdi/font": "^6.1.95",
     "axios": "^0.21.1",
     "buefy": "^0.9.8",
     "bulma": "^0.9.3",
