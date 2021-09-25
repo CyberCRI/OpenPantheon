@@ -16,7 +16,7 @@ You should have received a copy of the GNU Affero General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 -->
 <template>
-  <div class="container box">
+  <div class="section container box has-text-centered">
     <!-- Sharingbutton Facebook -->
     <a
       class="resp-sharing-button__link"
@@ -116,6 +116,12 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
         WhatsApp
       </div>
     </a>
+    <b-field class="mt-5">
+      <b-input id="copy-box" v-model="currentPage" expanded disabled></b-input>
+      <p class="control">
+        <b-button icon-right="content-copy" class="button" @click="copy"></b-button>
+      </p>
+    </b-field>
   </div>
 </template>
 
@@ -124,8 +130,18 @@ export default {
   name: 'SocialModal',
   data() {
     return {
-      currentPage: window.location,
+      currentPage: window.location.href,
     }
+  },
+  methods: {
+    copy() {
+      var copyText = document.getElementById('copy-box')
+
+      copyText.select()
+      copyText.setSelectionRange(0, 99999)
+
+      navigator.clipboard.writeText(copyText.value)
+    },
   },
 }
 </script>
@@ -139,7 +155,7 @@ export default {
 .resp-sharing-button__link {
   text-decoration: none;
   color: #fff;
-  margin: 0.5em;
+  margin: 1em;
 }
 
 .resp-sharing-button {
@@ -153,7 +169,8 @@ export default {
   width: 1em;
   height: 1em;
   margin-right: 0.4em;
-  vertical-align: top;
+  vertical-align: middle;
+  transform: translateY(-10%);
 }
 
 .resp-sharing-button--small svg {
