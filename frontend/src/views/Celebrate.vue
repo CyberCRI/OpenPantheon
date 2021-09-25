@@ -48,14 +48,13 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
               {{ $t('celebrate.explain') }}
             </h2>
             <form @submit.prevent="checkForm()">
-              <b-field label="" custom-class="is-medium" required>
+              <b-field label="" custom-class="is-medium">
                 <b-input
                   minlength="10"
                   maxlength="1500"
                   type="textarea"
                   custom-class="has-fixed-size is-medium"
                   v-model="comment.text"
-                  lazy
                   placeholder="Add a comment"
                   required
                 ></b-input>

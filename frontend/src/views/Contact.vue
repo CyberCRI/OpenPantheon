@@ -25,28 +25,28 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
         </p>
         <form class="my-6" @submit.prevent="onSubmit">
           <b-field :label="$t('contact.why')" custom-class="is-medium">
-            <b-select size="is-medium" v-model="reason" expanded lazy>
+            <b-select size="is-medium" v-model="reason" expanded>
               <option value="question" selected>{{ $t('contact.question') }}</option>
               <option value="abuse">{{ $t('contact.report') }}</option>
               <option value="feedback">{{ $t('contact.feedback') }}</option>
               <option value="other">{{ $t('contact.other') }}</option>
             </b-select>
           </b-field>
-          <b-field :label="$t('contact.your_message')" custom-class="is-medium" required>
+          <b-field :label="$t('contact.your_message')" custom-class="is-medium">
             <b-input
               minlength="10"
               maxlength="1000"
               type="textarea"
               custom-class="has-fixed-size is-medium"
               v-model="message"
-              lazy
+              required
             ></b-input>
           </b-field>
-          <b-field :label="$t('contact.name')" label-position="inside" required>
-            <b-input type="name" v-model="name" lazy></b-input>
+          <b-field :label="$t('contact.name')" label-position="inside">
+            <b-input type="name" v-model="name" required></b-input>
           </b-field>
-          <b-field :label="$t('contact.mail')" label-position="inside" required>
-            <b-input type="email" icon-right="email" v-model="email" lazy></b-input>
+          <b-field :label="$t('contact.mail')" label-position="inside">
+            <b-input type="email" icon-right="email" v-model="email" required></b-input>
           </b-field>
           <b-input
             type="submit"
