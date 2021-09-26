@@ -30,7 +30,7 @@ import TopBar from '@/components/TopBar'
 import Footer from '@/components/Footer'
 import MoreAbout from '@/components/MoreAbout'
 // eslint-disable-next-line
-import sassStyles from '@/assets/sass/override.scss'
+import styles from '@/assets/sass/override.scss'
 
 export default {
   name: 'root',

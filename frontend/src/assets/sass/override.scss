@@ -31,8 +31,33 @@ $mdi-font-path: '~@mdi/font/fonts';
 
 @font-face {
   font-family: ApfelGrotezk-Fett;
-  src: src('fonts/apfelgrotezk_fett.woff2');
+  font-display: swap;
+  unicode-range: U+000-5FF;
+  src: url('/fonts/apfelgrotezk_fett.woff2') format('woff2'),
+       url('/fonts/apfelgrotezk_fett.woff') format('woff');
+  font-style: normal;
 }
+
+@font-face {
+    font-family: 'Poppins';
+    font-display: swap;
+    unicode-range: U+000-5FF;
+    src: url('/fonts/poppins_medium-webfont.woff2') format('woff2'),
+         url('/fonts/poppins_medium-webfont.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    font-display: swap;
+    unicode-range: U+000-5FF;
+    src: url('/fonts/poppins_bold-webfont.woff2') format('woff2'),
+         url('/fonts/poppins_bold-webfont.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+}
+
 
 // Set your colors
 $primary: #61e987;
