@@ -99,6 +99,7 @@ export default {
           this.data = entities
           this.isLoading = false
         })
+      window.scrollTo({ top: 168, behavior: 'smooth' })
     },
   },
   props: {

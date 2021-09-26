@@ -17,7 +17,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 -->
 <template>
   <router-link :to="{ name: 'Details', params: { id: personality.id } }">
-    <div class="card">
+    <div class="card" v-if="data">
       <div class="card-image">
         <figure class="image is-square">
           <img

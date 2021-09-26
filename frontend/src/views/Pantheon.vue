@@ -62,7 +62,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
           <b-loading :is-full-page="false" v-model="isLoading"></b-loading>
           <Card
             class="column is-one-third"
-            v-for="personality in user.personalities_celebrated.slice(0, 50)"
+            v-for="personality in personalities"
             :key="personality.id"
             :personality="personality"
             :data="data ? data[personality.wikipedia_id] : {}"
@@ -70,6 +70,20 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
             ><p class="comment">{{ findMyComment(personality) | truncate(50) }}</p></Card
           >
         </div>
+        <b-pagination
+          :total="count"
+          v-model="page"
+          order="is-centered"
+          rounded
+          :per-page="perPage"
+          icon-prev="chevron-left"
+          icon-next="chevron-right"
+          aria-next-label="Next page"
+          aria-previous-label="Previous page"
+          aria-page-label="Page"
+          aria-current-label="Current page"
+        >
+        </b-pagination>
       </div>
     </div>
   </section>
@@ -91,6 +105,9 @@ export default {
       women: null,
       count: null,
       isLoading: true,
+      perPage: 50,
+      page: 1,
+      personalities: [],
     }
   },
   methods: {
@@ -107,6 +124,33 @@ export default {
     findMyComment(personality) {
       return personality.comments.find((comment) => comment.author_id === this.user.id).text
     },
+    changePage() {
+      this.isLoading = true
+      this.populateTab()
+      window.scrollTo({ top: 168 })
+    },
+    async populateTab() {
+      this.personalities = this.user.personalities_celebrated.slice(
+        (this.page - 1) * this.perPage,
+        this.page * this.perPage
+      )
+      let titles = this.personalities.map((personality) => personality.wikipedia_id)
+      const url = await wbk.getEntities({
+        ids: titles,
+        languages: [this.$i18n.locale],
+      })
+      await fetch(url, {
+        headers: {
+          'Accept-Encoding': 'gzip',
+        },
+      })
+        .then((res) => res.json()) //
+        .then(wbk.parse.wb.entities)
+        .then((entities) => {
+          this.data = entities
+          this.isLoading = false
+        })
+    },
   },
   async created() {
     await this.getUserById(this.$router.currentRoute.params.user)
@@ -116,29 +160,19 @@ export default {
     })
     this.count = this.user.personalities_celebrated.length
     this.women = Math.floor((this.women / this.count) * 100)
-    let titles = this.user.personalities_celebrated
-      .map((personality) => personality.wikipedia_id)
-      .slice(0, 50) // Limit Wikipedia
-    const url = await wbk.getEntities({
-      ids: titles,
-      languages: [this.$i18n.locale],
-    })
-    await fetch(url, {
-      headers: {
-        'Accept-Encoding': 'gzip',
-      },
-    })
-      .then((res) => res.json()) //
-      .then(wbk.parse.wb.entities)
-      .then((entities) => {
-        this.data = entities
-        this.isLoading = false
-      })
+    this.populateTab()
   },
   computed: mapState(['AuthModule', 'PersonalityModule']),
   components: {
     Back,
     Card,
+  },
+  watch: {
+    page: {
+      handler() {
+        this.changePage()
+      },
+    },
   },
 }
 </script>
