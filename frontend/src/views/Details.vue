@@ -356,23 +356,28 @@ export default {
         this.data.claims.P26.forEach((spouse, index) => {
           this.properties.marriages.push({
             spouse: this.properties.spouses[index],
-            start: spouse.qualifiers && spouse.qualifiers.P580
-              ? wbk
-                  .wikibaseTimeToDateObject(spouse.qualifiers.P580[0].datavalue.value.time)
-                  .getFullYear()
-              : '',
-            end: spouse.qualifiers && spouse.qualifiers.P582
-              ? wbk
-                  .wikibaseTimeToDateObject(spouse.qualifiers.P582[0].datavalue.value.time)
-                  .getFullYear()
-              : '',
+            start:
+              spouse.qualifiers && spouse.qualifiers.P580
+                ? wbk
+                    .wikibaseTimeToDateObject(spouse.qualifiers.P580[0].datavalue.value.time)
+                    .getFullYear()
+                : '',
+            end:
+              spouse.qualifiers && spouse.qualifiers.P582
+                ? wbk
+                    .wikibaseTimeToDateObject(spouse.qualifiers.P582[0].datavalue.value.time)
+                    .getFullYear()
+                : '',
             reason:
               spouse.qualifiers &&
               spouse.qualifiers.P1534 &&
               spouse.qualifiers.P1534[0].datavalue.value.id == 'Q24037741'
                 ? 'death'
                 : '',
-            order: spouse.qualifiers && spouse.qualifiers.P1545 ? spouse.qualifiers.P1545[0].datavalue.value : 0,
+            order:
+              spouse.qualifiers && spouse.qualifiers.P1545
+                ? spouse.qualifiers.P1545[0].datavalue.value
+                : 0,
           })
         })
         this.properties.marriages.sort((a, b) => a.order - b.order)
