@@ -34,7 +34,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
           label-position="bottom"
           @input="stepControl"
         >
-          <b-step-item class="my-6" label="Choose a personality">
+          <b-step-item class="my-6" :label="$t('celebrate.choose')">
             <h1 class="title has-text-centered">{{ $t('celebrate.who') }}</h1>
             <h2 class="subtitle has-text-centered">
               {{ $t('celebrate.parity', { pctMen: 100 - parity, pctWomen: parity }) }}
@@ -42,7 +42,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
             <WikiAutocomplete @personalitySelected="createPersonality" />
           </b-step-item>
 
-          <b-step-item class="my-6" label="Write a celebration">
+          <b-step-item class="my-6" :label="$t('celebrate.write')">
             <h1 class="title has-text-centered">{{ $t('celebrate.why', { name: name }) }}</h1>
             <h2 class="subtitle has-text-centered">
               {{ $t('celebrate.explain') }}
@@ -55,7 +55,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
                   type="textarea"
                   custom-class="has-fixed-size is-medium"
                   v-model="comment.text"
-                  placeholder="Add a comment"
+                  :placeholder="$t('celebrate.add')"
                   required
                 ></b-input>
               </b-field>
@@ -80,7 +80,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
                   <b-input
                     type="text"
                     v-model="reference.name"
-                    placeholder="Name"
+                    :placeholder="$t('celebrate.link_title')"
                     ref="name"
                   ></b-input>
                 </b-field>
@@ -88,7 +88,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
                   <b-input
                     type="url"
                     v-model="reference.link"
-                    placeholder="Link"
+                    :placeholder="$t('celebrate.link_target')"
                     ref="link"
                   ></b-input>
                 </b-field>
@@ -97,11 +97,15 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
                 </b-field>
               </b-field>
               <p class="has-text-danger" v-if="error">{{ error }}</p>
-              <input type="submit" class="button is-primary is-pulled-right" value="Submit" />
+              <input
+                type="submit"
+                class="button is-primary is-pulled-right"
+                :value="$t('celebrate.submit')"
+              />
             </form>
           </b-step-item>
 
-          <b-step-item class="my-6" label="Publish"> </b-step-item>
+          <b-step-item class="my-6" :label="$t('celebrate.publish')"> </b-step-item>
         </b-steps>
       </div>
       <section class="section is-medium has-text-centered">

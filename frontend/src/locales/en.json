@@ -41,13 +41,23 @@
   },
   "login": {
     "no_account": "Don't have an account yet ?",
-    "create_one": "Create an account"
+    "create_one": "Create an account",
+    "email": "Email",
+    "password": "Password",
+    "your_email": "Your email",
+    "login": "Login"
   },
   "register": {
     "already": "Already have an account ? ",
     "login": "Login",
     "welcome": "Get in touch",
-    "welcome_text": "Please explain to the community who you are before sharing the people who inspired you."
+    "welcome_text": "Please explain to the community who you are before sharing the people who inspired you.",
+    "signup": "Sign up",
+    "first_name": "First name",
+    "last_name": "Last name",
+    "job": "Your job title / role (optional)",
+    "organization": "Your organization (optional)",
+    "create": "Create my account"
   },
   "wiki": {
     "search": "Search someone on wikipedia...",
@@ -61,7 +71,14 @@
     "why": "Why do you want to celebrate {name}",
     "explain": "Let us know briefly why that person is special to you and why you'd like to add them to the Pantheon.",
     "links": "You can share useful links about this person (optional)",
-    "warning": "Please provide both the name and the URL of any reference."
+    "warning": "Please provide both the name and the URL of any reference.",
+    "choose": "Choose a personality",
+    "write": "Write a celebration",
+    "add": "Add a comment",
+    "link_title": "Title",
+    "link_target": "Link",
+    "submit": "Submit",
+    "publish": "Publish"
   },
   "contact": {
     "hello": "Get in touch",

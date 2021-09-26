@@ -20,8 +20,8 @@
     "en": "Anglais",
     "fr": "Français",
     "currentLang": "Français",
-    "login": "Login",
-    "logout": "Log out",
+    "login": "Se connecter",
+    "logout": "Se déconnecter",
     "madeInCRI": "Fait au CRI avec ❤ par l'équipe IT",
     "sourceCode": "Code source",
     "terms": "Conditions d'utilisation"
@@ -41,13 +41,23 @@
   },
   "login": {
     "no_account": "Pas encore de compte ?",
-    "create_one": "Créer un compte"
+    "create_one": "Créer un compte",
+    "email": "Email",
+    "password": "Mot de passe",
+    "your_email": "Votre email",
+    "login": "Se connecter"
   },
   "register": {
     "already": "Vous avez déjà un compte ? ",
     "login": "Login",
     "welcome": "Bienvenue!",
-    "welcome_text": "Expliquez qui vous êtes à la communauté avant de partager les personnes qui vous ont inspirées."
+    "welcome_text": "Expliquez qui vous êtes à la communauté avant de partager les personnes qui vous ont inspirées.",
+    "signup": "S'inscrire",
+    "first_name": "Prénom",
+    "last_name": "Nom",
+    "job": "Votre titre / role (optionnel)",
+    "organization": "Votre organisation (optionnel)",
+    "create": "Créer mon compte"
   },
   "wiki": {
     "search": "Rechercher une personne sur WikiPedia...",
@@ -61,7 +71,14 @@
     "why": "Pourquoi souhaitez-vous célébrer {name} ?",
     "explain": "Expliquez brièvement pourquoi cette personne est spéciale pour vous ou votre organisation et purquoi vous aimeriez l'ajouter au Panthéon.",
     "links": "Vous pouvez choisir de partager des liens intéressants à propos de cette personne (optionnel)",
-    "warning": "Merci de fournir un nom et une URL pour chaque référence ajoutée."
+    "warning": "Merci de fournir un nom et une URL pour chaque référence ajoutée.",
+    "choose": "Choisissez une personalité",
+    "write": "Écrivez une célébration",
+    "add": "Ajoutez votre commentaire",
+    "link_title": "Titre",
+    "link_target": "Lien",
+    "submit": "Soumettre",
+    "publish": "Publiez"
   },
   "contact": {
     "hello": "Contactez-nous",

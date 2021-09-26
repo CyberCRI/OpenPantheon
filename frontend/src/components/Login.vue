@@ -18,18 +18,24 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 <template>
   <form @submit.prevent="onSubmit">
     <section class="modal-card-body px-6 py-6">
-      <b-field label="Email" label-position="inside">
-        <b-input type="email" v-model="user.email" placeholder="Your email" required expanded>
+      <b-field :label="$t('login.email')" label-position="inside">
+        <b-input
+          type="email"
+          v-model="user.email"
+          :placeholder="$t('login.your_email')"
+          required
+          expanded
+        >
         </b-input>
       </b-field>
 
-      <b-field label="Password" label-position="inside">
+      <b-field :label="$t('login.password')" label-position="inside">
         <b-input type="password" v-model="user.password" password-reveal required expanded>
         </b-input>
       </b-field>
 
-      <b-input type="submit" value="Login" custom-class="button is-primary"></b-input>
-      <p class="block">
+      <b-input type="submit" :value="$t('login.login')" custom-class="button is-primary"></b-input>
+      <p class="block mt-4">
         {{ $t('login.no_account') }}
         <a @click="$emit('switchView')">{{ $t('login.create_one') }}</a>
       </p>

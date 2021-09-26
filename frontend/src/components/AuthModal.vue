@@ -16,7 +16,7 @@ You should have received a copy of the GNU Affero General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 -->
 <template>
-  <section class="modal-card is-flex is-flex-direction-column is-align-items-center px-6">
+  <section class="modal-card is-flex is-flex-direction-column is-align-items-center">
     <Login v-if="view == 'Login'" @switchView="changeView" @close="$emit('close')" />
     <Register v-else @switchView="changeView" @close="$emit('close')" />
   </section>
