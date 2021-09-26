@@ -33,7 +33,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
           </h2>
         </div>
 
-        <div class="section columns">
+        <div id="head" class="section columns">
           <div class="column is-9">
             <h1 class="title is-4 mb-6" v-if="user">
               {{ user.first_name | capitalize }}'s Pantheon
@@ -51,9 +51,9 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
           <div class="column is-3">
             <button
               @click="socialModal"
-              class="button is-large is-primary has-text-black has-text-small"
+              class="button is-medium is-primary has-text-black has-text-small"
             >
-              <strong class="is-size-6 mx-6">{{ $t('details.share') }}</strong>
+              <strong class="is-size-6">{{ $t('details.share') }}</strong>
             </button>
           </div>
         </div>
@@ -61,7 +61,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
         <div class="columns is-multiline mb-5" v-if="user && data">
           <b-loading :is-full-page="false" v-model="isLoading"></b-loading>
           <Card
-            class="column is-one-third"
+            class="column is-one-third-desktop is-half"
             v-for="personality in personalities"
             :key="personality.id"
             :personality="personality"
@@ -178,18 +178,6 @@ export default {
 </script>
 
 <style type="scss" scoped>
-#main_image {
-  max-height: 240px;
-  max-width: 240px;
-  border-radius: 0.75rem;
-  object-fit: cover;
-}
-
-#main_image_container {
-  height: 240px;
-  width: 240px;
-}
-
 hr {
   border-top: 1px solid #bbb;
 }
@@ -200,5 +188,25 @@ hr {
 
 .comment {
   overflow-wrap: break-word;
+}
+
+@media (max-width: 1408px) {
+  #head {
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+  }
+  #head .column {
+    width: unset;
+    align-self: center;
+    text-align: center;
+  }
+}
+
+@media (max-width: 420px) {
+  .box {
+    padding: 0 !important;
+    box-shadow: unset;
+  }
 }
 </style>

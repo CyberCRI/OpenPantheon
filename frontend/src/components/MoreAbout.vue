@@ -49,4 +49,10 @@ export default {
 .subtitle {
   max-width: 50%;
 }
+
+@media (max-width: 1024px) {
+  .subtitle {
+    max-width: 100%;
+  }
+}
 </style>
