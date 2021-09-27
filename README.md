@@ -32,7 +32,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md)
 
 The code is owned by the CRI and maintained by the [CRI IT team](mailto:it-team@cri-paris.org).
 
-The initial work as been done by [lboudaa](https://github.com/lboudaa)
+The initial work has been done by [Louinis Boudaa](https://github.com/lboudaa)
 
 # License
 
