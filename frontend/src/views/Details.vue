@@ -41,13 +41,13 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
             <h1 v-if="data.labels && data.labels[$i18n.locale]" class="title is-spaced">
               {{ data.labels[$i18n.locale].value }}
             </h1>
-            <h1 v-else>
+            <h1 v-else class="title is-spaced">
               {{ $t('misc.name_unavailable') }}
             </h1>
             <h2 v-if="data.descriptions && data.descriptions[$i18n.locale]" class="subtitle is-6">
               {{ data.descriptions[$i18n.locale].value | capitalize({ onlyFirstLetter: true }) }}
             </h2>
-            <h2 v-else>
+            <h2 v-else class="subtitle is-6">
               {{ $t('misc.desc_unavailable') }}
             </h2>
             <small v-if="data.claims"
@@ -65,7 +65,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
                 $store.getters.isAuthenticated &&
                 $store.getters.listPersonalitiesCelebrated.includes(personality.wikipedia_id),
             }"
-            v-if="!isLoading"
+            v-if="!isLoading && data.labels && data.labels[$i18n.locale]"
             ><strong class="is-size-6 mx-6">{{ $t('details.celebrate') }}</strong></router-link
           >
         </div>
