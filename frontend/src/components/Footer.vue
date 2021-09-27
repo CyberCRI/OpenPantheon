@@ -52,11 +52,11 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
         </b-navbar-dropdown>
       </div>
       <hr />
-      <div class="is-flex is-justify-content-center my-6">
+<!--       <div class="is-flex is-justify-content-center my-6">
         <img src="img/icons/facebook@1,5x.svg" alt="Logo Facebook" />
         <img src="img/icons/twitter@1,5x.svg" alt="Logo Twitter" />
         <img src="img/icons/linkedin@1,5x.svg" alt="Logo Linkedin" />
-      </div>
+      </div> -->
       <div class="my-6 is-flex is-justify-content-center is-align-content-space-around">
         <p class="is-align-self-center mr-6 has-text-grey-lighter">
           {{ $t('footer.madeInCRI') }}
