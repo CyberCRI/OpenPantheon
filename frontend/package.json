@@ -18,12 +18,9 @@
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
-    "css-build": "node-sass --omit-source-map-url src/assets/sass/override.scss public/css/override.css",
-    "css-watch": "node-sass --omit-source-map-url src/assets/sass/override.scss public/css/override.css -w",
     "format": "prettier --write \"**/*.{json,js,vue}\"",
     "format:check": "prettier --check \"**/*.{json,js,vue}\"",
-    "i18n:report": "vue-cli-service i18n:report --src \"./src/**/*.?(js|vue)\" --locales \"./src/locales/**/*.json\"",
-    "start": "yarn css-watch & yarn serve"
+    "i18n:report": "vue-cli-service i18n:report --src \"./src/**/*.?(js|vue)\" --locales \"./src/locales/**/*.json\""
   },
   "dependencies": {
     "@mdi/font": "^6.1.95",

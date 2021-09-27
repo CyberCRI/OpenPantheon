@@ -19,7 +19,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
 import About from './views/About.vue'
-// import Faq from "./views/Faq.vue"
+import Faq from './views/Faq.vue'
 import Contact from './views/Contact.vue'
 import Details from './views/Details.vue'
 import Pantheon from './views/Pantheon.vue'
@@ -32,15 +32,13 @@ const router = new Router({
   routes: [
     { path: '/home', name: 'Home', component: Home, alias: '/' },
     { path: '/about', name: 'About', component: About },
-    // { path: '/faq', name:"Faq", component: Faq },
+    { path: '/faq', name: 'Faq', component: Faq },
     {
       path: '/contact',
       name: 'Contact',
       component: Contact,
       props: (route) => ({ report: route.query.q }),
     },
-    // { path: '/account', name:"Account", component: Account },
-    // { path: '/user-pantheon/:user', name:"UserPantheon", component: UserPantheon, props: true },
     { path: '/details/:id', name: 'Details', component: Details, props: true },
     { path: '/pantheon/:user', name: 'Pantheon', component: Pantheon, props: true },
     {
