@@ -61,12 +61,12 @@
   },
   "wiki": {
     "search": "Search someone on wikipedia...",
-    "add": "Add to the pantheon"
+    "add": "Add to the Pantheon"
   },
   "celebrate": {
     "title": "Contribute to the Pantheon by celebrating a personality.",
     "subtitle": "Celebrate a person from the arts, science or education fields.",
-    "who": "Who do you want to celebrate ?",
+    "who": "Who do you want to celebrate?",
     "parity": "There is currently {pctMen}% men and {pctWomen}% women on the Pantheon. Let's try to maintain gender parity!",
     "why": "Why do you want to celebrate {name}",
     "explain": "Let us know briefly why that person is special to you and why you'd like to add them to the Pantheon.",
@@ -82,7 +82,7 @@
   },
   "contact": {
     "hello": "Get in touch",
-    "text": "Our Open Pantheon team is available to answer your questions, comments and improvement suggestions, don't forget to check out our FAQs section beforehand !",
+    "text": "Our Open Pantheon team is available to answer your questions, comments and improvement suggestions, don't forget to check out our FAQs section beforehand!",
     "question": "I have a question about this project",
     "report": "Report an abuse",
     "feedback": "Comment / feedback on the website",
@@ -119,7 +119,7 @@
   },
   "empty_pantheon": {
     "title": "Your Pantheon is empty for now",
-    "text": "Take part in the democratization of the Pantheon and choose personnalities that you wish to be celebrated ! This will add them automatically to your Pantheon.",
+    "text": "Take part in the democratization of the Pantheon and choose personnalities that you wish to be celebrated! This will add them automatically to your Pantheon.",
     "celebrate": "Add someone to my Pantheon"
   },
   "moreabout": {
@@ -160,7 +160,7 @@
     "delete_comment": "Delete celebration",
     "report_default": "Hello,\nI wanted to report {user}'s celebration on this page: {path}",
     "delete_title": "Deleting celebration",
-    "delete_message": "Are you sure you want to <b>delete</b> your celebration ? This action cannot be undone. This will also remove the personality from your personal Pantheon.",
+    "delete_message": "Are you sure you want to <b>delete</b> your celebration? This action cannot be undone. This will also remove the personality from your personal Pantheon.",
     "delete_button": "Delete",
     "cancel_button": "Cancel"
   },
