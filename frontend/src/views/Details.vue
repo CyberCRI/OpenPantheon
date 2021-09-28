@@ -92,7 +92,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
       <!-- Bio and factsheet  -->
 
       <div id="bio" class="section">
-        <h2 id="title" class="title is-4">{{ $t('details.about') }}</h2>
+        <h2 id="title" class="title is-4" v-if="bio">{{ $t('details.about') }}</h2>
         <div class="columns is-align-items-self-start">
           <p class="has-text-justified column is-7" v-if="bio">
             {{ bio }}
