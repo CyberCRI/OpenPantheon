@@ -23,8 +23,8 @@ from app.tests.utils.personality import create_random_personality
 import random
 
 def create_random_comment(db: Session) -> models.Comment:
-	personality = create_random_personality()
-	user = create_random_user()
+	personality = create_random_personality(db)
+	user = create_random_user(db)
 	text = random_lower_string()
 	fluff = ''
 	num = random.randint(0, 10)
