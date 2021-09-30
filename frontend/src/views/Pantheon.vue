@@ -119,6 +119,9 @@ export default {
         hasModalCard: false,
         customClass: '',
         trapFocus: true,
+        props: {
+          mode: 'pantheon',
+        },
       })
     },
     findMyComment(personality) {

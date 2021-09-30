@@ -1,4 +1,8 @@
 {
+  "social": {
+    "details": "I celebrate {name} by adding {gender} to #MyPantheon on the #OpenPantheon platform!%0a%0aWho inspires you in the field of learning?%0a",
+    "pantheon": "My personal #OpenPantheon of education, science and arts unsung heroes%0a"
+  },
   "topbar": {
     "pantheon": "My Pantheon",
     "about": "About",

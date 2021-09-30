@@ -74,7 +74,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
           <button
             @click="socialModal"
             class="button is-medium has-text-small px-0"
-            v-if="!isLoading"
+            v-if="!isLoading && data.labels && data.labels[$i18n.locale]"
           >
             <strong class="is-size-6 mx-6">{{ $t('details.share') }}</strong>
           </button>
@@ -252,6 +252,11 @@ export default {
         hasModalCard: false,
         customClass: '',
         trapFocus: true,
+        props: {
+          mode: 'details',
+          personality: this.data.labels[this.$i18n.locale].value,
+          gender: this.personality.gender,
+        },
       })
     },
     commentModal() {

@@ -20,7 +20,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
     <!-- Sharingbutton Facebook -->
     <a
       class="resp-sharing-button__link"
-      :href="`https://facebook.com/sharer/sharer.php?u=${currentPage}`"
+      :href="`https://facebook.com/sharer/sharer.php?u=${currentPage}&quote=${sharingText}`"
       target="_blank"
       rel="noopener"
       aria-label="Facebook"
@@ -40,7 +40,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
     <!-- Sharingbutton Twitter -->
     <a
       class="resp-sharing-button__link"
-      :href="`https://twitter.com/intent/tweet/?text=&amp;url=${currentPage}`"
+      :href="`https://twitter.com/intent/tweet/?text=${sharingText}&url=${currentPage}`"
       target="_blank"
       rel="noopener"
       aria-label="Twitter"
@@ -60,7 +60,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
     <!-- Sharingbutton E-Mail -->
     <a
       class="resp-sharing-button__link"
-      :href="`mailto:?subject=&amp;body=${currentPage}`"
+      :href="`mailto:?body=${sharingText}%0a${currentPage}`"
       target="_self"
       rel="noopener"
       aria-label="E-Mail"
@@ -80,7 +80,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
     <!-- Sharingbutton LinkedIn -->
     <a
       class="resp-sharing-button__link"
-      :href="`https://www.linkedin.com/shareArticle?mini=true&amp;url=${currentPage}&amp;title=&amp;summary=&amp;source=${currentPage}`"
+      :href="`https://www.linkedin.com/sharing/share-offsite/?url=${currentPage}`"
       target="_blank"
       rel="noopener"
       aria-label="LinkedIn"
@@ -100,7 +100,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
     <!-- Sharingbutton WhatsApp -->
     <a
       class="resp-sharing-button__link"
-      :href="`whatsapp://send?text=%20${currentPage}`"
+      :href="`whatsapp://send?text=%20${sharingText}%0a${currentPage}`"
       target="_blank"
       rel="noopener"
       aria-label="WhatsApp"
@@ -128,8 +128,20 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 <script>
 export default {
   name: 'SocialModal',
+  props: {
+    mode: String,
+    personality: String,
+    gender: String,
+  },
   data() {
     return {
+      sharingText:
+        this.mode === 'pantheon'
+          ? this.$t('social.pantheon')
+          : this.$t('social.details', {
+              name: this.personality,
+              gender: this.gender === 'm' ? 'him' : 'her',
+            }),
       currentPage: window.location.href,
     }
   },
