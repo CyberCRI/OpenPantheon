@@ -104,16 +104,5 @@ class CRUDPersonality(CRUDBase[Personality, PersonalityCreate, PersonalityUpdate
         get_count.append(result.count())
         return result.offset(skip).limit(limit).all()
 
-    # def get_multi_by_owner(
-    #     self, db: Session, *, owner_id: int, skip: int = 0, limit: int = 100
-    # ) -> List[Personality]:
-    #     return (
-    #         db.query(self.model)
-    #         .filter(Personality.owner_id == owner_id)
-    #         .offset(skip)
-    #         .limit(limit)
-    #         .all()
-    #     )
-
 
 personality = CRUDPersonality(Personality)
