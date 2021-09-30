@@ -20,14 +20,14 @@ from app.schemas.comment import CommentFull
 from app.tests.utils.utils import random_lower_string
 from app.tests.utils.user import create_random_user
 from app.tests.utils.personality import create_random_personality
-from random import randint
+import random
 
 def create_random_comment(db: Session) -> models.Comment:
 	personality = create_random_personality()
 	user = create_random_user()
 	text = random_lower_string()
 	fluff = ''
-	num = randint(0, 10)
+	num = random.randint(0, 10)
 	for i in range(num):
 		if i != 0:
 			fluff += '~'
