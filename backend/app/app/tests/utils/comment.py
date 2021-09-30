@@ -32,5 +32,5 @@ def create_random_comment(db: Session) -> models.Comment:
 		if i != 0:
 			fluff += '~'
 		fluff += random_lower_string() + '|' + 'http://google.fr'
-	comment_in = CommentFull(id=1, author_id=user.id, personality_id=personality.id, text=text, fluff=fluff)
+	comment_in = CommentFull(id=random.randint(0, 10000000), author_id=user.id, personality_id=personality.id, text=text, fluff=fluff)
 	return crud.comment.create_new_comment(db=db, obj_in=comment_in)

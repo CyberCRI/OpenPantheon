@@ -20,9 +20,10 @@ from app.core.config import settings
 from app.tests.utils.comment import create_random_comment
 from app.tests.utils.user import create_random_user
 from app.tests.utils.personality import create_random_personality
+import random
 
 def test_create_comment(client: TestClient, superuser_token_headers: dict, db: Session) -> None:
-	data = {"id": "1", "author_id": create_random_user(db).id, "personality_id": create_random_personality(db).id, "text": "This is a test comment", "fluff": "Here's a great link|http://google.fr~Here's another one|http://apple.com"}
+	data = {"id": random.randint(0, 10000000), "author_id": create_random_user(db).id, "personality_id": create_random_personality(db).id, "text": "This is a test comment", "fluff": "Here's a great link|http://google.fr~Here's another one|http://apple.com"}
 	response = client.post(
 		f"{settings.API_V1_STR}/comments/",
 		headers=superuser_token_headers,

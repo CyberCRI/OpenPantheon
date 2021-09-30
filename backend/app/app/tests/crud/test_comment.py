@@ -33,7 +33,7 @@ def test_create_comment(db: Session) -> None:
 		if i != 0:
 			fluff += '~'
 		fluff += random_lower_string() + '|' + 'http://google.fr'
-	comment_in = CommentFull(id=1, author_id=user.id, personality_id=personality.id, text=text, fluff=fluff)
+	comment_in = CommentFull(id=random.randint(0, 10000000), author_id=user.id, personality_id=personality.id, text=text, fluff=fluff)
 	comment = crud.comment.create_new_comment(db=db, obj_in=comment_in)
 	assert comment.text == text
 	assert comment.fluff == fluff
@@ -51,7 +51,7 @@ def test_get_comment(db: Session) -> None:
 		if i != 0:
 			fluff += '~'
 		fluff += random_lower_string() + '|' + 'http://google.fr'
-	comment_in = CommentFull(id=1, author_id=user.id, personality_id=personality.id, text=text, fluff=fluff)
+	comment_in = CommentFull(id=random.randint(0, 10000000), author_id=user.id, personality_id=personality.id, text=text, fluff=fluff)
 	comment = crud.comment.create_new_comment(db=db, obj_in=comment_in)
 	stored_comment = crud.comment.get(db=db, id=comment.id)
 	assert stored_comment
@@ -71,7 +71,7 @@ def test_delete_comment(db: Session) -> None:
 		if i != 0:
 			fluff += '~'
 		fluff += random_lower_string() + '|' + 'http://google.fr'
-	comment_in = CommentFull(id=1, author_id=user.id, personality_id=personality.id, text=text, fluff=fluff)
+	comment_in = CommentFull(id=random.randint(0, 10000000), author_id=user.id, personality_id=personality.id, text=text, fluff=fluff)
 	comment = crud.comment.create_new_comment(db=db, obj_in=comment_in)
 	comment2 = crud.comment.remove(db=db, id=comment.id)
 	comment3 = crud.comment.get(db=db, id=comment.id)
