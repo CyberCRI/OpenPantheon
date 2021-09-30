@@ -25,12 +25,12 @@ from random import randint
 def create_random_comment(db: Session) -> models.Comment:
 	personality = create_random_personality()
 	user = create_random_user()
-    text = random_lower_string()
-    fluff = ''
-    num = randint(0, 10)
-    for i in range(num):
-    	if i != 0:
-    		fluff += '~'
-    	fluff += random_lower_string() + '|' + 'http://google.fr'
-    comment_in = CommentFull(author_id=user.id, personality_id=personality.id, text=text, fluff=fluff)
-    return crud.comment.create_new_comment(db=db, obj_in=comment_in)
+	text = random_lower_string()
+	fluff = ''
+	num = randint(0, 10)
+	for i in range(num):
+		if i != 0:
+			fluff += '~'
+		fluff += random_lower_string() + '|' + 'http://google.fr'
+	comment_in = CommentFull(author_id=user.id, personality_id=personality.id, text=text, fluff=fluff)
+	return crud.comment.create_new_comment(db=db, obj_in=comment_in)

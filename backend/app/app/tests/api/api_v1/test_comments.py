@@ -23,16 +23,16 @@ from app.tests.utils.personality import create_random_personality
 
 
 def test_create_comment(client: TestClient, superuser_token_headers: dict, db: Session) -> None:
-    data = {"author_id": create_random_user.id, "personality_id": create_random_personality.id, "text": "This is a test comment", "fluff": "Here's a great link|http://google.fr~Here's another one|http://apple.com"}
-    response = client.post(
-        f"{settings.API_V1_STR}/comments/",
-        headers=superuser_token_headers,
-        json=data,
-    )
-    assert response.status_code == 200
-    content = response.json()
-    assert content["text"] == data["text"]
-    assert content["fluff"] == data["fluff"]
-    assert content["author_id"] == data["author_id"]
-    assert content["personality_id"] == data["personality_id"]
-    assert "id" in content
+	data = {"author_id": create_random_user.id, "personality_id": create_random_personality.id, "text": "This is a test comment", "fluff": "Here's a great link|http://google.fr~Here's another one|http://apple.com"}
+	response = client.post(
+		f"{settings.API_V1_STR}/comments/",
+		headers=superuser_token_headers,
+		json=data,
+	)
+	assert response.status_code == 200
+	content = response.json()
+	assert content["text"] == data["text"]
+	assert content["fluff"] == data["fluff"]
+	assert content["author_id"] == data["author_id"]
+	assert content["personality_id"] == data["personality_id"]
+	assert "id" in content
