@@ -23,7 +23,7 @@ from app.tests.utils.personality import create_random_personality
 import random
 
 def test_create_comment(client: TestClient, superuser_token_headers: dict, db: Session) -> None:
-	data = {"id": random.randint(0, 10000000), "author_id": create_random_user(db).id, "personality_id": create_random_personality(db).id, "text": "This is a test comment", "fluff": "Here's a great link|http://google.fr~Here's another one|http://apple.com"}
+	data = {"author_id": create_random_user(db).id, "personality_id": create_random_personality(db).id, "text": "This is a test comment", "fluff": "Here's a great link|http://google.fr~Here's another one|http://apple.com"}
 	response = client.post(
 		f"{settings.API_V1_STR}/comments/",
 		headers=superuser_token_headers,
