@@ -34,4 +34,3 @@ def test_create_comment(client: TestClient, superuser_token_headers: dict, db: S
 	assert content["fluff"] == data["fluff"]
 	assert content["author_id"] == data["author_id"]
 	assert content["personality_id"] == data["personality_id"]
-	assert "id" in content

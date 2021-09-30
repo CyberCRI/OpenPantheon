@@ -46,7 +46,7 @@ def test_get_comment(db: Session) -> None:
 	personality = create_random_personality(db)
 	text = random_lower_string()
 	fluff = ''
-	num = randint(0, 10)
+	num = random.randint(0, 10)
 	for i in range(num):
 		if i != 0:
 			fluff += '~'
@@ -66,7 +66,7 @@ def test_delete_comment(db: Session) -> None:
 	personality = create_random_personality(db)
 	text = random_lower_string()
 	fluff = ''
-	num = randint(0, 10)
+	num = random.randint(0, 10)
 	for i in range(num):
 		if i != 0:
 			fluff += '~'
