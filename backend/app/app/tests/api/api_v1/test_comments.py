@@ -18,7 +18,7 @@ from sqlalchemy.orm import Session
 
 from app.core.config import settings
 from app.tests.utils.comment import create_random_comment
-from app.tests.utils.user import user
+from app.tests.utils.user import create_random_user
 from app.tests.utils.personality import create_random_personality
 
 
