@@ -22,15 +22,20 @@ from app.tests.utils.user import create_random_user
 from app.tests.utils.personality import create_random_personality
 import random
 
+
 def create_random_comment(db: Session) -> models.Comment:
-	personality = create_random_personality(db)
-	user = create_random_user(db)
-	text = random_lower_string()
-	fluff = ''
-	num = random.randint(0, 10)
-	for i in range(num):
-		if i != 0:
-			fluff += '~'
-		fluff += random_lower_string() + '|' + 'http://google.fr'
-	comment_in = CommentFull(id=random.randint(0, 10000000), author_id=user.id, personality_id=personality.id, text=text, fluff=fluff)
-	return crud.comment.create_new_comment(db=db, obj_in=comment_in)
+    personality = create_random_personality(db)
+    user = create_random_user(db)
+    text = random_lower_string()
+    fluff = ''
+    num = random.randint(0, 10)
+    for i in range(num):
+        if i != 0:
+            fluff += '~'
+        fluff += random_lower_string() + '|' + 'http://google.fr'
+    comment_in = CommentFull(id=random.randint(0, 10000000),
+                             author_id=user.id,
+                             personality_id=personality.id,
+                             text=text,
+                             fluff=fluff)
+    return crud.comment.create_new_comment(db=db, obj_in=comment_in)

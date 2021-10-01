@@ -23,57 +23,70 @@ from app.tests.utils.comment import create_random_comment
 from app.tests.utils.utils import random_lower_string
 import random
 
+
 def test_create_comment(db: Session) -> None:
-	user = create_random_user(db)
-	personality = create_random_personality(db)
-	text = random_lower_string()
-	fluff = ''
-	num = random.randint(0, 10)
-	for i in range(num):
-		if i != 0:
-			fluff += '~'
-		fluff += random_lower_string() + '|' + 'http://google.fr'
-	comment_in = CommentFull(id=random.randint(0, 10000000), author_id=user.id, personality_id=personality.id, text=text, fluff=fluff)
-	comment = crud.comment.create_new_comment(db=db, obj_in=comment_in)
-	assert comment.text == text
-	assert comment.fluff == fluff
-	assert comment.personality_id == personality.id
-	assert comment.author_id == user.id
+    user = create_random_user(db)
+    personality = create_random_personality(db)
+    text = random_lower_string()
+    fluff = ''
+    num = random.randint(0, 10)
+    for i in range(num):
+        if i != 0:
+            fluff += '~'
+        fluff += random_lower_string() + '|' + 'http://google.fr'
+    comment_in = CommentFull(id=random.randint(0, 10000000),
+                             author_id=user.id,
+                             personality_id=personality.id,
+                             text=text,
+                             fluff=fluff)
+    comment = crud.comment.create_new_comment(db=db, obj_in=comment_in)
+    assert comment.text == text
+    assert comment.fluff == fluff
+    assert comment.personality_id == personality.id
+    assert comment.author_id == user.id
 
 
 def test_get_comment(db: Session) -> None:
-	user = create_random_user(db)
-	personality = create_random_personality(db)
-	text = random_lower_string()
-	fluff = ''
-	num = random.randint(0, 10)
-	for i in range(num):
-		if i != 0:
-			fluff += '~'
-		fluff += random_lower_string() + '|' + 'http://google.fr'
-	comment_in = CommentFull(id=random.randint(0, 10000000), author_id=user.id, personality_id=personality.id, text=text, fluff=fluff)
-	comment = crud.comment.create_new_comment(db=db, obj_in=comment_in)
-	stored_comment = crud.comment.get(db=db, id=comment.id)
-	assert stored_comment
-	assert comment.personality_id == stored_comment.personality_id
-	assert comment.author_id == stored_comment.author_id
-	assert comment.fluff == stored_comment.fluff
-	assert comment.text == stored_comment.text
+    user = create_random_user(db)
+    personality = create_random_personality(db)
+    text = random_lower_string()
+    fluff = ''
+    num = random.randint(0, 10)
+    for i in range(num):
+        if i != 0:
+            fluff += '~'
+        fluff += random_lower_string() + '|' + 'http://google.fr'
+    comment_in = CommentFull(id=random.randint(0, 10000000),
+                             author_id=user.id,
+                             personality_id=personality.id,
+                             text=text,
+                             fluff=fluff)
+    comment = crud.comment.create_new_comment(db=db, obj_in=comment_in)
+    stored_comment = crud.comment.get(db=db, id=comment.id)
+    assert stored_comment
+    assert comment.personality_id == stored_comment.personality_id
+    assert comment.author_id == stored_comment.author_id
+    assert comment.fluff == stored_comment.fluff
+    assert comment.text == stored_comment.text
 
 
 def test_delete_comment(db: Session) -> None:
-	user = create_random_user(db)
-	personality = create_random_personality(db)
-	text = random_lower_string()
-	fluff = ''
-	num = random.randint(0, 10)
-	for i in range(num):
-		if i != 0:
-			fluff += '~'
-		fluff += random_lower_string() + '|' + 'http://google.fr'
-	comment_in = CommentFull(id=random.randint(0, 10000000), author_id=user.id, personality_id=personality.id, text=text, fluff=fluff)
-	comment = crud.comment.create_new_comment(db=db, obj_in=comment_in)
-	comment2 = crud.comment.remove(db=db, id=comment.id)
-	comment3 = crud.comment.get(db=db, id=comment.id)
-	assert comment3 is None
-	assert comment2.id == comment.id
+    user = create_random_user(db)
+    personality = create_random_personality(db)
+    text = random_lower_string()
+    fluff = ''
+    num = random.randint(0, 10)
+    for i in range(num):
+        if i != 0:
+            fluff += '~'
+        fluff += random_lower_string() + '|' + 'http://google.fr'
+    comment_in = CommentFull(id=random.randint(0, 10000000),
+                             author_id=user.id,
+                             personality_id=personality.id,
+                             text=text,
+                             fluff=fluff)
+    comment = crud.comment.create_new_comment(db=db, obj_in=comment_in)
+    comment2 = crud.comment.remove(db=db, id=comment.id)
+    comment3 = crud.comment.get(db=db, id=comment.id)
+    assert comment3 is None
+    assert comment2.id == comment.id
