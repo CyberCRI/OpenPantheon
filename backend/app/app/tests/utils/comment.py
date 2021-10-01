@@ -13,14 +13,15 @@
 #
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
+import random
+
 from sqlalchemy.orm import Session
 
 from app import crud, models
 from app.schemas.comment import CommentFull
-from app.tests.utils.utils import random_lower_string
-from app.tests.utils.user import create_random_user
 from app.tests.utils.personality import create_random_personality
-import random
+from app.tests.utils.user import create_random_user
+from app.tests.utils.utils import random_lower_string
 
 
 def create_random_comment(db: Session) -> models.Comment:
