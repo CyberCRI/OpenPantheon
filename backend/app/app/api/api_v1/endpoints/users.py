@@ -126,8 +126,8 @@ def create_user_open(
     db: Session = Depends(deps.get_db),
     password: str = Body(...),
     email: EmailStr = Body(...),
-    firstName: str = Body(...),
-    lastName: str = Body(...),
+    firstname: str = Body(...),
+    lastname: str = Body(...),
     job: str = Body(default=None),
     organization: str = Body(default=None)
 ) -> Any:
@@ -147,8 +147,8 @@ def create_user_open(
         )
     user_in = schemas.UserCreate(password=password,
                                  email=email,
-                                 first_name=firstName,
-                                 last_name=lastName,
+                                 first_name=firstname,
+                                 last_name=lastname,
                                  job=job,
                                  organization=organization)
     user = crud.user.create(db, obj_in=user_in)
@@ -165,14 +165,7 @@ def read_user_by_id(
     """
     Get a specific user by id.
     """
-    user = crud.user.get(db, id=user_id)
-    # if user == current_user:
-    #     return user
-    # if not crud.user.is_superuser(current_user):
-    #     raise HTTPException(
-    #         status_code=400, detail="The user doesn't have enough privileges"
-    #     )
-    return user
+    return crud.user.get(db, id=user_id)
 
 
 @router.put("/{user_id}", response_model=schemas.User)

@@ -34,14 +34,14 @@ def create_comment(
     """
     Create new comment.
     """
-    comment_in = input[0]
-    del input[0]
+    comment_in = input[0]  # type: ignore
+    del input[0]  # type: ignore
     fluff = input
     tab = []
-    for i in range(len(fluff)):
-        tab.append(fluff[i]['name'] + '|' + fluff[i]['link'])
+    for i in range(len(fluff)):  # type: ignore
+        tab.append(fluff[i]['name'] + '|' + fluff[i]['link'])  # type: ignore
     comment_in['fluff'] = '~'.join(tab)
-    return crud.comment.create_new_comment(db=db, obj_in=comment_in)
+    return crud.comment.create_new_comment(db=db, obj_in=comment_in)  # type: ignore
 
 
 @router.delete("/{id}", response_model=schemas.Comment)
@@ -57,11 +57,12 @@ def delete_comment(
     comment = crud.comment.get(db=db, id=id)
     if not comment:
         raise HTTPException(status_code=404, detail="Comment not found")
-    if not current_user.id == comment.author_id and not crud.user.is_superuser(current_user):
+    if current_user.id != comment.author_id and not crud.user.is_superuser(current_user):
         raise HTTPException(status_code=400, detail="Not enough permissions")
-    crud.user.remove_personality(db=db,
-                                 db_obj=crud.user.get(db=db, id=comment.author_id),
-                                 id_personality=comment.personality_id)
-    if len(crud.personality.get(db=db, id=comment.personality_id).comments) == 1:
-        crud.personality.remove(db=db, id=comment.personality_id)
+    crud.user.remove_personality(
+        db=db,
+        db_obj=crud.user.get(db=db, id=comment.author_id),  # type: ignore
+        id_personality=comment.personality_id)  # type: ignore
+    if len(crud.personality.get(db=db, id=comment.personality_id).comments) == 1:  # type: ignore
+        crud.personality.remove(db=db, id=comment.personality_id)  # type: ignore
     return crud.comment.remove(db=db, id=id)

@@ -69,7 +69,7 @@ async def recover_password(email: str, db: Session = Depends(deps.get_db)) -> An
             detail="The user with this username does not exist in the system.",
         )
     password_reset_token = generate_password_reset_token(email=email)
-    await send_reset_password_email(email_to=user.email, email=email, token=password_reset_token)
+    await send_reset_password_email(email_to=user.email, email=email, token=password_reset_token)  # type: ignore
     return {"msg": "Password recovery email sent"}
 
 

@@ -57,7 +57,7 @@ class CRUDUser(CRUDBase[User, UserCreate, UserUpdate]):
     def add_personality(self, db: Session, *, db_obj: User, personality_add: Personality) -> User:
         personality_list = db_obj.personalities_celebrated
         if personality_add not in personality_list:
-            personality_list.append(personality_add)
+            personality_list.append(personality_add)  # type: ignore
             setattr(db_obj, "personalities_celebrated", personality_list)
             db.add(db_obj)
             db.commit()

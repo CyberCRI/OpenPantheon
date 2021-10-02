@@ -117,8 +117,6 @@ def update_personality(
     personality = crud.personality.get(db=db, id=id)
     if not personality:
         raise HTTPException(status_code=404, detail="Personality not found")
-    # if not crud.user.is_superuser(current_user) and (personality.owner_id != current_user.id):
-    #     raise HTTPException(status_code=400, detail="Not enough permissions")
     return crud.personality.update(db=db, db_obj=personality, obj_in=personality_in)
 
 
@@ -136,13 +134,13 @@ def read_personality(
     if not personality:
         raise HTTPException(status_code=404, detail="Personality not found")
 
-    for i in range(len(personality.comments)):
+    for i in range(len(personality.comments)):  # type: ignore
         tab = []
-        tmp = personality.comments[i].fluff.split('~')
+        tmp = personality.comments[i].fluff.split('~')  # type: ignore
         for j in range(len(tmp)):
             tmp_bis = tmp[j].split('|')
             tab.append({'name': tmp_bis[0], 'link': tmp_bis[1]})
-        personality.comments[i].fluff = tab
+        personality.comments[i].fluff = tab  # type: ignore
 
     return personality
 
