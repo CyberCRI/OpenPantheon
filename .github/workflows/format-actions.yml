@@ -79,3 +79,10 @@ jobs:
           ./scripts/format.sh
           # Check that there are no changes
           git diff --exit-code
+      - name: Lint
+        working-directory: backend/app
+        run: |
+          # Activate poetry's virtualenv
+          source `poetry env info --path`/bin/activate
+          # Run the linter tools
+          ./scripts/lint.sh

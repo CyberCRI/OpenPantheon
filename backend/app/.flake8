@@ -27,11 +27,11 @@ ignore =
     # flake8-length is a bit nicer, cf. https://github.com/orsinium-labs/flake8-length#usage
     E501,
     W505,
-    S311,
+    # Database models are often shadowing id for example
     A002,
-    B008,
     A003,
-    B010
+    # FastAPI is used that way
+    B008
 per-file-ignores =
     app/tests/*.py: S101, F811, F401
 max-line-length = 120
