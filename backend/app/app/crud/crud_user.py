@@ -58,7 +58,8 @@ class CRUDUser(CRUDBase[User, UserCreate, UserUpdate]):
         personality_list = db_obj.personalities_celebrated
         if personality_add not in personality_list:
             personality_list.append(personality_add)  # type: ignore
-            setattr(db_obj, "personalities_celebrated", personality_list)
+            # not using setattr raised an exception
+            setattr(db_obj, "personalities_celebrated", personality_list)  # noqa: B010
             db.add(db_obj)
             db.commit()
             db.refresh(db_obj)
@@ -67,7 +68,8 @@ class CRUDUser(CRUDBase[User, UserCreate, UserUpdate]):
     def remove_personality(self, db: Session, *, db_obj: User, id_personality: int) -> User:
         personality_list = db_obj.personalities_celebrated
         personality_list = list(filter(lambda personality: (personality.id != id_personality), personality_list))
-        setattr(db_obj, "personalities_celebrated", personality_list)
+        # not using setattr raised an exception
+        setattr(db_obj, "personalities_celebrated", personality_list)  # noqa: B010
         db.add(db_obj)
         db.commit()
         db.refresh(db_obj)

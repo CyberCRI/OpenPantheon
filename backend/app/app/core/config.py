@@ -29,9 +29,9 @@ class Settings(BaseSettings):
     # e.g: '["http://localhost", "http://localhost:4200", "http://localhost:3000" \ # noqa: E800
     # "http://localhost:8080"]'
     BACKEND_CORS_ORIGINS: List[AnyHttpUrl] = [
-        "http://localhost",
-        "http://localhost:8080",
-        "http://localhost:4200",
+        "http://localhost",  # type: ignore
+        "http://localhost:8080",  # type: ignore
+        "http://localhost:4200",  # type: ignore
         "http://localhost:3000"  # type: ignore
     ]
 
