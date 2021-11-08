@@ -88,7 +88,7 @@ export default {
 }
 </script>
 
-<style type="scss" scoped>
+<style lang="scss" scoped>
 h1,
 h2,
 h3,

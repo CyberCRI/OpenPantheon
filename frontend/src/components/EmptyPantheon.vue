@@ -43,7 +43,7 @@ export default {
 }
 </script>
 
-<style type="scss" scoped>
+<style lang="scss" scoped>
 .button {
   border-radius: 10px;
 }

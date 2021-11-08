@@ -1,0 +1,57 @@
+/*
+ * OpenPantheon: the pantheon for Education
+ * Copyright (C) 2021 CRI
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+$mdi-font-path: '~@mdi/font/fonts';
+
+// Import Icons
+
+@import '~@mdi/font/scss/materialdesignicons';
+
+@font-face {
+  font-family: ApfelGrotezk-Fett;
+  font-display: swap;
+  unicode-range: U+000-5FF;
+  src: url('/fonts/apfelgrotezk_fett.woff2') format('woff2'),
+    url('/fonts/apfelgrotezk_fett.woff') format('woff');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  font-display: swap;
+  unicode-range: U+000-5FF;
+  src: url('/fonts/poppins_medium-webfont.woff2') format('woff2'),
+    url('/fonts/poppins_medium-webfont.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  font-display: swap;
+  unicode-range: U+000-5FF;
+  src: url('/fonts/poppins_bold-webfont.woff2') format('woff2'),
+    url('/fonts/poppins_bold-webfont.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+
+// Fonts
+
+$family-primary: Poppins, sans-serif;
+$family-secondary: ApfelGrotezk-Fett, sans-serif;
+$title-family: $family-secondary;

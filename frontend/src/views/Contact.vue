@@ -105,7 +105,7 @@ export default {
 }
 </script>
 
-<style type="scss" scoped>
+<style lang="scss" scoped>
 .box > p {
   width: 75%;
   text-align: center;

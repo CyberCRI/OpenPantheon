@@ -109,7 +109,7 @@ export default {
 }
 </script>
 
-<style type="scss" scoped>
+<style lang="scss" scoped>
 img {
   margin: 15px;
 }

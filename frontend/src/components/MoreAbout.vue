@@ -35,7 +35,7 @@ export default {
 }
 </script>
 
-<style type="scss" scoped>
+<style lang="scss" scoped>
 .section {
   background: #f2f2f3 url('../../public/img/bubble/bubble@1,5x.svg');
   background-repeat: no-repeat;

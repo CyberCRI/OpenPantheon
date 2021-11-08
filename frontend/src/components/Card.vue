@@ -76,7 +76,7 @@ export default {
 }
 </script>
 
-<style type="scss" scoped>
+<style lang="scss" scoped>
 .image {
   max-height: 320px;
 }

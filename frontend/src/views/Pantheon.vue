@@ -180,7 +180,7 @@ export default {
 }
 </script>
 
-<style type="scss" scoped>
+<style lang="scss" scoped>
 hr {
   border-top: 1px solid #bbb;
 }
