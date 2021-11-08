@@ -16,24 +16,4 @@ GNU Affero General Public License for more details.
 You should have received a copy of the GNU Affero General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 -->
-<svg width="862px" height="597px" viewBox="0 0 862 597" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Bubble@1,5x</title>
-    <g id="Bubble" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <circle id="Oval" fill="#61E987" opacity="0.550651914" cx="572.5" cy="432.5" r="50.5"></circle>
-        <circle id="Oval-Copy-5" fill="#61E987" opacity="0.793066116" cx="417.5" cy="448.5" r="50.5"></circle>
-        <circle id="Oval-Copy" fill="#61E987" opacity="0.550651914" cx="654.5" cy="304.5" r="50.5"></circle>
-        <circle id="Oval-Copy-2" fill="#61E987" opacity="0.136636643" cx="689.5" cy="426.5" r="50.5"></circle>
-        <circle id="Oval-Copy-10" fill="#61E987" opacity="0.550651914" cx="811.5" cy="448.5" r="50.5"></circle>
-        <circle id="Oval-Copy-8" fill="#61E987" opacity="0.136636643" cx="773.5" cy="343.5" r="50.5"></circle>
-        <circle id="Oval-Copy-9" fill="#61E987" opacity="0.136636643" cx="754.5" cy="206.5" r="50.5"></circle>
-        <circle id="Oval-Copy-3" fill="#FCFCFD" cx="499.5" cy="324.5" r="50.5"></circle>
-        <circle id="Oval-Copy-11" fill="#61E987" opacity="0.11088126" cx="142.5" cy="247.5" r="50.5"></circle>
-        <circle id="Oval-Copy-15" fill="#61E987" opacity="0.216705322" cx="235.5" cy="413.5" r="50.5"></circle>
-        <circle id="Oval-Copy-12" fill="#61E987" cx="209.5" cy="50.5" r="50.5"></circle>
-        <circle id="Oval-Copy-13" fill="#61E987" opacity="0.596546718" cx="276.5" cy="185.5" r="50.5"></circle>
-        <circle id="Oval-Copy-14" fill="#61E987" opacity="0.550651914" cx="417.5" cy="157.5" r="50.5"></circle>
-        <circle id="Oval-Copy-7" fill="#61E987" opacity="0.349097842" cx="572.5" cy="223.5" r="50.5"></circle>
-        <circle id="Oval-Copy-6" fill="#61E987" opacity="0.314889817" cx="698.5" cy="546.5" r="50.5"></circle>
-        <circle id="Oval-Copy-4" fill="#61E987" opacity="0.232942127" cx="50.5" cy="533.5" r="50.5"></circle>
-    </g>
-</svg>
+<svg width="862" height="597" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><circle fill="#61E987" opacity=".551" cx="572.5" cy="432.5" r="50.5"/><circle fill="#61E987" opacity=".793" cx="417.5" cy="448.5" r="50.5"/><circle fill="#61E987" opacity=".551" cx="654.5" cy="304.5" r="50.5"/><circle fill="#61E987" opacity=".137" cx="689.5" cy="426.5" r="50.5"/><circle fill="#61E987" opacity=".551" cx="811.5" cy="448.5" r="50.5"/><circle fill="#61E987" opacity=".137" cx="773.5" cy="343.5" r="50.5"/><circle fill="#61E987" opacity=".137" cx="754.5" cy="206.5" r="50.5"/><circle fill="#FCFCFD" cx="499.5" cy="324.5" r="50.5" style="fill:#61e987;fill-opacity:1;opacity:.137"/><circle fill="#61E987" opacity=".111" cx="142.5" cy="247.5" r="50.5"/><circle fill="#61E987" opacity=".217" cx="235.5" cy="413.5" r="50.5"/><circle fill="#61E987" cx="209.5" cy="50.5" r="50.5"/><circle fill="#61E987" opacity=".597" cx="276.5" cy="185.5" r="50.5"/><circle fill="#61E987" opacity=".551" cx="417.5" cy="157.5" r="50.5"/><circle fill="#61E987" opacity=".349" cx="572.5" cy="223.5" r="50.5"/><circle fill="#61E987" opacity=".315" cx="698.5" cy="546.5" r="50.5"/><circle fill="#61E987" opacity=".233" cx="50.5" cy="533.5" r="50.5"/></g></svg>

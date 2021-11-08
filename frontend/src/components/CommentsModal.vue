@@ -55,5 +55,3 @@ export default {
   },
 }
 </script>
-
-<style type="scss" scoped></style>

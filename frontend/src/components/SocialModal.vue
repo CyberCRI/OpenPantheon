@@ -158,7 +158,7 @@ export default {
 }
 </script>
 
-<style type="scss" scoped>
+<style lang="scss" scoped>
 .resp-sharing-button__link,
 .resp-sharing-button__icon {
   display: inline-block;

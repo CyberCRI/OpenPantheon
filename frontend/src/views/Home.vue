@@ -17,6 +17,18 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 -->
 <template>
   <div>
+    <section class="hero">
+      <div class="hero-head">
+        <TopBar />
+      </div>
+      <div class="hero-body">
+        <div class="container has-text-centered">
+          <p class="title">
+            {{ $t('home.headline') }}
+          </p>
+        </div>
+      </div>
+    </section>
     <main class="section">
       <div class="level">
         <div class="level-left">
@@ -33,7 +45,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
                   }}
                 </p>
               </b-tab-item>
-              <b-tab-item :label="$t('home.personal')" value="personal"> </b-tab-item>
+              <b-tab-item :label="$t('home.personal')" value="personal" />
             </b-tabs>
           </div>
         </div>
@@ -44,7 +56,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
           <div class="level-item filter_menu">
             <b-dropdown multiple aria-role="list">
               <template #trigger>
-                <b-button icon-right="chevron-down" size="is-large" class="filter">
+                <b-button icon-right="chevron-down" class="filter">
                   {{ $t('home.filter') }}</b-button
                 >
               </template>
@@ -147,30 +159,15 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
           <div class="level-item">
             <b-dropdown class="level-item" v-model="sort" aria-role="list">
               <template v-if="sort == 'recent'" #trigger>
-                <b-button
-                  class="filter"
-                  :label="$t('home.recent')"
-                  icon-right="chevron-down"
-                  size="is-large"
-                />
+                <b-button class="filter" :label="$t('home.recent')" icon-right="chevron-down" />
               </template>
 
               <template v-else-if="sort == 'celebrated'" #trigger>
-                <b-button
-                  class="filter"
-                  :label="$t('home.celebrated')"
-                  icon-right="chevron-down"
-                  size="is-large"
-                />
+                <b-button class="filter" :label="$t('home.celebrated')" icon-right="chevron-down" />
               </template>
 
               <template v-else #trigger>
-                <b-button
-                  class="filter"
-                  :label="$t('home.oldest')"
-                  icon-right="chevron-down"
-                  size="is-large"
-                />
+                <b-button class="filter" :label="$t('home.oldest')" icon-right="chevron-down" />
               </template>
 
               <b-dropdown-item value="recent" aria-role="listitem">
@@ -222,6 +219,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 </template>
 
 <script>
+import TopBar from '@/components/TopBar'
 import HomepageAutocomplete from '@/components/HomepageAutocomplete.vue'
 import CardList from '@/components/CardList.vue'
 import EmptyPantheon from '@/components/EmptyPantheon.vue'
@@ -240,6 +238,7 @@ export default {
     }
   },
   components: {
+    TopBar,
     CardList,
     HomepageAutocomplete,
     EmptyPantheon,
@@ -257,7 +256,7 @@ export default {
 }
 </script>
 
-<style type="scss" scoped>
+<style lang="scss" scoped>
 .field .label {
   display: none;
 }
@@ -286,5 +285,15 @@ export default {
   #homepage_autocomplete {
     width: 75%;
   }
+}
+
+.hero {
+  .title {
+    color: $scheme-main;
+  }
+  background: $scheme-main-bis url('/img/bubble/bubble@1,5x.svg');
+  background-repeat: no-repeat;
+  background-position-x: right;
+  background-position-y: center;
 }
 </style>

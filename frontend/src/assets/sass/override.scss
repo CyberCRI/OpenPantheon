@@ -20,63 +20,12 @@ body {
   font-size: 14px;
 }
 
-$mdi-font-path: '~@mdi/font/fonts';
-
-// Import Icons
-
-@import '~@mdi/font/scss/materialdesignicons';
+@import 'fonts.scss';
 
 // Import Bulma's core
 @import 'bulma/sass/utilities/_all';
 
-@font-face {
-  font-family: ApfelGrotezk-Fett;
-  font-display: swap;
-  unicode-range: U+000-5FF;
-  src: url('/fonts/apfelgrotezk_fett.woff2') format('woff2'),
-    url('/fonts/apfelgrotezk_fett.woff') format('woff');
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Poppins';
-  font-display: swap;
-  unicode-range: U+000-5FF;
-  src: url('/fonts/poppins_medium-webfont.woff2') format('woff2'),
-    url('/fonts/poppins_medium-webfont.woff') format('woff');
-  font-weight: 500;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Poppins';
-  font-display: swap;
-  unicode-range: U+000-5FF;
-  src: url('/fonts/poppins_bold-webfont.woff2') format('woff2'),
-    url('/fonts/poppins_bold-webfont.woff') format('woff');
-  font-weight: 700;
-  font-style: normal;
-}
-
-// Set your colors
-$primary: #61e987;
-$scheme-main: #fcfcfd;
-$scheme-main-bis: #202137;
-$link-hover: #c0f6cf;
-
-$grey: #a5a5ae;
-
-// $primary-light: findLightColor($primary);
-// $primary-dark: findDarkColor($primary);
-// $primary-invert: findColorInvert($primary);
-// $twitter: #4099FF;
-// $twitter-invert: findColorInvert($twitter);
-
-// Fonts
-
-$family-primary: Poppins, sans-serif;
-$family-secondary: ApfelGrotezk-Fett, sans-serif;
-$title-family: $family-secondary;
+@import 'colors.scss';
 
 // Lists and maps
 $custom-colors: null !default;
@@ -164,6 +113,8 @@ $dropdown-content-max-height: 500;
 // // Tabs
 
 $tabs-link-active-color: $grey-dark;
+$tabs-boxed-link-active-background-color: $primary;
+$tabs-boxed-link-active-border-color: $primary;
 
 // Cards
 
@@ -192,19 +143,6 @@ $footer-padding: 3rem 1.5rem 3.75rem;
   white-space: inherit;
   word-wrap: anywhere;
   word-break: break-word;
-}
-
-.navbar {
-  background: $scheme-main-bis url('/img/bubble/bubble@1,5x.svg');
-  background-repeat: no-repeat;
-  background-position-x: right;
-  background-position-y: center;
-  &-start {
-    flex-grow: 0.2;
-  }
-  .is-spaced {
-    padding: 1.5rem 2rem;
-  }
 }
 
 .has-half-width {

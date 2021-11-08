@@ -17,7 +17,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 -->
 <template>
   <div>
-    <TopBar />
+    <TopBar v-if="$route.name !== 'Home'" />
     <router-view />
     <MoreAbout v-if="$route.name !== 'Account' && $route.name !== 'About'" />
     <Footer />
@@ -41,8 +41,8 @@ export default {
 }
 </script>
 
-<style type="scss">
+<style lang="scss">
 body {
-  background: #fcfcfd;
+  background: $scheme-main;
 }
 </style>

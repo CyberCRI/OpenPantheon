@@ -409,7 +409,7 @@ export default {
 }
 </script>
 
-<style type="scss" scoped>
+<style lang="scss" scoped>
 #main_image {
   border-radius: 0.75rem;
   object-fit: cover;

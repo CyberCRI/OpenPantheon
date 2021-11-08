@@ -16,7 +16,7 @@ You should have received a copy of the GNU Affero General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 -->
 <template>
-  <b-navbar spaced shadow>
+  <b-navbar spaced>
     <template #brand>
       <b-navbar-item class="mr-6" tag="router-link" :to="{ path: '/home' }">
         <img src="img/logo/logo@2x-compressed.png" alt="Logo OpenPantheon" />
@@ -114,4 +114,17 @@ export default {
 }
 </script>
 
-<style type="scss" scoped></style>
+<style lang="scss" scoped>
+.navbar {
+  background: $scheme-main-bis url('/img/bubble/bubble@1,5x.svg');
+  background-repeat: no-repeat;
+  background-position-x: right;
+  background-position-y: center;
+  &-start {
+    flex-grow: 0.2;
+  }
+  .is-spaced {
+    padding: 1.5rem 2rem;
+  }
+}
+</style>
