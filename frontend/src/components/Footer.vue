@@ -21,7 +21,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
       <div class="level mx-6">
         <div class="level-left">
           <div class="level-item" tag="router-link" :to="{ path: '/home' }">
-            <img id="logo" src="img/logo/logo_only@2x.png" alt="Logo OpenPantheon" />
+            <img id="logo" src="img/logo/logo_only@2x-compressed.png" alt="Logo OpenPantheon" />
           </div>
         </div>
         <div class="level-right">

@@ -19,7 +19,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
   <b-navbar spaced shadow>
     <template #brand>
       <b-navbar-item class="mr-6" tag="router-link" :to="{ path: '/home' }">
-        <img src="img/logo/logo@2x.png" alt="Logo OpenPantheon" />
+        <img src="img/logo/logo@2x-compressed.png" alt="Logo OpenPantheon" />
       </b-navbar-item>
     </template>
     <template #start>
