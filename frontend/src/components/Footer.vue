@@ -65,7 +65,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
         </p>
         <img id="logo-cri" src="img/logo/madeincri.png" alt="Made in Cri" />
       </div>
-      <a class="is-flex is-justify-content-center"
+      <a class="is-flex is-justify-content-center" href="/documents/OpenPantheon CGU VF.pdf"
         ><p>{{ $t('footer.terms') }}</p></a
       >
     </div>
