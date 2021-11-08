@@ -34,30 +34,29 @@ $mdi-font-path: '~@mdi/font/fonts';
   font-display: swap;
   unicode-range: U+000-5FF;
   src: url('/fonts/apfelgrotezk_fett.woff2') format('woff2'),
-       url('/fonts/apfelgrotezk_fett.woff') format('woff');
+    url('/fonts/apfelgrotezk_fett.woff') format('woff');
   font-style: normal;
 }
 
 @font-face {
-    font-family: 'Poppins';
-    font-display: swap;
-    unicode-range: U+000-5FF;
-    src: url('/fonts/poppins_medium-webfont.woff2') format('woff2'),
-         url('/fonts/poppins_medium-webfont.woff') format('woff');
-    font-weight: 500;
-    font-style: normal;
+  font-family: 'Poppins';
+  font-display: swap;
+  unicode-range: U+000-5FF;
+  src: url('/fonts/poppins_medium-webfont.woff2') format('woff2'),
+    url('/fonts/poppins_medium-webfont.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: 'Poppins';
-    font-display: swap;
-    unicode-range: U+000-5FF;
-    src: url('/fonts/poppins_bold-webfont.woff2') format('woff2'),
-         url('/fonts/poppins_bold-webfont.woff') format('woff');
-    font-weight: 700;
-    font-style: normal;
+  font-family: 'Poppins';
+  font-display: swap;
+  unicode-range: U+000-5FF;
+  src: url('/fonts/poppins_bold-webfont.woff2') format('woff2'),
+    url('/fonts/poppins_bold-webfont.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
 }
-
 
 // Set your colors
 $primary: #61e987;
@@ -190,13 +189,13 @@ $footer-padding: 3rem 1.5rem 3.75rem;
 }
 
 .button {
-	white-space: inherit;
-	word-wrap: anywhere;
-	word-break: break-word;
+  white-space: inherit;
+  word-wrap: anywhere;
+  word-break: break-word;
 }
 
 .navbar {
-  background: $scheme-main-bis src('img/bubble/bubble@1,5x.svg');
+  background: $scheme-main-bis url('/img/bubble/bubble@1,5x.svg');
   background-repeat: no-repeat;
   background-position-x: right;
   background-position-y: center;
