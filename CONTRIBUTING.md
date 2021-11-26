@@ -27,7 +27,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 ## Frontend Requirements
 
-- Node.js 14 (with `yarn`).
+- Node.js 16 (with `yarn`).
 
 ## Backend local development
 

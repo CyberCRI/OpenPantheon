@@ -15,7 +15,7 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 # Stage 0, "build-stage" to build and compile the frontend
-FROM node:14-bullseye-slim as build-stage
+FROM node:16-bullseye-slim as build-stage
 
 # Required on non x86_64 to compile some of the dependencies
 RUN apt-get update && \
@@ -26,7 +26,8 @@ WORKDIR /app
 
 COPY ./frontend/package.json ./frontend/yarn.lock /app/
 
-RUN yarn install --pure-lockfile --non-interactive
+RUN yarn install --pure-lockfile --non-interactive && \
+    rm -rf /usr/local/share/.cache
 
 COPY ./frontend/ /app/
 
