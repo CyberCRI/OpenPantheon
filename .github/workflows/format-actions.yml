@@ -17,11 +17,12 @@ name: Code formatting & linting
 on:
   push:
     branches:
-      - main
+      - develop
       - staging
+      - main
   pull_request:
     branches:
-      - main
+      - develop
 jobs:
   frontend:
     runs-on: ubuntu-latest
