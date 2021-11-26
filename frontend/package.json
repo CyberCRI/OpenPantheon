@@ -87,7 +87,7 @@
     "not dead"
   ],
   "engines": {
-    "node": ">14.0.0"
+    "node": ">15.0.0 <17.0.0"
   },
   "license": "AGPL-3.0-or-later",
   "readme": "https://github.com/CyberCRI/OpenPantheon/blob/main/README.md"
