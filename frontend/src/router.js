@@ -24,6 +24,7 @@ import Contact from './views/Contact.vue'
 import Details from './views/Details.vue'
 import Pantheon from './views/Pantheon.vue'
 import Celebrate from './views/Celebrate.vue'
+import { pageViewed } from './analytics'
 
 Vue.use(Router)
 
@@ -52,6 +53,13 @@ const router = new Router({
     if (savedPosition) return savedPosition
     return { x: 0, y: 0 }
   },
+})
+
+router.afterEach((to) => {
+  pageViewed({
+    name: to.name,
+    url: window.location.href,
+  })
 })
 
 export default router

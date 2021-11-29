@@ -31,8 +31,12 @@ RUN yarn install --pure-lockfile --non-interactive && \
 
 COPY ./frontend/ /app/
 
-ARG BACKEND_URL=http://localhost:8000
-ENV VUE_APP_BACKEND_URL=${BACKEND_URL}
+ARG BACKEND_URL=http://localhost:8000 \
+    MIXPANEL_PROJECT_TOKEN \
+    MIXPANEL_API_URL=https://api-eu.mixpanel.com
+ENV VUE_APP_BACKEND_URL=${BACKEND_URL} \
+    VUE_APP_MIXPANEL_PROJECT_TOKEN=${MIXPANEL_PROJECT_TOKEN} \
+    VUE_APP_MIXPANEL_API_URL=${MIXPANEL_API_URL}
 
 RUN yarn build
 

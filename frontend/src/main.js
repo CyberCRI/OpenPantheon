@@ -21,6 +21,7 @@ import Buefy from 'buefy'
 import router from './router'
 import store from './store'
 import i18n from './i18n'
+import { init as analyticsInit } from './analytics'
 import axios from 'axios'
 import Vue2Filters from 'vue2-filters'
 
@@ -34,6 +35,9 @@ axios.defaults.headers.common['Authorization'] = token ? `Bearer ${token}` : und
 
 Vue.config.productionTip = false
 Vue.use(Buefy)
+
+// Init analytics
+analyticsInit()
 
 new Vue({
   router,
