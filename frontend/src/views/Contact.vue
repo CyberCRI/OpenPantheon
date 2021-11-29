@@ -103,7 +103,7 @@ export default {
       this.reason = 'question'
       this.message = null
       this.sendMail(contactForm)
-        .then(async () => {
+        .then(() => {
           this.$buefy.toast.open({
             duration: 5000,
             message: this.$t('toast.success'),
