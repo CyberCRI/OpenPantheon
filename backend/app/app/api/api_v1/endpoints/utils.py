@@ -13,7 +13,7 @@
 #
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
-from typing import Any, Optional
+from typing import Any
 
 from fastapi import APIRouter, Body, Depends
 from pydantic.networks import EmailStr
@@ -40,7 +40,7 @@ async def test_email(
 
 @router.post("/contact/", response_model=schemas.Msg, status_code=201)
 async def contact_email(
-        email_to: Optional[EmailStr] = settings.EMAILS_CONTACT_TO,
+        email_to: EmailStr = settings.EMAILS_CONTACT_TO,
         email: EmailStr = Body(...),
         reason: str = Body(...),
         text: str = Body(...),
@@ -49,5 +49,5 @@ async def contact_email(
     """
     Sends email.
     """
-    await send_contact_email(email_to=email, email=email, reason=reason, text=text, name=name)
+    await send_contact_email(email_to=email_to, email=email, reason=reason, text=text, name=name)
     return {"msg": "Email sent"}
