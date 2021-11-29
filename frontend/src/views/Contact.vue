@@ -100,9 +100,23 @@ export default {
       }
       this.name = null
       this.email = null
-      this.reason = null
+      this.reason = 'question'
       this.message = null
       this.sendMail(contactForm)
+        .then(async () => {
+          this.$buefy.toast.open({
+            duration: 5000,
+            message: this.$t('toast.success'),
+            type: 'is-success',
+          })
+        })
+        .catch(() => {
+          this.$buefy.toast.open({
+            duration: 5000,
+            message: this.$t('toast.unknown'),
+            type: 'is-danger',
+          })
+        })
     },
   },
 }
