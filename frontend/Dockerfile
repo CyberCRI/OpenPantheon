@@ -44,9 +44,11 @@ RUN yarn build
 # Stage 1, based on Nginx, to have only the compiled app, ready for production with Nginx
 FROM nginx:1.20
 
-ARG BACKEND_URL=http://localhost:8000
+ARG BACKEND_URL=http://localhost:8000 \
+    MIXPANEL_API_URL=https://api-eu.mixpanel.com
 ENV ADD_HEADER_HSTS="" \
-    BACKEND_URL=${BACKEND_URL}
+    BACKEND_URL=${BACKEND_URL} \
+    MIXPANEL_API_URL=${MIXPANEL_API_URL}
 
 COPY ./frontend/nginx.conf.template /etc/nginx/templates/default.conf.template
 
