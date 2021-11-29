@@ -49,11 +49,11 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
         {{ $t('register.welcome_text') }}
       </p>
       <b-field class="mt-5" :label="$t('register.first_name')" label-position="inside">
-        <b-input v-model="user.firstName" placeholder="John" required expanded />
+        <b-input v-model="user.firstname" placeholder="John" required expanded />
       </b-field>
 
       <b-field :label="$t('register.last_name')" label-position="inside">
-        <b-input v-model="user.lastName" placeholder="Doe" required expanded> </b-input>
+        <b-input v-model="user.lastname" placeholder="Doe" required expanded> </b-input>
       </b-field>
 
       <b-field :label="$t('register.job')" label-position="inside">
@@ -85,8 +85,8 @@ export default {
       user: {
         email: null,
         password: null,
-        firstName: null,
-        lastName: null,
+        firstname: null,
+        lastname: null,
         job: null,
         organization: null,
       },
