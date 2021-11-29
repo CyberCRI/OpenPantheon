@@ -15,12 +15,12 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 from typing import Any
 
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, Body
 from pydantic.networks import EmailStr
 
 from app import models, schemas
 from app.api import deps
-from app.send_email import send_test_email, send_email
+from app.send_email import send_test_email, send_contact_email
 
 router = APIRouter()
 
@@ -36,6 +36,7 @@ async def test_email(
     await send_test_email(email_to=email_to)
     return {"msg": "Test email sent"}
 
+
 @router.post("/contact/", response_model=schemas.Msg, status_code=201)
 async def contact_email(
         email_to: EmailStr,
@@ -47,5 +48,5 @@ async def contact_email(
     """
     Sends email.
     """
-    await send_email(email_to="boudaa.louinis@gmail.com", email=email, reason=reason, text=text, name=name)
+    await send_contact_email(email_to=email_to, email=email, reason=reason, text=text, name=name)
     return {"msg": "Email sent"}

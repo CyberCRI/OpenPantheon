@@ -79,6 +79,7 @@ async def send_contact_email(email_to: EmailStr, email: EmailStr, reason: str, n
         },
     )
 
+
 async def send_reset_password_email(email_to: EmailStr, email: str, token: str) -> None:
     project_name = settings.PROJECT_NAME
     subject = f"{project_name} - Password recovery for user {email}"
