@@ -15,12 +15,12 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 from typing import Any
 
-from fastapi import APIRouter, Depends, Body
+from fastapi import APIRouter, Body, Depends
 from pydantic.networks import EmailStr
 
 from app import models, schemas
 from app.api import deps
-from app.send_email import send_test_email, send_contact_email
+from app.send_email import send_contact_email, send_test_email
 
 router = APIRouter()
 
