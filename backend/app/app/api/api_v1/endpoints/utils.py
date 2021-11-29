@@ -20,7 +20,7 @@ from pydantic.networks import EmailStr
 
 from app import models, schemas
 from app.api import deps
-from app.send_email import send_test_email
+from app.send_email import send_test_email, send_email
 
 router = APIRouter()
 
@@ -35,3 +35,17 @@ async def test_email(
     """
     await send_test_email(email_to=email_to)
     return {"msg": "Test email sent"}
+
+@router.post("/contact/", response_model=schemas.Msg, status_code=201)
+async def contact_email(
+        email_to: EmailStr,
+        email: EmailStr = Body(...),
+        reason: str = Body(...),
+        text: str = Body(...),
+        name: str = Body(...),
+) -> Any:
+    """
+    Sends email.
+    """
+    await send_email(email_to="boudaa.louinis@gmail.com", email=email, reason=reason, text=text, name=name)
+    return {"msg": "Email sent"}
