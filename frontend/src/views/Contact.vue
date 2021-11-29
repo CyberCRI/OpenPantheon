@@ -96,7 +96,7 @@ export default {
         name: this.name,
         email: this.email,
         reason: this.reason,
-        message: this.message,
+        text: this.message,
       }
       this.name = null
       this.email = null
