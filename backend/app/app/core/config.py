@@ -70,9 +70,9 @@ class Settings(BaseSettings):
     SMTP_HOST: Optional[str] = None
     SMTP_USER: Optional[str] = None
     SMTP_PASSWORD: Optional[str] = None
-    EMAILS_FROM_EMAIL: EmailStr = EmailStr("info@dev.open-pantheon.org")
+    EMAILS_FROM_EMAIL: EmailStr = "info@dev.open-pantheon.org"  # type: ignore
     EMAILS_FROM_NAME: str = "[LOCAL DEV] OpenPantheon"
-    EMAILS_CONTACT_TO: EmailStr = EmailStr("info@dev.open-pantheon.org")
+    EMAILS_CONTACT_TO: EmailStr = "info@dev.open-pantheon.org"  # type: ignore
 
     @validator("EMAILS_FROM_NAME")
     def get_project_name(cls, v: Optional[str], values: Dict[str, Any]) -> str:  # noqa: N805
