@@ -18,8 +18,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 # [Open Pantheon](https://open-pantheon.org)
 
-![GitHub license](https://img.shields.io/github/license/CyberCRI/OpenPantheon?style=flat-square)
-![GitHub branch checks state](https://img.shields.io/github/checks-status/CyberCRI/OpenPantheon/main?style=flat-square)
+![GitHub license](https://img.shields.io/badge/license-GNU%20Affero%20GPLv3-green?style=flat-square)
 
 We all have inspirational figures in our personal pantheon, but there is no place to share who they are and why they have impacted our lives.
 Open Pantheon empowers individuals and organisations to honour their personal heroes, celebrate their impact and share their legacy with like-minded people across the world.
