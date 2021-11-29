@@ -71,6 +71,8 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
   name: 'Contact',
   data() {
@@ -88,18 +90,19 @@ export default {
     },
   },
   methods: {
+    ...mapActions(['sendMail']),
     onSubmit() {
-      // let contactForm = {
-      //     name: this.name,
-      //     email: this.email,
-      //     reason: this.reason,
-      //     message: this.message,
-      // }
+      let contactForm = {
+        name: this.name,
+        email: this.email,
+        reason: this.reason,
+        message: this.message,
+      }
       this.name = null
       this.email = null
       this.reason = null
       this.message = null
-      // API
+      this.sendMail(contactForm)
     },
   },
 }

@@ -48,4 +48,7 @@ export default {
   getToken(credentials) {
     return axios.post('/login/access-token', credentials)
   },
+  sendMail(content) {
+    return axios.post('/contact', content)
+  },
 }

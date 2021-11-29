@@ -64,6 +64,10 @@ const actions = {
   deleteComment({ commit }, id) {
     return AuthService.deleteComment(id)
   },
+  // eslint-disable-next-line
+  sendMail({ commit }, content) {
+    return AuthService.sendMail(content)
+  },
   LogOut({ commit }) {
     commit('SET_CURRENT_USER_DETAILS', null)
     commit('SET_TOKEN', null)
