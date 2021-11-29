@@ -70,8 +70,9 @@ class Settings(BaseSettings):
     SMTP_HOST: Optional[str] = None
     SMTP_USER: Optional[str] = None
     SMTP_PASSWORD: Optional[str] = None
-    EMAILS_FROM_EMAIL: Optional[EmailStr] = None
-    EMAILS_FROM_NAME: Optional[str] = None
+    EMAILS_FROM_EMAIL: EmailStr = "info@dev.open-pantheon.org"  # type: ignore
+    EMAILS_FROM_NAME: str = "[LOCAL DEV] OpenPantheon"
+    EMAILS_CONTACT_TO: EmailStr = "info@dev.open-pantheon.org"  # type: ignore
 
     @validator("EMAILS_FROM_NAME")
     def get_project_name(cls, v: Optional[str], values: Dict[str, Any]) -> str:  # noqa: N805
@@ -85,7 +86,7 @@ class Settings(BaseSettings):
 
     @validator("EMAILS_ENABLED", pre=True)
     def get_emails_enabled(cls, v: bool, values: Dict[str, Any]) -> bool:  # noqa: N805
-        return bool(values.get("SMTP_HOST") and values.get("SMTP_PORT") and values.get("EMAILS_FROM_EMAIL"))
+        return bool(values.get("SMTP_HOST") and values.get("SMTP_PORT"))
 
     EMAIL_TEST_USER: EmailStr = "test@example.com"  # type: ignore
     FIRST_SUPERUSER: EmailStr

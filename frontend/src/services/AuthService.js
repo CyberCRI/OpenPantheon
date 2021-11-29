@@ -49,6 +49,6 @@ export default {
     return axios.post('/login/access-token', credentials)
   },
   sendMail(content) {
-    return axios.post('/contact', content)
+    return axios.post('/utils/contact', content)
   },
 }
