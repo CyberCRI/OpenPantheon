@@ -14,7 +14,7 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 from pathlib import Path
-from typing import Any, Dict
+from typing import Any, Dict, List, Optional
 
 import fastapi_mail
 from fastapi_mail import ConnectionConfig, FastMail, MessageSchema
@@ -45,8 +45,10 @@ async def send_email(
     subject: str,
     template_name: str,
     template_body: Dict[str, Any],
+    reply_to: Optional[List[EmailStr]] = None,
 ) -> None:
-    message = MessageSchema(subject=subject, recipients=[email_to], template_body=template_body)
+    reply_to = reply_to if reply_to is not None else []
+    message = MessageSchema(subject=subject, recipients=[email_to], template_body=template_body, reply_to=reply_to)
     fastmail = FastMail(configuration)
     await fastmail.send_message(message, template_name=template_name)
 
@@ -70,6 +72,7 @@ async def send_contact_email(email_to: EmailStr, email: EmailStr, reason: str, n
     subject = f"{project_name} - {reason}"
     await send_email(
         email_to=email_to,
+        reply_to=[email],
         subject=subject,
         template_name="contact_email.html",
         template_body={
