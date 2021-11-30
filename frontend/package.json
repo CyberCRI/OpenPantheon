@@ -70,6 +70,7 @@
     "eslint-plugin-prettier": "^3.4.1",
     "eslint-plugin-vue": "^6.2.2",
     "license-check-and-add": "^4.0.2",
+    "mjml": "^4.11.0",
     "node-sass": "^6.0.1",
     "prettier": "^2.2.1",
     "sass": "^1.26.5",

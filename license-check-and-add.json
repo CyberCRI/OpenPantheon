@@ -11,7 +11,8 @@
         "**/*.woff(2)?",
         "**/*.otf",
         "**/*.lock",
-        "**/*.pdf"
+        "**/*.pdf",
+        "backend/app/app/email-templates/build/*.html"
     ],
     "license": "license_header.txt",
     "licenseFormats": {
