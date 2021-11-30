@@ -1,7 +1,7 @@
 {
   "social": {
     "details": "Je célèbre {name} en l'ajoutant à mon %23OpenPantheon !%0a%0aQui vous inspire en apprentissage, science et arts ?%0a",
-    "pantheon": "Mon #OpenPantheon personnel des héros de l'éducation, la science et les arts%0a"
+    "pantheon": "Mon %23OpenPantheon personnel des héros de l'éducation, la science et les arts%0a"
   },
   "topbar": {
     "pantheon": "Le Panthéon",
