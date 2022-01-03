@@ -26,78 +26,78 @@ on:
     branches:
       - develop
 jobs:
-  test-frontend:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Git checkout
-        uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '16'
-          cache: yarn
-          cache-dependency-path: frontend/yarn.lock
-      - name: Install the dependencies
-        working-directory: frontend
-        run: yarn install --non-interactive --frozen-lockfile
-      - name: Run unit tests
-        working-directory: frontend
-        run: yarn test:unit
-
-  test-backend:
-    runs-on: ubuntu-latest
-    services:
-      postgres:
-        image: postgres:13
-        env:
-          POSTGRES_DB: app
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: 6f649af26564659f4ce95fc5615f111e9a787230593d1ea75dd3a7fb91b4168f
-        ports:
-          - 5432:5432
-    steps:
-      - name: Git checkout
-        uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
-        with:
-          python-version: '3.7'
-      - uses: actions/cache@v2
-        with:
-          path: ~/.cache/pip
-          key: pip
-          restore-keys: |
-            pip
-      - name: Install poetry
-        run: |
-          python -m pip install --upgrade pip
-          pip install poetry
-      - uses: actions/cache@v2
-        with:
-          path: ~/.cache/pypoetry
-          key: poetry-${{ hashFiles('backend/app/poetry.lock') }}
-          restore-keys: |
-            poetry-
-      - name: Install dependencies
-        working-directory: backend/app
-        run: poetry install --no-root
-      - name: Run unit tests
-        working-directory: backend/app
-        run: |
-          # Source the .env
-          export $(grep -v '^#' ../../.env | xargs -d '\n')
-          export $(grep -v '^#' .env | xargs -d '\n')
-          # Override the PostgreSQL host name
-          export POSTGRES_SERVER=localhost
-          # Activate poetry's virtualenv
-          source `poetry env info --path`/bin/activate
-          # Run the migration and initial data push
-          ./prestart.sh
-          # Run the tests
-          ./tests-start.sh
+#  test-frontend:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Git checkout
+#        uses: actions/checkout@v2
+#      - uses: actions/setup-node@v2
+#        with:
+#          node-version: '16'
+#          cache: yarn
+#          cache-dependency-path: frontend/yarn.lock
+#      - name: Install the dependencies
+#        working-directory: frontend
+#        run: yarn install --non-interactive --frozen-lockfile
+#      - name: Run unit tests
+#        working-directory: frontend
+#        run: yarn test:unit
+#
+#  test-backend:
+#    runs-on: ubuntu-latest
+#    services:
+#      postgres:
+#        image: postgres:13
+#        env:
+#          POSTGRES_DB: app
+#          POSTGRES_USER: postgres
+#          POSTGRES_PASSWORD: 6f649af26564659f4ce95fc5615f111e9a787230593d1ea75dd3a7fb91b4168f
+#        ports:
+#          - 5432:5432
+#    steps:
+#      - name: Git checkout
+#        uses: actions/checkout@v2
+#      - uses: actions/setup-python@v2
+#        with:
+#          python-version: '3.7'
+#      - uses: actions/cache@v2
+#        with:
+#          path: ~/.cache/pip
+#          key: pip
+#          restore-keys: |
+#            pip
+#      - name: Install poetry
+#        run: |
+#          python -m pip install --upgrade pip
+#          pip install poetry
+#      - uses: actions/cache@v2
+#        with:
+#          path: ~/.cache/pypoetry
+#          key: poetry-${{ hashFiles('backend/app/poetry.lock') }}
+#          restore-keys: |
+#            poetry-
+#      - name: Install dependencies
+#        working-directory: backend/app
+#        run: poetry install --no-root
+#      - name: Run unit tests
+#        working-directory: backend/app
+#        run: |
+#          # Source the .env
+#          export $(grep -v '^#' ../../.env | xargs -d '\n')
+#          export $(grep -v '^#' .env | xargs -d '\n')
+#          # Override the PostgreSQL host name
+#          export POSTGRES_SERVER=localhost
+#          # Activate poetry's virtualenv
+#          source `poetry env info --path`/bin/activate
+#          # Run the migration and initial data push
+#          ./prestart.sh
+#          # Run the tests
+#          ./tests-start.sh
 
   build-docker:
-    needs:
-      - test-backend
-      - test-frontend
+#    needs:
+#      - test-backend
+#      - test-frontend
     runs-on: k8s-runner
     strategy:
       matrix:
