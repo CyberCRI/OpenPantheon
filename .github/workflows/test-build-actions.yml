@@ -141,6 +141,7 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/')
         uses: docker/build-push-action@v2
         with:
-          context: ${{ matrix.app }}
+          file: ${{ matrix.app }}/Dockerfile
+          context: .
           push: true
           tags: cristaglab.azurecr.io/open-pantheon-${{ matrix.app }}:${{ steps.version_tag.outputs.value }}
