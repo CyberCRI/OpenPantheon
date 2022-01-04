@@ -149,7 +149,7 @@ jobs:
           file: ${{ matrix.app }}/Dockerfile
           context: .
           push: true
-          tags: cridevlab.azurecr.io/open-pantheon-${{ matrix.app }}:${{ steps.version_tag.outputs.value }}
+          tags: cridevlab.azurecr.io/open-pantheon-${{ matrix.app }}:latest
 
   build-docker-tag:
     needs:
