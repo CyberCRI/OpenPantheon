@@ -124,7 +124,7 @@ jobs:
       - test-backend
       - test-frontend
     runs-on: k8s-runner
-    if: ! startsWith(github.ref, 'refs/tags/')
+    if: startsWith(github.ref, 'refs/tags/') != true
     strategy:
       matrix:
         app: [ "frontend", "backend" ]
