@@ -51,6 +51,7 @@ ENV ADD_HEADER_HSTS="" \
     MIXPANEL_API_URL=${MIXPANEL_API_URL}
 
 COPY ./frontend/nginx.conf.template /etc/nginx/templates/default.conf.template
+COPY ./frontend/nginx.conf /etc/nginx/nginx.conf
 
 EXPOSE 8080
 
