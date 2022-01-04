@@ -16,7 +16,7 @@
     ],
     "license": "license_header.txt",
     "licenseFormats": {
-        "gitignore|npmignore|eslintignore|dockerignore|prettierignore|sh|py|^Dockerfile|dockerfile|toml|flake8|env|yml|yapf|yapfignore|mako|ini|template": {
+        "gitignore|npmignore|eslintignore|dockerignore|prettierignore|sh|py|^Dockerfile|dockerfile|toml|flake8|env|yml|yapf|yapfignore|mako|ini|template|conf": {
             "eachLine": {
                 "prepend": "# "
             }
