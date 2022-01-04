@@ -125,9 +125,6 @@ jobs:
       - test-frontend
     runs-on: k8s-runner
     if: startsWith(github.ref, 'refs/tags/') != true
-    env:
-      BACKEND_URL: https://openpantheon-api.k8s.dev.azure.cri-paris.tech
-      MIXPANEL_PROJECT_TOKEN: 595d22a08b4159d437f396461e50e26c
     strategy:
       matrix:
         app: [ "frontend", "backend" ]
@@ -150,6 +147,9 @@ jobs:
           context: .
           push: true
           tags: cridevlab.azurecr.io/open-pantheon-${{ matrix.app }}:latest
+          build-args:
+            - "BACKEND_URL=https://openpantheon-api.k8s.dev.azure.cri-paris.tech"
+            - "MIXPANEL_PROJECT_TOKEN=595d22a08b4159d437f396461e50e26c"
 
   build-docker-tag:
     needs:
