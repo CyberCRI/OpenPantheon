@@ -22,11 +22,13 @@ on:
       - develop
       - main
       - staging
+    tags:
+      - "v*.*.*"
   pull_request:
     branches:
       - develop
-jobs:
 
+jobs:
   test-frontend:
     runs-on: ubuntu-latest
     steps:
