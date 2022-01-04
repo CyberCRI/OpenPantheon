@@ -152,6 +152,12 @@ jobs:
           build-args: |
             BACKEND_URL=https://openpantheon-api.k8s.dev.azure.cri-paris.tech
             MIXPANEL_PROJECT_TOKEN=595d22a08b4159d437f396461e50e26c
+      - uses: azure/setup-kubectl@v1
+      - name: restart frontend deployment
+        run: kubectl -n open-pantheon rollout restart deployment/openpantheon-frontend
+      - uses: azure/setup-kubectl@v1
+      - name: restart backend deployment
+        run: kubectl -n open-pantheon rollout restart deployment/openpantheon-backend
 
   build-docker-tag:
     needs:
@@ -184,3 +190,6 @@ jobs:
           context: .
           push: true
           tags: cristaglab.azurecr.io/open-pantheon-${{ matrix.app }}:${{ steps.version_tag.outputs.value }}
+          build-args: |
+            BACKEND_URL=https://openpantheon-api.k8s.stag.azure.cri-paris.tech
+            MIXPANEL_PROJECT_TOKEN=595d22a08b4159d437f396461e50e26c
