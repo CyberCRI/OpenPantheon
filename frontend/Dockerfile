@@ -52,6 +52,8 @@ ENV ADD_HEADER_HSTS="" \
 
 COPY ./frontend/nginx.conf.template /etc/nginx/templates/default.conf.template
 COPY ./frontend/nginx.conf /etc/nginx/nginx.conf
+RUN chmod -R a+w /etc/nginx/conf.d
+
 
 EXPOSE 8080
 

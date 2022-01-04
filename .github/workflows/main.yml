@@ -26,79 +26,134 @@ on:
     branches:
       - develop
 jobs:
-#  test-frontend:
-#    runs-on: ubuntu-latest
-#    steps:
-#      - name: Git checkout
-#        uses: actions/checkout@v2
-#      - uses: actions/setup-node@v2
-#        with:
-#          node-version: '16'
-#          cache: yarn
-#          cache-dependency-path: frontend/yarn.lock
-#      - name: Install the dependencies
-#        working-directory: frontend
-#        run: yarn install --non-interactive --frozen-lockfile
-#      - name: Run unit tests
-#        working-directory: frontend
-#        run: yarn test:unit
-#
-#  test-backend:
-#    runs-on: ubuntu-latest
-#    services:
-#      postgres:
-#        image: postgres:13
-#        env:
-#          POSTGRES_DB: app
-#          POSTGRES_USER: postgres
-#          POSTGRES_PASSWORD: 6f649af26564659f4ce95fc5615f111e9a787230593d1ea75dd3a7fb91b4168f
-#        ports:
-#          - 5432:5432
-#    steps:
-#      - name: Git checkout
-#        uses: actions/checkout@v2
-#      - uses: actions/setup-python@v2
-#        with:
-#          python-version: '3.7'
-#      - uses: actions/cache@v2
-#        with:
-#          path: ~/.cache/pip
-#          key: pip
-#          restore-keys: |
-#            pip
-#      - name: Install poetry
-#        run: |
-#          python -m pip install --upgrade pip
-#          pip install poetry
-#      - uses: actions/cache@v2
-#        with:
-#          path: ~/.cache/pypoetry
-#          key: poetry-${{ hashFiles('backend/app/poetry.lock') }}
-#          restore-keys: |
-#            poetry-
-#      - name: Install dependencies
-#        working-directory: backend/app
-#        run: poetry install --no-root
-#      - name: Run unit tests
-#        working-directory: backend/app
-#        run: |
-#          # Source the .env
-#          export $(grep -v '^#' ../../.env | xargs -d '\n')
-#          export $(grep -v '^#' .env | xargs -d '\n')
-#          # Override the PostgreSQL host name
-#          export POSTGRES_SERVER=localhost
-#          # Activate poetry's virtualenv
-#          source `poetry env info --path`/bin/activate
-#          # Run the migration and initial data push
-#          ./prestart.sh
-#          # Run the tests
-#          ./tests-start.sh
 
-  build-docker:
-#    needs:
-#      - test-backend
-#      - test-frontend
+  test-frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Git checkout
+        uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+          cache: yarn
+          cache-dependency-path: frontend/yarn.lock
+      - name: Install the dependencies
+        working-directory: frontend
+        run: yarn install --non-interactive --frozen-lockfile
+      - name: Run the license check
+        run: ./scripts/license-check-and-add.sh check
+      - name: Check the code formatting
+        working-directory: frontend
+        run: yarn format:check
+      - name: Lint
+        working-directory: frontend
+        run: yarn lint
+      - name: Run unit tests
+        working-directory: frontend
+        run: yarn test:unit
+
+  test-backend:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:13
+        env:
+          POSTGRES_DB: app
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: 6f649af26564659f4ce95fc5615f111e9a787230593d1ea75dd3a7fb91b4168f
+        ports:
+          - 5432:5432
+    steps:
+      - name: Git checkout
+        uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.7'
+      - uses: actions/cache@v2
+        with:
+          path: ~/.cache/pip
+          key: pip
+          restore-keys: |
+            pip
+      - name: Install poetry
+        run: |
+          python -m pip install --upgrade pip
+          pip install poetry
+      - uses: actions/cache@v2
+        with:
+          path: ~/.cache/pypoetry
+          key: poetry-${{ hashFiles('backend/app/poetry.lock') }}
+          restore-keys: |
+            poetry-
+      - name: Install dependencies
+        working-directory: backend/app
+        run: poetry install --no-root
+      - name: Check the code formatting
+        working-directory: backend/app
+        run: |
+          # Activate poetry's virtualenv
+          source `poetry env info --path`/bin/activate
+          # Run formatting tools
+          ./scripts/format.sh
+          # Check that there are no changes
+          git diff --exit-code
+      - name: Lint
+        working-directory: backend/app
+        run: |
+          # Activate poetry's virtualenv
+          source `poetry env info --path`/bin/activate
+          # Run the linter tools
+          ./scripts/lint.sh
+      - name: Run unit tests
+        working-directory: backend/app
+        run: |
+          # Source the .env
+          export $(grep -v '^#' ../../.env | xargs -d '\n')
+          export $(grep -v '^#' .env | xargs -d '\n')
+          # Override the PostgreSQL host name
+          export POSTGRES_SERVER=localhost
+          # Activate poetry's virtualenv
+          source `poetry env info --path`/bin/activate
+          # Run the migration and initial data push
+          ./prestart.sh
+          # Run the tests
+          ./tests-start.sh
+
+  build-docker-develop:
+    needs:
+      - test-backend
+      - test-frontend
     runs-on: k8s-runner
+    if: ! startsWith(github.ref, 'refs/tags/')
+    strategy:
+      matrix:
+        app: [ "frontend", "backend" ]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+        with:
+          version: latest
+      - name: Docker Login Dev
+        uses: docker/login-action@v1
+        with:
+          registry: cridevlab.azurecr.io
+          username: ${{ secrets.DOCKER_DEV_USERNAME }}
+          password: ${{ secrets.DOCKER_DEV_PASSWORD }}
+      - name: Build and push Dev
+        uses: docker/build-push-action@v2
+        with:
+          file: ${{ matrix.app }}/Dockerfile
+          context: .
+          push: true
+          tags: cridevlab.azurecr.io/open-pantheon-${{ matrix.app }}:${{ steps.version_tag.outputs.value }}
+
+  build-docker-tag:
+    needs:
+      - test-backend
+      - test-frontend
+    runs-on: k8s-runner
+    if: startsWith(github.ref, 'refs/tags/')
     strategy:
       matrix:
         app: [ "frontend", "backend" ]
@@ -110,36 +165,14 @@ jobs:
           version: latest
       - name: Get version tag
         id: version_tag
-        run: |
-          if [[ ! "$GITHUB_REF" =~ refs/tags ]]; then
-            echo "::set-output name=value::latest"
-          else
-            echo "::set-output name=value::${GITHUB_REF#refs/tags/}"
-          fi
-      - name: Docker Login Dev
-        if: startsWith(github.ref, 'refs/tags/') != true
-        uses: docker/login-action@v1
-        with:
-          registry: cridevlab.azurecr.io
-          username: ${{ secrets.DOCKER_DEV_USERNAME }}
-          password: ${{ secrets.DOCKER_DEV_PASSWORD }}
-      - name: Build and push Dev
-        if: startsWith(github.ref, 'refs/tags/') != true
-        uses: docker/build-push-action@v2
-        with:
-          file: ${{ matrix.app }}/Dockerfile
-          context: .
-          push: true
-          tags: cridevlab.azurecr.io/open-pantheon-${{ matrix.app }}:${{ steps.version_tag.outputs.value }}
+        run: echo "::set-output name=value::${GITHUB_REF#refs/tags/}"
       - name: Docker Login Staging
-        if: startsWith(github.ref, 'refs/tags/')
         uses: docker/login-action@v1
         with:
           registry: cristaglab.azurecr.io
           username: ${{ secrets.DOCKER_STAG_USERNAME }}
           password: ${{ secrets.DOCKER_STAG_PASSWORD }}
       - name: Build and push Staging
-        if: startsWith(github.ref, 'refs/tags/')
         uses: docker/build-push-action@v2
         with:
           file: ${{ matrix.app }}/Dockerfile
