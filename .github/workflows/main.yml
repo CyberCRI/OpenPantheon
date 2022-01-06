@@ -1,0 +1,199 @@
+# OpenPantheon: the pantheon for Education
+# Copyright (C) 2021 CRI
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as published
+# by the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU Affero General Public License for more details.
+#
+# You should have received a copy of the GNU Affero General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+name: Test and Build
+on:
+  push:
+    branches:
+      - develop
+    tags:
+      - "v*.*.*"
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+  test-frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Git checkout
+        uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+          cache: yarn
+          cache-dependency-path: frontend/yarn.lock
+      - name: Install the dependencies
+        working-directory: frontend
+        run: yarn install --non-interactive --frozen-lockfile
+      - name: Run the license check
+        run: ./scripts/license-check-and-add.sh check
+      - name: Check the code formatting
+        working-directory: frontend
+        run: yarn format:check
+      - name: Lint
+        working-directory: frontend
+        run: yarn lint
+      - name: Run unit tests
+        working-directory: frontend
+        run: yarn test:unit
+
+  test-backend:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:13
+        env:
+          POSTGRES_DB: app
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: 6f649af26564659f4ce95fc5615f111e9a787230593d1ea75dd3a7fb91b4168f
+        ports:
+          - 5432:5432
+    steps:
+      - name: Git checkout
+        uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.7'
+      - uses: actions/cache@v2
+        with:
+          path: ~/.cache/pip
+          key: pip
+          restore-keys: |
+            pip
+      - name: Install poetry
+        run: |
+          python -m pip install --upgrade pip
+          pip install poetry
+      - uses: actions/cache@v2
+        with:
+          path: ~/.cache/pypoetry
+          key: poetry-${{ hashFiles('backend/app/poetry.lock') }}
+          restore-keys: |
+            poetry-
+      - name: Install dependencies
+        working-directory: backend/app
+        run: poetry install --no-root
+      - name: Check the code formatting
+        working-directory: backend/app
+        run: |
+          # Activate poetry's virtualenv
+          source `poetry env info --path`/bin/activate
+          # Run formatting tools
+          ./scripts/format.sh
+          # Check that there are no changes
+          git diff --exit-code
+      - name: Lint
+        working-directory: backend/app
+        run: |
+          # Activate poetry's virtualenv
+          source `poetry env info --path`/bin/activate
+          # Run the linter tools
+          ./scripts/lint.sh
+      - name: Run unit tests
+        working-directory: backend/app
+        run: |
+          # Source the .env
+          export $(grep -v '^#' ../../.env | xargs -d '\n')
+          export $(grep -v '^#' .env | xargs -d '\n')
+          # Override the PostgreSQL host name
+          export POSTGRES_SERVER=localhost
+          # Activate poetry's virtualenv
+          source `poetry env info --path`/bin/activate
+          # Run the migration and initial data push
+          ./prestart.sh
+          # Run the tests
+          ./tests-start.sh
+
+  develop-build-rollout:
+    needs:
+      - test-backend
+      - test-frontend
+    runs-on: k8s-runner
+    if: github.ref == 'refs/heads/develop'
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+        with:
+          version: latest
+      - name: Docker Login Dev
+        uses: docker/login-action@v1
+        with:
+          registry: cridevlab.azurecr.io
+          username: ${{ secrets.DOCKER_DEV_USERNAME }}
+          password: ${{ secrets.DOCKER_DEV_PASSWORD }}
+      - name: Build and push frontend
+        uses: docker/build-push-action@v2
+        with:
+          file: frontend/Dockerfile
+          context: .
+          push: true
+          tags: cridevlab.azurecr.io/open-pantheon-frontend:latest
+          build-args: |
+            BACKEND_URL=https://openpantheon-api.k8s.dev.azure.cri-paris.tech
+            MIXPANEL_PROJECT_TOKEN=${{ secrets.MIXPANEL_PROJECT_TOKEN_DEV }}
+      - name: Build and push backend
+        uses: docker/build-push-action@v2
+        with:
+          file: backend/Dockerfile
+          context: .
+          push: true
+          tags: cridevlab.azurecr.io/open-pantheon-backend:latest
+      - uses: azure/setup-kubectl@v1
+      - name: restart frontend
+        run: kubectl -n open-pantheon rollout restart deployment/openpantheon-frontend
+      - name: restart backend
+        run: kubectl -n open-pantheon rollout restart deployment/openpantheon-backend
+
+  tag-build:
+    needs:
+      - test-backend
+      - test-frontend
+    runs-on: k8s-runner
+    if: startsWith(github.ref, 'refs/tags/')
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+        with:
+          version: latest
+      - name: Get version tag
+        id: version_tag
+        run: echo "::set-output name=value::${GITHUB_REF#refs/tags/}"
+      - name: Docker Login Staging
+        uses: docker/login-action@v1
+        with:
+          registry: cristaglab.azurecr.io
+          username: ${{ secrets.DOCKER_STAG_USERNAME }}
+          password: ${{ secrets.DOCKER_STAG_PASSWORD }}
+      - name: Build and push frontend
+        uses: docker/build-push-action@v2
+        with:
+          file: frontend/Dockerfile
+          context: .
+          push: true
+          tags: cristaglab.azurecr.io/open-pantheon-frontend:${{ steps.version_tag.outputs.value }}
+          build-args: |
+            BACKEND_URL=https://openpantheon-api.k8s.stag.azure.cri-paris.tech
+            MIXPANEL_PROJECT_TOKEN=${{ secrets.MIXPANEL_PROJECT_TOKEN_STAG }}
+      - name: Build and push backend
+        uses: docker/build-push-action@v2
+        with:
+          file: backend/Dockerfile
+          context: .
+          push: true
+          tags: cristaglab.azurecr.io/open-pantheon-backend:${{ steps.version_tag.outputs.value }}

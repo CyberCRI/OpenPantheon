@@ -50,8 +50,12 @@ ENV ADD_HEADER_HSTS="" \
     BACKEND_URL=${BACKEND_URL} \
     MIXPANEL_API_URL=${MIXPANEL_API_URL}
 
-COPY ./frontend/nginx.conf.template /etc/nginx/templates/default.conf.template
 
-EXPOSE 8080
+COPY ./frontend/nginx.conf.template /etc/nginx/templates/default.conf.template
+COPY ./frontend/nginx.conf /etc/nginx/nginx.conf
+RUN chown -R nginx:nginx /etc/nginx/conf.d
 
 COPY --from=build-stage /app/dist/ /usr/share/nginx/html
+
+USER nginx
+EXPOSE 8080
