@@ -124,9 +124,6 @@ jobs:
       - test-frontend
     runs-on: k8s-runner
     if: github.ref == 'refs/heads/develop'
-    strategy:
-      matrix:
-        app: [ "frontend", "backend" ]
     steps:
       - uses: actions/checkout@v2
       - name: Set up Docker Buildx
@@ -139,19 +136,28 @@ jobs:
           registry: cridevlab.azurecr.io
           username: ${{ secrets.DOCKER_DEV_USERNAME }}
           password: ${{ secrets.DOCKER_DEV_PASSWORD }}
-      - name: Build and push Dev
+      - name: Build and push frontend
         uses: docker/build-push-action@v2
         with:
-          file: ${{ matrix.app }}/Dockerfile
+          file: frontend/Dockerfile
           context: .
           push: true
-          tags: cridevlab.azurecr.io/open-pantheon-${{ matrix.app }}:latest
+          tags: cridevlab.azurecr.io/open-pantheon-frontend:latest
           build-args: |
             BACKEND_URL=https://openpantheon-api.k8s.dev.azure.cri-paris.tech
-            MIXPANEL_PROJECT_TOKEN=595d22a08b4159d437f396461e50e26c
+            MIXPANEL_PROJECT_TOKEN=${{ secrets.MIXPANEL_PROJECT_TOKEN }}
+      - name: Build and push backend
+        uses: docker/build-push-action@v2
+        with:
+          file: backend/Dockerfile
+          context: .
+          push: true
+          tags: cridevlab.azurecr.io/open-pantheon-backend:latest
       - uses: azure/setup-kubectl@v1
-      - name: restart deployment
-        run: kubectl -n open-pantheon rollout restart deployment/openpantheon-${{ matrix.app }}
+      - name: restart frontend
+        run: kubectl -n open-pantheon rollout restart deployment/openpantheon-frontend
+      - name: restart backend
+        run: kubectl -n open-pantheon rollout restart deployment/openpantheon-backend
 
   build-docker-tag:
     needs:
@@ -159,9 +165,6 @@ jobs:
       - test-frontend
     runs-on: k8s-runner
     if: startsWith(github.ref, 'refs/tags/')
-    strategy:
-      matrix:
-        app: [ "frontend", "backend" ]
     steps:
       - uses: actions/checkout@v2
       - name: Set up Docker Buildx
@@ -177,13 +180,20 @@ jobs:
           registry: cristaglab.azurecr.io
           username: ${{ secrets.DOCKER_STAG_USERNAME }}
           password: ${{ secrets.DOCKER_STAG_PASSWORD }}
-      - name: Build and push Staging
+      - name: Build and push frontend
         uses: docker/build-push-action@v2
         with:
-          file: ${{ matrix.app }}/Dockerfile
+          file: frontend/Dockerfile
           context: .
           push: true
-          tags: cristaglab.azurecr.io/open-pantheon-${{ matrix.app }}:${{ steps.version_tag.outputs.value }}
+          tags: cristaglab.azurecr.io/open-pantheon-frontend:latest
           build-args: |
-            BACKEND_URL=https://openpantheon-api.k8s.stag.azure.cri-paris.tech
-            MIXPANEL_PROJECT_TOKEN=595d22a08b4159d437f396461e50e26c
+            BACKEND_URL=https://openpantheon-api.k8s.dev.azure.cri-paris.tech
+            MIXPANEL_PROJECT_TOKEN=${{ secrets.MIXPANEL_PROJECT_TOKEN }}
+      - name: Build and push backend
+        uses: docker/build-push-action@v2
+        with:
+          file: backend/Dockerfile
+          context: .
+          push: true
+          tags: cristaglab.azurecr.io/open-pantheon-backend:latest
