@@ -119,12 +119,11 @@ jobs:
           # Run the tests
           ./tests-start.sh
 
-  docker-develop-rollout:
+  develop-build-rollout:
     needs:
       - test-backend
       - test-frontend
     runs-on: k8s-runner
-    if: github.ref == 'refs/heads/develop'
     steps:
       - uses: actions/checkout@v2
       - name: Set up Docker Buildx
@@ -160,7 +159,7 @@ jobs:
       - name: restart backend
         run: kubectl -n open-pantheon rollout restart deployment/openpantheon-backend
 
-  build-docker-tag:
+  tag-build:
     needs:
       - test-backend
       - test-frontend
@@ -187,7 +186,7 @@ jobs:
           file: frontend/Dockerfile
           context: .
           push: true
-          tags: cristaglab.azurecr.io/open-pantheon-frontend:latest
+          tags: cristaglab.azurecr.io/open-pantheon-frontend:${{ steps.version_tag.outputs.value }}
           build-args: |
             BACKEND_URL=https://openpantheon-api.k8s.dev.azure.cri-paris.tech
             MIXPANEL_PROJECT_TOKEN=${{ secrets.MIXPANEL_PROJECT_TOKEN }}
@@ -197,4 +196,4 @@ jobs:
           file: backend/Dockerfile
           context: .
           push: true
-          tags: cristaglab.azurecr.io/open-pantheon-backend:latest
+          tags: cristaglab.azurecr.io/open-pantheon-backend:${{ steps.version_tag.outputs.value }}
