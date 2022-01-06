@@ -188,7 +188,7 @@ jobs:
           push: true
           tags: cristaglab.azurecr.io/open-pantheon-frontend:${{ steps.version_tag.outputs.value }}
           build-args: |
-            BACKEND_URL=https://openpantheon-api.k8s.dev.azure.cri-paris.tech
+            BACKEND_URL=https://openpantheon-api.k8s.stag.azure.cri-paris.tech
             MIXPANEL_PROJECT_TOKEN=${{ secrets.MIXPANEL_PROJECT_TOKEN }}
       - name: Build and push backend
         uses: docker/build-push-action@v2
