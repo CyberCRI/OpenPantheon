@@ -18,6 +18,11 @@
 set -e
 set -x
 
+# Debug environment variables
+if [ "x$DEBUG_ENV" == "xTrue" ]; then
+  env | sort
+fi
+
 CURRENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # Let the DB start
