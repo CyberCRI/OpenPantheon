@@ -34,7 +34,9 @@ COPY ./frontend/ /app/
 ARG BACKEND_URL=http://localhost:8000 \
     MIXPANEL_PROJECT_TOKEN \
     MIXPANEL_API_URL=https://api-eu.mixpanel.com
-ENV VUE_APP_BACKEND_URL=${BACKEND_URL} \
+ENV VUE_APP_I18N_LOCALE=en \
+    VUE_APP_I18N_FALLBACK_LOCALE=en \
+    VUE_APP_BACKEND_URL=${BACKEND_URL} \
     VUE_APP_MIXPANEL_PROJECT_TOKEN=${MIXPANEL_PROJECT_TOKEN} \
     VUE_APP_MIXPANEL_API_URL=${MIXPANEL_API_URL}
 
@@ -49,7 +51,6 @@ ARG BACKEND_URL=http://localhost:8000 \
 ENV ADD_HEADER_HSTS="" \
     BACKEND_URL=${BACKEND_URL} \
     MIXPANEL_API_URL=${MIXPANEL_API_URL}
-
 
 COPY ./frontend/nginx.conf.template /etc/nginx/templates/default.conf.template
 COPY ./frontend/nginx.conf /etc/nginx/nginx.conf

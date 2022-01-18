@@ -146,7 +146,7 @@ jobs:
           build-args: |
             BACKEND_URL=https://openpantheon-api.k8s.lp-i.dev
             MIXPANEL_PROJECT_TOKEN=${{ secrets.MIXPANEL_PROJECT_TOKEN_DEV }}
-            MIXPANEL_API_URL: https://mixpanel-proxy.k8s.lp-i.dev
+            MIXPANEL_API_URL=https://mixpanel-proxy.k8s.lp-i.dev
       - name: Build and push backend
         uses: docker/build-push-action@v2
         with:
