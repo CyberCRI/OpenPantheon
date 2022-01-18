@@ -15,7 +15,7 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 from typing import Any, List
 
-from fastapi import APIRouter, Body, Depends, HTTPException
+from fastapi import APIRouter, Body, Depends, HTTPException, Header
 from fastapi.encoders import jsonable_encoder
 from pydantic.networks import EmailStr
 from sqlalchemy.orm import Session
@@ -24,6 +24,8 @@ from app import crud, models, schemas
 from app.api import deps
 from app.core.config import settings
 from app.send_email import send_new_account_email
+
+import requests
 
 router = APIRouter()
 
@@ -129,11 +131,18 @@ def create_user_open(
     firstname: str = Body(...),
     lastname: str = Body(...),
     job: str = Body(default=None),
+    captcha: str = Header(...),
     organization: str = Body(default=None)
 ) -> Any:
     """
     Create new user without the need to be logged in.
     """
+    answer = requests.post('https://www.google.com/recaptcha/api/siteverify', {'secret': 'INSERT_SECRET_HERE', 'response': captcha}).json()
+    if not answer['success']:
+        raise HTTPException(
+            status_code=403,
+            detail="Captcha failed",
+        )    	
     if not settings.USERS_OPEN_REGISTRATION:
         raise HTTPException(
             status_code=403,
