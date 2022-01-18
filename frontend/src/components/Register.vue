@@ -43,7 +43,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
         >*
       </p>
     </form>
-    <form v-show="contactProvided" @submit.prevent="onSubmit">
+    <form v-show="contactProvided" @submit.prevent="captchaCheck">
       <p class="title">{{ $t('register.welcome') }}</p>
       <p class="is-size-6 has-text-weight-semibold">
         {{ $t('register.welcome_text') }}
@@ -88,14 +88,34 @@ export default {
         firstname: null,
         lastname: null,
         job: null,
-        organization: null,
+        organization: null
       },
     }
   },
   methods: {
     ...mapActions(['Register', 'LogIn', 'getCurrentUserDetails']),
-    async onSubmit() {
+    async captchaCheck() {
+    	let captchaToken = await new Promise((res, rej) => {
+	    	// eslint-disable-next-line no-undef
+	      grecaptcha.ready(function() {
+	        // eslint-disable-next-line no-undef
+	        return grecaptcha.execute('6LcNBh4eAAAAAFMGAr6PiXoQBoAOdAr_eJGiajGI', {action: 'submit'}).then((token) => {
+	                  return res(token)
+	              })
+	      });
+	   	});
+	    if (captchaToken)
+	      this.onSubmit(captchaToken)
+	    else
+	  	  this.$buefy.toast.open({
+	        duration: 5000,
+	        message: this.$t('toast.credentials'),
+	        type: 'is-danger',
+	      })
+    },
+    async onSubmit(token) {
       try {
+        axios.defaults.headers.common['captcha'] = token
         await this.Register(this.user)
         try {
           await this.LogIn(this.user)
