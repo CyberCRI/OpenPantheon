@@ -34,6 +34,7 @@ def create_comment(
     """
     Create new comment.
     """
+    print("a")
     comment_in = input[0]  # type: ignore
     del input[0]  # type: ignore
     fluff = input
@@ -41,8 +42,25 @@ def create_comment(
     for i in range(len(fluff)):  # type: ignore
         tab.append(fluff[i]['name'] + '|' + fluff[i]['link'])  # type: ignore
     comment_in['fluff'] = '~'.join(tab)
+    print("b")
     return crud.comment.create_new_comment(db=db, obj_in=comment_in)  # type: ignore
 
+@router.put("/approve/{id}", response_model=schemas.Comment)
+def approve_comment(
+        *,
+        db: Session = Depends(deps.get_db),
+        id: int,
+        current_user: models.User = Depends(deps.get_current_active_user),
+) -> Any:
+    """
+    Delete a Comment.
+    """
+    comment = crud.comment.get(db=db, id=id)
+    if not comment:
+        raise HTTPException(status_code=404, detail="Comment not found")
+    if not crud.user.is_superuser(current_user):
+        raise HTTPException(status_code=400, detail="Not enough permissions")
+    return crud.comment.approve(db=db, id=id)
 
 @router.delete("/{id}", response_model=schemas.Comment)
 def delete_comment(

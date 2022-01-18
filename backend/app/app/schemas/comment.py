@@ -46,6 +46,7 @@ class CommentInDBBase(CommentBase):
 class Comment(CommentInDBBase):
     author_id: Optional[int]
     personality_id: Optional[int]
+    is_validated: Optional[bool] = False
 
 
 class CommentFull(CommentInDBBase):

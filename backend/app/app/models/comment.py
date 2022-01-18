@@ -15,7 +15,7 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 from typing import TYPE_CHECKING
 
-from sqlalchemy import Column, DateTime, ForeignKey, Integer, String
+from sqlalchemy import Boolean, Column, DateTime, ForeignKey, Integer, String
 from sqlalchemy.sql import func
 
 from app.db.base_class import Base
@@ -30,5 +30,6 @@ class Comment(Base):
     text = Column(String, index=True)
     time_created = Column(DateTime(timezone=True), server_default=func.now())
     fluff = Column(String, index=True)
+    is_validated = Column(Boolean(), default=False)
     author_id = Column(Integer, ForeignKey("user.id"))
     personality_id = Column(Integer, ForeignKey("personality.id"))
