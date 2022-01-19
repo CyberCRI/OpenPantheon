@@ -14,17 +14,16 @@
 #
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
-
 set -e
 set -x
 
-CURRENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+__dir=${CURRENT_DIR:-"/app"}
 
 # Let the DB start
-python "${CURRENT_DIR}/app/backend_pre_start.py"
+python "${__dir}/app/backend_pre_start.py"
 
 # Run migrations
 alembic upgrade head
 
 # Create initial data in DB
-python "${CURRENT_DIR}/app/initial_data.py"
+python "${__dir}/app/initial_data.py"
