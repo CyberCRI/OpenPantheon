@@ -24,6 +24,7 @@ import Contact from './views/Contact.vue'
 import Details from './views/Details.vue'
 import Pantheon from './views/Pantheon.vue'
 import Celebrate from './views/Celebrate.vue'
+import CommentsApproval from './views/CommentsApproval.vue'
 import { pageViewed } from './analytics'
 
 Vue.use(Router)
@@ -32,6 +33,7 @@ const router = new Router({
   mode: 'history',
   routes: [
     { path: '/home', name: 'Home', component: Home, alias: '/' },
+    { path: '/moderation', name: 'CommentsApproval', component: CommentsApproval },
     { path: '/about', name: 'About', component: About },
     { path: '/faq', name: 'Faq', component: Faq },
     {

@@ -82,6 +82,20 @@ async def send_contact_email(email_to: EmailStr, email: EmailStr, reason: str, n
         },
     )
 
+async def send_comment_email(email_to: EmailStr, email: EmailStr, reason: str, name: str, text: str) -> None:
+    project_name = settings.PROJECT_NAME
+    subject = f"{project_name} - {reason}"
+    await send_email(
+        email_to=email_to,
+        reply_to=[email],
+        subject=subject,
+        template_name="contact_email.html",
+        template_body={
+            "name": name,
+            "email": email,
+            "text": text
+        },
+    )
 
 async def send_reset_password_email(email_to: EmailStr, email: str, token: str) -> None:
     project_name = settings.PROJECT_NAME
