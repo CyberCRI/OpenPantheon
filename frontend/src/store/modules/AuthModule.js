@@ -21,6 +21,7 @@ const state = {
   currentUserDetails: null,
   token: null,
   userDetails: null,
+  unapprovedComments: null,
 }
 
 const getters = {
@@ -60,6 +61,15 @@ const actions = {
       commit('SET_USER_DETAILS', response.data)
     })
   },
+  getUnapprovedComments({ commit }) {
+    return AuthService.getUnapprovedComments().then((response) => {
+      commit('SET_UNAPPROVED_COMMENTS', response.data)
+    })
+  },
+  // eslint-disable-next-line
+  approveComment({ commit }, id) {
+    return AuthService.approveComment(id)
+  },
   // eslint-disable-next-line
   deleteComment({ commit }, id) {
     return AuthService.deleteComment(id)
@@ -81,6 +91,9 @@ const mutations = {
   },
   SET_USER_DETAILS(state, user) {
     state.userDetails = user
+  },
+  SET_UNAPPROVED_COMMENTS(state, comments) {
+    state.unapprovedComments = comments
   },
   SET_TOKEN(state, token) {
     state.token = token

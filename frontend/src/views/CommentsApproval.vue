@@ -16,45 +16,33 @@ You should have received a copy of the GNU Affero General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 -->
 <template>
-  <div class="box container">
-    <div class="control is-clearfix my-6">
-      <b-input
-        type="text"
-        icon="magnify"
-        autocomplete="off"
-        :placeholder="$t('details.search')"
-        v-model="search"
-      />
+  <div class="box container my-6" v-if="AuthModule.currentUserDetails.is_superuser">
+    <div
+      class="columns is-multiline"
+      v-for="(comment, index) in AuthModule.unapprovedComments"
+      :key="index"
+    >
+      <Comment class="column is-12" :comment="comment" />
+      <b-button type="is-primary" @click="approveComment(comment.id)" expanded>Approve</b-button>
     </div>
-    <Comment v-for="(comment, index) in filteredList" :key="index" :comment="comment" />
   </div>
 </template>
 
 <script>
 import Comment from '@/components/Comment.vue'
+import { mapState, mapActions } from 'vuex'
 
 export default {
-  name: 'CommentsModal',
-  data() {
-    return {
-      search: '',
-    }
-  },
-  props: {
-    comments: Array,
-  },
+  name: 'CommentsApproval',
   components: {
     Comment,
   },
-  computed: {
-    filteredList() {
-      return this.comments.filter((comment) => {
-        return (
-          comment.text.toLowerCase().includes(this.search.toLowerCase()) &&
-          comment.is_validated === true
-        )
-      })
-    },
+  created() {
+    this.getUnapprovedComments()
   },
+  methods: {
+    ...mapActions(['getUnapprovedComments', 'approveComment']),
+  },
+  computed: mapState(['AuthModule']),
 }
 </script>

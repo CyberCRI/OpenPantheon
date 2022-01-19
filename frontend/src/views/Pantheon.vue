@@ -125,7 +125,9 @@ export default {
       })
     },
     findMyComment(personality) {
-      return personality.comments.find((comment) => comment.author_id === this.user.id).text
+      let comment = personality.comments.find((comment) => comment.author_id === this.user.id)
+      if (comment.is_validated === true) return comment.text
+      else return ''
     },
     changePage() {
       this.isLoading = true

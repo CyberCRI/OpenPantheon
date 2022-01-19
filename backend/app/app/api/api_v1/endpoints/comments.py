@@ -21,6 +21,13 @@ from sqlalchemy.orm import Session
 from app import crud, models, schemas
 from app.api import deps
 
+from app.models.comment import Comment
+
+from pydantic.networks import EmailStr
+
+from app.core.config import settings
+from app.send_email import send_comment_email
+
 router = APIRouter()
 
 
@@ -34,7 +41,6 @@ def create_comment(
     """
     Create new comment.
     """
-    print("a")
     comment_in = input[0]  # type: ignore
     del input[0]  # type: ignore
     fluff = input
@@ -42,25 +48,39 @@ def create_comment(
     for i in range(len(fluff)):  # type: ignore
         tab.append(fluff[i]['name'] + '|' + fluff[i]['link'])  # type: ignore
     comment_in['fluff'] = '~'.join(tab)
-    print("b")
     return crud.comment.create_new_comment(db=db, obj_in=comment_in)  # type: ignore
 
-@router.put("/approve/{id}", response_model=schemas.Comment)
-def approve_comment(
+@router.get("/unapproved")
+def get_unapprouved_comments(
+        *,
+        db: Session = Depends(deps.get_db),
+        current_user: models.User = Depends(deps.get_current_active_user),
+) -> Any:
+    """
+    Get unapprouved comments
+    """
+    if not crud.user.is_superuser(current_user):
+        raise HTTPException(status_code=400, detail="Not enough permissions")
+    result = db.query(Comment).filter(Comment.is_validated == False).all()
+    return result  # type: ignore
+
+@router.patch("/approve/{id}", response_model=schemas.Comment)
+async def approve_comment(
         *,
         db: Session = Depends(deps.get_db),
         id: int,
         current_user: models.User = Depends(deps.get_current_active_user),
 ) -> Any:
     """
-    Delete a Comment.
+    Approve a Comment.
     """
     comment = crud.comment.get(db=db, id=id)
     if not comment:
         raise HTTPException(status_code=404, detail="Comment not found")
     if not crud.user.is_superuser(current_user):
         raise HTTPException(status_code=400, detail="Not enough permissions")
-    return crud.comment.approve(db=db, id=id)
+    await send_comment_email(email_to=crud.user.get(db=db, id=comment.author_id).email, email=settings.EMAILS_CONTACT_TO, reason="Your celebration has been approved", text="Congratulations, your celebration has been approved.", name="Open Pantheon")
+    return crud.comment.approve(db=db, comment=comment)
 
 @router.delete("/{id}", response_model=schemas.Comment)
 def delete_comment(

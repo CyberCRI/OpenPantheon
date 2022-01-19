@@ -42,6 +42,12 @@ export default {
   deleteUser() {
     return axios.delete('/users/me/')
   },
+  getUnapprovedComments() {
+    return axios.get('/comments/unapproved')
+  },
+  approveComment(id) {
+    return axios.patch('/comments/approve/' + id)
+  },
   deleteComment(id) {
     return axios.delete('/comments/' + id)
   },

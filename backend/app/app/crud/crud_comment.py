@@ -31,9 +31,8 @@ class CRUDComment(CRUDBase[Comment, CommentCreate, CommentUpdate]):
         db.refresh(db_obj)
         return db_obj
 
-    def approve(self, db: Session, *, id: int) -> Comment:
-        comment = db.query(Comment).filter(Comment.id == id).first()
-        comment['is_approved'] = True
+    def approve(self, db: Session, *, comment: Comment) -> Comment:
+        setattr(comment, "is_validated", True)
         db.add(comment)
         db.commit() 
         db.refresh(comment)
