@@ -113,6 +113,8 @@ jobs:
           export POSTGRES_SERVER=localhost
           # Activate poetry's virtualenv
           source `poetry env info --path`/bin/activate
+          # Make the script run correctly
+          export CURRENT_DIR=./
           # Run the migration and initial data push
           ./prestart.sh
           # Run the tests
