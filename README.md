@@ -1,6 +1,6 @@
 <!--
 OpenPantheon: the pantheon for Education
-Copyright (C) 2021 CRI
+Copyright (C) 2022 Learning Planet Institute
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published
@@ -29,7 +29,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md)
 
 # Maintainers and contributors
 
-The code is owned by the CRI and maintained by the [CRI IT team](mailto:it-team@cri-paris.org).
+The code is owned by the Learning Planet Institute and maintained by the [Learning Planet Institute IT team](mailto:it-team@learningplanetinstitute.org).
 
 The initial work has been done by [Louinis Boudaa](https://github.com/lboudaa)
 
