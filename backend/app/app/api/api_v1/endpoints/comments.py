@@ -13,10 +13,10 @@
 #
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, cast
 
 from fastapi import APIRouter, Depends, HTTPException
-from pydantic.networks import EmailStr
+from pydantic import EmailStr
 from sqlalchemy.orm import Session
 
 from app import crud, models, schemas
@@ -59,8 +59,7 @@ def get_unapprouved_comments(
     """
     if not crud.user.is_superuser(current_user):
         raise HTTPException(status_code=400, detail="Not enough permissions")
-    result = db.query(Comment).filter(Comment.is_validated == False).all()
-    return result  # type: ignore
+    return db.query(Comment).filter(Comment.is_validated is False).all()
 
 
 @router.patch("/approve/{id}", response_model=schemas.Comment)
@@ -78,7 +77,10 @@ async def approve_comment(
         raise HTTPException(status_code=404, detail="Comment not found")
     if not crud.user.is_superuser(current_user):
         raise HTTPException(status_code=400, detail="Not enough permissions")
-    await send_comment_email(email_to=crud.user.get(db=db, id=comment.author_id).email,
+    db_current_user = crud.user.get(db=db, id=comment.author_id)
+    if db_current_user is None:
+        raise HTTPException(status_code=400, detail="User not found")
+    await send_comment_email(email_to=cast(EmailStr, db_current_user.email),
                              email=settings.EMAILS_CONTACT_TO,
                              reason="Your celebration has been approved",
                              text="Congratulations, your celebration has been approved.",
