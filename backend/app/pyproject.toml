@@ -1,5 +1,5 @@
 # OpenPantheon: the pantheon for Education
-# Copyright (C) 2021 CRI
+# Copyright (C) 2022 Learning Planet Institute
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as published
@@ -17,7 +17,9 @@
 name = "OpenPantheon"
 version = "0.1.0"
 description = "The Open Pantheon of Education"
-authors = ["CRI IT team <it-team@cri-paris.org>"]
+authors = [
+  "Learning Planet Institute IT team <it-team@learningplanetinstitute.org>",
+]
 license = "AGPL-3.0-or-later"
 readme = "../../README.md"
 repository = "https://github.com/CyberCRI/OpenPantheon"
@@ -29,15 +31,15 @@ fastapi = "^0.68.1"
 python-multipart = "^0.0.5"
 email-validator = "^1.1.3"
 requests = "^2.26.0"
-passlib = {extras = ["bcrypt"], version = "^1.7.4"}
+passlib = { extras = ["bcrypt"], version = "^1.7.4" }
 tenacity = "^8.0.1"
 pydantic = "^1.8.2"
 gunicorn = "^20.1.0"
 jinja2 = "^2.11.2"
 psycopg2-binary = "^2.9.1"
 alembic = "^1.7.1"
-sqlalchemy = {version = ">=1.4,<1.4.23"}
-python-jose = {extras = ["cryptography"], version = "^3.3.0"}
+sqlalchemy = { version = ">=1.4,<1.4.23" }
+python-jose = { extras = ["cryptography"], version = "^3.3.0" }
 fastapi-mail = "^0.4.1"
 
 [tool.poetry.dev-dependencies]

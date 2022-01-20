@@ -1,6 +1,6 @@
 <!--
 OpenPantheon: the pantheon for Education
-Copyright (C) 2021 CRI
+Copyright (C) 2022 Learning Planet Institute
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published
@@ -20,7 +20,9 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
     <mj-section>
       <mj-column>
         <mj-divider border-color="#555"></mj-divider>
-        <mj-text font-size="20px" color="#555" font-family="helvetica">{{ text }}</mj-text>
+        <mj-text font-size="20px" color="#555" font-family="helvetica"
+          >{{ text }}</mj-text
+        >
         <mj-text font-size="16px" color="#555">{{ email }}</mj-text>
         <mj-text font-size="16px" color="#555">{{ name }}</mj-text>
       </mj-column>
