@@ -32,7 +32,7 @@ class CRUDComment(CRUDBase[Comment, CommentCreate, CommentUpdate]):
         return db_obj
 
     def approve(self, db: Session, *, comment: Comment) -> Comment:
-        setattr(comment, "is_validated", True)
+        comment.is_validated = True
         db.add(comment)
         db.commit()
         db.refresh(comment)
