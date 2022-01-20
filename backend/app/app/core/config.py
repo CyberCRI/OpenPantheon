@@ -95,6 +95,13 @@ class Settings(BaseSettings):
     FIRST_SUPERUSER_LAST_NAME: str
     USERS_OPEN_REGISTRATION: bool = True
 
+    RECAPTCHA_ENABLED: bool = False
+    RECAPTCHA_SITE_SECRET: Optional[str] = None
+
+    @validator("RECAPTCHA_ENABLED", pre=True)
+    def get_recaptcha_enabled(cls, v: bool, values: Dict[str, Any]) -> bool:  # noqa: N805
+        return bool(values.get("RECAPTCHA_SITE_SECRET"))
+
     class Config:
         case_sensitive = True
 

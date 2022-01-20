@@ -76,6 +76,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 <script>
 import axios from 'axios'
 import { mapActions } from 'vuex'
+import { getToken } from '../recaptcha'
 
 export default {
   name: 'Register',
@@ -95,27 +96,19 @@ export default {
   methods: {
     ...mapActions(['Register', 'LogIn', 'getCurrentUserDetails']),
     async captchaCheck() {
-      // eslint-disable-next-line no-unused-vars
-      let captchaToken = await new Promise((res, rej) => {
-        grecaptcha.ready(function () {
-          return grecaptcha
-            .execute('6LcNBh4eAAAAAFMGAr6PiXoQBoAOdAr_eJGiajGI', { action: 'submit' })
-            .then((token) => {
-              return res(token)
-            })
-        })
-      })
-      if (captchaToken) this.onSubmit(captchaToken)
-      else
+      try {
+        this.onSubmit(await getToken('register'))
+      } catch (error) {
         this.$buefy.toast.open({
           duration: 5000,
           message: this.$t('toast.credentials'),
           type: 'is-danger',
         })
+      }
     },
-    async onSubmit(token) {
+    async onSubmit(captchaToken) {
       try {
-        axios.defaults.headers.common['captcha'] = token
+        axios.defaults.headers.common['captcha'] = captchaToken
         await this.Register(this.user)
         try {
           await this.LogIn(this.user)

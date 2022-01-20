@@ -22,6 +22,7 @@ import router from './router'
 import store from './store'
 import i18n from './i18n'
 import { init as analyticsInit } from './analytics'
+import { init as recaptchaInit } from './recaptcha'
 import axios from 'axios'
 import Vue2Filters from 'vue2-filters'
 
@@ -38,6 +39,9 @@ Vue.use(Buefy)
 
 // Init analytics
 analyticsInit()
+
+// Init reCaptcha
+recaptchaInit()
 
 new Vue({
   router,
