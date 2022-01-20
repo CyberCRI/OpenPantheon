@@ -47,6 +47,9 @@ export const init = () => {
  * @param callback
  */
 export const track = (eventName, properties, options, callback) => {
+  if (!process.env.VUE_APP_MIXPANEL_PROJECT_TOKEN) {
+    return
+  }
   try {
     Mixpanel.track(eventName, properties, options, callback)
   } catch (err) {
@@ -61,6 +64,9 @@ export const track = (eventName, properties, options, callback) => {
  * @param additionalProperties
  */
 export const pageViewed = (page, additionalProperties) => {
+  if (!process.env.VUE_APP_MIXPANEL_PROJECT_TOKEN) {
+    return
+  }
   track('page_viewed', {
     page,
     ...additionalProperties,
