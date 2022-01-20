@@ -36,4 +36,7 @@ module.exports = {
       },
     },
   ],
+  globals: {
+    grecaptcha: 'writable',
+  },
 }
