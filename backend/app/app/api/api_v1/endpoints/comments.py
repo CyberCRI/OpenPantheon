@@ -16,16 +16,13 @@
 from typing import Any, Dict, List, Optional
 
 from fastapi import APIRouter, Depends, HTTPException
+from pydantic.networks import EmailStr
 from sqlalchemy.orm import Session
 
 from app import crud, models, schemas
 from app.api import deps
-
-from app.models.comment import Comment
-
-from pydantic.networks import EmailStr
-
 from app.core.config import settings
+from app.models.comment import Comment
 from app.send_email import send_comment_email
 
 router = APIRouter()
@@ -50,6 +47,7 @@ def create_comment(
     comment_in['fluff'] = '~'.join(tab)
     return crud.comment.create_new_comment(db=db, obj_in=comment_in)  # type: ignore
 
+
 @router.get("/unapproved")
 def get_unapprouved_comments(
         *,
@@ -63,6 +61,7 @@ def get_unapprouved_comments(
         raise HTTPException(status_code=400, detail="Not enough permissions")
     result = db.query(Comment).filter(Comment.is_validated == False).all()
     return result  # type: ignore
+
 
 @router.patch("/approve/{id}", response_model=schemas.Comment)
 async def approve_comment(
@@ -79,8 +78,13 @@ async def approve_comment(
         raise HTTPException(status_code=404, detail="Comment not found")
     if not crud.user.is_superuser(current_user):
         raise HTTPException(status_code=400, detail="Not enough permissions")
-    await send_comment_email(email_to=crud.user.get(db=db, id=comment.author_id).email, email=settings.EMAILS_CONTACT_TO, reason="Your celebration has been approved", text="Congratulations, your celebration has been approved.", name="Open Pantheon")
+    await send_comment_email(email_to=crud.user.get(db=db, id=comment.author_id).email,
+                             email=settings.EMAILS_CONTACT_TO,
+                             reason="Your celebration has been approved",
+                             text="Congratulations, your celebration has been approved.",
+                             name="Open Pantheon")
     return crud.comment.approve(db=db, comment=comment)
+
 
 @router.delete("/{id}", response_model=schemas.Comment)
 def delete_comment(
