@@ -59,7 +59,8 @@ def get_unapprouved_comments(
     """
     if not crud.user.is_superuser(current_user):
         raise HTTPException(status_code=400, detail="Not enough permissions")
-    return db.query(Comment).filter(Comment.is_validated is False).all()
+    # The condition Comment.is_validated is False doesn't work
+    return db.query(Comment).filter(Comment.is_validated == False).all()  # noqa: E712
 
 
 @router.patch("/approve/{id}", response_model=schemas.Comment)
