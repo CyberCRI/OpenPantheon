@@ -40,7 +40,7 @@ class CRUDPersonality(CRUDBase[Personality, PersonalityCreate, PersonalityUpdate
 
     def get_stats(self, db: Session) -> Dict:
         result = {'count': 0, 'parity': 0}
-        result['count'] = db.query(Personality).count()
+        result['count'] = db.query(Personality).join(Comment).filter(Comment.is_validated == True).count()  # noqa: E712
         if result['count'] > 0:
             result['parity'] = db.query(Personality).filter(Personality.gender == 'f').count()
             result['parity'] = math.floor(result['parity'] / result['count'] * 100)
@@ -58,7 +58,8 @@ class CRUDPersonality(CRUDBase[Personality, PersonalityCreate, PersonalityUpdate
                                 field: str = '',
                                 region: str = '',
                                 sort: str = '') -> List[Personality]:
-        result = db.query(Personality).join(Comment).group_by(Personality.id)
+        result = db.query(Personality)
+        result = result.join(Comment).filter(Comment.is_validated == True).group_by(Personality.id)  # noqa: E712
         if personal:
             result = result.filter(Personality.id.in_([p.id for p in current_user_pantheon]))
         if women:
@@ -87,7 +88,8 @@ class CRUDPersonality(CRUDBase[Personality, PersonalityCreate, PersonalityUpdate
                                       field: str = '',
                                       region: str = '',
                                       sort: str = '') -> List[Personality]:
-        result = db.query(Personality).join(Comment).group_by(Personality.id)
+        result = db.query(Personality)
+        result = result.join(Comment).filter(Comment.is_validated == True).group_by(Personality.id)  # noqa: E712
         if women:
             result = result.filter(Personality.gender == 'f')
         if field:
