@@ -29,7 +29,9 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
         <div class="container">
           <div class="is-flex is-justify-content-space-between">
             <div>
-              <h1 class="title is-6" v-if="user">{{ user.first_name }} {{ user.last_name }}</h1>
+              <h1 class="title is-6" v-if="user">
+                {{ user.first_name }} {{ user.last_name }}<slot></slot>
+              </h1>
               <h2 class="subtitle is-6 has-text-grey-light mb-2" v-if="user">
                 {{ user.job }}
               </h2>
