@@ -34,8 +34,7 @@ comment = sa.table('comment', sa.Column('is_validated', sa.Boolean()))
 
 
 def upgrade():
-    op.execute(comment.update().where(comment.c.is_validated == op.inline_literal(False)).values(
-        {'is_validated': op.inline_literal(True)}))
+    op.execute(comment.update().values({'is_validated': op.inline_literal(True)}))
 
 
 def downgrade():
