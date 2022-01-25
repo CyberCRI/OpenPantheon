@@ -146,7 +146,7 @@ def create_user_open(
             'secret': settings.RECAPTCHA_SITE_SECRET,
             'response': captcha
         }).json()
-        if not answer['success'] and answer['action'] != 'register':
+        if not answer['success'] and answer['action'] != 'register' and answer['score'] < 0.5:
             raise HTTPException(
                 status_code=403,
                 detail="Captcha failed",
