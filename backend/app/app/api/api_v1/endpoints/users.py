@@ -15,8 +15,7 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 from typing import Any, List
 
-import requests
-from fastapi import APIRouter, Body, Depends, Header, HTTPException
+from fastapi import APIRouter, Body, Depends, HTTPException
 from fastapi.encoders import jsonable_encoder
 from pydantic.networks import EmailStr
 from sqlalchemy.orm import Session
@@ -123,36 +122,19 @@ def read_user_me(
 
 @router.post("/open", response_model=schemas.User)
 def create_user_open(
-    *,
-    db: Session = Depends(deps.get_db),
-    password: str = Body(...),
-    email: EmailStr = Body(...),
-    firstname: str = Body(...),
-    lastname: str = Body(...),
-    job: str = Body(default=None),
-    captcha: str = Header(default=None),
-    organization: str = Body(default=None)
+        *,
+        db: Session = Depends(deps.get_db),
+        validate_captcha: None = Depends(deps.CaptchaValidator('register')),
+        password: str = Body(...),
+        email: EmailStr = Body(...),
+        firstname: str = Body(...),
+        lastname: str = Body(...),
+        job: str = Body(default=None),
+        organization: str = Body(default=None),
 ) -> Any:
     """
     Create new user without the need to be logged in.
     """
-    if (settings.RECAPTCHA_ENABLED):
-        if (captcha is None or captcha == ''):
-            raise HTTPException(
-                status_code=403,
-                detail="Missing captcha token",
-            )
-        answer = requests.post('https://www.google.com/recaptcha/api/siteverify', {
-            'secret': settings.RECAPTCHA_SITE_SECRET,
-            'response': captcha
-        }).json()
-        if not answer['success'] or \
-            answer['action'] != 'register' or \
-                answer['score'] < settings.RECAPTCHA_SCORE_THRESHOLD:
-            raise HTTPException(
-                status_code=403,
-                detail="Captcha failed",
-            )
     if not settings.USERS_OPEN_REGISTRATION:
         raise HTTPException(
             status_code=403,

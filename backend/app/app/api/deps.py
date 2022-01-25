@@ -15,7 +15,8 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 from typing import Generator
 
-from fastapi import Depends, HTTPException, status
+import requests
+from fastapi import Depends, Header, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
 from jose import jwt
 from pydantic import ValidationError
@@ -62,3 +63,27 @@ def get_current_active_superuser(current_user: models.User = Depends(get_current
     if not crud.user.is_superuser(current_user):
         raise HTTPException(status_code=400, detail="The user doesn't have enough privileges")
     return current_user
+
+
+class CaptchaValidator:
+    def __init__(self, action: str) -> None:
+        self.action = action
+
+    def __call__(self, captcha: str = Header(None)) -> None:
+        if settings.RECAPTCHA_ENABLED:
+            if captcha is None or captcha == '':
+                raise HTTPException(
+                    status_code=403,
+                    detail="Missing captcha token",
+                )
+            answer = requests.post('https://www.google.com/recaptcha/api/siteverify', {
+                'secret': settings.RECAPTCHA_SITE_SECRET,
+                'response': captcha
+            }).json()
+            if (not answer['success'] or \
+                answer['action'] != self.action or \
+                    answer['score'] < settings.RECAPTCHA_SCORE_THRESHOLD):
+                raise HTTPException(
+                    status_code=403,
+                    detail=f"Captcha failed for {self.action}",
+                )
