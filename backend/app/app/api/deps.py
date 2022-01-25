@@ -80,9 +80,8 @@ class CaptchaValidator:
                 'secret': settings.RECAPTCHA_SITE_SECRET,
                 'response': captcha
             }).json()
-            if (not answer['success'] or \
-                answer['action'] != self.action or \
-                    answer['score'] < settings.RECAPTCHA_SCORE_THRESHOLD):
+            if (not answer['success'] or answer['action'] != self.action
+                    or answer['score'] < settings.RECAPTCHA_SCORE_THRESHOLD):
                 raise HTTPException(
                     status_code=403,
                     detail=f"Captcha failed for {self.action}",
