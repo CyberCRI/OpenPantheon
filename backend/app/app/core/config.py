@@ -97,6 +97,7 @@ class Settings(BaseSettings):
 
     RECAPTCHA_ENABLED: bool = False
     RECAPTCHA_SITE_SECRET: Optional[str] = None
+    RECAPTCHA_SCORE_THRESHOLD: float = 0.5
 
     @validator("RECAPTCHA_ENABLED", pre=True)
     def get_recaptcha_enabled(cls, v: bool, values: Dict[str, Any]) -> bool:  # noqa: N805
