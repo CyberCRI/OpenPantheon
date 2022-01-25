@@ -52,13 +52,11 @@ def create_comment(
 def get_unapprouved_comments(
         *,
         db: Session = Depends(deps.get_db),
-        current_user: models.User = Depends(deps.get_current_active_user),
+        current_user: models.User = Depends(deps.get_current_active_superuser),
 ) -> Any:
     """
     Get unapprouved comments
     """
-    if not crud.user.is_superuser(current_user):
-        raise HTTPException(status_code=400, detail="Not enough permissions")
     # The condition Comment.is_validated is False doesn't work
     return db.query(Comment).filter(Comment.is_validated == False).all()  # noqa: E712
 
@@ -68,7 +66,7 @@ async def approve_comment(
         *,
         db: Session = Depends(deps.get_db),
         id: int,
-        current_user: models.User = Depends(deps.get_current_active_user),
+        current_user: models.User = Depends(deps.get_current_active_superuser),
 ) -> Any:
     """
     Approve a Comment.
@@ -76,8 +74,6 @@ async def approve_comment(
     comment = crud.comment.get(db=db, id=id)
     if not comment:
         raise HTTPException(status_code=404, detail="Comment not found")
-    if not crud.user.is_superuser(current_user):
-        raise HTTPException(status_code=400, detail="Not enough permissions")
     db_current_user = crud.user.get(db=db, id=comment.author_id)
     if db_current_user is None:
         raise HTTPException(status_code=400, detail="User not found")
