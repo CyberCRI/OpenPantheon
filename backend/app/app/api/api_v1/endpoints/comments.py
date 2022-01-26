@@ -78,11 +78,12 @@ async def approve_comment(
     if db_current_user is None:
         raise HTTPException(status_code=400, detail="User not found")
     comment = crud.comment.approve(db=db, comment=comment)
-    personality_link = f'{settings.SERVER_HOST}/details/{comment.personality_id}'
-    await send_comment_approved_email(email_to=cast(EmailStr, db_current_user.email),
-                                      email=settings.EMAILS_CONTACT_TO,
-                                      comment=comment.text if comment.text is not None else '',
-                                      link=personality_link)
+    await send_comment_approved_email(
+        email_to=cast(EmailStr, db_current_user.email),
+        email=settings.EMAILS_CONTACT_TO,
+        comment=comment.text if comment.text is not None else '',
+        personality_id=comment.personality_id if comment.personality_id is not None else 0,
+    )
     return comment
 
 

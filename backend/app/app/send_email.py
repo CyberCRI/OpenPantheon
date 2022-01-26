@@ -83,9 +83,10 @@ async def send_contact_email(email_to: EmailStr, email: EmailStr, reason: str, n
     )
 
 
-async def send_comment_approved_email(email_to: EmailStr, email: EmailStr, comment: str, link: str) -> None:
+async def send_comment_approved_email(email_to: EmailStr, email: EmailStr, comment: str, personality_id: int) -> None:
     project_name = settings.PROJECT_NAME
     subject = f"{project_name} - Your comment has been approved"
+    link = f'{settings.FRONTEND_URL}/details/{personality_id}'
     await send_email(
         email_to=email_to,
         reply_to=[email],
@@ -101,7 +102,7 @@ async def send_comment_approved_email(email_to: EmailStr, email: EmailStr, comme
 async def send_reset_password_email(email_to: EmailStr, email: str, token: str) -> None:
     project_name = settings.PROJECT_NAME
     subject = f"{project_name} - Password recovery for user {email}"
-    link = f"{settings.SERVER_HOST}/reset-password?token={token}"
+    link = f"{settings.SERVER_URL}/reset-password?token={token}"
     await send_email(
         email_to=email_to,
         subject=subject,
@@ -119,7 +120,7 @@ async def send_reset_password_email(email_to: EmailStr, email: str, token: str) 
 async def send_new_account_email(email_to: EmailStr, username: str, password: str) -> None:
     project_name = settings.PROJECT_NAME
     subject = f"{project_name} - New account for user {username}"
-    link = settings.SERVER_HOST
+    link = settings.SERVER_URL
     await send_email(
         email_to=email_to,
         subject=subject,

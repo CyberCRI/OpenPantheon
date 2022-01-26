@@ -24,7 +24,8 @@ class Settings(BaseSettings):
     SECRET_KEY: str = secrets.token_urlsafe(32)
     # 60 minutes * 24 hours * 8 days = 8 days
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 24 * 8
-    SERVER_HOST: AnyHttpUrl = "http://localhost:8000"  # type: ignore
+    SERVER_URL: AnyHttpUrl = "http://localhost:8000"  # type: ignore
+    FRONTEND_URL: AnyHttpUrl = "http://localhost:8080"  # type: ignore
     # BACKEND_CORS_ORIGINS is a JSON-formatted list of origins
     # e.g: '["http://localhost", "http://localhost:4200", "http://localhost:3000" \ # noqa: E800
     # "http://localhost:8080"]'
