@@ -19,7 +19,7 @@ import PersonalityService from '@/services/PersonalityService'
 
 export default {
   state: {
-    personalities: null,
+    personalities: [],
     total: 0,
     personality: {},
     pantheonCount: 0,
