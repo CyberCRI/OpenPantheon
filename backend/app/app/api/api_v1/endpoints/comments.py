@@ -23,7 +23,7 @@ from app import crud, models, schemas
 from app.api import deps
 from app.core.config import settings
 from app.models.comment import Comment
-from app.send_email import send_comment_email
+from app.send_email import send_comment_approved_email
 
 router = APIRouter()
 
@@ -77,12 +77,13 @@ async def approve_comment(
     db_current_user = crud.user.get(db=db, id=comment.author_id)
     if db_current_user is None:
         raise HTTPException(status_code=400, detail="User not found")
-    await send_comment_email(email_to=cast(EmailStr, db_current_user.email),
-                             email=settings.EMAILS_CONTACT_TO,
-                             reason="Your celebration has been approved",
-                             text="Congratulations, your celebration has been approved.",
-                             name="Open Pantheon")
-    return crud.comment.approve(db=db, comment=comment)
+    comment = crud.comment.approve(db=db, comment=comment)
+    personality_link = f'{settings.SERVER_HOST}/details/{comment.personality_id}'
+    await send_comment_approved_email(email_to=cast(EmailStr, db_current_user.email),
+                                      email=settings.EMAILS_CONTACT_TO,
+                                      comment=comment.text,
+                                      link=personality_link)
+    return comment
 
 
 @router.delete("/{id}", response_model=schemas.Comment)

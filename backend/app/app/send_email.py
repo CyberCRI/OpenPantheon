@@ -83,18 +83,17 @@ async def send_contact_email(email_to: EmailStr, email: EmailStr, reason: str, n
     )
 
 
-async def send_comment_email(email_to: EmailStr, email: EmailStr, reason: str, name: str, text: str) -> None:
+async def send_comment_approved_email(email_to: EmailStr, email: EmailStr, comment: str, link: str) -> None:
     project_name = settings.PROJECT_NAME
-    subject = f"{project_name} - {reason}"
+    subject = f"{project_name} - Your comment has been approved"
     await send_email(
         email_to=email_to,
         reply_to=[email],
         subject=subject,
-        template_name="contact_email.html",
+        template_name="comment_approved_email.html",
         template_body={
-            "name": name,
-            "email": email,
-            "text": text
+            "comment": comment,
+            "link": link
         },
     )
 
