@@ -316,7 +316,8 @@ wd:${this.personality.wikipedia_id} wdt:P27 [ wdt:P297 ?code_iso ].
           await this.$store.dispatch('getPantheonStats')
           await this.createCommentAndLike()
         })
-        .catch(() => {
+        .catch((e) => {
+          console.error('Failed to celebrate', e)
           this.$buefy.toast.open({
             duration: 5000,
             message: this.$t('toast.unknown'),
