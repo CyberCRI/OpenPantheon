@@ -13,7 +13,7 @@
 #
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
-from typing import Generator
+from typing import Any, Generator
 
 import requests
 from fastapi import Depends, Header, HTTPException, status
@@ -69,6 +69,10 @@ class CaptchaValidator:
     def __init__(self, action: str) -> None:
         self.action = action
 
+    def _is_score_valid(self, response_body: Any):
+        return response_body['success'] and response_body[
+            'action'] == self.action and response_body['score'] >= settings.RECAPTCHA_SCORE_THRESHOLD
+
     def __call__(self, captcha: str = Header(None)) -> None:
         if settings.RECAPTCHA_ENABLED:
             if captcha is None or captcha == '':
@@ -76,12 +80,11 @@ class CaptchaValidator:
                     status_code=403,
                     detail="Missing captcha token",
                 )
-            answer = requests.post('https://www.google.com/recaptcha/api/siteverify', {
+            response = requests.post('https://www.googlrequests.Responsee.com/recaptcha/api/siteverify', {
                 'secret': settings.RECAPTCHA_SITE_SECRET,
                 'response': captcha
-            }).json()
-            if (not answer['success'] or answer['action'] != self.action
-                    or answer['score'] < settings.RECAPTCHA_SCORE_THRESHOLD):
+            })
+            if response.status_code >= 400 or not self._is_score_valid(response.json()):
                 raise HTTPException(
                     status_code=403,
                     detail=f"Captcha failed for {self.action}",
