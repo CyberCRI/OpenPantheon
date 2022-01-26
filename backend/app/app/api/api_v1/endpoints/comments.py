@@ -81,7 +81,7 @@ async def approve_comment(
     personality_link = f'{settings.SERVER_HOST}/details/{comment.personality_id}'
     await send_comment_approved_email(email_to=cast(EmailStr, db_current_user.email),
                                       email=settings.EMAILS_CONTACT_TO,
-                                      comment=comment.text,
+                                      comment=comment.text if comment.text is not None else '',
                                       link=personality_link)
     return comment
 

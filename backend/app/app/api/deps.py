@@ -69,7 +69,7 @@ class CaptchaValidator:
     def __init__(self, action: str) -> None:
         self.action = action
 
-    def _is_score_valid(self, response_body: Any):
+    def _is_score_valid(self, response_body: Any) -> bool:
         return response_body['success'] and response_body[
             'action'] == self.action and response_body['score'] >= settings.RECAPTCHA_SCORE_THRESHOLD
 
