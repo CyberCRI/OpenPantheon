@@ -1,6 +1,6 @@
 /*
  * OpenPantheon: the pantheon for Education
- * Copyright (C) 2021 CRI
+ * Copyright (C) 2022 Learning Planet Institute
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as published
