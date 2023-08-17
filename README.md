@@ -16,6 +16,9 @@ You should have received a copy of the GNU Affero General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 -->
 
+**SERVICE TERMINATED**
+Last backup is located [here](https://portal.azure.com/#view/Microsoft_Azure_Storage/ContainerMenuBlade/~/overview/storageAccountId/%2Fsubscriptions%2F30f742fa-5816-4c75-829c-dc04bb232efb%2FresourceGroups%2Fprod-prod%2Fproviders%2FMicrosoft.Storage%2FstorageAccounts%2Fcriparisprodprodbackup/path/open-pantheon-backups/etag/%220x8DB9EFD6A7F4E11%22/defaultEncryptionScope/%24account-encryption-key/denyEncryptionScopeOverride~/false/defaultId//publicAccessVal/None).
+
 # [Open Pantheon](https://open-pantheon.org)
 
 ![GitHub license](https://img.shields.io/badge/license-GNU%20Affero%20GPLv3-green?style=flat-square)
